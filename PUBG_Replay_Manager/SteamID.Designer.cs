@@ -49,6 +49,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SteamID";
             this.Text = "List of all SteamID64";
+            this.Load += new System.EventHandler(this.SteamID_Load);
             this.ResumeLayout(false);
 
         }

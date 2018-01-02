@@ -13,6 +13,8 @@ namespace PUBG_Replay_Manager
     {
         public string replayloc = Environment.GetEnvironmentVariable("localappdata") + "\\TslGame\\Saved\\Demos";
         public string prog_name = "PUBG Replay Manager";
+        public string profile_link = "http://steamcommunity.com/profiles/";
+        public string profile_id = "76561198050446061";
         public Main()
         {
             InitializeComponent();
@@ -75,6 +77,9 @@ namespace PUBG_Replay_Manager
                 fileLocked.Checked = true;
             }
             teamInfo.Text = newInfo[17];
+            profile_id = newInfo[18];
+            recordingUser.Text = newInfo[19];
+            profileLink.Text = newInfo[19];
             mapName.Text = newInfo[20];
             fileSize.Text = newInfo[21];
             serverId.Text = newInfo[22];
@@ -326,7 +331,6 @@ namespace PUBG_Replay_Manager
                     dirsize /= 1048576;
                     info[21] = Math.Truncate(dirsize).ToString() + " MB";
                 }
-
                 return info;
             }
             MessageBox.Show("PUBG.replayinfo for this recording was not found!" + Environment.NewLine + "Recording may be corrupt!", "Waring!");
@@ -399,6 +403,11 @@ namespace PUBG_Replay_Manager
         {
             KillFeed steamid = new KillFeed(replayloc + "\\" + replayList.SelectedItem + "\\");
             steamid.ShowDialog();
+        }
+
+        private void profileLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("http://steamcommunity.com/profiles/"+profile_id);
         }
     }
 }

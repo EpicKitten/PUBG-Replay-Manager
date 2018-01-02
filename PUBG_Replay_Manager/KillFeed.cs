@@ -67,7 +67,7 @@ namespace PUBG_Replay_Manager
             if (summery)
             {
                 fulllist.Add("==================================");
-                fulllist.Add(i + " SteamID(s) rrecorded from replay files");
+                fulllist.Add(i + " SteamID(s) recorded from replay files");
                 fulllist.Add(p + " SteamID(s) recorded from replay files (duplicates removed)");
                 fulllist.Add("==================================");
             }

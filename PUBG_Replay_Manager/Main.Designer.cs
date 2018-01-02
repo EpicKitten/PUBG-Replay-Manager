@@ -31,7 +31,6 @@
             this.replayList = new System.Windows.Forms.ListBox();
             this.openReplayFolder = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.killFileDecoder = new System.Windows.Forms.Button();
             this.steamidStrip = new System.Windows.Forms.Button();
             this.zipReplay = new System.Windows.Forms.Button();
             this.openSelectedReplay = new System.Windows.Forms.Button();
@@ -70,6 +69,10 @@
             this.label17 = new System.Windows.Forms.Label();
             this.gameVerison = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.profileLink = new System.Windows.Forms.LinkLabel();
+            this.recordingUser = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.serverId = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.importReplay = new System.Windows.Forms.Button();
@@ -86,13 +89,13 @@
             this.replayList.FormattingEnabled = true;
             this.replayList.Location = new System.Drawing.Point(12, 16);
             this.replayList.Name = "replayList";
-            this.replayList.Size = new System.Drawing.Size(407, 602);
+            this.replayList.Size = new System.Drawing.Size(407, 615);
             this.replayList.TabIndex = 0;
             this.replayList.SelectedIndexChanged += new System.EventHandler(this.replayList_SelectedIndexChanged);
             // 
             // openReplayFolder
             // 
-            this.openReplayFolder.Location = new System.Drawing.Point(430, 591);
+            this.openReplayFolder.Location = new System.Drawing.Point(425, 608);
             this.openReplayFolder.Name = "openReplayFolder";
             this.openReplayFolder.Size = new System.Drawing.Size(128, 23);
             this.openReplayFolder.TabIndex = 8;
@@ -102,34 +105,22 @@
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.killFileDecoder);
             this.groupBox4.Controls.Add(this.steamidStrip);
             this.groupBox4.Controls.Add(this.zipReplay);
             this.groupBox4.Controls.Add(this.openSelectedReplay);
-            this.groupBox4.Location = new System.Drawing.Point(425, 443);
+            this.groupBox4.Location = new System.Drawing.Point(425, 465);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(264, 112);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Replay Actions";
             // 
-            // killFileDecoder
-            // 
-            this.killFileDecoder.Enabled = false;
-            this.killFileDecoder.Location = new System.Drawing.Point(181, 19);
-            this.killFileDecoder.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.killFileDecoder.Name = "killFileDecoder";
-            this.killFileDecoder.Size = new System.Drawing.Size(78, 81);
-            this.killFileDecoder.TabIndex = 3;
-            this.killFileDecoder.Text = "Decode SteamID64 from kill files";
-            this.killFileDecoder.UseVisualStyleBackColor = true;
-            this.killFileDecoder.Click += new System.EventHandler(this.killFileDecoder_Click);
-            // 
             // steamidStrip
             // 
+            this.steamidStrip.Enabled = false;
             this.steamidStrip.Location = new System.Drawing.Point(6, 48);
             this.steamidStrip.Name = "steamidStrip";
-            this.steamidStrip.Size = new System.Drawing.Size(170, 23);
+            this.steamidStrip.Size = new System.Drawing.Size(252, 23);
             this.steamidStrip.TabIndex = 2;
             this.steamidStrip.Text = "Every SteamID64 in the replay";
             this.steamidStrip.UseVisualStyleBackColor = true;
@@ -137,9 +128,10 @@
             // 
             // zipReplay
             // 
+            this.zipReplay.Enabled = false;
             this.zipReplay.Location = new System.Drawing.Point(6, 77);
             this.zipReplay.Name = "zipReplay";
-            this.zipReplay.Size = new System.Drawing.Size(170, 23);
+            this.zipReplay.Size = new System.Drawing.Size(252, 23);
             this.zipReplay.TabIndex = 1;
             this.zipReplay.Text = "Export Selected Replay";
             this.zipReplay.UseVisualStyleBackColor = true;
@@ -147,9 +139,10 @@
             // 
             // openSelectedReplay
             // 
+            this.openSelectedReplay.Enabled = false;
             this.openSelectedReplay.Location = new System.Drawing.Point(6, 19);
             this.openSelectedReplay.Name = "openSelectedReplay";
-            this.openSelectedReplay.Size = new System.Drawing.Size(170, 23);
+            this.openSelectedReplay.Size = new System.Drawing.Size(252, 23);
             this.openSelectedReplay.TabIndex = 0;
             this.openSelectedReplay.Text = "Open Selected Replay\'s Folder";
             this.openSelectedReplay.UseVisualStyleBackColor = true;
@@ -167,6 +160,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.DarkRed;
             this.label2.Location = new System.Drawing.Point(12, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
@@ -230,7 +224,7 @@
             // matchType
             // 
             this.matchType.AutoSize = true;
-            this.matchType.Location = new System.Drawing.Point(72, 109);
+            this.matchType.Location = new System.Drawing.Point(76, 109);
             this.matchType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.matchType.Name = "matchType";
             this.matchType.Size = new System.Drawing.Size(51, 13);
@@ -268,6 +262,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.DarkRed;
             this.label5.Location = new System.Drawing.Point(12, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
@@ -277,6 +272,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.DarkRed;
             this.label6.Location = new System.Drawing.Point(12, 29);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
@@ -286,6 +282,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.ForeColor = System.Drawing.Color.DarkRed;
             this.label7.Location = new System.Drawing.Point(12, 42);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(28, 13);
@@ -295,6 +292,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.ForeColor = System.Drawing.Color.DarkRed;
             this.label8.Location = new System.Drawing.Point(125, 29);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 13);
@@ -304,6 +302,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.DarkRed;
             this.label9.Location = new System.Drawing.Point(125, 42);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
@@ -313,6 +312,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.ForeColor = System.Drawing.Color.DarkRed;
             this.label10.Location = new System.Drawing.Point(125, 16);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 13);
@@ -338,8 +338,8 @@
             // 
             this.fileLocked.AutoSize = true;
             this.fileLocked.Enabled = false;
-            this.fileLocked.Location = new System.Drawing.Point(15, 132);
-            this.fileLocked.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fileLocked.Location = new System.Drawing.Point(15, 153);
+            this.fileLocked.Margin = new System.Windows.Forms.Padding(2);
             this.fileLocked.Name = "fileLocked";
             this.fileLocked.Size = new System.Drawing.Size(81, 17);
             this.fileLocked.TabIndex = 0;
@@ -431,8 +431,8 @@
             // 
             this.isLive.AutoSize = true;
             this.isLive.Enabled = false;
-            this.isLive.Location = new System.Drawing.Point(15, 153);
-            this.isLive.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isLive.Location = new System.Drawing.Point(15, 174);
+            this.isLive.Margin = new System.Windows.Forms.Padding(2);
             this.isLive.Name = "isLive";
             this.isLive.Size = new System.Drawing.Size(46, 17);
             this.isLive.TabIndex = 10;
@@ -443,8 +443,8 @@
             // 
             this.isIncomplete.AutoSize = true;
             this.isIncomplete.Enabled = false;
-            this.isIncomplete.Location = new System.Drawing.Point(15, 174);
-            this.isIncomplete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.isIncomplete.Location = new System.Drawing.Point(15, 195);
+            this.isIncomplete.Margin = new System.Windows.Forms.Padding(2);
             this.isIncomplete.Name = "isIncomplete";
             this.isIncomplete.Size = new System.Drawing.Size(78, 17);
             this.isIncomplete.TabIndex = 11;
@@ -455,8 +455,8 @@
             // 
             this.IsServerRecording.AutoSize = true;
             this.IsServerRecording.Enabled = false;
-            this.IsServerRecording.Location = new System.Drawing.Point(15, 195);
-            this.IsServerRecording.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.IsServerRecording.Location = new System.Drawing.Point(15, 216);
+            this.IsServerRecording.Margin = new System.Windows.Forms.Padding(2);
             this.IsServerRecording.Name = "IsServerRecording";
             this.IsServerRecording.Size = new System.Drawing.Size(129, 17);
             this.IsServerRecording.TabIndex = 12;
@@ -477,7 +477,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(11, 82);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.label17.Margin = new System.Windows.Forms.Padding(2);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(76, 13);
             this.label17.TabIndex = 14;
@@ -495,6 +495,10 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.profileLink);
+            this.groupBox3.Controls.Add(this.recordingUser);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.serverId);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.Controls.Add(this.gameVerison);
@@ -515,10 +519,48 @@
             this.groupBox3.Controls.Add(this.fileLocked);
             this.groupBox3.Location = new System.Drawing.Point(425, 218);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(264, 219);
+            this.groupBox3.Size = new System.Drawing.Size(264, 241);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "File Information";
+            // 
+            // profileLink
+            // 
+            this.profileLink.AutoSize = true;
+            this.profileLink.Location = new System.Drawing.Point(115, 136);
+            this.profileLink.Name = "profileLink";
+            this.profileLink.Size = new System.Drawing.Size(57, 13);
+            this.profileLink.TabIndex = 21;
+            this.profileLink.TabStop = true;
+            this.profileLink.Text = "[unknown]";
+            this.profileLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.profileLink_LinkClicked);
+            // 
+            // recordingUser
+            // 
+            this.recordingUser.AutoSize = true;
+            this.recordingUser.Location = new System.Drawing.Point(92, 123);
+            this.recordingUser.Name = "recordingUser";
+            this.recordingUser.Size = new System.Drawing.Size(57, 13);
+            this.recordingUser.TabIndex = 20;
+            this.recordingUser.Text = "[unknown]";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(11, 136);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(107, 13);
+            this.label20.TabIndex = 19;
+            this.label20.Text = "Recording User Link:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(11, 123);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(84, 13);
+            this.label19.TabIndex = 18;
+            this.label19.Text = "Recording User:";
             // 
             // serverId
             // 
@@ -540,7 +582,7 @@
             // 
             // importReplay
             // 
-            this.importReplay.Location = new System.Drawing.Point(564, 562);
+            this.importReplay.Location = new System.Drawing.Point(559, 583);
             this.importReplay.Name = "importReplay";
             this.importReplay.Size = new System.Drawing.Size(125, 23);
             this.importReplay.TabIndex = 10;
@@ -550,7 +592,7 @@
             // 
             // replayListRefresh
             // 
-            this.replayListRefresh.Location = new System.Drawing.Point(430, 562);
+            this.replayListRefresh.Location = new System.Drawing.Point(425, 583);
             this.replayListRefresh.Name = "replayListRefresh";
             this.replayListRefresh.Size = new System.Drawing.Size(128, 23);
             this.replayListRefresh.TabIndex = 11;
@@ -562,7 +604,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 625);
+            this.ClientSize = new System.Drawing.Size(701, 637);
             this.Controls.Add(this.replayListRefresh);
             this.Controls.Add(this.importReplay);
             this.Controls.Add(this.groupBox4);
@@ -632,7 +674,10 @@
         private System.Windows.Forms.Button replayListRefresh;
         private System.Windows.Forms.Label serverId;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button killFileDecoder;
+        private System.Windows.Forms.LinkLabel profileLink;
+        private System.Windows.Forms.Label recordingUser;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
     }
 }
 

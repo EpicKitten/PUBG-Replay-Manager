@@ -26,14 +26,14 @@ namespace PUBG_Replay_Manager
             List<String> fulllist = new List<String>();
             int i = 0;
             int p = 0;
-            foreach (string file in Directory.GetFiles(dir_path+"data\\", "*", SearchOption.AllDirectories))
+            foreach (string file in Directory.GetFiles(dir_path, "*", SearchOption.AllDirectories))
             {
                 FileStream stream = File.OpenRead(file);
                 byte[] text = new byte[stream.Length];
                 stream.Read(text, 0, (int)stream.Length);
                 ASCIIEncoding encoding = new ASCIIEncoding();
                 string content = encoding.GetString(text);
-                MatchCollection matches = Regex.Matches(content, @"654500..............");
+                MatchCollection matches = Regex.Matches(content, @"7656\d\d\d\d\d\d\d\d\d\d\d\d\d");
                 Hashtable hash = new Hashtable();
                 foreach (Match mt in matches)
                 {
@@ -47,7 +47,7 @@ namespace PUBG_Replay_Manager
                 }
                 i++;
             }
-            MatchCollection fullmatches = Regex.Matches(fullsearch, @"654500..............");
+            MatchCollection fullmatches = Regex.Matches(fullsearch, @"7656\d\d\d\d\d\d\d\d\d\d\d\d\d");
             Hashtable fullhash = new Hashtable();
             foreach (Match mt in fullmatches)
             {
@@ -63,14 +63,19 @@ namespace PUBG_Replay_Manager
             if (summery)
             {
                 fulllist.Add("==================================");
-                fulllist.Add(i + " SteamID(s) rrecorded from kill files");
-                fulllist.Add(p + " SteamID(s) recorded from kill files (duplicates removed)");
+                fulllist.Add(i + " SteamID(s) recorded from replay files");
+                fulllist.Add(p + " SteamID(s) recorded from replay files (duplicates removed)");
                 fulllist.Add("==================================");
             }
             return fulllist.ToArray();
         }
 
         private void SteamIDRich_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SteamID_Load(object sender, EventArgs e)
         {
 
         }
