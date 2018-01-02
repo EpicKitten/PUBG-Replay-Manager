@@ -1,0 +1,23 @@
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\bin\Debug\PUBG_Replay_Manager.exe
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\bin\Debug\PUBG_Replay_Manager.pdb
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.Main.resources
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.Properties.Resources.resources
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csproj.GenerateResource.Cache
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csproj.CoreCompileInputs.cache
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.exe
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.pdb
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csprojResolveAssemblyReference.cache
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.Main.resources
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.Properties.Resources.resources
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csproj.GenerateResource.Cache
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csproj.CoreCompileInputs.cache
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.exe
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.pdb
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\bin\Debug\PUBG_Replay_Manager.exe
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\bin\Debug\PUBG_Replay_Manager.pdb
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\bin\Debug\PUBG_Replay_Manager.exe.config
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.SteamID.resources
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\bin\Debug\PUBG_Replay_Manager.exe.config
+C:\Users\Master\Resilio Sync\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.SteamID.resources
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csprojResolveAssemblyReference.cache
+F:\Master\Projects\C#\PUBG_Replay_Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.KillFeed.resources
