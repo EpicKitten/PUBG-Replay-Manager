@@ -278,15 +278,34 @@ namespace PUBG_Replay_Manager
                 //--------------------------------------------------
                 //--------------------Mode--------------------------
                 //--------------------------------------------------
-                string modeflag = ReplayInfoFile[12].Remove(0, 10);
-                modeflag = modeflag.Remove(modeflag.Length - 2, 2);
+                string modeflag = ReplayInfoFile[12].Remove(ReplayInfoFile[12].Length - 2, 2).Remove(0, 10);
                 if (modeflag == "solo")
                 {
                     info[17] = "Solo";
                 }
+                else if (modeflag == "solo-fpp")
+                {
+                    info[17] = "Solo (First person)";
+                }
+                else if (modeflag == "duo")
+                {
+                    info[17] = "Duo";
+                }
+                else if (modeflag == "duo-fpp")
+                {
+                    info[17] = "Duo (First person)";
+                }
+                else if (modeflag == "squad")
+                {
+                    info[17] = "Squad";
+                }
+                else if (modeflag == "squad-fpp")
+                {
+                    info[17] = "Squad (First person)";
+                }
                 else
                 {
-                    info[17] = "Sqaud";
+                    info[17] = "Unknown";
                 }
                 //--------------------------------------------------
                 //--------------------RecordUserId------------------
@@ -303,8 +322,7 @@ namespace PUBG_Replay_Manager
                 //--------------------------------------------------
                 //--------------------MapName------------------
                 //--------------------------------------------------
-                string MapNameflag = ReplayInfoFile[15].Remove(0, 13);
-                MapNameflag = MapNameflag.Remove(MapNameflag.Length - 2, 2);
+                string MapNameflag = ReplayInfoFile[15].Remove(ReplayInfoFile[15].Length-1,1).Remove(0, 13);
                 if (MapNameflag == "Erangel_Main")
                 {
                     info[20] = "Erangel";
