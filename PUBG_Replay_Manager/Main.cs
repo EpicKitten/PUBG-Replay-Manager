@@ -77,12 +77,19 @@ namespace PUBG_Replay_Manager
                 fileLocked.Checked = true;
             }
             teamInfo.Text = newInfo[17];
-            profile_id = newInfo[18];
+            if (newInfo[18].Contains("765611"))
+            {
+                profile_id = newInfo[18];
+            }
             recordingUser.Text = newInfo[19];
             profileLink.Text = newInfo[19];
             mapName.Text = newInfo[20];
             fileSize.Text = newInfo[21];
             serverId.Text = newInfo[22];
+            if (newInfo[23] == "true")
+            {
+                diedorwon.Checked = false;
+            }
         }
 
         private void replayList_SelectedIndexChanged(object sender, EventArgs e)
@@ -127,8 +134,14 @@ namespace PUBG_Replay_Manager
             string[] placeholder = { "0", "0", "0", "0", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "0", "0", "[unknown]", "false", "true", "false", "false", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "[unknown]" };
             if (File.Exists(directory_of_recording + "\\PUBG.replayinfo"))
             {
-                Console.WriteLine("===========================================================================");
                 string[] ReplayInfoFile = File.ReadAllLines(directory_of_recording + "\\PUBG.replayinfo");
+                Console.WriteLine("==============================Reading Replay Info===================================");
+                int i = 0;
+                foreach (string line in ReplayInfoFile)
+                {
+                    Console.WriteLine("Line " + i + ": "+line);
+                }
+                Console.WriteLine("===========================Finished Reading Replay Info==============================");
                 string[] info = {
                     "LengthInMS", //Length of the recording in miliseconds
                     "NetworkVersion", //??????
@@ -153,201 +166,437 @@ namespace PUBG_Replay_Manager
                     "MapName", //name of the map (Desert_Main or Erangel_Main)
                     "FolderSize", //Size of the Replay Folder
                     "ServerID", //the server id 
+                    "AllDeadOrWin", //Some kind of check to see of all of the sqaud died or you won (should techinally always be true) (Added in the Second 1.0 Update)
                 }; 
+                if(ReplayInfoFile[0] == "")//Some dumb f**king bulls**t playerunkown did, half the replay files are like this
+                {
+                    //--------------------------------------------------
+                    //-------------------Length in Ms ------------------
+                    //--------------------------------------------------
+                    string lengthflag = ReplayInfoFile[2].Remove(0, 15);
+                    lengthflag = lengthflag.Remove(lengthflag.Length - 1, 1);
+                    int length = 0;
+                    if (!int.TryParse(lengthflag, out length))
+                    {
+                        MessageBox.Show("Unable to parse LengthInMS!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
+                        Environment.Exit(-1);
+                    }
+                    if (length < 60000)
+                    {
+                        length /= 1000; //miliseconds to seconds
+                        info[0] = length.ToString() + " Secs";
+                    }
+                    else
+                    {
+                        length /= 60000; //miliseconds to mintues
+                        info[0] = length.ToString() + " Mins";
+                    }
+                    //--------------------------------------------------
+                    //-------------------Network Version----------------
+                    //--------------------------------------------------
+                    string networkverflag = ReplayInfoFile[3].Remove(0, 19);
+                    networkverflag = networkverflag.Remove(networkverflag.Length - 1, 1);
+                    info[1] = networkverflag;
+                    //--------------------------------------------------
+                    //-------------------Changelist---------------------
+                    //--------------------------------------------------
+                    string changelistflag = ReplayInfoFile[4].Remove(0, 15);
+                    changelistflag = changelistflag.Remove(changelistflag.Length - 1, 1);
+                    info[2] = changelistflag;
+                    //--------------------------------------------------
+                    //-------------------FriendlyName-------------------
+                    //--------------------------------------------------
+                    string FriendlyNameflag = ReplayInfoFile[5].Remove(0, 18);
+                    FriendlyNameflag = FriendlyNameflag.Remove(FriendlyNameflag.Length - 2, 2);
+                    string[] temp = FriendlyNameflag.Split('.');
+                    info[3] = FriendlyNameflag; //match.bro.official.2017 - test.na.squad.2017.12.05.470ec7f1 - c342 - 46ad - 81c9 - e9117f27b44a
+                    if (temp[2] == "official")
+                    {
+                        info[4] = "Official";//official
+                    }
+                    if (temp[2] == "custom")
+                    {
+                        info[4] = "Custom";//official
+                    }
+                    info[5] = temp[3]; //2017-test
+                    info[6] = temp[4].ToUpper(); //na
+                    info[7] = temp[5]; //sqaud
+                    info[8] = temp[6] + "-" + temp[7] + "-" + temp[8]; //2017.12.05
+                    info[9] = temp[9]; //470ec7f1-c342-46ad-81c9-e9117f27b44a
+                    info[22] = temp[9].Remove(0, 30); //27b44a
 
-                //--------------------------------------------------
-                //-------------------Length in Ms ------------------
-                //--------------------------------------------------
-                string lengthflag = ReplayInfoFile[1].Remove(0, 15);
-                lengthflag = lengthflag.Remove(lengthflag.Length - 1, 1);
-                int length = 0;
-                if(!int.TryParse(lengthflag, out length))
-                {
-                    MessageBox.Show("Unable to parse LengthInMS!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
-                    Environment.Exit(-1);
-                }
-                if (length < 60000)
-                {
-                    length /= 1000; //miliseconds to seconds
-                    info[0] = length.ToString() + " Secs";
+                    //--------------------------------------------------
+                    //-------------------DemoFileLastOffset-------------
+                    //--------------------------------------------------
+                    string DemoFileLastOffsetflag = ReplayInfoFile[6].Remove(0, 23);
+                    DemoFileLastOffsetflag = DemoFileLastOffsetflag.Remove(DemoFileLastOffsetflag.Length - 1, 1);
+                    int size = 0;
+                    if (!int.TryParse(DemoFileLastOffsetflag, out size))
+                    {
+                        MessageBox.Show("Unable to parse DemoFileLastOffset!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
+                        Environment.Exit(-1);
+                    }
+                    if (size > 1000000)
+                    {
+                        size /= 1000000;
+                        info[10] = size.ToString() + " MB";
+                    }
+                    else
+                    {
+                        info[10] = size.ToString() + " Bytes";
+                    }
+                    //--------------------------------------------------
+                    //-------------------SizeInBytes--------------------
+                    //--------------------------------------------------
+                    string SizeInBytesflag = ReplayInfoFile[7].Remove(0, 16);
+                    SizeInBytesflag = SizeInBytesflag.Remove(SizeInBytesflag.Length - 1, 1);
+                    info[11] = SizeInBytesflag;
+                    //--------------------------------------------------
+                    //-------------------TimeStamp----------------------
+                    //--------------------------------------------------
+                    string timecreateflag = ReplayInfoFile[8].Remove(0, 14);
+                    timecreateflag = timecreateflag.Remove(timecreateflag.Length - 1, 1);
+                    double time = 0;
+                    if (!double.TryParse(timecreateflag, out time))
+                    {
+                        MessageBox.Show("Unable to parse TimeStamp!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
+                        Environment.Exit(-1);
+                    }
+                    double timestamp = time;
+                    DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                    dateTime = dateTime.AddMilliseconds(timestamp).ToLocalTime();
+                    info[12] = dateTime.ToString();
+                    //--------------------------------------------------
+                    //-------------------isLive-------------------------
+                    //--------------------------------------------------
+                    string isliveflag = ReplayInfoFile[9].Remove(0, 12);
+                    isliveflag = isliveflag.Remove(isliveflag.Length - 1, 1);
+                    info[13] = isliveflag;
+                    //--------------------------------------------------
+                    //-------------------Incomplete---------------------
+                    //--------------------------------------------------
+                    string incompleteflag = ReplayInfoFile[10].Remove(0, 16);
+                    incompleteflag = incompleteflag.Remove(incompleteflag.Length - 1, 1);
+                    info[14] = incompleteflag;
+                    //--------------------------------------------------
+                    //-------------------InServerRecording--------------
+                    //--------------------------------------------------
+                    string InServerRecordingflag = ReplayInfoFile[11].Remove(0, 23);
+                    InServerRecordingflag = InServerRecordingflag.Remove(InServerRecordingflag.Length - 1, 1);
+                    info[15] = InServerRecordingflag;
+                    //--------------------------------------------------
+                    //--------------------Keep--------------------------
+                    //--------------------------------------------------
+                    string keepflag = ReplayInfoFile[12].Remove(0, 16);
+                    keepflag = keepflag.Remove(keepflag.Length - 1, 1);
+                    info[16] = keepflag;
+                    //--------------------------------------------------
+                    //--------------------Mode--------------------------
+                    //--------------------------------------------------
+                    string modeflag = ReplayInfoFile[13].Remove(ReplayInfoFile[13].Length - 2, 2).Remove(0, 10);
+                    if (modeflag == "solo")
+                    {
+                        info[17] = "Solo";
+                    }
+                    else if (modeflag == "solo-fpp")
+                    {
+                        info[17] = "Solo (First person)";
+                    }
+                    else if (modeflag == "duo")
+                    {
+                        info[17] = "Duo";
+                    }
+                    else if (modeflag == "duo-fpp")
+                    {
+                        info[17] = "Duo (First person)";
+                    }
+                    else if (modeflag == "squad")
+                    {
+                        info[17] = "Squad";
+                    }
+                    else if (modeflag == "squad-fpp")
+                    {
+                        info[17] = "Squad (First person)";
+                    }
+                    else
+                    {
+                        info[17] = "Unknown";
+                    }
+                    //--------------------------------------------------
+                    //--------------------RecordUserId------------------
+                    //--------------------------------------------------
+                    string RecordUserIDflag = ReplayInfoFile[14].Remove(0, 18);
+                    RecordUserIDflag = RecordUserIDflag.Remove(RecordUserIDflag.Length - 2, 2);
+                    if (RecordUserIDflag.Contains("765611"))
+                    {
+                        info[18] = RecordUserIDflag;
+                    }
+                    else
+                    {
+                        info[18] = "[User ID is not supported in this replay]";
+                    }
+                    //--------------------------------------------------
+                    //--------------------RecordUserNickName------------------
+                    //--------------------------------------------------
+                    string RecordUserNickNameflag = ReplayInfoFile[15].Remove(0, 24);
+                    RecordUserNickNameflag = RecordUserNickNameflag.Remove(RecordUserNickNameflag.Length - 2, 2);
+                    info[19] = RecordUserNickNameflag;
+                    //--------------------------------------------------
+                    //--------------------MapName------------------
+                    //--------------------------------------------------
+                    string MapNameflag = ReplayInfoFile[16].Remove(ReplayInfoFile[16].Length - 1, 1).Remove(0, 13);
+                    if (MapNameflag == "Erangel_Main")
+                    {
+                        info[20] = "Erangel";
+                    }
+                    else
+                    {
+                        info[20] = "Miramar";
+                    }
+                    foreach (string obj in info)
+                    {
+                        Console.WriteLine(obj);
+                    }
+                    //--------------------------------------------------
+                    //--------------------FolderSize--------------------
+                    //--------------------------------------------------
+                    double dirsize = GetDirectorySize(replayloc + "\\" + replayList.SelectedItem + "\\");
+                    if (dirsize < 1048576)
+                    {
+                        info[21] = Math.Truncate(dirsize).ToString() + " Bytes";
+                    }
+                    else
+                    {
+                        dirsize /= 1048576;
+                        info[21] = Math.Truncate(dirsize).ToString() + " MB";
+                    }
+                    //--------------------------------------------------
+                    //--------------------AllDeadOrWin------------------
+                    //--------------------------------------------------
+                    if (ReplayInfoFile.Length >= 18)
+                    {
+                        string AllDeadOrWin = ReplayInfoFile[17].Remove(0, 18);
+                        info[23] = AllDeadOrWin;
+                    }
+                    else
+                    {
+                        info[23] = "false";
+                    }
                 }
                 else
                 {
-                    length /= 60000; //miliseconds to mintues
-                    info[0] = length.ToString() + " Mins";
-                }
-                //--------------------------------------------------
-                //-------------------Network Version----------------
-                //--------------------------------------------------
-                string networkverflag = ReplayInfoFile[2].Remove(0, 19);
-                networkverflag = networkverflag.Remove(networkverflag.Length - 1, 1);
-                info[1] = networkverflag;
-                //--------------------------------------------------
-                //-------------------Changelist---------------------
-                //--------------------------------------------------
-                string changelistflag = ReplayInfoFile[3].Remove(0, 15);
-                changelistflag = changelistflag.Remove(changelistflag.Length - 1, 1);
-                info[2] = changelistflag;
-                //--------------------------------------------------
-                //-------------------FriendlyName-------------------
-                //--------------------------------------------------
-                string FriendlyNameflag = ReplayInfoFile[4].Remove(0, 18);
-                FriendlyNameflag = FriendlyNameflag.Remove(FriendlyNameflag.Length - 2, 2);
-                string[] temp = FriendlyNameflag.Split('.');
-                info[3] = FriendlyNameflag; //match.bro.official.2017 - test.na.squad.2017.12.05.470ec7f1 - c342 - 46ad - 81c9 - e9117f27b44a
-                if (temp[2]=="official")
-                {
-                    info[4] = "Official";//official
-                }
-                if (temp[2] == "custom")
-                {
-                    info[4] = "Custom";//official
-                }
-                info[5] = temp[3]; //2017-test
-                info[6] = temp[4].ToUpper(); //na
-                info[7] = temp[5]; //sqaud
-                info[8] = temp[6] + "-" + temp[7] + "-" + temp[8]; //2017.12.05
-                info[9] = temp[9]; //470ec7f1-c342-46ad-81c9-e9117f27b44a
-                info[22] = temp[9].Remove(0, 30); //27b44a
+                    //--------------------------------------------------
+                    //-------------------Length in Ms ------------------
+                    //--------------------------------------------------
+                    string lengthflag = ReplayInfoFile[1].Remove(0, 15);
+                    lengthflag = lengthflag.Remove(lengthflag.Length - 1, 1);
+                    int length = 0;
+                    if (!int.TryParse(lengthflag, out length))
+                    {
+                        MessageBox.Show("Unable to parse LengthInMS!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
+                        Environment.Exit(-1);
+                    }
+                    if (length < 60000)
+                    {
+                        length /= 1000; //miliseconds to seconds
+                        info[0] = length.ToString() + " Secs";
+                    }
+                    else
+                    {
+                        length /= 60000; //miliseconds to mintues
+                        info[0] = length.ToString() + " Mins";
+                    }
+                    //--------------------------------------------------
+                    //-------------------Network Version----------------
+                    //--------------------------------------------------
+                    string networkverflag = ReplayInfoFile[2].Remove(0, 19);
+                    networkverflag = networkverflag.Remove(networkverflag.Length - 1, 1);
+                    info[1] = networkverflag;
+                    //--------------------------------------------------
+                    //-------------------Changelist---------------------
+                    //--------------------------------------------------
+                    string changelistflag = ReplayInfoFile[3].Remove(0, 15);
+                    changelistflag = changelistflag.Remove(changelistflag.Length - 1, 1);
+                    info[2] = changelistflag;
+                    //--------------------------------------------------
+                    //-------------------FriendlyName-------------------
+                    //--------------------------------------------------
+                    string FriendlyNameflag = ReplayInfoFile[4].Remove(0, 18);
+                    FriendlyNameflag = FriendlyNameflag.Remove(FriendlyNameflag.Length - 2, 2);
+                    string[] temp = FriendlyNameflag.Split('.');
+                    info[3] = FriendlyNameflag; //match.bro.official.2017 - test.na.squad.2017.12.05.470ec7f1 - c342 - 46ad - 81c9 - e9117f27b44a
+                    if (temp[2] == "official")
+                    {
+                        info[4] = "Official";//official
+                    }
+                    if (temp[2] == "custom")
+                    {
+                        info[4] = "Custom";//official
+                    }
+                    info[5] = temp[3]; //2017-test
+                    info[6] = temp[4].ToUpper(); //na
+                    info[7] = temp[5]; //sqaud
+                    info[8] = temp[6] + "-" + temp[7] + "-" + temp[8]; //2017.12.05
+                    info[9] = temp[9]; //470ec7f1-c342-46ad-81c9-e9117f27b44a
+                    info[22] = temp[9].Remove(0, 30); //27b44a
 
-                //--------------------------------------------------
-                //-------------------DemoFileLastOffset-------------
-                //--------------------------------------------------
-                string DemoFileLastOffsetflag = ReplayInfoFile[5].Remove(0, 23);
-                DemoFileLastOffsetflag = DemoFileLastOffsetflag.Remove(DemoFileLastOffsetflag.Length - 1, 1);
-                int size = 0;
-                if (!int.TryParse(DemoFileLastOffsetflag, out size))
-                {
-                    MessageBox.Show("Unable to parse DemoFileLastOffset!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
-                    Environment.Exit(-1);
-                }
-                if (size > 1000000)
-                {
-                    size /= 1000000;
-                    info[10] = size.ToString() + " MB";
-                }
-                else
-                {
-                    info[10] = size.ToString() + " Bytes";
-                }
-                //--------------------------------------------------
-                //-------------------SizeInBytes--------------------
-                //--------------------------------------------------
-                string SizeInBytesflag = ReplayInfoFile[6].Remove(0, 16);
-                SizeInBytesflag = SizeInBytesflag.Remove(SizeInBytesflag.Length - 1, 1);
-                info[11] = SizeInBytesflag;
-                //--------------------------------------------------
-                //-------------------TimeStamp----------------------
-                //--------------------------------------------------
-                string timecreateflag = ReplayInfoFile[7].Remove(0, 14);
-                timecreateflag = timecreateflag.Remove(timecreateflag.Length - 1, 1);
-                double time = 0;
-                if (!double.TryParse(timecreateflag, out time))
-                {
-                    MessageBox.Show("Unable to parse TimeStamp!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
-                    Environment.Exit(-1);
-                }
-                double timestamp = time;
-                DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                dateTime = dateTime.AddMilliseconds(timestamp).ToLocalTime();
-                info[12] = dateTime.ToString();
-                //--------------------------------------------------
-                //-------------------isLive-------------------------
-                //--------------------------------------------------
-                string isliveflag = ReplayInfoFile[8].Remove(0, 12);
-                isliveflag = isliveflag.Remove(isliveflag.Length - 1, 1);
-                info[13] = isliveflag;
-                //--------------------------------------------------
-                //-------------------Incomplete---------------------
-                //--------------------------------------------------
-                string incompleteflag = ReplayInfoFile[9].Remove(0, 16);
-                incompleteflag = incompleteflag.Remove(incompleteflag.Length - 1, 1);
-                info[14] = incompleteflag;
-                //--------------------------------------------------
-                //-------------------InServerRecording--------------
-                //--------------------------------------------------
-                string InServerRecordingflag = ReplayInfoFile[10].Remove(0, 23);
-                InServerRecordingflag = InServerRecordingflag.Remove(InServerRecordingflag.Length - 1, 1);
-                info[15] = InServerRecordingflag;
-                //--------------------------------------------------
-                //--------------------Keep--------------------------
-                //--------------------------------------------------
-                string keepflag = ReplayInfoFile[11].Remove(0, 16);
-                keepflag = keepflag.Remove(keepflag.Length - 1, 1);
-                info[16] = keepflag;
-                //--------------------------------------------------
-                //--------------------Mode--------------------------
-                //--------------------------------------------------
-                string modeflag = ReplayInfoFile[12].Remove(ReplayInfoFile[12].Length - 2, 2).Remove(0, 10);
-                if (modeflag == "solo")
-                {
-                    info[17] = "Solo";
-                }
-                else if (modeflag == "solo-fpp")
-                {
-                    info[17] = "Solo (First person)";
-                }
-                else if (modeflag == "duo")
-                {
-                    info[17] = "Duo";
-                }
-                else if (modeflag == "duo-fpp")
-                {
-                    info[17] = "Duo (First person)";
-                }
-                else if (modeflag == "squad")
-                {
-                    info[17] = "Squad";
-                }
-                else if (modeflag == "squad-fpp")
-                {
-                    info[17] = "Squad (First person)";
-                }
-                else
-                {
-                    info[17] = "Unknown";
-                }
-                //--------------------------------------------------
-                //--------------------RecordUserId------------------
-                //--------------------------------------------------
-                string RecordUserIDflag = ReplayInfoFile[13].Remove(0, 18);
-                RecordUserIDflag = RecordUserIDflag.Remove(RecordUserIDflag.Length - 2, 2);
-                info[18] = RecordUserIDflag;
-                //--------------------------------------------------
-                //--------------------RecordUserNickName------------------
-                //--------------------------------------------------
-                string RecordUserNickNameflag = ReplayInfoFile[14].Remove(0, 24);
-                RecordUserNickNameflag = RecordUserNickNameflag.Remove(RecordUserNickNameflag.Length - 2, 2);
-                info[19] = RecordUserNickNameflag;
-                //--------------------------------------------------
-                //--------------------MapName------------------
-                //--------------------------------------------------
-                string MapNameflag = ReplayInfoFile[15].Remove(ReplayInfoFile[15].Length-1,1).Remove(0, 13);
-                if (MapNameflag == "Erangel_Main")
-                {
-                    info[20] = "Erangel";
-                }
-                else
-                {
-                    info[20] = "Miramar";
-                }
-                foreach(string obj in info)
-                {
-                    Console.WriteLine(obj);
-                }
-                //--------------------------------------------------
-                //--------------------FolderSize--------------------
-                //--------------------------------------------------
-                double dirsize = GetDirectorySize(replayloc + "\\" + replayList.SelectedItem + "\\");
-                //Console.WriteLine(GetDirectorySize(replayloc + "\\" + replayList.SelectedItem + "\\"));
-                if (dirsize < 1048576)
-                {
-                    info[21] = Math.Truncate(dirsize).ToString() + " Bytes";
-                }
-                else
-                {
-                    dirsize /= 1048576;
-                    info[21] = Math.Truncate(dirsize).ToString() + " MB";
+                    //--------------------------------------------------
+                    //-------------------DemoFileLastOffset-------------
+                    //--------------------------------------------------
+                    string DemoFileLastOffsetflag = ReplayInfoFile[5].Remove(0, 23);
+                    DemoFileLastOffsetflag = DemoFileLastOffsetflag.Remove(DemoFileLastOffsetflag.Length - 1, 1);
+                    int size = 0;
+                    if (!int.TryParse(DemoFileLastOffsetflag, out size))
+                    {
+                        MessageBox.Show("Unable to parse DemoFileLastOffset!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
+                        Environment.Exit(-1);
+                    }
+                    if (size > 1000000)
+                    {
+                        size /= 1000000;
+                        info[10] = size.ToString() + " MB";
+                    }
+                    else
+                    {
+                        info[10] = size.ToString() + " Bytes";
+                    }
+                    //--------------------------------------------------
+                    //-------------------SizeInBytes--------------------
+                    //--------------------------------------------------
+                    string SizeInBytesflag = ReplayInfoFile[6].Remove(0, 16);
+                    SizeInBytesflag = SizeInBytesflag.Remove(SizeInBytesflag.Length - 1, 1);
+                    info[11] = SizeInBytesflag;
+                    //--------------------------------------------------
+                    //-------------------TimeStamp----------------------
+                    //--------------------------------------------------
+                    string timecreateflag = ReplayInfoFile[7].Remove(0, 14);
+                    timecreateflag = timecreateflag.Remove(timecreateflag.Length - 1, 1);
+                    double time = 0;
+                    if (!double.TryParse(timecreateflag, out time))
+                    {
+                        MessageBox.Show("Unable to parse TimeStamp!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
+                        Environment.Exit(-1);
+                    }
+                    double timestamp = time;
+                    DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                    dateTime = dateTime.AddMilliseconds(timestamp).ToLocalTime();
+                    info[12] = dateTime.ToString();
+                    //--------------------------------------------------
+                    //-------------------isLive-------------------------
+                    //--------------------------------------------------
+                    string isliveflag = ReplayInfoFile[8].Remove(0, 12);
+                    isliveflag = isliveflag.Remove(isliveflag.Length - 1, 1);
+                    info[13] = isliveflag;
+                    //--------------------------------------------------
+                    //-------------------Incomplete---------------------
+                    //--------------------------------------------------
+                    string incompleteflag = ReplayInfoFile[9].Remove(0, 16);
+                    incompleteflag = incompleteflag.Remove(incompleteflag.Length - 1, 1);
+                    info[14] = incompleteflag;
+                    //--------------------------------------------------
+                    //-------------------InServerRecording--------------
+                    //--------------------------------------------------
+                    string InServerRecordingflag = ReplayInfoFile[10].Remove(0, 23);
+                    InServerRecordingflag = InServerRecordingflag.Remove(InServerRecordingflag.Length - 1, 1);
+                    info[15] = InServerRecordingflag;
+                    //--------------------------------------------------
+                    //--------------------Keep--------------------------
+                    //--------------------------------------------------
+                    string keepflag = ReplayInfoFile[11].Remove(0, 16);
+                    keepflag = keepflag.Remove(keepflag.Length - 1, 1);
+                    info[16] = keepflag;
+                    //--------------------------------------------------
+                    //--------------------Mode--------------------------
+                    //--------------------------------------------------
+                    string modeflag = ReplayInfoFile[12].Remove(ReplayInfoFile[12].Length - 2, 2).Remove(0, 10);
+                    if (modeflag == "solo")
+                    {
+                        info[17] = "Solo";
+                    }
+                    else if (modeflag == "solo-fpp")
+                    {
+                        info[17] = "Solo (First person)";
+                    }
+                    else if (modeflag == "duo")
+                    {
+                        info[17] = "Duo";
+                    }
+                    else if (modeflag == "duo-fpp")
+                    {
+                        info[17] = "Duo (First person)";
+                    }
+                    else if (modeflag == "squad")
+                    {
+                        info[17] = "Squad";
+                    }
+                    else if (modeflag == "squad-fpp")
+                    {
+                        info[17] = "Squad (First person)";
+                    }
+                    else
+                    {
+                        info[17] = "Unknown";
+                    }
+                    //--------------------------------------------------
+                    //--------------------RecordUserId------------------
+                    //--------------------------------------------------
+                    string RecordUserIDflag = ReplayInfoFile[13].Remove(0, 18);
+                    RecordUserIDflag = RecordUserIDflag.Remove(RecordUserIDflag.Length - 2, 2);
+                    if (RecordUserIDflag.Contains("765611"))
+                    {
+                        info[18] = RecordUserIDflag;
+                    }
+                    else
+                    {
+                        info[18] = "[User ID is not supported in this replay]";
+                    }
+                    //--------------------------------------------------
+                    //--------------------RecordUserNickName------------------
+                    //--------------------------------------------------
+                    string RecordUserNickNameflag = ReplayInfoFile[14].Remove(0, 24);
+                    RecordUserNickNameflag = RecordUserNickNameflag.Remove(RecordUserNickNameflag.Length - 2, 2);
+                    info[19] = RecordUserNickNameflag;
+                    //--------------------------------------------------
+                    //--------------------MapName------------------
+                    //--------------------------------------------------
+                    string MapNameflag = ReplayInfoFile[15].Remove(ReplayInfoFile[15].Length - 1, 1).Remove(0, 13);
+                    if (MapNameflag == "Erangel_Main")
+                    {
+                        info[20] = "Erangel";
+                    }
+                    else
+                    {
+                        info[20] = "Miramar";
+                    }
+                    foreach (string obj in info)
+                    {
+                        Console.WriteLine(obj);
+                    }
+                    //--------------------------------------------------
+                    //--------------------FolderSize--------------------
+                    //--------------------------------------------------
+                    double dirsize = GetDirectorySize(replayloc + "\\" + replayList.SelectedItem + "\\");
+                    if (dirsize < 1048576)
+                    {
+                        info[21] = Math.Truncate(dirsize).ToString() + " Bytes";
+                    }
+                    else
+                    {
+                        dirsize /= 1048576;
+                        info[21] = Math.Truncate(dirsize).ToString() + " MB";
+                    }
+                    //--------------------------------------------------
+                    //--------------------AllDeadOrWin------------------
+                    //--------------------------------------------------
+                    if (ReplayInfoFile.Length >= 18)
+                    {
+                        string AllDeadOrWin = ReplayInfoFile[16].Remove(0, 18);
+                        info[23] = AllDeadOrWin;
+                    }
+                    else
+                    {
+                        info[23] = "false";
+                    }
                 }
                 return info;
             }
@@ -425,6 +674,7 @@ namespace PUBG_Replay_Manager
 
         private void profileLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+           
             Process.Start("http://steamcommunity.com/profiles/"+profile_id);
         }
     }

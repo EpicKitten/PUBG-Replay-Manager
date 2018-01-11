@@ -77,6 +77,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.importReplay = new System.Windows.Forms.Button();
             this.replayListRefresh = new System.Windows.Forms.Button();
+            this.diedorwon = new System.Windows.Forms.CheckBox();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -89,13 +90,13 @@
             this.replayList.FormattingEnabled = true;
             this.replayList.Location = new System.Drawing.Point(12, 16);
             this.replayList.Name = "replayList";
-            this.replayList.Size = new System.Drawing.Size(407, 615);
+            this.replayList.Size = new System.Drawing.Size(407, 641);
             this.replayList.TabIndex = 0;
             this.replayList.SelectedIndexChanged += new System.EventHandler(this.replayList_SelectedIndexChanged);
             // 
             // openReplayFolder
             // 
-            this.openReplayFolder.Location = new System.Drawing.Point(425, 608);
+            this.openReplayFolder.Location = new System.Drawing.Point(424, 633);
             this.openReplayFolder.Name = "openReplayFolder";
             this.openReplayFolder.Size = new System.Drawing.Size(128, 23);
             this.openReplayFolder.TabIndex = 8;
@@ -108,7 +109,7 @@
             this.groupBox4.Controls.Add(this.steamidStrip);
             this.groupBox4.Controls.Add(this.zipReplay);
             this.groupBox4.Controls.Add(this.openSelectedReplay);
-            this.groupBox4.Location = new System.Drawing.Point(425, 465);
+            this.groupBox4.Location = new System.Drawing.Point(425, 490);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(264, 112);
             this.groupBox4.TabIndex = 9;
@@ -495,6 +496,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.diedorwon);
             this.groupBox3.Controls.Add(this.profileLink);
             this.groupBox3.Controls.Add(this.recordingUser);
             this.groupBox3.Controls.Add(this.label20);
@@ -519,7 +521,7 @@
             this.groupBox3.Controls.Add(this.fileLocked);
             this.groupBox3.Location = new System.Drawing.Point(425, 218);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(264, 241);
+            this.groupBox3.Size = new System.Drawing.Size(264, 266);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "File Information";
@@ -582,7 +584,7 @@
             // 
             // importReplay
             // 
-            this.importReplay.Location = new System.Drawing.Point(559, 583);
+            this.importReplay.Location = new System.Drawing.Point(558, 608);
             this.importReplay.Name = "importReplay";
             this.importReplay.Size = new System.Drawing.Size(125, 23);
             this.importReplay.TabIndex = 10;
@@ -592,7 +594,7 @@
             // 
             // replayListRefresh
             // 
-            this.replayListRefresh.Location = new System.Drawing.Point(425, 583);
+            this.replayListRefresh.Location = new System.Drawing.Point(424, 608);
             this.replayListRefresh.Name = "replayListRefresh";
             this.replayListRefresh.Size = new System.Drawing.Size(128, 23);
             this.replayListRefresh.TabIndex = 11;
@@ -600,11 +602,22 @@
             this.replayListRefresh.UseVisualStyleBackColor = true;
             this.replayListRefresh.Click += new System.EventHandler(this.replayListRefresh_Click);
             // 
+            // diedorwon
+            // 
+            this.diedorwon.AutoSize = true;
+            this.diedorwon.Enabled = false;
+            this.diedorwon.Location = new System.Drawing.Point(14, 239);
+            this.diedorwon.Name = "diedorwon";
+            this.diedorwon.Size = new System.Drawing.Size(134, 17);
+            this.diedorwon.TabIndex = 22;
+            this.diedorwon.Text = "Crashed during replay?";
+            this.diedorwon.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 637);
+            this.ClientSize = new System.Drawing.Size(701, 663);
             this.Controls.Add(this.replayListRefresh);
             this.Controls.Add(this.importReplay);
             this.Controls.Add(this.groupBox4);
@@ -678,6 +691,7 @@
         private System.Windows.Forms.Label recordingUser;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.CheckBox diedorwon;
     }
 }
 
