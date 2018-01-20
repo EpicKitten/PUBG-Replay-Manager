@@ -38,7 +38,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.teamInfo = new System.Windows.Forms.Label();
             this.serverRegion = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -69,6 +68,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.gameVerison = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.diedorwon = new System.Windows.Forms.CheckBox();
             this.profileLink = new System.Windows.Forms.LinkLabel();
             this.recordingUser = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -77,12 +77,63 @@
             this.label18 = new System.Windows.Forms.Label();
             this.importReplay = new System.Windows.Forms.Button();
             this.replayListRefresh = new System.Windows.Forms.Button();
-            this.diedorwon = new System.Windows.Forms.CheckBox();
+            this.weatherType = new System.Windows.Forms.Label();
+            this.rankNum = new System.Windows.Forms.Label();
+            this.headShots = new System.Windows.Forms.Label();
+            this.kills = new System.Windows.Forms.Label();
+            this.distanceWalked = new System.Windows.Forms.Label();
+            this.longestKill = new System.Windows.Forms.Label();
+            this.dmgHandedOut = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.totalPlayers = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.totalTeams = new System.Windows.Forms.Label();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.tm4 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.tm4_pubgname = new System.Windows.Forms.Label();
+            this.tm4_steamid = new System.Windows.Forms.Label();
+            this.tm4_headshots = new System.Windows.Forms.Label();
+            this.tm4_kills = new System.Windows.Forms.Label();
+            this.tm3 = new System.Windows.Forms.GroupBox();
+            this.tm3_kills = new System.Windows.Forms.Label();
+            this.tm3_headshots = new System.Windows.Forms.Label();
+            this.tm3_steamid = new System.Windows.Forms.Label();
+            this.tm3_pubgname = new System.Windows.Forms.Label();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.tm2 = new System.Windows.Forms.GroupBox();
+            this.tm2_kills = new System.Windows.Forms.Label();
+            this.tm2_headshots = new System.Windows.Forms.Label();
+            this.tm2_steamid = new System.Windows.Forms.Label();
+            this.tm2_pubgname = new System.Windows.Forms.Label();
+            this.label49 = new System.Windows.Forms.Label();
+            this.label50 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.label52 = new System.Windows.Forms.Label();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.tm1_kills = new System.Windows.Forms.Label();
+            this.tm1_headshots = new System.Windows.Forms.Label();
+            this.tm1_steamid = new System.Windows.Forms.Label();
+            this.tm1_pubgname = new System.Windows.Forms.Label();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label62 = new System.Windows.Forms.Label();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.tm4.SuspendLayout();
+            this.tm3.SuspendLayout();
+            this.tm2.SuspendLayout();
+            this.groupBox9.SuspendLayout();
             this.SuspendLayout();
             // 
             // replayList
@@ -96,9 +147,9 @@
             // 
             // openReplayFolder
             // 
-            this.openReplayFolder.Location = new System.Drawing.Point(424, 633);
+            this.openReplayFolder.Location = new System.Drawing.Point(425, 637);
             this.openReplayFolder.Name = "openReplayFolder";
-            this.openReplayFolder.Size = new System.Drawing.Size(128, 23);
+            this.openReplayFolder.Size = new System.Drawing.Size(173, 23);
             this.openReplayFolder.TabIndex = 8;
             this.openReplayFolder.Text = "Open Replays Folder";
             this.openReplayFolder.UseVisualStyleBackColor = true;
@@ -109,7 +160,7 @@
             this.groupBox4.Controls.Add(this.steamidStrip);
             this.groupBox4.Controls.Add(this.zipReplay);
             this.groupBox4.Controls.Add(this.openSelectedReplay);
-            this.groupBox4.Location = new System.Drawing.Point(425, 490);
+            this.groupBox4.Location = new System.Drawing.Point(426, 519);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(264, 112);
             this.groupBox4.TabIndex = 9;
@@ -161,7 +212,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(12, 33);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(51, 13);
@@ -186,14 +237,6 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Team:";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(148, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(97, 90);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            // 
             // teamInfo
             // 
             this.teamInfo.AutoSize = true;
@@ -215,7 +258,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 109);
+            this.label16.Location = new System.Drawing.Point(12, 72);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(67, 13);
@@ -225,7 +268,7 @@
             // matchType
             // 
             this.matchType.AutoSize = true;
-            this.matchType.Location = new System.Drawing.Point(76, 109);
+            this.matchType.Location = new System.Drawing.Point(76, 72);
             this.matchType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.matchType.Name = "matchType";
             this.matchType.Size = new System.Drawing.Size(51, 13);
@@ -234,19 +277,23 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.totalTeams);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.totalPlayers);
+            this.groupBox1.Controls.Add(this.label21);
+            this.groupBox1.Controls.Add(this.weatherType);
             this.groupBox1.Controls.Add(this.mapName);
             this.groupBox1.Controls.Add(this.matchType);
             this.groupBox1.Controls.Add(this.label16);
             this.groupBox1.Controls.Add(this.serverRegion);
             this.groupBox1.Controls.Add(this.teamInfo);
-            this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(425, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(264, 131);
+            this.groupBox1.Size = new System.Drawing.Size(265, 121);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Match Information";
@@ -263,7 +310,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.ForeColor = System.Drawing.Color.DarkRed;
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(12, 16);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(36, 13);
@@ -273,7 +320,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.ForeColor = System.Drawing.Color.DarkRed;
+            this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(12, 29);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
@@ -283,7 +330,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.ForeColor = System.Drawing.Color.DarkRed;
+            this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(12, 42);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(28, 13);
@@ -293,8 +340,8 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.Color.DarkRed;
-            this.label8.Location = new System.Drawing.Point(125, 29);
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(12, 68);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 13);
             this.label8.TabIndex = 3;
@@ -303,8 +350,8 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.ForeColor = System.Drawing.Color.DarkRed;
-            this.label9.Location = new System.Drawing.Point(125, 42);
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(12, 81);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 13);
             this.label9.TabIndex = 4;
@@ -313,8 +360,8 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.ForeColor = System.Drawing.Color.DarkRed;
-            this.label10.Location = new System.Drawing.Point(125, 16);
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(12, 55);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(78, 13);
             this.label10.TabIndex = 5;
@@ -322,18 +369,24 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.distanceWalked);
+            this.groupBox2.Controls.Add(this.longestKill);
+            this.groupBox2.Controls.Add(this.dmgHandedOut);
+            this.groupBox2.Controls.Add(this.kills);
+            this.groupBox2.Controls.Add(this.headShots);
+            this.groupBox2.Controls.Add(this.rankNum);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(425, 149);
+            this.groupBox2.Location = new System.Drawing.Point(426, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(264, 63);
+            this.groupBox2.Size = new System.Drawing.Size(264, 102);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Statistics";
+            this.groupBox2.Text = "Your Statistics";
             // 
             // fileLocked
             // 
@@ -519,12 +572,23 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.fileLocked);
-            this.groupBox3.Location = new System.Drawing.Point(425, 218);
+            this.groupBox3.Location = new System.Drawing.Point(426, 247);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(264, 266);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "File Information";
+            // 
+            // diedorwon
+            // 
+            this.diedorwon.AutoSize = true;
+            this.diedorwon.Enabled = false;
+            this.diedorwon.Location = new System.Drawing.Point(14, 239);
+            this.diedorwon.Name = "diedorwon";
+            this.diedorwon.Size = new System.Drawing.Size(134, 17);
+            this.diedorwon.TabIndex = 22;
+            this.diedorwon.Text = "Crashed during replay?";
+            this.diedorwon.UseVisualStyleBackColor = true;
             // 
             // profileLink
             // 
@@ -584,9 +648,9 @@
             // 
             // importReplay
             // 
-            this.importReplay.Location = new System.Drawing.Point(558, 608);
+            this.importReplay.Location = new System.Drawing.Point(777, 637);
             this.importReplay.Name = "importReplay";
-            this.importReplay.Size = new System.Drawing.Size(125, 23);
+            this.importReplay.Size = new System.Drawing.Size(156, 23);
             this.importReplay.TabIndex = 10;
             this.importReplay.Text = "Import a Replay";
             this.importReplay.UseVisualStyleBackColor = true;
@@ -594,30 +658,488 @@
             // 
             // replayListRefresh
             // 
-            this.replayListRefresh.Location = new System.Drawing.Point(424, 608);
+            this.replayListRefresh.Location = new System.Drawing.Point(610, 637);
             this.replayListRefresh.Name = "replayListRefresh";
-            this.replayListRefresh.Size = new System.Drawing.Size(128, 23);
+            this.replayListRefresh.Size = new System.Drawing.Size(161, 23);
             this.replayListRefresh.TabIndex = 11;
             this.replayListRefresh.Text = "Refresh Replay List";
             this.replayListRefresh.UseVisualStyleBackColor = true;
             this.replayListRefresh.Click += new System.EventHandler(this.replayListRefresh_Click);
             // 
-            // diedorwon
+            // weatherType
             // 
-            this.diedorwon.AutoSize = true;
-            this.diedorwon.Enabled = false;
-            this.diedorwon.Location = new System.Drawing.Point(14, 239);
-            this.diedorwon.Name = "diedorwon";
-            this.diedorwon.Size = new System.Drawing.Size(134, 17);
-            this.diedorwon.TabIndex = 22;
-            this.diedorwon.Text = "Crashed during replay?";
-            this.diedorwon.UseVisualStyleBackColor = true;
+            this.weatherType.AutoSize = true;
+            this.weatherType.Location = new System.Drawing.Point(58, 33);
+            this.weatherType.Name = "weatherType";
+            this.weatherType.Size = new System.Drawing.Size(51, 13);
+            this.weatherType.TabIndex = 11;
+            this.weatherType.Text = "[unkown]";
+            // 
+            // rankNum
+            // 
+            this.rankNum.AutoSize = true;
+            this.rankNum.Location = new System.Drawing.Point(43, 16);
+            this.rankNum.Name = "rankNum";
+            this.rankNum.Size = new System.Drawing.Size(57, 13);
+            this.rankNum.TabIndex = 23;
+            this.rankNum.Text = "[unknown]";
+            // 
+            // headShots
+            // 
+            this.headShots.AutoSize = true;
+            this.headShots.Location = new System.Drawing.Point(68, 30);
+            this.headShots.Name = "headShots";
+            this.headShots.Size = new System.Drawing.Size(57, 13);
+            this.headShots.TabIndex = 24;
+            this.headShots.Text = "[unknown]";
+            // 
+            // kills
+            // 
+            this.kills.AutoSize = true;
+            this.kills.Location = new System.Drawing.Point(35, 42);
+            this.kills.Name = "kills";
+            this.kills.Size = new System.Drawing.Size(57, 13);
+            this.kills.TabIndex = 25;
+            this.kills.Text = "[unknown]";
+            // 
+            // distanceWalked
+            // 
+            this.distanceWalked.AutoSize = true;
+            this.distanceWalked.Location = new System.Drawing.Point(59, 81);
+            this.distanceWalked.Name = "distanceWalked";
+            this.distanceWalked.Size = new System.Drawing.Size(57, 13);
+            this.distanceWalked.TabIndex = 28;
+            this.distanceWalked.Text = "[unknown]";
+            // 
+            // longestKill
+            // 
+            this.longestKill.AutoSize = true;
+            this.longestKill.Location = new System.Drawing.Point(71, 68);
+            this.longestKill.Name = "longestKill";
+            this.longestKill.Size = new System.Drawing.Size(57, 13);
+            this.longestKill.TabIndex = 27;
+            this.longestKill.Text = "[unknown]";
+            // 
+            // dmgHandedOut
+            // 
+            this.dmgHandedOut.AutoSize = true;
+            this.dmgHandedOut.Location = new System.Drawing.Point(85, 55);
+            this.dmgHandedOut.Name = "dmgHandedOut";
+            this.dmgHandedOut.Size = new System.Drawing.Size(57, 13);
+            this.dmgHandedOut.TabIndex = 26;
+            this.dmgHandedOut.Text = "[unknown]";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(12, 85);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(71, 13);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "Total Players:";
+            // 
+            // totalPlayers
+            // 
+            this.totalPlayers.AutoSize = true;
+            this.totalPlayers.Location = new System.Drawing.Point(78, 85);
+            this.totalPlayers.Name = "totalPlayers";
+            this.totalPlayers.Size = new System.Drawing.Size(57, 13);
+            this.totalPlayers.TabIndex = 13;
+            this.totalPlayers.Text = "[unknown]";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(12, 98);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(69, 13);
+            this.label23.TabIndex = 14;
+            this.label23.Text = "Total Teams:";
+            // 
+            // totalTeams
+            // 
+            this.totalTeams.AutoSize = true;
+            this.totalTeams.Location = new System.Drawing.Point(76, 98);
+            this.totalTeams.Name = "totalTeams";
+            this.totalTeams.Size = new System.Drawing.Size(57, 13);
+            this.totalTeams.TabIndex = 15;
+            this.totalTeams.Text = "[unknown]";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.groupBox9);
+            this.groupBox5.Controls.Add(this.tm2);
+            this.groupBox5.Controls.Add(this.tm3);
+            this.groupBox5.Controls.Add(this.tm4);
+            this.groupBox5.Location = new System.Drawing.Point(696, 16);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(237, 615);
+            this.groupBox5.TabIndex = 12;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Team";
+            // 
+            // tm4
+            // 
+            this.tm4.Controls.Add(this.tm4_kills);
+            this.tm4.Controls.Add(this.tm4_headshots);
+            this.tm4.Controls.Add(this.tm4_steamid);
+            this.tm4.Controls.Add(this.tm4_pubgname);
+            this.tm4.Controls.Add(this.label26);
+            this.tm4.Controls.Add(this.label25);
+            this.tm4.Controls.Add(this.label24);
+            this.tm4.Controls.Add(this.label22);
+            this.tm4.Location = new System.Drawing.Point(6, 471);
+            this.tm4.Name = "tm4";
+            this.tm4.Size = new System.Drawing.Size(225, 132);
+            this.tm4.TabIndex = 2;
+            this.tm4.TabStop = false;
+            this.tm4.Text = "Teammate 4";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(6, 16);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(71, 13);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "PUBG Name:";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 29);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(63, 13);
+            this.label24.TabIndex = 1;
+            this.label24.Text = "SteamID64:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(8, 42);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(61, 13);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "Headshots:";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(8, 55);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(28, 13);
+            this.label26.TabIndex = 3;
+            this.label26.Text = "Kills:";
+            // 
+            // tm4_pubgname
+            // 
+            this.tm4_pubgname.AutoSize = true;
+            this.tm4_pubgname.Location = new System.Drawing.Point(72, 16);
+            this.tm4_pubgname.Name = "tm4_pubgname";
+            this.tm4_pubgname.Size = new System.Drawing.Size(57, 13);
+            this.tm4_pubgname.TabIndex = 5;
+            this.tm4_pubgname.Text = "[unknown]";
+            // 
+            // tm4_steamid
+            // 
+            this.tm4_steamid.AutoSize = true;
+            this.tm4_steamid.Location = new System.Drawing.Point(64, 29);
+            this.tm4_steamid.Name = "tm4_steamid";
+            this.tm4_steamid.Size = new System.Drawing.Size(57, 13);
+            this.tm4_steamid.TabIndex = 6;
+            this.tm4_steamid.Text = "[unknown]";
+            // 
+            // tm4_headshots
+            // 
+            this.tm4_headshots.AutoSize = true;
+            this.tm4_headshots.Location = new System.Drawing.Point(64, 42);
+            this.tm4_headshots.Name = "tm4_headshots";
+            this.tm4_headshots.Size = new System.Drawing.Size(57, 13);
+            this.tm4_headshots.TabIndex = 7;
+            this.tm4_headshots.Text = "[unknown]";
+            // 
+            // tm4_kills
+            // 
+            this.tm4_kills.AutoSize = true;
+            this.tm4_kills.Location = new System.Drawing.Point(31, 55);
+            this.tm4_kills.Name = "tm4_kills";
+            this.tm4_kills.Size = new System.Drawing.Size(57, 13);
+            this.tm4_kills.TabIndex = 8;
+            this.tm4_kills.Text = "[unknown]";
+            // 
+            // tm3
+            // 
+            this.tm3.Controls.Add(this.tm3_kills);
+            this.tm3.Controls.Add(this.tm3_headshots);
+            this.tm3.Controls.Add(this.tm3_steamid);
+            this.tm3.Controls.Add(this.tm3_pubgname);
+            this.tm3.Controls.Add(this.label39);
+            this.tm3.Controls.Add(this.label40);
+            this.tm3.Controls.Add(this.label41);
+            this.tm3.Controls.Add(this.label42);
+            this.tm3.Location = new System.Drawing.Point(6, 319);
+            this.tm3.Name = "tm3";
+            this.tm3.Size = new System.Drawing.Size(225, 144);
+            this.tm3.TabIndex = 10;
+            this.tm3.TabStop = false;
+            this.tm3.Text = "Teammate 3";
+            // 
+            // tm3_kills
+            // 
+            this.tm3_kills.AutoSize = true;
+            this.tm3_kills.Location = new System.Drawing.Point(31, 55);
+            this.tm3_kills.Name = "tm3_kills";
+            this.tm3_kills.Size = new System.Drawing.Size(57, 13);
+            this.tm3_kills.TabIndex = 8;
+            this.tm3_kills.Text = "[unknown]";
+            // 
+            // tm3_headshots
+            // 
+            this.tm3_headshots.AutoSize = true;
+            this.tm3_headshots.Location = new System.Drawing.Point(64, 42);
+            this.tm3_headshots.Name = "tm3_headshots";
+            this.tm3_headshots.Size = new System.Drawing.Size(57, 13);
+            this.tm3_headshots.TabIndex = 7;
+            this.tm3_headshots.Text = "[unknown]";
+            // 
+            // tm3_steamid
+            // 
+            this.tm3_steamid.AutoSize = true;
+            this.tm3_steamid.Location = new System.Drawing.Point(64, 29);
+            this.tm3_steamid.Name = "tm3_steamid";
+            this.tm3_steamid.Size = new System.Drawing.Size(57, 13);
+            this.tm3_steamid.TabIndex = 6;
+            this.tm3_steamid.Text = "[unknown]";
+            // 
+            // tm3_pubgname
+            // 
+            this.tm3_pubgname.AutoSize = true;
+            this.tm3_pubgname.Location = new System.Drawing.Point(72, 16);
+            this.tm3_pubgname.Name = "tm3_pubgname";
+            this.tm3_pubgname.Size = new System.Drawing.Size(57, 13);
+            this.tm3_pubgname.TabIndex = 5;
+            this.tm3_pubgname.Text = "[unknown]";
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(8, 55);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(28, 13);
+            this.label39.TabIndex = 3;
+            this.label39.Text = "Kills:";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Location = new System.Drawing.Point(8, 42);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(61, 13);
+            this.label40.TabIndex = 2;
+            this.label40.Text = "Headshots:";
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(6, 29);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(63, 13);
+            this.label41.TabIndex = 1;
+            this.label41.Text = "SteamID64:";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(6, 16);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(71, 13);
+            this.label42.TabIndex = 0;
+            this.label42.Text = "PUBG Name:";
+            // 
+            // tm2
+            // 
+            this.tm2.Controls.Add(this.tm2_kills);
+            this.tm2.Controls.Add(this.tm2_headshots);
+            this.tm2.Controls.Add(this.tm2_steamid);
+            this.tm2.Controls.Add(this.tm2_pubgname);
+            this.tm2.Controls.Add(this.label49);
+            this.tm2.Controls.Add(this.label50);
+            this.tm2.Controls.Add(this.label51);
+            this.tm2.Controls.Add(this.label52);
+            this.tm2.Location = new System.Drawing.Point(6, 169);
+            this.tm2.Name = "tm2";
+            this.tm2.Size = new System.Drawing.Size(225, 144);
+            this.tm2.TabIndex = 11;
+            this.tm2.TabStop = false;
+            this.tm2.Text = "Teammate 2";
+            // 
+            // tm2_kills
+            // 
+            this.tm2_kills.AutoSize = true;
+            this.tm2_kills.Location = new System.Drawing.Point(31, 55);
+            this.tm2_kills.Name = "tm2_kills";
+            this.tm2_kills.Size = new System.Drawing.Size(57, 13);
+            this.tm2_kills.TabIndex = 8;
+            this.tm2_kills.Text = "[unknown]";
+            // 
+            // tm2_headshots
+            // 
+            this.tm2_headshots.AutoSize = true;
+            this.tm2_headshots.Location = new System.Drawing.Point(64, 42);
+            this.tm2_headshots.Name = "tm2_headshots";
+            this.tm2_headshots.Size = new System.Drawing.Size(57, 13);
+            this.tm2_headshots.TabIndex = 7;
+            this.tm2_headshots.Text = "[unknown]";
+            // 
+            // tm2_steamid
+            // 
+            this.tm2_steamid.AutoSize = true;
+            this.tm2_steamid.Location = new System.Drawing.Point(64, 29);
+            this.tm2_steamid.Name = "tm2_steamid";
+            this.tm2_steamid.Size = new System.Drawing.Size(57, 13);
+            this.tm2_steamid.TabIndex = 6;
+            this.tm2_steamid.Text = "[unknown]";
+            // 
+            // tm2_pubgname
+            // 
+            this.tm2_pubgname.AutoSize = true;
+            this.tm2_pubgname.Location = new System.Drawing.Point(72, 16);
+            this.tm2_pubgname.Name = "tm2_pubgname";
+            this.tm2_pubgname.Size = new System.Drawing.Size(57, 13);
+            this.tm2_pubgname.TabIndex = 5;
+            this.tm2_pubgname.Text = "[unknown]";
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(8, 55);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(28, 13);
+            this.label49.TabIndex = 3;
+            this.label49.Text = "Kills:";
+            // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(8, 42);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(61, 13);
+            this.label50.TabIndex = 2;
+            this.label50.Text = "Headshots:";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(6, 29);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(63, 13);
+            this.label51.TabIndex = 1;
+            this.label51.Text = "SteamID64:";
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(6, 16);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(71, 13);
+            this.label52.TabIndex = 0;
+            this.label52.Text = "PUBG Name:";
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.tm1_kills);
+            this.groupBox9.Controls.Add(this.tm1_headshots);
+            this.groupBox9.Controls.Add(this.tm1_steamid);
+            this.groupBox9.Controls.Add(this.tm1_pubgname);
+            this.groupBox9.Controls.Add(this.label59);
+            this.groupBox9.Controls.Add(this.label60);
+            this.groupBox9.Controls.Add(this.label61);
+            this.groupBox9.Controls.Add(this.label62);
+            this.groupBox9.Location = new System.Drawing.Point(6, 19);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(225, 144);
+            this.groupBox9.TabIndex = 12;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Teammate 1";
+            // 
+            // tm1_kills
+            // 
+            this.tm1_kills.AutoSize = true;
+            this.tm1_kills.Location = new System.Drawing.Point(31, 55);
+            this.tm1_kills.Name = "tm1_kills";
+            this.tm1_kills.Size = new System.Drawing.Size(57, 13);
+            this.tm1_kills.TabIndex = 8;
+            this.tm1_kills.Text = "[unknown]";
+            // 
+            // tm1_headshots
+            // 
+            this.tm1_headshots.AutoSize = true;
+            this.tm1_headshots.Location = new System.Drawing.Point(64, 42);
+            this.tm1_headshots.Name = "tm1_headshots";
+            this.tm1_headshots.Size = new System.Drawing.Size(57, 13);
+            this.tm1_headshots.TabIndex = 7;
+            this.tm1_headshots.Text = "[unknown]";
+            // 
+            // tm1_steamid
+            // 
+            this.tm1_steamid.AutoSize = true;
+            this.tm1_steamid.Location = new System.Drawing.Point(64, 29);
+            this.tm1_steamid.Name = "tm1_steamid";
+            this.tm1_steamid.Size = new System.Drawing.Size(57, 13);
+            this.tm1_steamid.TabIndex = 6;
+            this.tm1_steamid.Text = "[unknown]";
+            // 
+            // tm1_pubgname
+            // 
+            this.tm1_pubgname.AutoSize = true;
+            this.tm1_pubgname.Location = new System.Drawing.Point(72, 16);
+            this.tm1_pubgname.Name = "tm1_pubgname";
+            this.tm1_pubgname.Size = new System.Drawing.Size(57, 13);
+            this.tm1_pubgname.TabIndex = 5;
+            this.tm1_pubgname.Text = "[unknown]";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Location = new System.Drawing.Point(8, 55);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(28, 13);
+            this.label59.TabIndex = 3;
+            this.label59.Text = "Kills:";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Location = new System.Drawing.Point(8, 42);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(61, 13);
+            this.label60.TabIndex = 2;
+            this.label60.Text = "Headshots:";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Location = new System.Drawing.Point(6, 29);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(63, 13);
+            this.label61.TabIndex = 1;
+            this.label61.Text = "SteamID64:";
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Location = new System.Drawing.Point(6, 16);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(71, 13);
+            this.label62.TabIndex = 0;
+            this.label62.Text = "PUBG Name:";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(701, 663);
+            this.ClientSize = new System.Drawing.Size(945, 671);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.replayListRefresh);
             this.Controls.Add(this.importReplay);
             this.Controls.Add(this.groupBox4);
@@ -629,13 +1151,21 @@
             this.Name = "Main";
             this.Text = "PUBG Replay Manager";
             this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.tm4.ResumeLayout(false);
+            this.tm4.PerformLayout();
+            this.tm3.ResumeLayout(false);
+            this.tm3.PerformLayout();
+            this.tm2.ResumeLayout(false);
+            this.tm2.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -650,7 +1180,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label teamInfo;
         private System.Windows.Forms.Label serverRegion;
         private System.Windows.Forms.Label label16;
@@ -692,6 +1221,54 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.CheckBox diedorwon;
+        private System.Windows.Forms.Label weatherType;
+        private System.Windows.Forms.Label distanceWalked;
+        private System.Windows.Forms.Label longestKill;
+        private System.Windows.Forms.Label dmgHandedOut;
+        private System.Windows.Forms.Label kills;
+        private System.Windows.Forms.Label headShots;
+        private System.Windows.Forms.Label rankNum;
+        private System.Windows.Forms.Label totalTeams;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label totalPlayers;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.GroupBox tm4;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.Label tm1_kills;
+        private System.Windows.Forms.Label tm1_headshots;
+        private System.Windows.Forms.Label tm1_steamid;
+        private System.Windows.Forms.Label tm1_pubgname;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.GroupBox tm2;
+        private System.Windows.Forms.Label tm2_kills;
+        private System.Windows.Forms.Label tm2_headshots;
+        private System.Windows.Forms.Label tm2_steamid;
+        private System.Windows.Forms.Label tm2_pubgname;
+        private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.Label label50;
+        private System.Windows.Forms.Label label51;
+        private System.Windows.Forms.Label label52;
+        private System.Windows.Forms.GroupBox tm3;
+        private System.Windows.Forms.Label tm3_kills;
+        private System.Windows.Forms.Label tm3_headshots;
+        private System.Windows.Forms.Label tm3_steamid;
+        private System.Windows.Forms.Label tm3_pubgname;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label tm4_kills;
+        private System.Windows.Forms.Label tm4_headshots;
+        private System.Windows.Forms.Label tm4_steamid;
+        private System.Windows.Forms.Label tm4_pubgname;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
     }
 }
 

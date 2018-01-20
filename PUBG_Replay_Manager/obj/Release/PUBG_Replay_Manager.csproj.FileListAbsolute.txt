@@ -1,0 +1,14 @@
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\bin\Release\PUBG_Replay_Manager.exe.config
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\bin\Release\PUBG_Replay_Manager.exe
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\bin\Release\PUBG_Replay_Manager.pdb
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.KillFeed.resources
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.Main.resources
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.Properties.Resources.resources
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.SteamID.resources
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.csproj.GenerateResource.Cache
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.csproj.CoreCompileInputs.cache
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.exe
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.pdb
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\bin\Release\Newtonsoft.Json.dll
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\bin\Release\Newtonsoft.Json.xml
+C:\Users\Master\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.csprojResolveAssemblyReference.cache

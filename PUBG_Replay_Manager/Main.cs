@@ -4,6 +4,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
 using System.IO.Compression;
+using System.Text;
+using Newtonsoft.Json.Linq;
 //using System.IO.Compression.FileSystem;
 
 
@@ -15,10 +17,72 @@ namespace PUBG_Replay_Manager
         public string prog_name = "PUBG Replay Manager";
         public string profile_link = "http://steamcommunity.com/profiles/";
         public string profile_id = "76561198050446061";
+        public string[] info_teammate_1 = {
+                    "uniqueId",
+                    "playerName",
+                    "teamNumber",
+                    "ranking",
+                    "headShots",
+                    "numKills",
+                    "totalGivenDamage",
+                    "longestKill",
+                    "MoveDistance" };
+        public string[] info_teammate_2 = {
+                    "uniqueId",
+                    "playerName",
+                    "teamNumber",
+                    "ranking",
+                    "headShots",
+                    "numKills",
+                    "totalGivenDamage",
+                    "longestKill",
+                    "MoveDistance" };
+        public string[] info_teammate_3 = {
+                    "uniqueId",
+                    "playerName",
+                    "teamNumber",
+                    "ranking",
+                    "headShots",
+                    "numKills",
+                    "totalGivenDamage",
+                    "longestKill",
+                    "MoveDistance" };
+        public string[] info_teammate_4 = {
+                    "uniqueId",
+                    "playerName",
+                    "teamNumber",
+                    "ranking",
+                    "headShots",
+                    "numKills",
+                    "totalGivenDamage",
+                    "longestKill",
+                    "MoveDistance" };
         public Main()
         {
             InitializeComponent();
             RefreshReplayList();
+        }
+        static public int get_char_unicode_code(char character)
+        {
+            UTF32Encoding encoding = new UTF32Encoding();
+            byte[] bytes = encoding.GetBytes(character.ToString().ToCharArray());
+            return BitConverter.ToInt32(bytes, 0);
+        }
+        static string CaesarCipher(string value, int shift)
+        {
+            char[] encodedCharArray = value.ToCharArray();
+            string decodedString = "";
+            int decode = 0;
+            foreach (char item in encodedCharArray)
+            {
+                if (get_char_unicode_code(item) > 0)
+                {
+                    decode = get_char_unicode_code(item) + shift;
+                    decodedString = decodedString + Convert.ToChar(decode);
+                    //Console.WriteLine("Orginal: " + item + " New: " + Convert.ToChar(decode));
+                }
+            }
+            return decodedString;
         }
         public void RefreshReplayList()
         {
@@ -84,12 +148,122 @@ namespace PUBG_Replay_Manager
             recordingUser.Text = newInfo[19];
             profileLink.Text = newInfo[19];
             mapName.Text = newInfo[20];
+            //if (newInfo[20] == "Desert_Main")
+            //{
+            //    mapImage.Image = Properties.Resources.miramar;
+            //    mapImage.Load();
+            //    mapImage.Visible = true;
+            //}
+            //if (newInfo[20] == "Erangel_Main")
+            //{
+            //    mapImage.Image = Properties.Resources.erangel;
+            //    mapImage.Load();
+            //    mapImage.Visible = true;
+            //}
+
             fileSize.Text = newInfo[21];
             serverId.Text = newInfo[22];
             if (newInfo[23] == "true")
             {
                 diedorwon.Checked = false;
             }
+            weatherType.Text = newInfo[24];
+            totalPlayers.Text = newInfo[25];
+            totalTeams.Text = newInfo[26];
+            rankNum.Text = newInfo[27];
+            if (newInfo[19] == info_teammate_1[1])
+            {
+                headShots.Text = info_teammate_1[4];
+                kills.Text = info_teammate_1[5];
+                dmgHandedOut.Text = info_teammate_1[6];
+                longestKill.Text = info_teammate_1[7];
+                distanceWalked.Text = info_teammate_1[8];
+            }
+            if (newInfo[19] == info_teammate_2[1])
+            {
+                headShots.Text = info_teammate_2[4];
+                kills.Text = info_teammate_2[5];
+                dmgHandedOut.Text = info_teammate_2[6];
+                longestKill.Text = info_teammate_2[7];
+                distanceWalked.Text = info_teammate_2[8];
+            }
+            if (newInfo[19] == info_teammate_3[1])
+            {
+                headShots.Text = info_teammate_3[4];
+                kills.Text = info_teammate_3[5];
+                dmgHandedOut.Text = info_teammate_3[6];
+                longestKill.Text = info_teammate_3[7];
+                distanceWalked.Text = info_teammate_3[8];
+            }
+            if (newInfo[19] == info_teammate_4[1])
+            {
+                headShots.Text = info_teammate_4[4];
+                kills.Text = info_teammate_4[5];
+                dmgHandedOut.Text = info_teammate_4[6];
+                longestKill.Text = info_teammate_4[7];
+                distanceWalked.Text = info_teammate_4[8];
+            }
+
+            //-----------------------------------------------------------------------
+            //---------------------TeamMates-----------------------------------------
+            //-----------------------------------------------------------------------
+            if((info_teammate_1[0] == "uniqueId") || (info_teammate_1[0] == "[unknown]"))
+            {
+                tm1_pubgname.Text = "[unknown]";
+                tm1_steamid.Text = "[unknown]";
+                tm1_headshots.Text = "[unknown]";
+                tm1_kills.Text = "[unknown]";
+            }                                        
+            if ((info_teammate_2[0] == "uniqueId") || (info_teammate_2[0] == "[unknown]"))
+            {                                       
+                tm2_pubgname.Text = "[unknown]";    
+                tm2_steamid.Text = "[unknown]";     
+                tm2_headshots.Text = "[unknown]";   
+                tm2_kills.Text = "[unknown]";       
+            }                                       
+            if ((info_teammate_3[0] == "uniqueId") || (info_teammate_3[0] == "[unknown]"))
+            {                                      
+                tm3_pubgname.Text = "[unknown]";   
+                tm3_steamid.Text = "[unknown]";    
+                tm3_headshots.Text = "[unknown]";  
+                tm3_kills.Text = "[unknown]";      
+            }
+            if ((info_teammate_4[0] == "uniqueId") || (info_teammate_4[0] == "[unknown]"))
+            {     
+                tm4_pubgname.Text = "[unknown]";
+                tm4_steamid.Text = "[unknown]";
+                tm4_headshots.Text = "[unknown]";
+                tm4_kills.Text = "[unknown]";
+            }     
+            if (info_teammate_1[0] != "uniqueId")
+            {
+                tm1_pubgname.Text = info_teammate_1[1];
+                tm1_steamid.Text = info_teammate_1[0];
+                tm1_headshots.Text = info_teammate_1[4];
+                tm1_kills.Text = info_teammate_1[5];
+            }
+            if (info_teammate_2[0] != "uniqueId")
+            {
+                tm2_pubgname.Text = info_teammate_2[1];
+                tm2_steamid.Text = info_teammate_2[0];
+                tm2_headshots.Text = info_teammate_2[4];
+                tm2_kills.Text = info_teammate_2[5];
+            }
+            if (info_teammate_3[0] != "uniqueId")
+            {
+                tm3_pubgname.Text = info_teammate_3[1];
+                tm3_steamid.Text = info_teammate_3[0];
+                tm3_headshots.Text = info_teammate_3[4];
+                tm3_kills.Text = info_teammate_3[5];
+            }
+            if (info_teammate_4[0] != "uniqueId")
+            {
+                tm4_pubgname.Text = info_teammate_4[1];
+                tm4_steamid.Text = info_teammate_4[0];
+                tm4_headshots.Text = info_teammate_4[4];
+                tm4_kills.Text = info_teammate_4[5];
+            }
+
         }
 
         private void replayList_SelectedIndexChanged(object sender, EventArgs e)
@@ -160,16 +334,23 @@ namespace PUBG_Replay_Manager
                     "bIncomplete",//Detection for corrupt files?
                     "bIsServerRecording", //Heavy possibly the server also records a copy of the entire match
                     "bShouldKeep",//True = Pubg won't delete the file for a new one and it prevents the user from deleting it to
-                    "Mode",//Solo or Sqaud
+                    "Mode",//Solo or Sqaud (16)
                     "RecordUserId", //The recording user (SteamID 64)
                     "RecordUserNickname", //The recording user (In-Game Username)
                     "MapName", //name of the map (Desert_Main or Erangel_Main)
                     "FolderSize", //Size of the Replay Folder
                     "ServerID", //the server id 
                     "AllDeadOrWin", //Some kind of check to see of all of the sqaud died or you won (should techinally always be true) (Added in the Second 1.0 Update)
-                }; 
-                if(ReplayInfoFile[0] == "")//Some dumb f**king bulls**t playerunkown did, half the replay files are like this
+                    "Weather", //Stripped from the replaysummary files
+                    "TotalPlayers", //Stripped from the replaysummary files - Total players in a match
+                    "TotalTeams",//Stripped from the replaysummary files - Total teams in a match
+                    "numberofTeammates",//Stripped from the replaysummary files - teammates in a match
+                    "rank",//Stripped from the replaysummary files - Rank in a match (27)
+                    "replayType",
+                };
+                if (ReplayInfoFile[0] == "")//Some dumb f**king bulls**t playerunkown did, half the replay files are like this
                 {
+                    info[28] = "Second 1.0 Update";
                     //--------------------------------------------------
                     //-------------------Length in Ms ------------------
                     //--------------------------------------------------
@@ -353,10 +534,6 @@ namespace PUBG_Replay_Manager
                     {
                         info[20] = "Miramar";
                     }
-                    foreach (string obj in info)
-                    {
-                        Console.WriteLine(obj);
-                    }
                     //--------------------------------------------------
                     //--------------------FolderSize--------------------
                     //--------------------------------------------------
@@ -385,6 +562,7 @@ namespace PUBG_Replay_Manager
                 }
                 else
                 {
+                    info[28] = "Pre Second 1.0 Update";
                     //--------------------------------------------------
                     //-------------------Length in Ms ------------------
                     //--------------------------------------------------
@@ -560,6 +738,7 @@ namespace PUBG_Replay_Manager
                     //--------------------MapName------------------
                     //--------------------------------------------------
                     string MapNameflag = ReplayInfoFile[15].Remove(ReplayInfoFile[15].Length - 1, 1).Remove(0, 13);
+                    MapNameflag = MapNameflag.Remove(MapNameflag.Length - 1, 1);
                     if (MapNameflag == "Erangel_Main")
                     {
                         info[20] = "Erangel";
@@ -567,10 +746,6 @@ namespace PUBG_Replay_Manager
                     else
                     {
                         info[20] = "Miramar";
-                    }
-                    foreach (string obj in info)
-                    {
-                        Console.WriteLine(obj);
                     }
                     //--------------------------------------------------
                     //--------------------FolderSize--------------------
@@ -597,10 +772,158 @@ namespace PUBG_Replay_Manager
                     {
                         info[23] = "false";
                     }
+
+                }
+                List<string> replaySummaryList = new List<string>();
+                foreach (string replay in Directory.GetFiles(directory_of_recording + "\\data"))
+                {
+                    if (replay.Contains("ReplaySummary"))
+                    {
+                        replaySummaryList.Add(replay);
+                    }
+                }
+                replaySummaryList.Reverse();
+                JObject testJSON = JObject.Parse(CaesarCipher(File.ReadAllLines(replaySummaryList.ToArray()[0])[0], +1).Remove(0, 2));
+                //--------------------------------------------------
+                //--------------------Weather------------------------
+                //--------------------------------------------------
+                if (testJSON["weatherName"].ToString() == "Weather_Clear_02")
+                {
+                    info[24] = "Sunny Clear";
+                }
+                else if(testJSON["weatherName"].ToString() == "Weather_Desert_Sunrise")
+                {
+                    info[24] = "Sunrise";
+                }
+                else if(testJSON["weatherName"].ToString() == "Weather_Desert_Clear")
+                {
+                    info[24] = "Sunny";
+                }
+                else if (testJSON["weatherName"].ToString() == "Weather_Clear")
+                {
+                    info[24] = "Sunny";
+                }
+                else if (testJSON["weatherName"].ToString() == "Weather_Dark")
+                {
+                    info[24] = "Sunset";
+                }
+                else
+                {
+                    info[24] = testJSON["weatherName"].ToString();
+                }
+                //--------------------------------------------------
+                //--------------------Number of players------------------------
+                //--------------------------------------------------
+                info[25] = testJSON["numPlayers"].ToString();
+                //--------------------------------------------------
+                //--------------------Number of teams------------------------
+                //--------------------------------------------------
+                info[26] = testJSON["numTeams"].ToString();
+                info_teammate_1[0] = testJSON["playerStateSummaries"][0]["uniqueId"].ToString();
+                info_teammate_1[1] = testJSON["playerStateSummaries"][0]["playerName"].ToString();
+                info_teammate_1[2] = testJSON["playerStateSummaries"][0]["teamNumber"].ToString();
+                info_teammate_1[3] = testJSON["playerStateSummaries"][0]["ranking"].ToString();
+                info[27] = testJSON["playerStateSummaries"][0]["ranking"].ToString();
+                info_teammate_1[4] = testJSON["playerStateSummaries"][0]["headShots"].ToString();
+                info_teammate_1[5] = testJSON["playerStateSummaries"][0]["numKills"].ToString();
+                info_teammate_1[6] = testJSON["playerStateSummaries"][0]["totalGivenDamages"].ToString();
+                info_teammate_1[7] = testJSON["playerStateSummaries"][0]["longestDistanceKill"].ToString();
+                info_teammate_1[8] = testJSON["playerStateSummaries"][0]["totalMovedDistanceMeter"].ToString();
+                try
+                {
+                    info_teammate_2[0] = testJSON["playerStateSummaries"][1]["uniqueId"].ToString();
+                    info_teammate_2[1] = testJSON["playerStateSummaries"][1]["playerName"].ToString();
+                    info_teammate_2[2] = testJSON["playerStateSummaries"][1]["teamNumber"].ToString();
+                    info_teammate_2[3] = testJSON["playerStateSummaries"][1]["ranking"].ToString();
+                    info_teammate_2[4] = testJSON["playerStateSummaries"][1]["headShots"].ToString();
+                    info_teammate_2[5] = testJSON["playerStateSummaries"][1]["numKills"].ToString();
+                    info_teammate_2[6] = testJSON["playerStateSummaries"][1]["totalGivenDamages"].ToString();
+                    info_teammate_2[7] = testJSON["playerStateSummaries"][1]["longestDistanceKill"].ToString();
+                    info_teammate_2[8] = testJSON["playerStateSummaries"][1]["totalMovedDistanceMeter"].ToString();
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    info_teammate_2[0] = "[unknown]";
+                    info_teammate_2[1] = "[unknown]";
+                    info_teammate_2[2] = "[unknown]";
+                    info_teammate_2[3] = "[unknown]";
+                    info_teammate_2[4] = "[unknown]";
+                    info_teammate_2[5] = "[unknown]";
+                    info_teammate_2[6] = "[unknown]";
+                    info_teammate_2[7] = "[unknown]";
+                    info_teammate_2[8] = "[unknown]";
+                    foreach (string obj in info)
+                    {
+                        Console.WriteLine(obj);
+                    }
+                    return info;
+                }
+                try
+                {
+                    info_teammate_3[0] = testJSON["playerStateSummaries"][2]["uniqueId"].ToString();
+                    info_teammate_3[1] = testJSON["playerStateSummaries"][2]["playerName"].ToString();
+                    info_teammate_3[2] = testJSON["playerStateSummaries"][2]["teamNumber"].ToString();
+                    info_teammate_3[3] = testJSON["playerStateSummaries"][2]["ranking"].ToString();
+                    info_teammate_3[4] = testJSON["playerStateSummaries"][2]["headShots"].ToString();
+                    info_teammate_3[5] = testJSON["playerStateSummaries"][2]["numKills"].ToString();
+                    info_teammate_3[6] = testJSON["playerStateSummaries"][2]["totalGivenDamages"].ToString();
+                    info_teammate_3[7] = testJSON["playerStateSummaries"][2]["longestDistanceKill"].ToString();
+                    info_teammate_3[8] = testJSON["playerStateSummaries"][2]["totalMovedDistanceMeter"].ToString();
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    info_teammate_3[0] = "[unknown]";
+                    info_teammate_3[1] = "[unknown]";
+                    info_teammate_3[2] = "[unknown]";
+                    info_teammate_3[3] = "[unknown]";
+                    info_teammate_3[4] = "[unknown]";
+                    info_teammate_3[5] = "[unknown]";
+                    info_teammate_3[6] = "[unknown]";
+                    info_teammate_3[7] = "[unknown]";
+                    info_teammate_3[8] = "[unknown]";
+                    foreach (string obj in info)
+                    {
+                        Console.WriteLine(obj);
+                    }
+                    return info;
+                }
+                try
+                {
+                    info_teammate_4[0] = testJSON["playerStateSummaries"][3]["uniqueId"].ToString();
+                    info_teammate_4[1] = testJSON["playerStateSummaries"][3]["playerName"].ToString();
+                    info_teammate_4[2] = testJSON["playerStateSummaries"][3]["teamNumber"].ToString();
+                    info_teammate_4[3] = testJSON["playerStateSummaries"][3]["ranking"].ToString();
+                    info_teammate_4[4] = testJSON["playerStateSummaries"][3]["headShots"].ToString();
+                    info_teammate_4[5] = testJSON["playerStateSummaries"][3]["numKills"].ToString();
+                    info_teammate_4[6] = testJSON["playerStateSummaries"][3]["totalGivenDamages"].ToString();
+                    info_teammate_4[7] = testJSON["playerStateSummaries"][3]["longestDistanceKill"].ToString();
+                    info_teammate_4[8] = testJSON["playerStateSummaries"][3]["totalMovedDistanceMeter"].ToString();
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    info_teammate_4[0] = "[unknown]";
+                    info_teammate_4[1] = "[unknown]";
+                    info_teammate_4[2] = "[unknown]";
+                    info_teammate_4[3] = "[unknown]";
+                    info_teammate_4[4] = "[unknown]";
+                    info_teammate_4[5] = "[unknown]";
+                    info_teammate_4[6] = "[unknown]";
+                    info_teammate_4[7] = "[unknown]";
+                    info_teammate_4[8] = "[unknown]";
+                    foreach (string obj in info)
+                    {
+                        Console.WriteLine(obj);
+                    }
+                    return info;
+                }
+                foreach (string obj in info)
+                {
+                    Console.WriteLine(obj);
                 }
                 return info;
             }
             MessageBox.Show("PUBG.replayinfo for this recording was not found!" + Environment.NewLine + "Recording may be corrupt!", "Waring!");
+
             return placeholder;
         }
 
