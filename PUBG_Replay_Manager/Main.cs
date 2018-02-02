@@ -6,8 +6,8 @@ using System.Windows.Forms;
 using System.IO.Compression;
 using System.Text;
 using Newtonsoft.Json.Linq;
-//using System.IO.Compression.FileSystem;
-
+using System.Collections;
+using System.Text.RegularExpressions;
 
 namespace PUBG_Replay_Manager
 {
@@ -17,46 +17,6 @@ namespace PUBG_Replay_Manager
         public string prog_name = "PUBG Replay Manager";
         public string profile_link = "http://steamcommunity.com/profiles/";
         public string profile_id = "76561198050446061";
-        public string[] info_teammate_1 = {
-                    "uniqueId",
-                    "playerName",
-                    "teamNumber",
-                    "ranking",
-                    "headShots",
-                    "numKills",
-                    "totalGivenDamage",
-                    "longestKill",
-                    "MoveDistance" };
-        public string[] info_teammate_2 = {
-                    "uniqueId",
-                    "playerName",
-                    "teamNumber",
-                    "ranking",
-                    "headShots",
-                    "numKills",
-                    "totalGivenDamage",
-                    "longestKill",
-                    "MoveDistance" };
-        public string[] info_teammate_3 = {
-                    "uniqueId",
-                    "playerName",
-                    "teamNumber",
-                    "ranking",
-                    "headShots",
-                    "numKills",
-                    "totalGivenDamage",
-                    "longestKill",
-                    "MoveDistance" };
-        public string[] info_teammate_4 = {
-                    "uniqueId",
-                    "playerName",
-                    "teamNumber",
-                    "ranking",
-                    "headShots",
-                    "numKills",
-                    "totalGivenDamage",
-                    "longestKill",
-                    "MoveDistance" };
         public Main()
         {
             InitializeComponent();
@@ -99,170 +59,235 @@ namespace PUBG_Replay_Manager
             }
             replayList.Refresh();
         }
-        public void RefreshInfoGroups(string[] newInfo)
+        public void RefreshInfoGroups(ArrayList newInfo)
         {
-            lengthInMins.Text = newInfo[0];
-            networkVerison.Text = newInfo[1];
-            matchType.Text = newInfo[4];
-            gameVerison.Text = newInfo[5];
-            serverRegion.Text = newInfo[6];
-            recordingSize.Text = newInfo[10];
-            timeRecorded.Text = newInfo[12];
-            if (newInfo[13] == "false")
-            {
-                isLive.Checked = false;
-            }
-            if (newInfo[13] == "true")
-            {
-                isLive.Checked = true;
-            }
-            if (newInfo[14] == "false")
-            {
-                isIncomplete.Checked = false;
-            }
-            if (newInfo[14] == "true")
-            {
-                isIncomplete.Checked = true;
-            }
-            if (newInfo[15] == "false")
-            {
-                IsServerRecording.Checked = false;
-            }
-            if (newInfo[15] == "true")
-            {
-                IsServerRecording.Checked = true;
-            }
-            if (newInfo[16] == "false")
-            {
-                fileLocked.Checked = false;
-            }
-            if (newInfo[16] == "true")
-            {
-                fileLocked.Checked = true;
-            }
-            teamInfo.Text = newInfo[17];
-            if (newInfo[18].Contains("765611"))
-            {
-                profile_id = newInfo[18];
-            }
-            recordingUser.Text = newInfo[19];
-            profileLink.Text = newInfo[19];
-            mapName.Text = newInfo[20];
-            //if (newInfo[20] == "Desert_Main")
-            //{
-            //    mapImage.Image = Properties.Resources.miramar;
-            //    mapImage.Load();
-            //    mapImage.Visible = true;
-            //}
-            //if (newInfo[20] == "Erangel_Main")
-            //{
-            //    mapImage.Image = Properties.Resources.erangel;
-            //    mapImage.Load();
-            //    mapImage.Visible = true;
-            //}
 
-            fileSize.Text = newInfo[21];
-            serverId.Text = newInfo[22];
-            if (newInfo[23] == "true")
+            lengthInMins.Text = (string)newInfo[1];
+            networkVerison.Text = newInfo[2].ToString();
+            matchType.Text = (string)newInfo[6];
+            gameVerison.Text = (string)newInfo[7];
+            serverRegion.Text = (string)newInfo[9];
+            serverId.Text = (string)newInfo[13];
+            recordingSize.Text = (string)newInfo[15];
+            timeRecorded.Text = (string)newInfo[19];
+            isLive.Checked = (bool)newInfo[20];
+            isIncomplete.Checked = (bool)newInfo[21];
+            IsServerRecording.Checked = (bool)newInfo[22];
+            fileLocked.Checked = (bool)newInfo[23];
+            teamInfo.Text = (string)newInfo[25];
+            profile_id = (string)newInfo[26];
+            recordingUser.Text = (string)newInfo[27];
+            mapName.Text = (string)newInfo[29];
+            diedorwon.Checked = (bool)newInfo[30];
+            fileSize.Text = (string)newInfo[31];
+            weatherType.Text = (string)newInfo[32];
+            totalPlayers.Text = newInfo[33].ToString();
+            totalTeams.Text = newInfo[34].ToString();
+            rankNum.Text = newInfo[38].ToString();
+            for (int i = 0; i < newInfo.Count; i++)
             {
-                diedorwon.Checked = false;
+                Console.WriteLine("n " + i + " | " + newInfo[i]);
             }
-            weatherType.Text = newInfo[24];
-            totalPlayers.Text = newInfo[25];
-            totalTeams.Text = newInfo[26];
-            rankNum.Text = newInfo[27];
-            if (newInfo[19] == info_teammate_1[1])
+            for (int i = 35; i < newInfo.Count; i++)
             {
-                headShots.Text = info_teammate_1[4];
-                kills.Text = info_teammate_1[5];
-                dmgHandedOut.Text = info_teammate_1[6];
-                longestKill.Text = info_teammate_1[7];
-                distanceWalked.Text = info_teammate_1[8];
-            }
-            if (newInfo[19] == info_teammate_2[1])
-            {
-                headShots.Text = info_teammate_2[4];
-                kills.Text = info_teammate_2[5];
-                dmgHandedOut.Text = info_teammate_2[6];
-                longestKill.Text = info_teammate_2[7];
-                distanceWalked.Text = info_teammate_2[8];
-            }
-            if (newInfo[19] == info_teammate_3[1])
-            {
-                headShots.Text = info_teammate_3[4];
-                kills.Text = info_teammate_3[5];
-                dmgHandedOut.Text = info_teammate_3[6];
-                longestKill.Text = info_teammate_3[7];
-                distanceWalked.Text = info_teammate_3[8];
-            }
-            if (newInfo[19] == info_teammate_4[1])
-            {
-                headShots.Text = info_teammate_4[4];
-                kills.Text = info_teammate_4[5];
-                dmgHandedOut.Text = info_teammate_4[6];
-                longestKill.Text = info_teammate_4[7];
-                distanceWalked.Text = info_teammate_4[8];
-            }
+                Console.WriteLine("Checking " + i);
+                if (newInfo[i].ToString() == newInfo[27].ToString())
+                {
+                    headShots.Text = newInfo[i + 3].ToString();
+                    kills.Text = newInfo[i + 4].ToString();
+                    dmgHandedOut.Text = newInfo[i + 6].ToString();
+                    longestKill.Text = newInfo[i + 8].ToString();
+                    distanceWalked.Text = newInfo[i + 10].ToString();
+                    break;
 
+                }
+            }
             //-----------------------------------------------------------------------
             //---------------------TeamMates-----------------------------------------
             //-----------------------------------------------------------------------
-            if((info_teammate_1[0] == "uniqueId") || (info_teammate_1[0] == "[unknown]"))
+            int z = 0;
+            for (int i = 35; i < newInfo.Count; i++)
             {
-                tm1_pubgname.Text = "[unknown]";
-                tm1_steamid.Text = "[unknown]";
-                tm1_headshots.Text = "[unknown]";
-                tm1_kills.Text = "[unknown]";
-            }                                        
-            if ((info_teammate_2[0] == "uniqueId") || (info_teammate_2[0] == "[unknown]"))
-            {                                       
-                tm2_pubgname.Text = "[unknown]";    
-                tm2_steamid.Text = "[unknown]";     
-                tm2_headshots.Text = "[unknown]";   
-                tm2_kills.Text = "[unknown]";       
-            }                                       
-            if ((info_teammate_3[0] == "uniqueId") || (info_teammate_3[0] == "[unknown]"))
-            {                                      
-                tm3_pubgname.Text = "[unknown]";   
-                tm3_steamid.Text = "[unknown]";    
-                tm3_headshots.Text = "[unknown]";  
-                tm3_kills.Text = "[unknown]";      
+                Console.WriteLine("Checking " + i);
+                if (newInfo[i].ToString().Contains("765611"))
+                {
+                    Console.WriteLine("Line " + i + " has one!");
+                    z++;
+                    if (z == 1)
+                    {
+                        tm1.Visible = true;
+                        tm1_pubgname.Visible = true;
+                        tm1_steamid.Visible = true;
+                        tm1_headshots.Visible = true;
+                        tm1_kills.Visible = true;
+                        tm1_pubgname_l.Visible = true;
+                        tm1_steamid_l.Visible = true;
+                        tm1_headshots_l.Visible = true;
+                        tm1_kills_l.Visible = true;
+                        tm1_pubgname.Text = newInfo[i + 1].ToString();
+                        tm1_steamid.Text = newInfo[i].ToString();
+                        tm1_headshots.Text = newInfo[i + 4].ToString();
+                        tm1_kills.Text = newInfo[i + 5].ToString();
+                    }
+                    else if (z < 1)
+                    {
+                        tm1.Visible = false;
+                        tm1_pubgname.Visible = false;
+                        tm1_steamid.Visible = false;
+                        tm1_headshots.Visible = false;
+                        tm1_kills.Visible = false;
+                        tm1_pubgname_l.Visible = false;
+                        tm1_steamid_l.Visible = false;
+                        tm1_headshots_l.Visible = false;
+                        tm1_kills_l.Visible = false;
+                    }
+                    if (z == 2)
+                    {
+                        tm2.Visible = true;
+                        tm2_pubgname.Visible = true;
+                        tm2_steamid.Visible = true;
+                        tm2_headshots.Visible = true;
+                        tm2_kills.Visible = true;
+                        tm2_pubgname_l.Visible = true;
+                        tm2_steamid_l.Visible = true;
+                        tm2_headshots_l.Visible = true;
+                        tm2_kills_l.Visible = true;
+                        tm2_pubgname.Text = newInfo[i + 1].ToString();
+                        tm2_steamid.Text = newInfo[i].ToString();
+                        tm2_headshots.Text = newInfo[i + 4].ToString();
+                        tm2_kills.Text = newInfo[i + 5].ToString();
+                    }
+                    else if (z < 2)
+                    {
+                        tm2.Visible = false;
+                        tm2_pubgname.Visible = false;
+                        tm2_steamid.Visible = false;
+                        tm2_headshots.Visible = false;
+                        tm2_kills.Visible = false;
+                        tm2_pubgname_l.Visible = false;
+                        tm2_steamid_l.Visible = false;
+                        tm2_headshots_l.Visible = false;
+                        tm2_kills_l.Visible = false;
+                    }
+                    if (z == 3)
+                    {
+                        tm3.Visible = true;
+                        tm3_pubgname.Visible = true;
+                        tm3_steamid.Visible = true;
+                        tm3_headshots.Visible = true;
+                        tm3_kills.Visible = true;
+                        tm3_pubgname_l.Visible = true;
+                        tm3_steamid_l.Visible = true;
+                        tm3_headshots_l.Visible = true;
+                        tm3_kills_l.Visible = true;
+                        tm3_pubgname.Text = newInfo[i + 1].ToString();
+                        tm3_steamid.Text = newInfo[i].ToString();
+                        tm3_headshots.Text = newInfo[i + 4].ToString();
+                        tm3_kills.Text = newInfo[i + 5].ToString();
+                    }
+                    else if (z < 3)
+                    {
+                        tm3.Visible = false;
+                        tm3_pubgname.Visible = false;
+                        tm3_steamid.Visible = false;
+                        tm3_headshots.Visible = false;
+                        tm3_kills.Visible = false;
+                        tm3_pubgname_l.Visible = false;
+                        tm3_steamid_l.Visible = false;
+                        tm3_headshots_l.Visible = false;
+                        tm3_kills_l.Visible = false;
+                    }
+                    if (z == 4)
+                    {
+                        tm4.Visible = true;
+                        tm4_pubgname.Visible = true;
+                        tm4_steamid.Visible = true;
+                        tm4_headshots.Visible = true;
+                        tm4_kills.Visible = true;
+                        tm4_pubgname_l.Visible = true;
+                        tm4_steamid_l.Visible = true;
+                        tm4_headshots_l.Visible = true;
+                        tm4_kills_l.Visible = true;
+                        tm4_pubgname.Text = newInfo[i + 1].ToString();
+                        tm4_steamid.Text = newInfo[i].ToString();
+                        tm4_headshots.Text = newInfo[i + 4].ToString();
+                        tm4_kills.Text = newInfo[i + 5].ToString();
+                    }
+                    else if (z < 4)
+                    {
+                        tm4.Visible = false;
+                        tm4_pubgname.Visible = false;
+                        tm4_steamid.Visible = false;
+                        tm4_headshots.Visible = false;
+                        tm4_kills.Visible = false;
+                        tm4_pubgname_l.Visible = false;
+                        tm4_steamid_l.Visible = false;
+                        tm4_headshots_l.Visible = false;
+                        tm4_kills_l.Visible = false;
+                    }
+                }
             }
-            if ((info_teammate_4[0] == "uniqueId") || (info_teammate_4[0] == "[unknown]"))
-            {     
-                tm4_pubgname.Text = "[unknown]";
-                tm4_steamid.Text = "[unknown]";
-                tm4_headshots.Text = "[unknown]";
-                tm4_kills.Text = "[unknown]";
-            }     
-            if (info_teammate_1[0] != "uniqueId")
-            {
-                tm1_pubgname.Text = info_teammate_1[1];
-                tm1_steamid.Text = info_teammate_1[0];
-                tm1_headshots.Text = info_teammate_1[4];
-                tm1_kills.Text = info_teammate_1[5];
-            }
-            if (info_teammate_2[0] != "uniqueId")
-            {
-                tm2_pubgname.Text = info_teammate_2[1];
-                tm2_steamid.Text = info_teammate_2[0];
-                tm2_headshots.Text = info_teammate_2[4];
-                tm2_kills.Text = info_teammate_2[5];
-            }
-            if (info_teammate_3[0] != "uniqueId")
-            {
-                tm3_pubgname.Text = info_teammate_3[1];
-                tm3_steamid.Text = info_teammate_3[0];
-                tm3_headshots.Text = info_teammate_3[4];
-                tm3_kills.Text = info_teammate_3[5];
-            }
-            if (info_teammate_4[0] != "uniqueId")
-            {
-                tm4_pubgname.Text = info_teammate_4[1];
-                tm4_steamid.Text = info_teammate_4[0];
-                tm4_headshots.Text = info_teammate_4[4];
-                tm4_kills.Text = info_teammate_4[5];
-            }
+            Console.WriteLine(z + " Players");
+            z = 0;
+
+
+
+            //if ((info_teammate_1[0] == "uniqueId") || (info_teammate_1[0] == "[unknown]"))
+            //{
+            //    tm1_pubgname.Text = "[unknown]";
+            //    tm1_steamid.Text = "[unknown]";
+            //    tm1_headshots.Text = "[unknown]";
+            //    tm1_kills.Text = "[unknown]";
+            //}
+            //if ((info_teammate_2[0] == "uniqueId") || (info_teammate_2[0] == "[unknown]"))
+            //{
+            //    tm2_pubgname.Text = "[unknown]";
+            //    tm2_steamid.Text = "[unknown]";
+            //    tm2_headshots.Text = "[unknown]";
+            //    tm2_kills.Text = "[unknown]";
+            //}
+            //if ((info_teammate_3[0] == "uniqueId") || (info_teammate_3[0] == "[unknown]"))
+            //{
+            //    tm3_pubgname.Text = "[unknown]";
+            //    tm3_steamid.Text = "[unknown]";
+            //    tm3_headshots.Text = "[unknown]";
+            //    tm3_kills.Text = "[unknown]";
+            //}
+            //if ((info_teammate_4[0] == "uniqueId") || (info_teammate_4[0] == "[unknown]"))
+            //{
+            //    tm4_pubgname.Text = "[unknown]";
+            //    tm4_steamid.Text = "[unknown]";
+            //    tm4_headshots.Text = "[unknown]";
+            //    tm4_kills.Text = "[unknown]";
+            //}
+            //if (info_teammate_1[0] != "uniqueId")
+            //{
+            //    tm1_pubgname.Text = info_teammate_1[1];
+            //    tm1_steamid.Text = info_teammate_1[0];
+            //    tm1_headshots.Text = info_teammate_1[4];
+            //    tm1_kills.Text = info_teammate_1[5];
+            //}
+            //if (info_teammate_2[0] != "uniqueId")
+            //{
+            //    tm2_pubgname.Text = info_teammate_2[1];
+            //    tm2_steamid.Text = info_teammate_2[0];
+            //    tm2_headshots.Text = info_teammate_2[4];
+            //    tm2_kills.Text = info_teammate_2[5];
+            //}
+            //if (info_teammate_3[0] != "uniqueId")
+            //{
+            //    tm3_pubgname.Text = info_teammate_3[1];
+            //    tm3_steamid.Text = info_teammate_3[0];
+            //    tm3_headshots.Text = info_teammate_3[4];
+            //    tm3_kills.Text = info_teammate_3[5];
+            //}
+            //if (info_teammate_4[0] != "uniqueId")
+            //{
+            //    tm4_pubgname.Text = info_teammate_4[1];
+            //    tm4_steamid.Text = info_teammate_4[0];
+            //    tm4_headshots.Text = info_teammate_4[4];
+            //    tm4_kills.Text = info_teammate_4[5];
+            //}
 
         }
 
@@ -303,628 +328,251 @@ namespace PUBG_Replay_Manager
                 steamidStrip.Enabled = false;
             }
         }
-        private string[] ReadReplayInfo(string directory_of_recording)
+
+        private JObject NormalizeReplayInfoFile(string directory_of_recording)
         {
-            string[] placeholder = { "0", "0", "0", "0", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "0", "0", "[unknown]", "false", "true", "false", "false", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "[unknown]", "[unknown]" };
-            if (File.Exists(directory_of_recording + "\\PUBG.replayinfo"))
+            List<string> ReplayFile= new List<string>(File.ReadAllLines(directory_of_recording + "\\PUBG.replayinfo"));
+            if (ReplayFile.ToArray()[0] == "")//Make the list a array and check the first line to see if it's blank
             {
-                string[] ReplayInfoFile = File.ReadAllLines(directory_of_recording + "\\PUBG.replayinfo");
-                Console.WriteLine("==============================Reading Replay Info===================================");
-                int i = 0;
-                foreach (string line in ReplayInfoFile)
-                {
-                    Console.WriteLine("Line " + i + ": "+line);
-                }
-                Console.WriteLine("===========================Finished Reading Replay Info==============================");
-                string[] info = {
-                    "LengthInMS", //Length of the recording in miliseconds
-                    "NetworkVersion", //??????
-                    "Changelist", //??????
-                    "FriendlyName", //String with lots of match info
-                    "MatchType",//(Derived from FriendlyName) offical or ??????? (possibly custom)
-                    "UpdateType",//(Derived from FriendlyName) 2018-01, 2017-pre6, 2017-test
-                    "ServerLocation",//(Derived from FriendlyName) NA or ?????????
-                    "TeamType",//(Derived from FriendlyName) unused in favor of mode, squad or solo or ????
-                    "DateRecorded",//(Derived from FriendlyName) unused in favor of TimeStamp
-                    "UUID",//(Derived from FriendlyName) Some kind of uuid? maybe for looking up matchs? Unsure.
-                    "DemoFileLastOffset", //[more likely this one]File size of the recording (in bytes) or time between recordings
-                    "SizeInBytes",//?????? its always 0
-                    "TimeStamp",//Unix Time (in Miliseconds)
-                    "bIsLive",//LiveStreaming detection?
-                    "bIncomplete",//Detection for corrupt files?
-                    "bIsServerRecording", //Heavy possibly the server also records a copy of the entire match
-                    "bShouldKeep",//True = Pubg won't delete the file for a new one and it prevents the user from deleting it to
-                    "Mode",//Solo or Sqaud (16)
-                    "RecordUserId", //The recording user (SteamID 64)
-                    "RecordUserNickname", //The recording user (In-Game Username)
-                    "MapName", //name of the map (Desert_Main or Erangel_Main)
-                    "FolderSize", //Size of the Replay Folder
-                    "ServerID", //the server id 
-                    "AllDeadOrWin", //Some kind of check to see of all of the sqaud died or you won (should techinally always be true) (Added in the Second 1.0 Update)
-                    "Weather", //Stripped from the replaysummary files
-                    "TotalPlayers", //Stripped from the replaysummary files - Total players in a match
-                    "TotalTeams",//Stripped from the replaysummary files - Total teams in a match
-                    "numberofTeammates",//Stripped from the replaysummary files - teammates in a match
-                    "rank",//Stripped from the replaysummary files - Rank in a match (27)
-                    "replayType",
-                };
-                if (ReplayInfoFile[0] == "")//Some dumb f**king bulls**t playerunkown did, half the replay files are like this
-                {
-                    info[28] = "Second 1.0 Update";
-                    //--------------------------------------------------
-                    //-------------------Length in Ms ------------------
-                    //--------------------------------------------------
-                    string lengthflag = ReplayInfoFile[2].Remove(0, 15);
-                    lengthflag = lengthflag.Remove(lengthflag.Length - 1, 1);
-                    int length = 0;
-                    if (!int.TryParse(lengthflag, out length))
-                    {
-                        MessageBox.Show("Unable to parse LengthInMS!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
-                        Environment.Exit(-1);
-                    }
-                    if (length < 60000)
-                    {
-                        length /= 1000; //miliseconds to seconds
-                        info[0] = length.ToString() + " Secs";
-                    }
-                    else
-                    {
-                        length /= 60000; //miliseconds to mintues
-                        info[0] = length.ToString() + " Mins";
-                    }
-                    //--------------------------------------------------
-                    //-------------------Network Version----------------
-                    //--------------------------------------------------
-                    string networkverflag = ReplayInfoFile[3].Remove(0, 19);
-                    networkverflag = networkverflag.Remove(networkverflag.Length - 1, 1);
-                    info[1] = networkverflag;
-                    //--------------------------------------------------
-                    //-------------------Changelist---------------------
-                    //--------------------------------------------------
-                    string changelistflag = ReplayInfoFile[4].Remove(0, 15);
-                    changelistflag = changelistflag.Remove(changelistflag.Length - 1, 1);
-                    info[2] = changelistflag;
-                    //--------------------------------------------------
-                    //-------------------FriendlyName-------------------
-                    //--------------------------------------------------
-                    string FriendlyNameflag = ReplayInfoFile[5].Remove(0, 18);
-                    FriendlyNameflag = FriendlyNameflag.Remove(FriendlyNameflag.Length - 2, 2);
-                    string[] temp = FriendlyNameflag.Split('.');
-                    info[3] = FriendlyNameflag; //match.bro.official.2017 - test.na.squad.2017.12.05.470ec7f1 - c342 - 46ad - 81c9 - e9117f27b44a
-                    if (temp[2] == "official")
-                    {
-                        info[4] = "Official";//official
-                    }
-                    if (temp[2] == "custom")
-                    {
-                        info[4] = "Custom";//official
-                    }
-                    info[5] = temp[3]; //2017-test
-                    info[6] = temp[4].ToUpper(); //na
-                    info[7] = temp[5]; //sqaud
-                    info[8] = temp[6] + "-" + temp[7] + "-" + temp[8]; //2017.12.05
-                    info[9] = temp[9]; //470ec7f1-c342-46ad-81c9-e9117f27b44a
-                    info[22] = temp[9].Remove(0, 30); //27b44a
-
-                    //--------------------------------------------------
-                    //-------------------DemoFileLastOffset-------------
-                    //--------------------------------------------------
-                    string DemoFileLastOffsetflag = ReplayInfoFile[6].Remove(0, 23);
-                    DemoFileLastOffsetflag = DemoFileLastOffsetflag.Remove(DemoFileLastOffsetflag.Length - 1, 1);
-                    int size = 0;
-                    if (!int.TryParse(DemoFileLastOffsetflag, out size))
-                    {
-                        MessageBox.Show("Unable to parse DemoFileLastOffset!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
-                        Environment.Exit(-1);
-                    }
-                    if (size > 1000000)
-                    {
-                        size /= 1000000;
-                        info[10] = size.ToString() + " MB";
-                    }
-                    else
-                    {
-                        info[10] = size.ToString() + " Bytes";
-                    }
-                    //--------------------------------------------------
-                    //-------------------SizeInBytes--------------------
-                    //--------------------------------------------------
-                    string SizeInBytesflag = ReplayInfoFile[7].Remove(0, 16);
-                    SizeInBytesflag = SizeInBytesflag.Remove(SizeInBytesflag.Length - 1, 1);
-                    info[11] = SizeInBytesflag;
-                    //--------------------------------------------------
-                    //-------------------TimeStamp----------------------
-                    //--------------------------------------------------
-                    string timecreateflag = ReplayInfoFile[8].Remove(0, 14);
-                    timecreateflag = timecreateflag.Remove(timecreateflag.Length - 1, 1);
-                    double time = 0;
-                    if (!double.TryParse(timecreateflag, out time))
-                    {
-                        MessageBox.Show("Unable to parse TimeStamp!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
-                        Environment.Exit(-1);
-                    }
-                    double timestamp = time;
-                    DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                    dateTime = dateTime.AddMilliseconds(timestamp).ToLocalTime();
-                    info[12] = dateTime.ToString();
-                    //--------------------------------------------------
-                    //-------------------isLive-------------------------
-                    //--------------------------------------------------
-                    string isliveflag = ReplayInfoFile[9].Remove(0, 12);
-                    isliveflag = isliveflag.Remove(isliveflag.Length - 1, 1);
-                    info[13] = isliveflag;
-                    //--------------------------------------------------
-                    //-------------------Incomplete---------------------
-                    //--------------------------------------------------
-                    string incompleteflag = ReplayInfoFile[10].Remove(0, 16);
-                    incompleteflag = incompleteflag.Remove(incompleteflag.Length - 1, 1);
-                    info[14] = incompleteflag;
-                    //--------------------------------------------------
-                    //-------------------InServerRecording--------------
-                    //--------------------------------------------------
-                    string InServerRecordingflag = ReplayInfoFile[11].Remove(0, 23);
-                    InServerRecordingflag = InServerRecordingflag.Remove(InServerRecordingflag.Length - 1, 1);
-                    info[15] = InServerRecordingflag;
-                    //--------------------------------------------------
-                    //--------------------Keep--------------------------
-                    //--------------------------------------------------
-                    string keepflag = ReplayInfoFile[12].Remove(0, 16);
-                    keepflag = keepflag.Remove(keepflag.Length - 1, 1);
-                    info[16] = keepflag;
-                    //--------------------------------------------------
-                    //--------------------Mode--------------------------
-                    //--------------------------------------------------
-                    string modeflag = ReplayInfoFile[13].Remove(ReplayInfoFile[13].Length - 2, 2).Remove(0, 10);
-                    if (modeflag == "solo")
-                    {
-                        info[17] = "Solo";
-                    }
-                    else if (modeflag == "solo-fpp")
-                    {
-                        info[17] = "Solo (First person)";
-                    }
-                    else if (modeflag == "duo")
-                    {
-                        info[17] = "Duo";
-                    }
-                    else if (modeflag == "duo-fpp")
-                    {
-                        info[17] = "Duo (First person)";
-                    }
-                    else if (modeflag == "squad")
-                    {
-                        info[17] = "Squad";
-                    }
-                    else if (modeflag == "squad-fpp")
-                    {
-                        info[17] = "Squad (First person)";
-                    }
-                    else
-                    {
-                        info[17] = "Unknown";
-                    }
-                    //--------------------------------------------------
-                    //--------------------RecordUserId------------------
-                    //--------------------------------------------------
-                    string RecordUserIDflag = ReplayInfoFile[14].Remove(0, 18);
-                    RecordUserIDflag = RecordUserIDflag.Remove(RecordUserIDflag.Length - 2, 2);
-                    if (RecordUserIDflag.Contains("765611"))
-                    {
-                        info[18] = RecordUserIDflag;
-                    }
-                    else
-                    {
-                        info[18] = "[User ID is not supported in this replay]";
-                    }
-                    //--------------------------------------------------
-                    //--------------------RecordUserNickName------------------
-                    //--------------------------------------------------
-                    string RecordUserNickNameflag = ReplayInfoFile[15].Remove(0, 24);
-                    RecordUserNickNameflag = RecordUserNickNameflag.Remove(RecordUserNickNameflag.Length - 2, 2);
-                    info[19] = RecordUserNickNameflag;
-                    //--------------------------------------------------
-                    //--------------------MapName------------------
-                    //--------------------------------------------------
-                    string MapNameflag = ReplayInfoFile[16].Remove(ReplayInfoFile[16].Length - 1, 1).Remove(0, 13);
-                    if (MapNameflag == "Erangel_Main")
-                    {
-                        info[20] = "Erangel";
-                    }
-                    else
-                    {
-                        info[20] = "Miramar";
-                    }
-                    //--------------------------------------------------
-                    //--------------------FolderSize--------------------
-                    //--------------------------------------------------
-                    double dirsize = GetDirectorySize(replayloc + "\\" + replayList.SelectedItem + "\\");
-                    if (dirsize < 1048576)
-                    {
-                        info[21] = Math.Truncate(dirsize).ToString() + " Bytes";
-                    }
-                    else
-                    {
-                        dirsize /= 1048576;
-                        info[21] = Math.Truncate(dirsize).ToString() + " MB";
-                    }
-                    //--------------------------------------------------
-                    //--------------------AllDeadOrWin------------------
-                    //--------------------------------------------------
-                    if (ReplayInfoFile.Length >= 18)
-                    {
-                        string AllDeadOrWin = ReplayInfoFile[17].Remove(0, 18);
-                        info[23] = AllDeadOrWin;
-                    }
-                    else
-                    {
-                        info[23] = "false";
-                    }
-                }
-                else
-                {
-                    info[28] = "Pre Second 1.0 Update";
-                    //--------------------------------------------------
-                    //-------------------Length in Ms ------------------
-                    //--------------------------------------------------
-                    string lengthflag = ReplayInfoFile[1].Remove(0, 15);
-                    lengthflag = lengthflag.Remove(lengthflag.Length - 1, 1);
-                    int length = 0;
-                    if (!int.TryParse(lengthflag, out length))
-                    {
-                        MessageBox.Show("Unable to parse LengthInMS!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
-                        Environment.Exit(-1);
-                    }
-                    if (length < 60000)
-                    {
-                        length /= 1000; //miliseconds to seconds
-                        info[0] = length.ToString() + " Secs";
-                    }
-                    else
-                    {
-                        length /= 60000; //miliseconds to mintues
-                        info[0] = length.ToString() + " Mins";
-                    }
-                    //--------------------------------------------------
-                    //-------------------Network Version----------------
-                    //--------------------------------------------------
-                    string networkverflag = ReplayInfoFile[2].Remove(0, 19);
-                    networkverflag = networkverflag.Remove(networkverflag.Length - 1, 1);
-                    info[1] = networkverflag;
-                    //--------------------------------------------------
-                    //-------------------Changelist---------------------
-                    //--------------------------------------------------
-                    string changelistflag = ReplayInfoFile[3].Remove(0, 15);
-                    changelistflag = changelistflag.Remove(changelistflag.Length - 1, 1);
-                    info[2] = changelistflag;
-                    //--------------------------------------------------
-                    //-------------------FriendlyName-------------------
-                    //--------------------------------------------------
-                    string FriendlyNameflag = ReplayInfoFile[4].Remove(0, 18);
-                    FriendlyNameflag = FriendlyNameflag.Remove(FriendlyNameflag.Length - 2, 2);
-                    string[] temp = FriendlyNameflag.Split('.');
-                    info[3] = FriendlyNameflag; //match.bro.official.2017 - test.na.squad.2017.12.05.470ec7f1 - c342 - 46ad - 81c9 - e9117f27b44a
-                    if (temp[2] == "official")
-                    {
-                        info[4] = "Official";//official
-                    }
-                    if (temp[2] == "custom")
-                    {
-                        info[4] = "Custom";//official
-                    }
-                    info[5] = temp[3]; //2017-test
-                    info[6] = temp[4].ToUpper(); //na
-                    info[7] = temp[5]; //sqaud
-                    info[8] = temp[6] + "-" + temp[7] + "-" + temp[8]; //2017.12.05
-                    info[9] = temp[9]; //470ec7f1-c342-46ad-81c9-e9117f27b44a
-                    info[22] = temp[9].Remove(0, 30); //27b44a
-
-                    //--------------------------------------------------
-                    //-------------------DemoFileLastOffset-------------
-                    //--------------------------------------------------
-                    string DemoFileLastOffsetflag = ReplayInfoFile[5].Remove(0, 23);
-                    DemoFileLastOffsetflag = DemoFileLastOffsetflag.Remove(DemoFileLastOffsetflag.Length - 1, 1);
-                    int size = 0;
-                    if (!int.TryParse(DemoFileLastOffsetflag, out size))
-                    {
-                        MessageBox.Show("Unable to parse DemoFileLastOffset!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
-                        Environment.Exit(-1);
-                    }
-                    if (size > 1000000)
-                    {
-                        size /= 1000000;
-                        info[10] = size.ToString() + " MB";
-                    }
-                    else
-                    {
-                        info[10] = size.ToString() + " Bytes";
-                    }
-                    //--------------------------------------------------
-                    //-------------------SizeInBytes--------------------
-                    //--------------------------------------------------
-                    string SizeInBytesflag = ReplayInfoFile[6].Remove(0, 16);
-                    SizeInBytesflag = SizeInBytesflag.Remove(SizeInBytesflag.Length - 1, 1);
-                    info[11] = SizeInBytesflag;
-                    //--------------------------------------------------
-                    //-------------------TimeStamp----------------------
-                    //--------------------------------------------------
-                    string timecreateflag = ReplayInfoFile[7].Remove(0, 14);
-                    timecreateflag = timecreateflag.Remove(timecreateflag.Length - 1, 1);
-                    double time = 0;
-                    if (!double.TryParse(timecreateflag, out time))
-                    {
-                        MessageBox.Show("Unable to parse TimeStamp!" + Environment.NewLine + prog_name + " will now exit!", "Serious Error!");
-                        Environment.Exit(-1);
-                    }
-                    double timestamp = time;
-                    DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-                    dateTime = dateTime.AddMilliseconds(timestamp).ToLocalTime();
-                    info[12] = dateTime.ToString();
-                    //--------------------------------------------------
-                    //-------------------isLive-------------------------
-                    //--------------------------------------------------
-                    string isliveflag = ReplayInfoFile[8].Remove(0, 12);
-                    isliveflag = isliveflag.Remove(isliveflag.Length - 1, 1);
-                    info[13] = isliveflag;
-                    //--------------------------------------------------
-                    //-------------------Incomplete---------------------
-                    //--------------------------------------------------
-                    string incompleteflag = ReplayInfoFile[9].Remove(0, 16);
-                    incompleteflag = incompleteflag.Remove(incompleteflag.Length - 1, 1);
-                    info[14] = incompleteflag;
-                    //--------------------------------------------------
-                    //-------------------InServerRecording--------------
-                    //--------------------------------------------------
-                    string InServerRecordingflag = ReplayInfoFile[10].Remove(0, 23);
-                    InServerRecordingflag = InServerRecordingflag.Remove(InServerRecordingflag.Length - 1, 1);
-                    info[15] = InServerRecordingflag;
-                    //--------------------------------------------------
-                    //--------------------Keep--------------------------
-                    //--------------------------------------------------
-                    string keepflag = ReplayInfoFile[11].Remove(0, 16);
-                    keepflag = keepflag.Remove(keepflag.Length - 1, 1);
-                    info[16] = keepflag;
-                    //--------------------------------------------------
-                    //--------------------Mode--------------------------
-                    //--------------------------------------------------
-                    string modeflag = ReplayInfoFile[12].Remove(ReplayInfoFile[12].Length - 2, 2).Remove(0, 10);
-                    if (modeflag == "solo")
-                    {
-                        info[17] = "Solo";
-                    }
-                    else if (modeflag == "solo-fpp")
-                    {
-                        info[17] = "Solo (First person)";
-                    }
-                    else if (modeflag == "duo")
-                    {
-                        info[17] = "Duo";
-                    }
-                    else if (modeflag == "duo-fpp")
-                    {
-                        info[17] = "Duo (First person)";
-                    }
-                    else if (modeflag == "squad")
-                    {
-                        info[17] = "Squad";
-                    }
-                    else if (modeflag == "squad-fpp")
-                    {
-                        info[17] = "Squad (First person)";
-                    }
-                    else
-                    {
-                        info[17] = "Unknown";
-                    }
-                    //--------------------------------------------------
-                    //--------------------RecordUserId------------------
-                    //--------------------------------------------------
-                    string RecordUserIDflag = ReplayInfoFile[13].Remove(0, 18);
-                    RecordUserIDflag = RecordUserIDflag.Remove(RecordUserIDflag.Length - 2, 2);
-                    if (RecordUserIDflag.Contains("765611"))
-                    {
-                        info[18] = RecordUserIDflag;
-                    }
-                    else
-                    {
-                        info[18] = "[User ID is not supported in this replay]";
-                    }
-                    //--------------------------------------------------
-                    //--------------------RecordUserNickName------------------
-                    //--------------------------------------------------
-                    string RecordUserNickNameflag = ReplayInfoFile[14].Remove(0, 24);
-                    RecordUserNickNameflag = RecordUserNickNameflag.Remove(RecordUserNickNameflag.Length - 2, 2);
-                    info[19] = RecordUserNickNameflag;
-                    //--------------------------------------------------
-                    //--------------------MapName------------------
-                    //--------------------------------------------------
-                    string MapNameflag = ReplayInfoFile[15].Remove(ReplayInfoFile[15].Length - 1, 1).Remove(0, 13);
-                    MapNameflag = MapNameflag.Remove(MapNameflag.Length - 1, 1);
-                    if (MapNameflag == "Erangel_Main")
-                    {
-                        info[20] = "Erangel";
-                    }
-                    else
-                    {
-                        info[20] = "Miramar";
-                    }
-                    //--------------------------------------------------
-                    //--------------------FolderSize--------------------
-                    //--------------------------------------------------
-                    double dirsize = GetDirectorySize(replayloc + "\\" + replayList.SelectedItem + "\\");
-                    if (dirsize < 1048576)
-                    {
-                        info[21] = Math.Truncate(dirsize).ToString() + " Bytes";
-                    }
-                    else
-                    {
-                        dirsize /= 1048576;
-                        info[21] = Math.Truncate(dirsize).ToString() + " MB";
-                    }
-                    //--------------------------------------------------
-                    //--------------------AllDeadOrWin------------------
-                    //--------------------------------------------------
-                    if (ReplayInfoFile.Length >= 18)
-                    {
-                        string AllDeadOrWin = ReplayInfoFile[16].Remove(0, 18);
-                        info[23] = AllDeadOrWin;
-                    }
-                    else
-                    {
-                        info[23] = "false";
-                    }
-
-                }
-                List<string> replaySummaryList = new List<string>();
-                foreach (string replay in Directory.GetFiles(directory_of_recording + "\\data"))
-                {
-                    if (replay.Contains("ReplaySummary"))
-                    {
-                        replaySummaryList.Add(replay);
-                    }
-                }
-                replaySummaryList.Reverse();
-                JObject testJSON = JObject.Parse(CaesarCipher(File.ReadAllLines(replaySummaryList.ToArray()[0])[0], +1).Remove(0, 2));
-                //--------------------------------------------------
-                //--------------------Weather------------------------
-                //--------------------------------------------------
-                if (testJSON["weatherName"].ToString() == "Weather_Clear_02")
-                {
-                    info[24] = "Sunny Clear";
-                }
-                else if(testJSON["weatherName"].ToString() == "Weather_Desert_Sunrise")
-                {
-                    info[24] = "Sunrise";
-                }
-                else if(testJSON["weatherName"].ToString() == "Weather_Desert_Clear")
-                {
-                    info[24] = "Sunny";
-                }
-                else if (testJSON["weatherName"].ToString() == "Weather_Clear")
-                {
-                    info[24] = "Sunny";
-                }
-                else if (testJSON["weatherName"].ToString() == "Weather_Dark")
-                {
-                    info[24] = "Sunset";
-                }
-                else
-                {
-                    info[24] = testJSON["weatherName"].ToString();
-                }
-                //--------------------------------------------------
-                //--------------------Number of players------------------------
-                //--------------------------------------------------
-                info[25] = testJSON["numPlayers"].ToString();
-                //--------------------------------------------------
-                //--------------------Number of teams------------------------
-                //--------------------------------------------------
-                info[26] = testJSON["numTeams"].ToString();
-                info_teammate_1[0] = testJSON["playerStateSummaries"][0]["uniqueId"].ToString();
-                info_teammate_1[1] = testJSON["playerStateSummaries"][0]["playerName"].ToString();
-                info_teammate_1[2] = testJSON["playerStateSummaries"][0]["teamNumber"].ToString();
-                info_teammate_1[3] = testJSON["playerStateSummaries"][0]["ranking"].ToString();
-                info[27] = testJSON["playerStateSummaries"][0]["ranking"].ToString();
-                info_teammate_1[4] = testJSON["playerStateSummaries"][0]["headShots"].ToString();
-                info_teammate_1[5] = testJSON["playerStateSummaries"][0]["numKills"].ToString();
-                info_teammate_1[6] = testJSON["playerStateSummaries"][0]["totalGivenDamages"].ToString();
-                info_teammate_1[7] = testJSON["playerStateSummaries"][0]["longestDistanceKill"].ToString();
-                info_teammate_1[8] = testJSON["playerStateSummaries"][0]["totalMovedDistanceMeter"].ToString();
-                try
-                {
-                    info_teammate_2[0] = testJSON["playerStateSummaries"][1]["uniqueId"].ToString();
-                    info_teammate_2[1] = testJSON["playerStateSummaries"][1]["playerName"].ToString();
-                    info_teammate_2[2] = testJSON["playerStateSummaries"][1]["teamNumber"].ToString();
-                    info_teammate_2[3] = testJSON["playerStateSummaries"][1]["ranking"].ToString();
-                    info_teammate_2[4] = testJSON["playerStateSummaries"][1]["headShots"].ToString();
-                    info_teammate_2[5] = testJSON["playerStateSummaries"][1]["numKills"].ToString();
-                    info_teammate_2[6] = testJSON["playerStateSummaries"][1]["totalGivenDamages"].ToString();
-                    info_teammate_2[7] = testJSON["playerStateSummaries"][1]["longestDistanceKill"].ToString();
-                    info_teammate_2[8] = testJSON["playerStateSummaries"][1]["totalMovedDistanceMeter"].ToString();
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    info_teammate_2[0] = "[unknown]";
-                    info_teammate_2[1] = "[unknown]";
-                    info_teammate_2[2] = "[unknown]";
-                    info_teammate_2[3] = "[unknown]";
-                    info_teammate_2[4] = "[unknown]";
-                    info_teammate_2[5] = "[unknown]";
-                    info_teammate_2[6] = "[unknown]";
-                    info_teammate_2[7] = "[unknown]";
-                    info_teammate_2[8] = "[unknown]";
-                    foreach (string obj in info)
-                    {
-                        Console.WriteLine(obj);
-                    }
-                    return info;
-                }
-                try
-                {
-                    info_teammate_3[0] = testJSON["playerStateSummaries"][2]["uniqueId"].ToString();
-                    info_teammate_3[1] = testJSON["playerStateSummaries"][2]["playerName"].ToString();
-                    info_teammate_3[2] = testJSON["playerStateSummaries"][2]["teamNumber"].ToString();
-                    info_teammate_3[3] = testJSON["playerStateSummaries"][2]["ranking"].ToString();
-                    info_teammate_3[4] = testJSON["playerStateSummaries"][2]["headShots"].ToString();
-                    info_teammate_3[5] = testJSON["playerStateSummaries"][2]["numKills"].ToString();
-                    info_teammate_3[6] = testJSON["playerStateSummaries"][2]["totalGivenDamages"].ToString();
-                    info_teammate_3[7] = testJSON["playerStateSummaries"][2]["longestDistanceKill"].ToString();
-                    info_teammate_3[8] = testJSON["playerStateSummaries"][2]["totalMovedDistanceMeter"].ToString();
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    info_teammate_3[0] = "[unknown]";
-                    info_teammate_3[1] = "[unknown]";
-                    info_teammate_3[2] = "[unknown]";
-                    info_teammate_3[3] = "[unknown]";
-                    info_teammate_3[4] = "[unknown]";
-                    info_teammate_3[5] = "[unknown]";
-                    info_teammate_3[6] = "[unknown]";
-                    info_teammate_3[7] = "[unknown]";
-                    info_teammate_3[8] = "[unknown]";
-                    foreach (string obj in info)
-                    {
-                        Console.WriteLine(obj);
-                    }
-                    return info;
-                }
-                try
-                {
-                    info_teammate_4[0] = testJSON["playerStateSummaries"][3]["uniqueId"].ToString();
-                    info_teammate_4[1] = testJSON["playerStateSummaries"][3]["playerName"].ToString();
-                    info_teammate_4[2] = testJSON["playerStateSummaries"][3]["teamNumber"].ToString();
-                    info_teammate_4[3] = testJSON["playerStateSummaries"][3]["ranking"].ToString();
-                    info_teammate_4[4] = testJSON["playerStateSummaries"][3]["headShots"].ToString();
-                    info_teammate_4[5] = testJSON["playerStateSummaries"][3]["numKills"].ToString();
-                    info_teammate_4[6] = testJSON["playerStateSummaries"][3]["totalGivenDamages"].ToString();
-                    info_teammate_4[7] = testJSON["playerStateSummaries"][3]["longestDistanceKill"].ToString();
-                    info_teammate_4[8] = testJSON["playerStateSummaries"][3]["totalMovedDistanceMeter"].ToString();
-                }
-                catch (ArgumentOutOfRangeException)
-                {
-                    info_teammate_4[0] = "[unknown]";
-                    info_teammate_4[1] = "[unknown]";
-                    info_teammate_4[2] = "[unknown]";
-                    info_teammate_4[3] = "[unknown]";
-                    info_teammate_4[4] = "[unknown]";
-                    info_teammate_4[5] = "[unknown]";
-                    info_teammate_4[6] = "[unknown]";
-                    info_teammate_4[7] = "[unknown]";
-                    info_teammate_4[8] = "[unknown]";
-                    foreach (string obj in info)
-                    {
-                        Console.WriteLine(obj);
-                    }
-                    return info;
-                }
-                foreach (string obj in info)
-                {
-                    Console.WriteLine(obj);
-                }
-                return info;
+                ReplayFile.RemoveAt(0);//Remove it so it's proper JSON
             }
-            MessageBox.Show("PUBG.replayinfo for this recording was not found!" + Environment.NewLine + "Recording may be corrupt!", "Waring!");
+            if (ReplayFile.ToArray()[0].Contains("{"))
+            {
+                ReplayFile.RemoveAt(0);//Remove it so it's proper JSON
+                ReplayFile.Insert(0, "{");
+            }
+            if (ReplayFile.ToArray()[ReplayFile.Count-1].Contains("}"))
+            {
+                ReplayFile.RemoveAt(ReplayFile.Count-1);//Remove it so it's proper JSON
+                ReplayFile.Insert(ReplayFile.Count, "}");
+            }
+            foreach (var item in ReplayFile)
+            {
+                Console.WriteLine(item);
+            }
+            JObject NRIF;
+            string nrif = string.Join("\r\n", ReplayFile.ToArray());
+            try
+            {
+                NRIF = JObject.Parse(nrif);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return NRIF;
+        }
+        private JObject DecryptReplaySummaryFile(string directory_of_recording)
+        {
+            List<string> replaySummaryList = new List<string>();
+            foreach (string replay in Directory.GetFiles(directory_of_recording + "\\data"))
+            {
+                if (replay.Contains("ReplaySummary"))
+                {
+                    replaySummaryList.Add(replay);
+                }
+            }
+            replaySummaryList.Reverse();
+            return JObject.Parse(CaesarCipher(File.ReadAllLines(replaySummaryList.ToArray()[0])[0], +1).Remove(0, 2));
+        }
+        private ArrayList ReadReplayInfo(string directory_of_recording)
+        {
+            ArrayList ReplayInfo = new ArrayList();
+            JObject NormalizedReplayInfoFile = NormalizeReplayInfoFile(directory_of_recording);
+            JObject DecryptedReplaySummaryFile = DecryptReplaySummaryFile(directory_of_recording);
 
-            return placeholder;
+            ReplayInfo.Add((int)NormalizedReplayInfoFile["LengthInMS"]); //Length of the recording in miliseconds
+            int temp0 = (int)NormalizedReplayInfoFile["LengthInMS"];
+            if (temp0 < 60000)
+            {
+                temp0 /= 1000; //milliseconds to seconds
+                ReplayInfo.Add(temp0.ToString() + " Sec.");
+            }
+            else
+            {
+                temp0 /= 60000; //milliseconds to minutes
+                ReplayInfo.Add(temp0.ToString() + " Min.");
+            }
+            ReplayInfo.Add((int)NormalizedReplayInfoFile["NetworkVersion"]); //The verison of the netcode used by PUBG (It's been 720898 since Dec. 25 2017)
+            ReplayInfo.Add((int)NormalizedReplayInfoFile["Changelist"]); //Unknown - Has never changed since Dec. 25 2017
+            ReplayInfo.Add((string)NormalizedReplayInfoFile["FriendlyName"]); //A long string used to quickly identify matches
+            string FriendlyName = (string)NormalizedReplayInfoFile["FriendlyName"];
+            string[] temp1 = FriendlyName.Split('.');
+            //FriendlyName example
+            //match.bro.official.2018-01.na.solo.4018.01.31.e67b52af-f562-47b9-8f94-59c7a2da8195
+            ReplayInfo.Add(temp1[2]);//Marks this is a official match - official
+            if (temp1[2] == "official")
+            {
+                ReplayInfo.Add("Official");//official
+            }
+            ReplayInfo.Add(temp1[3]); //Marks the update - 2018-01
+            ReplayInfo.Add(temp1[4]); //Marks the region - na
+            ReplayInfo.Add(temp1[4].ToUpper());
+            ReplayInfo.Add(temp1[5]); //Marks the gamemode - solo
+            ReplayInfo.Add(temp1[6] + "-" + temp1[7] + "-" + temp1[8]); //Marks the date - 4018.01.31 (Guess we're 2000 years in the future
+            ReplayInfo.Add(temp1[9]); //added the raw UUID for fun - 470ec7f1-c342-46ad-81c9-e9117f27b44a
+            ReplayInfo.Add(temp1[9].Remove(0, temp1[9].Length - 6)); //27b44a
+            ReplayInfo.Add((ulong)NormalizedReplayInfoFile["DemoFileLastOffset"]); //The file size (in bytes)
+            ulong temp2 = (ulong)NormalizedReplayInfoFile["DemoFileLastOffset"];
+            if (temp2 > 1000000)
+            {
+                temp2 /= 1000000;
+                ReplayInfo.Add(temp2.ToString() + " MB");
+            }
+            else
+            {
+                ReplayInfo.Add(temp2.ToString() + " Bytes");
+            }
+            ReplayInfo.Add((int)NormalizedReplayInfoFile["SizeInBytes"]);//Unknown - is always zero
+            ReplayInfo.Add((double)NormalizedReplayInfoFile["Timestamp"]);//Timestamp in unix time of when it was recorded
+            DateTime dateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            dateTime = dateTime.AddMilliseconds((double)NormalizedReplayInfoFile["Timestamp"]).ToLocalTime();
+            ReplayInfo.Add(dateTime);
+            ReplayInfo.Add(dateTime.ToString());
+            ReplayInfo.Add((bool)NormalizedReplayInfoFile["bIsLive"]);//Unknown - is always true
+            ReplayInfo.Add((bool)NormalizedReplayInfoFile["bIncomplete"]);//Unknown - is always true
+            ReplayInfo.Add((bool)NormalizedReplayInfoFile["bIsServerRecording"]);//Heavy possibly the server also records a copy of the entire match
+            ReplayInfo.Add((bool)NormalizedReplayInfoFile["bShouldKeep"]);//True = Pubg won't delete the file for a new one and it prevents the user from deleting it to
+            ReplayInfo.Add((string)NormalizedReplayInfoFile["Mode"]);//Solo, Duo, Squad (and ffp)
+            string modeflag = (string)NormalizedReplayInfoFile["Mode"];
+            if (modeflag == "solo")
+            {
+                ReplayInfo.Add("Solo");
+            }
+            else if (modeflag == "solo-fpp")
+            {
+                ReplayInfo.Add("Solo (First person)");
+            }
+            else if (modeflag == "duo")
+            {
+                ReplayInfo.Add("Duo");
+            }
+            else if (modeflag == "duo-fpp")
+            {
+                ReplayInfo.Add("Duo (First person)");
+            }
+            else if (modeflag == "squad")
+            {
+                ReplayInfo.Add("Squad");
+            }
+            else if (modeflag == "squad-fpp")
+            {
+                ReplayInfo.Add("Squad (First person)");
+            }
+            else
+            {
+                ReplayInfo.Add("Unknown");
+            }
+            ReplayInfo.Add((string)NormalizedReplayInfoFile["RecordUserId"]);//Past replays have the Steam64 ID but newer replays have a UUID of some kind
+            if (NormalizedReplayInfoFile["RecordUserId"].ToString().Contains("765611"))
+            {
+                ReplayInfo.Add((ulong)NormalizedReplayInfoFile["RecordUserId"]);
+            }
+            ReplayInfo.Add((string)NormalizedReplayInfoFile["RecordUserNickName"]);//Solo, Duo, Squad (and ffp)
+            ReplayInfo.Add((string)NormalizedReplayInfoFile["MapName"]);//Desert_Main (Miramar) or Erangel_Main (Erangel)
+            if ((string)NormalizedReplayInfoFile["MapName"] == "Erangel_Main")
+            {
+                ReplayInfo.Add("Erangel");
+            }
+            else if ((string)NormalizedReplayInfoFile["MapName"] == "Desert_Main")
+            {
+                ReplayInfo.Add("Miramar");
+            }
+            else
+            {
+                ReplayInfo.Add("Unknown");
+            }
+            try
+            {
+                ReplayInfo.Add((bool)NormalizedReplayInfoFile["bAllDeadOrWin"]);//Unknown - is always true
+            }
+            catch (Exception)
+            {
+                ReplayInfo.Add(true);
+            }
+            double dirsize = GetDirectorySize(replayloc + "\\" + replayList.SelectedItem + "\\");
+            if (dirsize < 1048576)
+            {
+                ReplayInfo.Add(Math.Truncate(dirsize).ToString() + " Bytes");
+            }
+            else
+            {
+                dirsize /= 1048576;
+                ReplayInfo.Add(Math.Truncate(dirsize).ToString() + " MB");
+            }
+            if (DecryptedReplaySummaryFile["weatherName"].ToString() == "Weather_Clear_02")
+            {
+                ReplayInfo.Add("Sunny Clear");
+            }
+            else if (DecryptedReplaySummaryFile["weatherName"].ToString() == "Weather_Desert_Sunrise")
+            {
+                ReplayInfo.Add("Sunrise");
+            }
+            else if (DecryptedReplaySummaryFile["weatherName"].ToString() == "Weather_Desert_Clear")
+            {
+                ReplayInfo.Add("Sunny");
+            }
+            else if (DecryptedReplaySummaryFile["weatherName"].ToString() == "Weather_Clear")
+            {
+                ReplayInfo.Add("Sunny");
+            }
+            else if (DecryptedReplaySummaryFile["weatherName"].ToString() == "Weather_Dark")
+            {
+                ReplayInfo.Add("Sunset");
+            }
+            else
+            {
+                ReplayInfo.Add(DecryptedReplaySummaryFile["weatherName"].ToString());
+            }
+            ReplayInfo.Add((int)DecryptedReplaySummaryFile["numPlayers"]);
+            ReplayInfo.Add((int)DecryptedReplaySummaryFile["numTeams"]);
+            for (int i = 0; i < 4; i++)
+            {
+                try
+                {
+                    ReplayInfo.Add((ulong)DecryptedReplaySummaryFile["playerStateSummaries"][i]["uniqueId"]);
+                    ReplayInfo.Add((string)DecryptedReplaySummaryFile["playerStateSummaries"][i]["playerName"]);
+                    ReplayInfo.Add((int)DecryptedReplaySummaryFile["playerStateSummaries"][i]["teamNumber"]);
+                    ReplayInfo.Add((int)DecryptedReplaySummaryFile["playerStateSummaries"][i]["ranking"]);
+                    ReplayInfo.Add((int)DecryptedReplaySummaryFile["playerStateSummaries"][i]["headShots"]);
+                    ReplayInfo.Add((int)DecryptedReplaySummaryFile["playerStateSummaries"][i]["numKills"]);
+
+                    ReplayInfo.Add((float)DecryptedReplaySummaryFile["playerStateSummaries"][i]["totalGivenDamages"]);
+                    decimal orgDmg = (decimal)DecryptedReplaySummaryFile["playerStateSummaries"][i]["totalGivenDamages"];
+                    ReplayInfo.Add(Decimal.Round(orgDmg, 2));
+
+                    ReplayInfo.Add((float)DecryptedReplaySummaryFile["playerStateSummaries"][i]["longestDistanceKill"]);//recorded in centimeters
+                    decimal orgInCentimeters = (decimal)DecryptedReplaySummaryFile["playerStateSummaries"][i]["longestDistanceKill"];
+                    ReplayInfo.Add(Decimal.Round((orgInCentimeters / 100),2).ToString()+" m");
+
+                    ReplayInfo.Add((float)DecryptedReplaySummaryFile["playerStateSummaries"][i]["totalMovedDistanceMeter"]);
+                    decimal orgDisc = (decimal)DecryptedReplaySummaryFile["playerStateSummaries"][i]["totalMovedDistanceMeter"];
+                    if (orgDisc > 1000)
+                    {
+                        ReplayInfo.Add(Decimal.Round((orgDisc / 1000), 2).ToString() + " km");
+                    }
+                    else
+                    {
+                        ReplayInfo.Add(Decimal.Round(orgDisc, 2).ToString() + " m");
+                    }
+                }
+                catch (Exception)
+                {
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                    ReplayInfo.Add("[unknown]");
+                }
+            }
+            return ReplayInfo;
         }
 
         private void zipReplay_Click(object sender, EventArgs e)
