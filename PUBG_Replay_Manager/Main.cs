@@ -110,6 +110,7 @@ namespace PUBG_Replay_Manager
             for (int i = 35; i < newInfo.Count; i++)
             {
                 Console.WriteLine("Checking " + i);
+                //if (newInfo[i].ToString().Contains("765611") && !(newInfo[i + 1].ToString().Contains("765611") || newInfo[i + 1].ToString().Contains("unknown")))
                 if (newInfo[i].ToString().Contains("765611"))
                 {
                     Console.WriteLine("Line " + i + " has one!");
@@ -125,10 +126,16 @@ namespace PUBG_Replay_Manager
                         tm1_steamid_l.Visible = true;
                         tm1_headshots_l.Visible = true;
                         tm1_kills_l.Visible = true;
+                        tm1_killer_pubgname.Visible = true;
+                        tm1_killer_pubgname_l.Visible = true;
+                        tm1_killer_steamid.Visible = true;
+                        tm1_killer_steamid_l.Visible = true;
                         tm1_pubgname.Text = newInfo[i + 1].ToString();
                         tm1_steamid.Text = newInfo[i].ToString();
                         tm1_headshots.Text = newInfo[i + 4].ToString();
                         tm1_kills.Text = newInfo[i + 5].ToString();
+                        //tm1_killer_pubgname.Text = newInfo[i + 12].ToString();
+                        //tm1_killer_steamid.Text = newInfo[i + 13].ToString();
                     }
                     else if (z < 1)
                     {
@@ -141,6 +148,10 @@ namespace PUBG_Replay_Manager
                         tm1_steamid_l.Visible = false;
                         tm1_headshots_l.Visible = false;
                         tm1_kills_l.Visible = false;
+                        tm1_killer_pubgname.Visible = false;
+                        tm1_killer_pubgname_l.Visible = false;
+                        tm1_killer_steamid.Visible = false;
+                        tm1_killer_steamid_l.Visible = false;
                     }
                     if (z == 2)
                     {
@@ -153,10 +164,16 @@ namespace PUBG_Replay_Manager
                         tm2_steamid_l.Visible = true;
                         tm2_headshots_l.Visible = true;
                         tm2_kills_l.Visible = true;
+                        tm2_killer_pubgname.Visible = true;
+                        tm2_killer_pubgname_l.Visible = true;
+                        tm2_killer_steamid.Visible = true;
+                        tm2_killer_steamid_l.Visible = true;
                         tm2_pubgname.Text = newInfo[i + 1].ToString();
                         tm2_steamid.Text = newInfo[i].ToString();
                         tm2_headshots.Text = newInfo[i + 4].ToString();
                         tm2_kills.Text = newInfo[i + 5].ToString();
+                        //tm2_killer_pubgname.Text = newInfo[i + 12].ToString();
+                        //tm2_killer_steamid.Text = newInfo[i + 13].ToString();
                     }
                     else if (z < 2)
                     {
@@ -169,6 +186,10 @@ namespace PUBG_Replay_Manager
                         tm2_steamid_l.Visible = false;
                         tm2_headshots_l.Visible = false;
                         tm2_kills_l.Visible = false;
+                        tm2_killer_pubgname.Visible = false;
+                        tm2_killer_pubgname_l.Visible = false;
+                        tm2_killer_steamid.Visible = false;
+                        tm2_killer_steamid_l.Visible = false;
                     }
                     if (z == 3)
                     {
@@ -181,10 +202,16 @@ namespace PUBG_Replay_Manager
                         tm3_steamid_l.Visible = true;
                         tm3_headshots_l.Visible = true;
                         tm3_kills_l.Visible = true;
+                        tm3_killer_pubgname.Visible = true;
+                        tm3_killer_pubgname_l.Visible = true;
+                        tm3_killer_steamid.Visible = true;
+                        tm3_killer_steamid_l.Visible = true;
                         tm3_pubgname.Text = newInfo[i + 1].ToString();
                         tm3_steamid.Text = newInfo[i].ToString();
                         tm3_headshots.Text = newInfo[i + 4].ToString();
                         tm3_kills.Text = newInfo[i + 5].ToString();
+                        //tm3_killer_pubgname.Text = newInfo[i + 12].ToString();
+                        //tm3_killer_steamid.Text = newInfo[i + 13].ToString();
                     }
                     else if (z < 3)
                     {
@@ -197,6 +224,10 @@ namespace PUBG_Replay_Manager
                         tm3_steamid_l.Visible = false;
                         tm3_headshots_l.Visible = false;
                         tm3_kills_l.Visible = false;
+                        tm3_killer_pubgname.Visible = false;
+                        tm3_killer_pubgname_l.Visible = false;
+                        tm3_killer_steamid.Visible = false;
+                        tm3_killer_steamid_l.Visible = false;
                     }
                     if (z == 4)
                     {
@@ -209,10 +240,16 @@ namespace PUBG_Replay_Manager
                         tm4_steamid_l.Visible = true;
                         tm4_headshots_l.Visible = true;
                         tm4_kills_l.Visible = true;
+                        tm4_killer_pubgname.Visible = true;
+                        tm4_killer_pubgname_l.Visible = true;
+                        tm4_killer_steamid.Visible = true;
+                        tm4_killer_steamid_l.Visible = true;
                         tm4_pubgname.Text = newInfo[i + 1].ToString();
                         tm4_steamid.Text = newInfo[i].ToString();
                         tm4_headshots.Text = newInfo[i + 4].ToString();
                         tm4_kills.Text = newInfo[i + 5].ToString();
+                        //tm4_killer_pubgname.Text = newInfo[i + 12].ToString();
+                        //tm4_killer_steamid.Text = newInfo[i + 13].ToString();
                     }
                     else if (z < 4)
                     {
@@ -225,6 +262,10 @@ namespace PUBG_Replay_Manager
                         tm4_steamid_l.Visible = false;
                         tm4_headshots_l.Visible = false;
                         tm4_kills_l.Visible = false;
+                        tm4_killer_pubgname.Visible = false;
+                        tm4_killer_pubgname_l.Visible = false;
+                        tm4_killer_steamid.Visible = false;
+                        tm4_killer_steamid_l.Visible = false;
                     }
                 }
             }
@@ -318,12 +359,55 @@ namespace PUBG_Replay_Manager
             replaySummaryList.Reverse();
             return JObject.Parse(CaesarCipher(File.ReadAllLines(replaySummaryList.ToArray()[0])[0], +1).Remove(0, 2));
         }
+        private JObject DecryptDBNOorKillFile(string path_to_file)
+        {
+            return JObject.Parse(CaesarCipher(File.ReadAllText(path_to_file), +1).Remove(0, 1));
+        }
+        private string[] DecryptGroggyFiles(string directory_of_recording)
+        {
+            List<string> dbnoList = new List<string>();
+            foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
+            {
+                if (file.Contains("groggy"))
+                {
+                     JObject groggyfile = DecryptDBNOorKillFile(file);
+                     dbnoList.Add((string)groggyfile["instigatorNetId"]);
+                     dbnoList.Add((string)groggyfile["instigatorName"]);
+                     dbnoList.Add((string)groggyfile["victimNetId"]);
+                     dbnoList.Add((string)groggyfile["victimName"]);
+                }
+            }
+            foreach (var item in dbnoList.ToArray())
+            {
+                Console.WriteLine(item);
+            }
+            return dbnoList.ToArray();
+        }
+        private string[] DecryptKillFiles(string directory_of_recording)
+        {
+            List<string> killList = new List<string>();
+            foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
+            {
+                if (file.Contains("kill"))
+                {
+                    JObject groggyfile = DecryptDBNOorKillFile(file);
+                    killList.Add((string)groggyfile["killerNetId"]);
+                    killList.Add((string)groggyfile["killerName"]);
+                    killList.Add((string)groggyfile["victimNetId"]);
+                    killList.Add((string)groggyfile["victimName"]);
+                }
+            }
+            foreach (var item in killList.ToArray())
+            {
+                Console.WriteLine(item);
+            }
+            return killList.ToArray();
+        }
         private ArrayList ReadReplayInfo(string directory_of_recording)
         {
             ArrayList ReplayInfo = new ArrayList();
             JObject NormalizedReplayInfoFile = NormalizeReplayInfoFile(directory_of_recording);
             JObject DecryptedReplaySummaryFile = DecryptReplaySummaryFile(directory_of_recording);
-
             ReplayInfo.Add((int)NormalizedReplayInfoFile["LengthInMS"]); //Length of the recording in miliseconds
             int temp0 = (int)NormalizedReplayInfoFile["LengthInMS"];
             if (temp0 < 60000)
@@ -469,6 +553,7 @@ namespace PUBG_Replay_Manager
             }
             ReplayInfo.Add((int)DecryptedReplaySummaryFile["numPlayers"]);
             ReplayInfo.Add((int)DecryptedReplaySummaryFile["numTeams"]);
+            string[] killfiles = DecryptKillFiles(directory_of_recording);
             for (int i = 0; i < 4; i++)
             {
                 try
@@ -498,6 +583,14 @@ namespace PUBG_Replay_Manager
                     {
                         ReplayInfo.Add(Decimal.Round(orgDisc, 2).ToString() + " m");
                     }
+                    //for (int q = 0; q < killfiles.Length; q++)
+                    //{
+                    //    if (killfiles[q] == (string)DecryptedReplaySummaryFile["playerStateSummaries"][i]["uniqueId"])
+                    //    {
+                    //        ReplayInfo.Add(killfiles[q - 1]);//pubg name
+                    //        ReplayInfo.Add(killfiles[q - 2]);//steam id
+                    //    }
+                    //}
                 }
                 catch (Exception)
                 {
@@ -586,6 +679,26 @@ namespace PUBG_Replay_Manager
         private void replayListRefresh_Click(object sender, EventArgs e)
         {
             RefreshReplayList();
+        }
+
+        private void clearallreplays_Click(object sender, EventArgs e)
+        {
+            DialogResult aus = MessageBox.Show("This will delete ALL replays in the Replays folder" + Environment.NewLine + "Are you sure you want to delete all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            if (aus == DialogResult.Yes)
+            {
+                if (Directory.Exists(replayloc))
+                {
+                    foreach (string replay in Directory.GetDirectories(replayloc))
+                    {
+                        if (replay.Contains("match."))
+                        {
+                            Directory.Delete(replay, true);
+                        }
+                    }
+                }
+                MessageBox.Show("All replays deleted!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                RefreshReplayList();
+            }
         }
     }
 }
