@@ -123,6 +123,8 @@
             this.tm4_steamid_l = new System.Windows.Forms.Label();
             this.tm4_pubgname_l = new System.Windows.Forms.Label();
             this.replayList = new System.Windows.Forms.ListBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.AmountOfReplays_SB = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -132,13 +134,14 @@
             this.tm2.SuspendLayout();
             this.tm3.SuspendLayout();
             this.tm4.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // openReplayFolder
             // 
             this.openReplayFolder.Location = new System.Drawing.Point(425, 637);
             this.openReplayFolder.Name = "openReplayFolder";
-            this.openReplayFolder.Size = new System.Drawing.Size(173, 23);
+            this.openReplayFolder.Size = new System.Drawing.Size(173, 33);
             this.openReplayFolder.TabIndex = 8;
             this.openReplayFolder.Text = "Open Replays Folder";
             this.openReplayFolder.UseVisualStyleBackColor = true;
@@ -716,7 +719,7 @@
             // 
             this.importReplay.Location = new System.Drawing.Point(777, 637);
             this.importReplay.Name = "importReplay";
-            this.importReplay.Size = new System.Drawing.Size(156, 23);
+            this.importReplay.Size = new System.Drawing.Size(156, 33);
             this.importReplay.TabIndex = 10;
             this.importReplay.Text = "Import a Replay";
             this.importReplay.UseVisualStyleBackColor = true;
@@ -726,7 +729,7 @@
             // 
             this.replayListRefresh.Location = new System.Drawing.Point(610, 637);
             this.replayListRefresh.Name = "replayListRefresh";
-            this.replayListRefresh.Size = new System.Drawing.Size(161, 23);
+            this.replayListRefresh.Size = new System.Drawing.Size(161, 33);
             this.replayListRefresh.TabIndex = 11;
             this.replayListRefresh.Text = "Refresh Replay List";
             this.replayListRefresh.UseVisualStyleBackColor = true;
@@ -1142,15 +1145,32 @@
             this.replayList.FormattingEnabled = true;
             this.replayList.Location = new System.Drawing.Point(12, 16);
             this.replayList.Name = "replayList";
-            this.replayList.Size = new System.Drawing.Size(407, 641);
+            this.replayList.Size = new System.Drawing.Size(407, 654);
             this.replayList.TabIndex = 0;
             this.replayList.SelectedIndexChanged += new System.EventHandler(this.replayList_SelectedIndexChanged);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AmountOfReplays_SB});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 673);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(945, 22);
+            this.statusStrip1.TabIndex = 13;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // AmountOfReplays_SB
+            // 
+            this.AmountOfReplays_SB.Name = "AmountOfReplays_SB";
+            this.AmountOfReplays_SB.Size = new System.Drawing.Size(70, 17);
+            this.AmountOfReplays_SB.Text = "Replays: 0/0";
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 671);
+            this.ClientSize = new System.Drawing.Size(945, 695);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.replayListRefresh);
             this.Controls.Add(this.importReplay);
@@ -1178,7 +1198,10 @@
             this.tm3.PerformLayout();
             this.tm4.ResumeLayout(false);
             this.tm4.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -1278,6 +1301,8 @@
         private System.Windows.Forms.Label tm4_headshots_l;
         private System.Windows.Forms.Label tm4_steamid_l;
         private System.Windows.Forms.ListBox replayList;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel AmountOfReplays_SB;
     }
 }
 

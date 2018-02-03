@@ -57,6 +57,7 @@ namespace PUBG_Replay_Manager
                     }
                 }
             }
+            AmountOfReplays_SB.Text = "Replays: 0/" + replayList.Items.Count;
             replayList.Refresh();
         }
         public void RefreshInfoGroups(ArrayList newInfo)
@@ -229,76 +230,18 @@ namespace PUBG_Replay_Manager
             }
             Console.WriteLine(z + " Players");
             z = 0;
-
-
-
-            //if ((info_teammate_1[0] == "uniqueId") || (info_teammate_1[0] == "[unknown]"))
-            //{
-            //    tm1_pubgname.Text = "[unknown]";
-            //    tm1_steamid.Text = "[unknown]";
-            //    tm1_headshots.Text = "[unknown]";
-            //    tm1_kills.Text = "[unknown]";
-            //}
-            //if ((info_teammate_2[0] == "uniqueId") || (info_teammate_2[0] == "[unknown]"))
-            //{
-            //    tm2_pubgname.Text = "[unknown]";
-            //    tm2_steamid.Text = "[unknown]";
-            //    tm2_headshots.Text = "[unknown]";
-            //    tm2_kills.Text = "[unknown]";
-            //}
-            //if ((info_teammate_3[0] == "uniqueId") || (info_teammate_3[0] == "[unknown]"))
-            //{
-            //    tm3_pubgname.Text = "[unknown]";
-            //    tm3_steamid.Text = "[unknown]";
-            //    tm3_headshots.Text = "[unknown]";
-            //    tm3_kills.Text = "[unknown]";
-            //}
-            //if ((info_teammate_4[0] == "uniqueId") || (info_teammate_4[0] == "[unknown]"))
-            //{
-            //    tm4_pubgname.Text = "[unknown]";
-            //    tm4_steamid.Text = "[unknown]";
-            //    tm4_headshots.Text = "[unknown]";
-            //    tm4_kills.Text = "[unknown]";
-            //}
-            //if (info_teammate_1[0] != "uniqueId")
-            //{
-            //    tm1_pubgname.Text = info_teammate_1[1];
-            //    tm1_steamid.Text = info_teammate_1[0];
-            //    tm1_headshots.Text = info_teammate_1[4];
-            //    tm1_kills.Text = info_teammate_1[5];
-            //}
-            //if (info_teammate_2[0] != "uniqueId")
-            //{
-            //    tm2_pubgname.Text = info_teammate_2[1];
-            //    tm2_steamid.Text = info_teammate_2[0];
-            //    tm2_headshots.Text = info_teammate_2[4];
-            //    tm2_kills.Text = info_teammate_2[5];
-            //}
-            //if (info_teammate_3[0] != "uniqueId")
-            //{
-            //    tm3_pubgname.Text = info_teammate_3[1];
-            //    tm3_steamid.Text = info_teammate_3[0];
-            //    tm3_headshots.Text = info_teammate_3[4];
-            //    tm3_kills.Text = info_teammate_3[5];
-            //}
-            //if (info_teammate_4[0] != "uniqueId")
-            //{
-            //    tm4_pubgname.Text = info_teammate_4[1];
-            //    tm4_steamid.Text = info_teammate_4[0];
-            //    tm4_headshots.Text = info_teammate_4[4];
-            //    tm4_kills.Text = info_teammate_4[5];
-            //}
-
+            
         }
 
         private void replayList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (Directory.Exists(replayloc+ "\\" + replayList.SelectedItem))
+            if (Directory.Exists(replayloc+ "\\" + replayList.SelectedItem) && replayList.SelectedIndex > -1)
             {
                 RefreshInfoGroups(ReadReplayInfo(replayloc + "\\" + replayList.SelectedItem));
                 openSelectedReplay.Enabled = true;
                 zipReplay.Enabled = true;
                 steamidStrip.Enabled = true;
+                AmountOfReplays_SB.Text = "Replays: " + (replayList.SelectedIndex + 1) + "/" + replayList.Items.Count;
             }
             else
             {
@@ -616,6 +559,14 @@ namespace PUBG_Replay_Manager
 
         private void importReplay_Click(object sender, EventArgs e)
         {
+            if (replayList.Items.Count >= 20)
+            {
+                DialogResult aus = MessageBox.Show("Maxmium number of replays in PUBG replay folder has been hit! (20)" + Environment.NewLine + "Adding another will cause PUBG to delete the oldest replay!" + Environment.NewLine + "Are you sure you want to add another?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                if (aus != DialogResult.Yes)
+                {
+                    return;
+                }
+            }
             OpenFileDialog importReplayDialog = new OpenFileDialog();
             importReplayDialog.Filter = "ZIP Files|*.zip";
             importReplayDialog.Title = "Select a PUBG Replay in a ZIP File...";
@@ -635,18 +586,6 @@ namespace PUBG_Replay_Manager
         private void replayListRefresh_Click(object sender, EventArgs e)
         {
             RefreshReplayList();
-        }
-
-        private void killFileDecoder_Click(object sender, EventArgs e)
-        {
-            KillFeed steamid = new KillFeed(replayloc + "\\" + replayList.SelectedItem + "\\");
-            steamid.ShowDialog();
-        }
-
-        private void profileLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-           
-            Process.Start("http://steamcommunity.com/profiles/"+profile_id);
         }
     }
 }
