@@ -30,6 +30,8 @@
         {
             this.openReplayFolder = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.steamidStrip = new System.Windows.Forms.Button();
             this.zipReplay = new System.Windows.Forms.Button();
             this.openSelectedReplay = new System.Windows.Forms.Button();
@@ -87,6 +89,10 @@
             this.replayListRefresh = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.tm1 = new System.Windows.Forms.GroupBox();
+            this.tm1_killer_steamid = new System.Windows.Forms.TextBox();
+            this.tm1_killer_pubgname = new System.Windows.Forms.Label();
+            this.tm1_killer_steamid_l = new System.Windows.Forms.Label();
+            this.tm1_killer_pubgname_l = new System.Windows.Forms.Label();
             this.tm1_steamid = new System.Windows.Forms.TextBox();
             this.tm1_kills = new System.Windows.Forms.Label();
             this.tm1_headshots = new System.Windows.Forms.Label();
@@ -96,6 +102,10 @@
             this.tm1_steamid_l = new System.Windows.Forms.Label();
             this.tm1_pubgname_l = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.GroupBox();
+            this.tm2_killer_steamid = new System.Windows.Forms.TextBox();
+            this.tm2_killer_pubgname = new System.Windows.Forms.Label();
+            this.tm2_killer_steamid_l = new System.Windows.Forms.Label();
+            this.tm2_killer_pubgname_l = new System.Windows.Forms.Label();
             this.tm2_steamid = new System.Windows.Forms.TextBox();
             this.tm2_kills = new System.Windows.Forms.Label();
             this.tm2_headshots = new System.Windows.Forms.Label();
@@ -105,6 +115,10 @@
             this.tm2_steamid_l = new System.Windows.Forms.Label();
             this.tm2_pubgname_l = new System.Windows.Forms.Label();
             this.tm3 = new System.Windows.Forms.GroupBox();
+            this.tm3_killer_steamid = new System.Windows.Forms.TextBox();
+            this.tm3_killer_pubgname = new System.Windows.Forms.Label();
+            this.tm3_killer_steamid_l = new System.Windows.Forms.Label();
+            this.tm3_killer_pubgname_l = new System.Windows.Forms.Label();
             this.tm3_steamid = new System.Windows.Forms.TextBox();
             this.tm3_kills = new System.Windows.Forms.Label();
             this.tm3_headshots = new System.Windows.Forms.Label();
@@ -114,6 +128,10 @@
             this.tm3_steamid_l = new System.Windows.Forms.Label();
             this.tm3_pubgname_l = new System.Windows.Forms.Label();
             this.tm4 = new System.Windows.Forms.GroupBox();
+            this.tm4_killer_steamid = new System.Windows.Forms.TextBox();
+            this.tm4_killer_pubgname = new System.Windows.Forms.Label();
+            this.tm4_killer_steamid_l = new System.Windows.Forms.Label();
+            this.tm4_killer_pubgname_l = new System.Windows.Forms.Label();
             this.tm4_steamid = new System.Windows.Forms.TextBox();
             this.tm4_kills = new System.Windows.Forms.Label();
             this.tm4_headshots = new System.Windows.Forms.Label();
@@ -127,24 +145,7 @@
             this.AmountOfReplays_SB = new System.Windows.Forms.ToolStripStatusLabel();
             this.replayTool = new System.Windows.Forms.GroupBox();
             this.clearallreplays = new System.Windows.Forms.Button();
-            this.tm1_killer_steamid = new System.Windows.Forms.TextBox();
-            this.tm1_killer_pubgname = new System.Windows.Forms.Label();
-            this.tm1_killer_steamid_l = new System.Windows.Forms.Label();
-            this.tm1_killer_pubgname_l = new System.Windows.Forms.Label();
-            this.tm2_killer_steamid = new System.Windows.Forms.TextBox();
-            this.tm2_killer_pubgname = new System.Windows.Forms.Label();
-            this.tm2_killer_steamid_l = new System.Windows.Forms.Label();
-            this.tm2_killer_pubgname_l = new System.Windows.Forms.Label();
-            this.tm3_killer_steamid = new System.Windows.Forms.TextBox();
-            this.tm3_killer_pubgname = new System.Windows.Forms.Label();
-            this.tm3_killer_steamid_l = new System.Windows.Forms.Label();
-            this.tm3_killer_pubgname_l = new System.Windows.Forms.Label();
-            this.tm4_killer_steamid = new System.Windows.Forms.TextBox();
-            this.tm4_killer_pubgname = new System.Windows.Forms.Label();
-            this.tm4_killer_steamid_l = new System.Windows.Forms.Label();
-            this.tm4_killer_pubgname_l = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -160,11 +161,11 @@
             // 
             // openReplayFolder
             // 
-            this.openReplayFolder.Location = new System.Drawing.Point(6, 19);
+            this.openReplayFolder.Location = new System.Drawing.Point(7, 18);
             this.openReplayFolder.Name = "openReplayFolder";
-            this.openReplayFolder.Size = new System.Drawing.Size(126, 23);
+            this.openReplayFolder.Size = new System.Drawing.Size(147, 21);
             this.openReplayFolder.TabIndex = 8;
-            this.openReplayFolder.Text = "Open Replays Folder";
+            this.openReplayFolder.Text = "리플레이 저장 폴더 열기";
             this.openReplayFolder.UseVisualStyleBackColor = true;
             this.openReplayFolder.Click += new System.EventHandler(this.openReplayFolder_Click);
             // 
@@ -175,118 +176,138 @@
             this.groupBox4.Controls.Add(this.steamidStrip);
             this.groupBox4.Controls.Add(this.zipReplay);
             this.groupBox4.Controls.Add(this.openSelectedReplay);
-            this.groupBox4.Location = new System.Drawing.Point(426, 519);
+            this.groupBox4.Location = new System.Drawing.Point(497, 479);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(264, 163);
+            this.groupBox4.Size = new System.Drawing.Size(308, 150);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Replay Actions";
+            this.groupBox4.Text = "리플레이 세부사항";
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(7, 98);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(294, 20);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "리플레이에서의 내 킬 보기";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(7, 72);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(294, 20);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "리플레이에서의 내 DBNO 보기";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // steamidStrip
             // 
             this.steamidStrip.Enabled = false;
-            this.steamidStrip.Location = new System.Drawing.Point(6, 48);
+            this.steamidStrip.Location = new System.Drawing.Point(7, 44);
             this.steamidStrip.Name = "steamidStrip";
-            this.steamidStrip.Size = new System.Drawing.Size(252, 23);
+            this.steamidStrip.Size = new System.Drawing.Size(294, 21);
             this.steamidStrip.TabIndex = 2;
-            this.steamidStrip.Text = "Every SteamID64 in the replay";
+            this.steamidStrip.Text = "리플레이 내의 모든 유저의 SteamID64 불러오기";
             this.steamidStrip.UseVisualStyleBackColor = true;
             this.steamidStrip.Click += new System.EventHandler(this.steamidStrip_Click);
             // 
             // zipReplay
             // 
             this.zipReplay.Enabled = false;
-            this.zipReplay.Location = new System.Drawing.Point(7, 134);
+            this.zipReplay.Location = new System.Drawing.Point(8, 124);
             this.zipReplay.Name = "zipReplay";
-            this.zipReplay.Size = new System.Drawing.Size(136, 23);
+            this.zipReplay.Size = new System.Drawing.Size(159, 21);
             this.zipReplay.TabIndex = 1;
-            this.zipReplay.Text = "Export Selected Replay";
+            this.zipReplay.Text = "선택된 리플레이 추출하기";
             this.zipReplay.UseVisualStyleBackColor = true;
             this.zipReplay.Click += new System.EventHandler(this.zipReplay_Click);
             // 
             // openSelectedReplay
             // 
             this.openSelectedReplay.Enabled = false;
-            this.openSelectedReplay.Location = new System.Drawing.Point(6, 19);
+            this.openSelectedReplay.Location = new System.Drawing.Point(7, 18);
             this.openSelectedReplay.Name = "openSelectedReplay";
-            this.openSelectedReplay.Size = new System.Drawing.Size(252, 23);
+            this.openSelectedReplay.Size = new System.Drawing.Size(294, 21);
             this.openSelectedReplay.TabIndex = 0;
-            this.openSelectedReplay.Text = "Open Selected Replay\'s Folder";
+            this.openSelectedReplay.Text = "선택된 리플레이 폴더 열기";
             this.openSelectedReplay.UseVisualStyleBackColor = true;
             this.openSelectedReplay.Click += new System.EventHandler(this.openSelectedReplay_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            this.label1.Location = new System.Drawing.Point(14, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
+            this.label1.Size = new System.Drawing.Size(21, 12);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Map:";
+            this.label1.Text = "맵:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(12, 33);
+            this.label2.Location = new System.Drawing.Point(14, 30);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.Size = new System.Drawing.Size(33, 12);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Weather:";
+            this.label2.Text = "날씨:";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 46);
+            this.label3.Location = new System.Drawing.Point(14, 42);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
+            this.label3.Size = new System.Drawing.Size(33, 12);
             this.label3.TabIndex = 3;
-            this.label3.Text = "Server:";
+            this.label3.Text = "서버:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 59);
+            this.label4.Location = new System.Drawing.Point(14, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
+            this.label4.Size = new System.Drawing.Size(33, 12);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Team:";
+            this.label4.Text = "모드:";
             // 
             // teamInfo
             // 
             this.teamInfo.AutoSize = true;
-            this.teamInfo.Location = new System.Drawing.Point(44, 59);
+            this.teamInfo.Location = new System.Drawing.Point(46, 54);
             this.teamInfo.Name = "teamInfo";
-            this.teamInfo.Size = new System.Drawing.Size(51, 13);
+            this.teamInfo.Size = new System.Drawing.Size(61, 12);
             this.teamInfo.TabIndex = 6;
             this.teamInfo.Text = "[unkown]";
             // 
             // serverRegion
             // 
             this.serverRegion.AutoSize = true;
-            this.serverRegion.Location = new System.Drawing.Point(49, 46);
+            this.serverRegion.Location = new System.Drawing.Point(46, 42);
             this.serverRegion.Name = "serverRegion";
-            this.serverRegion.Size = new System.Drawing.Size(51, 13);
+            this.serverRegion.Size = new System.Drawing.Size(61, 12);
             this.serverRegion.TabIndex = 7;
             this.serverRegion.Text = "[unkown]";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 72);
+            this.label16.Location = new System.Drawing.Point(14, 66);
             this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 13);
+            this.label16.Size = new System.Drawing.Size(61, 12);
             this.label16.TabIndex = 8;
-            this.label16.Text = "Match Type:";
+            this.label16.Text = "경기 타입:";
             // 
             // matchType
             // 
             this.matchType.AutoSize = true;
-            this.matchType.Location = new System.Drawing.Point(76, 72);
+            this.matchType.Location = new System.Drawing.Point(74, 66);
             this.matchType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.matchType.Name = "matchType";
-            this.matchType.Size = new System.Drawing.Size(51, 13);
+            this.matchType.Size = new System.Drawing.Size(61, 12);
             this.matchType.TabIndex = 9;
             this.matchType.Text = "[unkown]";
             // 
@@ -306,64 +327,64 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(425, 12);
+            this.groupBox1.Location = new System.Drawing.Point(496, 11);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 121);
+            this.groupBox1.Size = new System.Drawing.Size(309, 112);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Match Information";
+            this.groupBox1.Text = "경기 정보";
             // 
             // totalTeams
             // 
             this.totalTeams.AutoSize = true;
-            this.totalTeams.Location = new System.Drawing.Point(76, 98);
+            this.totalTeams.Location = new System.Drawing.Point(66, 90);
             this.totalTeams.Name = "totalTeams";
-            this.totalTeams.Size = new System.Drawing.Size(57, 13);
+            this.totalTeams.Size = new System.Drawing.Size(68, 12);
             this.totalTeams.TabIndex = 15;
             this.totalTeams.Text = "[unknown]";
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(12, 98);
+            this.label23.Location = new System.Drawing.Point(14, 90);
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(69, 13);
+            this.label23.Size = new System.Drawing.Size(53, 12);
             this.label23.TabIndex = 14;
-            this.label23.Text = "Total Teams:";
+            this.label23.Text = "총 팀 수:";
             // 
             // totalPlayers
             // 
             this.totalPlayers.AutoSize = true;
-            this.totalPlayers.Location = new System.Drawing.Point(78, 85);
+            this.totalPlayers.Location = new System.Drawing.Point(79, 78);
             this.totalPlayers.Name = "totalPlayers";
-            this.totalPlayers.Size = new System.Drawing.Size(57, 13);
+            this.totalPlayers.Size = new System.Drawing.Size(68, 12);
             this.totalPlayers.TabIndex = 13;
             this.totalPlayers.Text = "[unknown]";
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(12, 85);
+            this.label21.Location = new System.Drawing.Point(14, 78);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 13);
+            this.label21.Size = new System.Drawing.Size(65, 12);
             this.label21.TabIndex = 12;
-            this.label21.Text = "Total Players:";
+            this.label21.Text = "총 인원 수:";
             // 
             // weatherType
             // 
             this.weatherType.AutoSize = true;
-            this.weatherType.Location = new System.Drawing.Point(58, 33);
+            this.weatherType.Location = new System.Drawing.Point(46, 30);
             this.weatherType.Name = "weatherType";
-            this.weatherType.Size = new System.Drawing.Size(51, 13);
+            this.weatherType.Size = new System.Drawing.Size(61, 12);
             this.weatherType.TabIndex = 11;
             this.weatherType.Text = "[unkown]";
             // 
             // mapName
             // 
             this.mapName.AutoSize = true;
-            this.mapName.Location = new System.Drawing.Point(39, 20);
+            this.mapName.Location = new System.Drawing.Point(33, 18);
             this.mapName.Name = "mapName";
-            this.mapName.Size = new System.Drawing.Size(51, 13);
+            this.mapName.Size = new System.Drawing.Size(61, 12);
             this.mapName.TabIndex = 10;
             this.mapName.Text = "[unkown]";
             // 
@@ -371,61 +392,61 @@
             // 
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(12, 16);
+            this.label5.Location = new System.Drawing.Point(14, 15);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
+            this.label5.Size = new System.Drawing.Size(33, 12);
             this.label5.TabIndex = 0;
-            this.label5.Text = "Rank:";
+            this.label5.Text = "순위:";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(12, 29);
+            this.label6.Location = new System.Drawing.Point(14, 27);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.Size = new System.Drawing.Size(61, 12);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Headshots:";
+            this.label6.Text = "헤드샷 수:";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(12, 42);
+            this.label7.Location = new System.Drawing.Point(14, 39);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.Size = new System.Drawing.Size(37, 12);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Kills:";
+            this.label7.Text = "킬 수:";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(12, 68);
+            this.label8.Location = new System.Drawing.Point(14, 63);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 13);
+            this.label8.Size = new System.Drawing.Size(73, 12);
             this.label8.TabIndex = 3;
-            this.label8.Text = "Longest Kill:";
+            this.label8.Text = "최장거리 킬:";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(12, 81);
+            this.label9.Location = new System.Drawing.Point(14, 75);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
+            this.label9.Size = new System.Drawing.Size(57, 12);
             this.label9.TabIndex = 4;
-            this.label9.Text = "Distance:";
+            this.label9.Text = "이동거리:";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(12, 55);
+            this.label10.Location = new System.Drawing.Point(14, 51);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 13);
+            this.label10.Size = new System.Drawing.Size(73, 12);
             this.label10.TabIndex = 5;
-            this.label10.Text = "Damage Dealt:";
+            this.label10.Text = "가한 피해량:";
             // 
             // groupBox2
             // 
@@ -441,64 +462,64 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(426, 139);
+            this.groupBox2.Location = new System.Drawing.Point(497, 128);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(264, 102);
+            this.groupBox2.Size = new System.Drawing.Size(308, 94);
             this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Your Statistics";
+            this.groupBox2.Text = "내 스탯";
             // 
             // distanceWalked
             // 
             this.distanceWalked.AutoSize = true;
-            this.distanceWalked.Location = new System.Drawing.Point(59, 81);
+            this.distanceWalked.Location = new System.Drawing.Point(69, 75);
             this.distanceWalked.Name = "distanceWalked";
-            this.distanceWalked.Size = new System.Drawing.Size(57, 13);
+            this.distanceWalked.Size = new System.Drawing.Size(68, 12);
             this.distanceWalked.TabIndex = 28;
             this.distanceWalked.Text = "[unknown]";
             // 
             // longestKill
             // 
             this.longestKill.AutoSize = true;
-            this.longestKill.Location = new System.Drawing.Point(71, 68);
+            this.longestKill.Location = new System.Drawing.Point(83, 63);
             this.longestKill.Name = "longestKill";
-            this.longestKill.Size = new System.Drawing.Size(57, 13);
+            this.longestKill.Size = new System.Drawing.Size(68, 12);
             this.longestKill.TabIndex = 27;
             this.longestKill.Text = "[unknown]";
             // 
             // dmgHandedOut
             // 
             this.dmgHandedOut.AutoSize = true;
-            this.dmgHandedOut.Location = new System.Drawing.Point(85, 55);
+            this.dmgHandedOut.Location = new System.Drawing.Point(87, 51);
             this.dmgHandedOut.Name = "dmgHandedOut";
-            this.dmgHandedOut.Size = new System.Drawing.Size(57, 13);
+            this.dmgHandedOut.Size = new System.Drawing.Size(68, 12);
             this.dmgHandedOut.TabIndex = 26;
             this.dmgHandedOut.Text = "[unknown]";
             // 
             // kills
             // 
             this.kills.AutoSize = true;
-            this.kills.Location = new System.Drawing.Point(35, 42);
+            this.kills.Location = new System.Drawing.Point(50, 39);
             this.kills.Name = "kills";
-            this.kills.Size = new System.Drawing.Size(57, 13);
+            this.kills.Size = new System.Drawing.Size(68, 12);
             this.kills.TabIndex = 25;
             this.kills.Text = "[unknown]";
             // 
             // headShots
             // 
             this.headShots.AutoSize = true;
-            this.headShots.Location = new System.Drawing.Point(68, 30);
+            this.headShots.Location = new System.Drawing.Point(79, 28);
             this.headShots.Name = "headShots";
-            this.headShots.Size = new System.Drawing.Size(57, 13);
+            this.headShots.Size = new System.Drawing.Size(68, 12);
             this.headShots.TabIndex = 24;
             this.headShots.Text = "[unknown]";
             // 
             // rankNum
             // 
             this.rankNum.AutoSize = true;
-            this.rankNum.Location = new System.Drawing.Point(43, 16);
+            this.rankNum.Location = new System.Drawing.Point(50, 15);
             this.rankNum.Name = "rankNum";
-            this.rankNum.Size = new System.Drawing.Size(57, 13);
+            this.rankNum.Size = new System.Drawing.Size(68, 12);
             this.rankNum.TabIndex = 23;
             this.rankNum.Text = "[unknown]";
             // 
@@ -506,158 +527,158 @@
             // 
             this.fileLocked.AutoSize = true;
             this.fileLocked.Enabled = false;
-            this.fileLocked.Location = new System.Drawing.Point(14, 139);
+            this.fileLocked.Location = new System.Drawing.Point(16, 128);
             this.fileLocked.Margin = new System.Windows.Forms.Padding(2);
             this.fileLocked.Name = "fileLocked";
-            this.fileLocked.Size = new System.Drawing.Size(81, 17);
+            this.fileLocked.Size = new System.Drawing.Size(112, 16);
             this.fileLocked.TabIndex = 0;
-            this.fileLocked.Text = "File Locked";
+            this.fileLocked.Text = "리플레이 잠금됨";
             this.fileLocked.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 19);
+            this.label11.Location = new System.Drawing.Point(13, 18);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 13);
+            this.label11.Size = new System.Drawing.Size(73, 12);
             this.label11.TabIndex = 1;
-            this.label11.Text = "Time Recorded:";
+            this.label11.Text = "기록된 시간:";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(11, 32);
+            this.label12.Location = new System.Drawing.Point(13, 30);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 13);
+            this.label12.Size = new System.Drawing.Size(113, 12);
             this.label12.TabIndex = 2;
-            this.label12.Text = "Recording Size:";
+            this.label12.Text = "리플레이 파일 용량:";
             // 
             // timeRecorded
             // 
             this.timeRecorded.AutoSize = true;
-            this.timeRecorded.Location = new System.Drawing.Point(92, 19);
+            this.timeRecorded.Location = new System.Drawing.Point(84, 18);
             this.timeRecorded.Name = "timeRecorded";
-            this.timeRecorded.Size = new System.Drawing.Size(51, 13);
+            this.timeRecorded.Size = new System.Drawing.Size(61, 12);
             this.timeRecorded.TabIndex = 3;
             this.timeRecorded.Text = "[unkown]";
             // 
             // recordingSize
             // 
             this.recordingSize.AutoSize = true;
-            this.recordingSize.Location = new System.Drawing.Point(91, 32);
+            this.recordingSize.Location = new System.Drawing.Point(125, 30);
             this.recordingSize.Name = "recordingSize";
-            this.recordingSize.Size = new System.Drawing.Size(51, 13);
+            this.recordingSize.Size = new System.Drawing.Size(61, 12);
             this.recordingSize.TabIndex = 4;
             this.recordingSize.Text = "[unkown]";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 46);
+            this.label13.Location = new System.Drawing.Point(13, 42);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(95, 13);
+            this.label13.Size = new System.Drawing.Size(85, 12);
             this.label13.TabIndex = 5;
-            this.label13.Text = "Recording Length:";
+            this.label13.Text = "경기 진행시간:";
             // 
             // lengthInMins
             // 
             this.lengthInMins.AutoSize = true;
-            this.lengthInMins.Location = new System.Drawing.Point(104, 46);
+            this.lengthInMins.Location = new System.Drawing.Point(97, 42);
             this.lengthInMins.Name = "lengthInMins";
-            this.lengthInMins.Size = new System.Drawing.Size(51, 13);
+            this.lengthInMins.Size = new System.Drawing.Size(61, 12);
             this.lengthInMins.TabIndex = 6;
             this.lengthInMins.Text = "[unkown]";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(11, 62);
+            this.label14.Location = new System.Drawing.Point(13, 57);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(98, 13);
+            this.label14.Size = new System.Drawing.Size(113, 12);
             this.label14.TabIndex = 7;
-            this.label14.Text = "Replay Folder Size:";
+            this.label14.Text = "리플레이 폴더 용량:";
             // 
             // fileSize
             // 
             this.fileSize.AutoSize = true;
-            this.fileSize.Location = new System.Drawing.Point(104, 62);
+            this.fileSize.Location = new System.Drawing.Point(125, 57);
             this.fileSize.Name = "fileSize";
-            this.fileSize.Size = new System.Drawing.Size(51, 13);
+            this.fileSize.Size = new System.Drawing.Size(61, 12);
             this.fileSize.TabIndex = 8;
             this.fileSize.Text = "[unkown]";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(11, 92);
+            this.label15.Location = new System.Drawing.Point(13, 85);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(88, 13);
+            this.label15.Size = new System.Drawing.Size(85, 12);
             this.label15.TabIndex = 9;
-            this.label15.Text = "Network Verison:";
+            this.label15.Text = "네트워크 버전:";
             // 
             // isLive
             // 
             this.isLive.AutoSize = true;
             this.isLive.Enabled = false;
-            this.isLive.Location = new System.Drawing.Point(14, 160);
+            this.isLive.Location = new System.Drawing.Point(16, 148);
             this.isLive.Margin = new System.Windows.Forms.Padding(2);
             this.isLive.Name = "isLive";
-            this.isLive.Size = new System.Drawing.Size(46, 17);
+            this.isLive.Size = new System.Drawing.Size(116, 16);
             this.isLive.TabIndex = 10;
-            this.isLive.Text = "Live";
+            this.isLive.Text = "스트리밍 된 경기";
             this.isLive.UseVisualStyleBackColor = true;
             // 
             // isIncomplete
             // 
             this.isIncomplete.AutoSize = true;
             this.isIncomplete.Enabled = false;
-            this.isIncomplete.Location = new System.Drawing.Point(14, 181);
+            this.isIncomplete.Location = new System.Drawing.Point(16, 167);
             this.isIncomplete.Margin = new System.Windows.Forms.Padding(2);
             this.isIncomplete.Name = "isIncomplete";
-            this.isIncomplete.Size = new System.Drawing.Size(78, 17);
+            this.isIncomplete.Size = new System.Drawing.Size(60, 16);
             this.isIncomplete.TabIndex = 11;
-            this.isIncomplete.Text = "Incomplete";
+            this.isIncomplete.Text = "손상됨";
             this.isIncomplete.UseVisualStyleBackColor = true;
             // 
             // IsServerRecording
             // 
             this.IsServerRecording.AutoSize = true;
             this.IsServerRecording.Enabled = false;
-            this.IsServerRecording.Location = new System.Drawing.Point(14, 202);
+            this.IsServerRecording.Location = new System.Drawing.Point(16, 186);
             this.IsServerRecording.Margin = new System.Windows.Forms.Padding(2);
             this.IsServerRecording.Name = "IsServerRecording";
-            this.IsServerRecording.Size = new System.Drawing.Size(129, 17);
+            this.IsServerRecording.Size = new System.Drawing.Size(112, 16);
             this.IsServerRecording.TabIndex = 12;
-            this.IsServerRecording.Text = "Is a Server Recording";
+            this.IsServerRecording.Text = "서버에서 녹화됨";
             this.IsServerRecording.UseVisualStyleBackColor = true;
             // 
             // networkVerison
             // 
             this.networkVerison.AutoSize = true;
-            this.networkVerison.Location = new System.Drawing.Point(92, 92);
+            this.networkVerison.Location = new System.Drawing.Point(98, 85);
             this.networkVerison.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.networkVerison.Name = "networkVerison";
-            this.networkVerison.Size = new System.Drawing.Size(51, 13);
+            this.networkVerison.Size = new System.Drawing.Size(61, 12);
             this.networkVerison.TabIndex = 13;
             this.networkVerison.Text = "[unkown]";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(11, 77);
+            this.label17.Location = new System.Drawing.Point(13, 71);
             this.label17.Margin = new System.Windows.Forms.Padding(2);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(76, 13);
+            this.label17.Size = new System.Drawing.Size(61, 12);
             this.label17.TabIndex = 14;
-            this.label17.Text = "Game Version:";
+            this.label17.Text = "게임 버전:";
             // 
             // gameVerison
             // 
             this.gameVerison.AutoSize = true;
-            this.gameVerison.Location = new System.Drawing.Point(85, 77);
+            this.gameVerison.Location = new System.Drawing.Point(73, 71);
             this.gameVerison.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.gameVerison.Name = "gameVerison";
-            this.gameVerison.Size = new System.Drawing.Size(51, 13);
+            this.gameVerison.Size = new System.Drawing.Size(61, 12);
             this.gameVerison.TabIndex = 15;
             this.gameVerison.Text = "[unkown]";
             // 
@@ -684,77 +705,77 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.fileLocked);
-            this.groupBox3.Location = new System.Drawing.Point(426, 247);
+            this.groupBox3.Location = new System.Drawing.Point(497, 228);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(264, 266);
+            this.groupBox3.Size = new System.Drawing.Size(308, 246);
             this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "File Information";
+            this.groupBox3.Text = "파일 정보";
             // 
             // diedorwon
             // 
             this.diedorwon.AutoSize = true;
             this.diedorwon.Enabled = false;
-            this.diedorwon.Location = new System.Drawing.Point(13, 225);
+            this.diedorwon.Location = new System.Drawing.Point(15, 208);
             this.diedorwon.Name = "diedorwon";
-            this.diedorwon.Size = new System.Drawing.Size(92, 17);
+            this.diedorwon.Size = new System.Drawing.Size(140, 16);
             this.diedorwon.TabIndex = 22;
-            this.diedorwon.Text = "Died or Won?";
+            this.diedorwon.Text = "경기가 제대로 종료됨";
             this.diedorwon.UseVisualStyleBackColor = true;
             // 
             // recordingUser
             // 
             this.recordingUser.AutoSize = true;
-            this.recordingUser.Location = new System.Drawing.Point(92, 118);
+            this.recordingUser.Location = new System.Drawing.Point(98, 109);
             this.recordingUser.Name = "recordingUser";
-            this.recordingUser.Size = new System.Drawing.Size(57, 13);
+            this.recordingUser.Size = new System.Drawing.Size(68, 12);
             this.recordingUser.TabIndex = 20;
             this.recordingUser.Text = "[unknown]";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(11, 118);
+            this.label19.Location = new System.Drawing.Point(13, 109);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(84, 13);
+            this.label19.Size = new System.Drawing.Size(85, 12);
             this.label19.TabIndex = 18;
-            this.label19.Text = "Recording User:";
+            this.label19.Text = "기록한 유저명:";
             // 
             // serverId
             // 
             this.serverId.AutoSize = true;
-            this.serverId.Location = new System.Drawing.Point(63, 105);
+            this.serverId.Location = new System.Drawing.Point(88, 97);
             this.serverId.Name = "serverId";
-            this.serverId.Size = new System.Drawing.Size(57, 13);
+            this.serverId.Size = new System.Drawing.Size(68, 12);
             this.serverId.TabIndex = 17;
             this.serverId.Text = "[unknown]";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(11, 105);
+            this.label18.Location = new System.Drawing.Point(13, 97);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(55, 13);
+            this.label18.Size = new System.Drawing.Size(76, 12);
             this.label18.TabIndex = 16;
-            this.label18.Text = "Server ID:";
+            this.label18.Text = "게임 고유 ID:";
             // 
             // importReplay
             // 
-            this.importReplay.Location = new System.Drawing.Point(280, 18);
+            this.importReplay.Location = new System.Drawing.Point(327, 17);
             this.importReplay.Name = "importReplay";
-            this.importReplay.Size = new System.Drawing.Size(121, 23);
+            this.importReplay.Size = new System.Drawing.Size(141, 21);
             this.importReplay.TabIndex = 10;
-            this.importReplay.Text = "Import a Replay";
+            this.importReplay.Text = "리플레이 가져오기";
             this.importReplay.UseVisualStyleBackColor = true;
             this.importReplay.Click += new System.EventHandler(this.importReplay_Click);
             // 
             // replayListRefresh
             // 
-            this.replayListRefresh.Location = new System.Drawing.Point(138, 19);
+            this.replayListRefresh.Location = new System.Drawing.Point(161, 18);
             this.replayListRefresh.Name = "replayListRefresh";
-            this.replayListRefresh.Size = new System.Drawing.Size(136, 23);
+            this.replayListRefresh.Size = new System.Drawing.Size(159, 21);
             this.replayListRefresh.TabIndex = 11;
-            this.replayListRefresh.Text = "Refresh Replay List";
+            this.replayListRefresh.Text = "리플레이 목록 갱신";
             this.replayListRefresh.UseVisualStyleBackColor = true;
             this.replayListRefresh.Click += new System.EventHandler(this.replayListRefresh_Click);
             // 
@@ -764,12 +785,12 @@
             this.groupBox5.Controls.Add(this.tm2);
             this.groupBox5.Controls.Add(this.tm3);
             this.groupBox5.Controls.Add(this.tm4);
-            this.groupBox5.Location = new System.Drawing.Point(696, 16);
+            this.groupBox5.Location = new System.Drawing.Point(812, 15);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(237, 666);
+            this.groupBox5.Size = new System.Drawing.Size(276, 582);
             this.groupBox5.TabIndex = 12;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Team";
+            this.groupBox5.Text = "팀";
             // 
             // tm1
             // 
@@ -785,22 +806,64 @@
             this.tm1.Controls.Add(this.tm1_headshots_l);
             this.tm1.Controls.Add(this.tm1_steamid_l);
             this.tm1.Controls.Add(this.tm1_pubgname_l);
-            this.tm1.Location = new System.Drawing.Point(6, 19);
+            this.tm1.Location = new System.Drawing.Point(7, 18);
             this.tm1.Name = "tm1";
-            this.tm1.Size = new System.Drawing.Size(225, 144);
+            this.tm1.Size = new System.Drawing.Size(262, 133);
             this.tm1.TabIndex = 12;
             this.tm1.TabStop = false;
-            this.tm1.Text = "Teammate 1";
+            this.tm1.Text = "팀원 1";
             this.tm1.Visible = false;
+            // 
+            // tm1_killer_steamid
+            // 
+            this.tm1_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tm1_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.tm1_killer_steamid.Location = new System.Drawing.Point(90, 75);
+            this.tm1_killer_steamid.Name = "tm1_killer_steamid";
+            this.tm1_killer_steamid.ReadOnly = true;
+            this.tm1_killer_steamid.Size = new System.Drawing.Size(140, 14);
+            this.tm1_killer_steamid.TabIndex = 13;
+            this.tm1_killer_steamid.TabStop = false;
+            this.tm1_killer_steamid.Text = "[unknown]";
+            // 
+            // tm1_killer_pubgname
+            // 
+            this.tm1_killer_pubgname.AutoSize = true;
+            this.tm1_killer_pubgname.Location = new System.Drawing.Point(124, 63);
+            this.tm1_killer_pubgname.Name = "tm1_killer_pubgname";
+            this.tm1_killer_pubgname.Size = new System.Drawing.Size(68, 12);
+            this.tm1_killer_pubgname.TabIndex = 12;
+            this.tm1_killer_pubgname.Text = "[unknown]";
+            this.tm1_killer_pubgname.Visible = false;
+            // 
+            // tm1_killer_steamid_l
+            // 
+            this.tm1_killer_steamid_l.AutoSize = true;
+            this.tm1_killer_steamid_l.Location = new System.Drawing.Point(9, 75);
+            this.tm1_killer_steamid_l.Name = "tm1_killer_steamid_l";
+            this.tm1_killer_steamid_l.Size = new System.Drawing.Size(84, 12);
+            this.tm1_killer_steamid_l.TabIndex = 11;
+            this.tm1_killer_steamid_l.Text = "└ SteamID64:";
+            this.tm1_killer_steamid_l.Visible = false;
+            // 
+            // tm1_killer_pubgname_l
+            // 
+            this.tm1_killer_pubgname_l.AutoSize = true;
+            this.tm1_killer_pubgname_l.Location = new System.Drawing.Point(9, 63);
+            this.tm1_killer_pubgname_l.Name = "tm1_killer_pubgname_l";
+            this.tm1_killer_pubgname_l.Size = new System.Drawing.Size(117, 12);
+            this.tm1_killer_pubgname_l.TabIndex = 10;
+            this.tm1_killer_pubgname_l.Text = "이 팀원을 죽인 유저:";
+            this.tm1_killer_pubgname_l.Visible = false;
             // 
             // tm1_steamid
             // 
             this.tm1_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tm1_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm1_steamid.Location = new System.Drawing.Point(69, 27);
+            this.tm1_steamid.Location = new System.Drawing.Point(77, 27);
             this.tm1_steamid.Name = "tm1_steamid";
             this.tm1_steamid.ReadOnly = true;
-            this.tm1_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm1_steamid.Size = new System.Drawing.Size(140, 14);
             this.tm1_steamid.TabIndex = 9;
             this.tm1_steamid.TabStop = false;
             this.tm1_steamid.Text = "[unknown]";
@@ -808,9 +871,9 @@
             // tm1_kills
             // 
             this.tm1_kills.AutoSize = true;
-            this.tm1_kills.Location = new System.Drawing.Point(31, 55);
+            this.tm1_kills.Location = new System.Drawing.Point(46, 51);
             this.tm1_kills.Name = "tm1_kills";
-            this.tm1_kills.Size = new System.Drawing.Size(57, 13);
+            this.tm1_kills.Size = new System.Drawing.Size(68, 12);
             this.tm1_kills.TabIndex = 8;
             this.tm1_kills.Text = "[unknown]";
             this.tm1_kills.Visible = false;
@@ -818,9 +881,9 @@
             // tm1_headshots
             // 
             this.tm1_headshots.AutoSize = true;
-            this.tm1_headshots.Location = new System.Drawing.Point(64, 42);
+            this.tm1_headshots.Location = new System.Drawing.Point(68, 39);
             this.tm1_headshots.Name = "tm1_headshots";
-            this.tm1_headshots.Size = new System.Drawing.Size(57, 13);
+            this.tm1_headshots.Size = new System.Drawing.Size(68, 12);
             this.tm1_headshots.TabIndex = 7;
             this.tm1_headshots.Text = "[unknown]";
             this.tm1_headshots.Visible = false;
@@ -828,9 +891,9 @@
             // tm1_pubgname
             // 
             this.tm1_pubgname.AutoSize = true;
-            this.tm1_pubgname.Location = new System.Drawing.Point(74, 16);
+            this.tm1_pubgname.Location = new System.Drawing.Point(52, 15);
             this.tm1_pubgname.Name = "tm1_pubgname";
-            this.tm1_pubgname.Size = new System.Drawing.Size(57, 13);
+            this.tm1_pubgname.Size = new System.Drawing.Size(68, 12);
             this.tm1_pubgname.TabIndex = 5;
             this.tm1_pubgname.Text = "[unknown]";
             this.tm1_pubgname.Visible = false;
@@ -838,29 +901,29 @@
             // tm1_kills_l
             // 
             this.tm1_kills_l.AutoSize = true;
-            this.tm1_kills_l.Location = new System.Drawing.Point(8, 55);
+            this.tm1_kills_l.Location = new System.Drawing.Point(9, 51);
             this.tm1_kills_l.Name = "tm1_kills_l";
-            this.tm1_kills_l.Size = new System.Drawing.Size(28, 13);
+            this.tm1_kills_l.Size = new System.Drawing.Size(37, 12);
             this.tm1_kills_l.TabIndex = 3;
-            this.tm1_kills_l.Text = "Kills:";
+            this.tm1_kills_l.Text = "킬 수:";
             this.tm1_kills_l.Visible = false;
             // 
             // tm1_headshots_l
             // 
             this.tm1_headshots_l.AutoSize = true;
-            this.tm1_headshots_l.Location = new System.Drawing.Point(8, 42);
+            this.tm1_headshots_l.Location = new System.Drawing.Point(9, 39);
             this.tm1_headshots_l.Name = "tm1_headshots_l";
-            this.tm1_headshots_l.Size = new System.Drawing.Size(61, 13);
+            this.tm1_headshots_l.Size = new System.Drawing.Size(61, 12);
             this.tm1_headshots_l.TabIndex = 2;
-            this.tm1_headshots_l.Text = "Headshots:";
+            this.tm1_headshots_l.Text = "헤드샷 수:";
             this.tm1_headshots_l.Visible = false;
             // 
             // tm1_steamid_l
             // 
             this.tm1_steamid_l.AutoSize = true;
-            this.tm1_steamid_l.Location = new System.Drawing.Point(8, 29);
+            this.tm1_steamid_l.Location = new System.Drawing.Point(9, 27);
             this.tm1_steamid_l.Name = "tm1_steamid_l";
-            this.tm1_steamid_l.Size = new System.Drawing.Size(63, 13);
+            this.tm1_steamid_l.Size = new System.Drawing.Size(68, 12);
             this.tm1_steamid_l.TabIndex = 1;
             this.tm1_steamid_l.Text = "SteamID64:";
             this.tm1_steamid_l.Visible = false;
@@ -868,11 +931,11 @@
             // tm1_pubgname_l
             // 
             this.tm1_pubgname_l.AutoSize = true;
-            this.tm1_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            this.tm1_pubgname_l.Location = new System.Drawing.Point(9, 15);
             this.tm1_pubgname_l.Name = "tm1_pubgname_l";
-            this.tm1_pubgname_l.Size = new System.Drawing.Size(71, 13);
+            this.tm1_pubgname_l.Size = new System.Drawing.Size(45, 12);
             this.tm1_pubgname_l.TabIndex = 0;
-            this.tm1_pubgname_l.Text = "PUBG Name:";
+            this.tm1_pubgname_l.Text = "유저명:";
             this.tm1_pubgname_l.Visible = false;
             // 
             // tm2
@@ -889,22 +952,64 @@
             this.tm2.Controls.Add(this.tm2_headshots_l);
             this.tm2.Controls.Add(this.tm2_steamid_l);
             this.tm2.Controls.Add(this.tm2_pubgname_l);
-            this.tm2.Location = new System.Drawing.Point(6, 169);
+            this.tm2.Location = new System.Drawing.Point(7, 156);
             this.tm2.Name = "tm2";
-            this.tm2.Size = new System.Drawing.Size(225, 144);
+            this.tm2.Size = new System.Drawing.Size(262, 133);
             this.tm2.TabIndex = 11;
             this.tm2.TabStop = false;
-            this.tm2.Text = "Teammate 2";
+            this.tm2.Text = "팀원 2";
             this.tm2.Visible = false;
+            // 
+            // tm2_killer_steamid
+            // 
+            this.tm2_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tm2_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.tm2_killer_steamid.Location = new System.Drawing.Point(91, 75);
+            this.tm2_killer_steamid.Name = "tm2_killer_steamid";
+            this.tm2_killer_steamid.ReadOnly = true;
+            this.tm2_killer_steamid.Size = new System.Drawing.Size(140, 14);
+            this.tm2_killer_steamid.TabIndex = 17;
+            this.tm2_killer_steamid.TabStop = false;
+            this.tm2_killer_steamid.Text = "[unknown]";
+            // 
+            // tm2_killer_pubgname
+            // 
+            this.tm2_killer_pubgname.AutoSize = true;
+            this.tm2_killer_pubgname.Location = new System.Drawing.Point(124, 63);
+            this.tm2_killer_pubgname.Name = "tm2_killer_pubgname";
+            this.tm2_killer_pubgname.Size = new System.Drawing.Size(68, 12);
+            this.tm2_killer_pubgname.TabIndex = 16;
+            this.tm2_killer_pubgname.Text = "[unknown]";
+            this.tm2_killer_pubgname.Visible = false;
+            // 
+            // tm2_killer_steamid_l
+            // 
+            this.tm2_killer_steamid_l.AutoSize = true;
+            this.tm2_killer_steamid_l.Location = new System.Drawing.Point(9, 75);
+            this.tm2_killer_steamid_l.Name = "tm2_killer_steamid_l";
+            this.tm2_killer_steamid_l.Size = new System.Drawing.Size(84, 12);
+            this.tm2_killer_steamid_l.TabIndex = 15;
+            this.tm2_killer_steamid_l.Text = "└ SteamID64:";
+            this.tm2_killer_steamid_l.Visible = false;
+            // 
+            // tm2_killer_pubgname_l
+            // 
+            this.tm2_killer_pubgname_l.AutoSize = true;
+            this.tm2_killer_pubgname_l.Location = new System.Drawing.Point(9, 63);
+            this.tm2_killer_pubgname_l.Name = "tm2_killer_pubgname_l";
+            this.tm2_killer_pubgname_l.Size = new System.Drawing.Size(117, 12);
+            this.tm2_killer_pubgname_l.TabIndex = 14;
+            this.tm2_killer_pubgname_l.Text = "이 팀원을 죽인 유저:";
+            this.tm2_killer_pubgname_l.Visible = false;
             // 
             // tm2_steamid
             // 
             this.tm2_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tm2_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm2_steamid.Location = new System.Drawing.Point(67, 29);
+            this.tm2_steamid.Location = new System.Drawing.Point(78, 27);
             this.tm2_steamid.Name = "tm2_steamid";
             this.tm2_steamid.ReadOnly = true;
-            this.tm2_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm2_steamid.Size = new System.Drawing.Size(140, 14);
             this.tm2_steamid.TabIndex = 10;
             this.tm2_steamid.TabStop = false;
             this.tm2_steamid.Text = "[unknown]";
@@ -912,9 +1017,9 @@
             // tm2_kills
             // 
             this.tm2_kills.AutoSize = true;
-            this.tm2_kills.Location = new System.Drawing.Point(31, 55);
+            this.tm2_kills.Location = new System.Drawing.Point(45, 51);
             this.tm2_kills.Name = "tm2_kills";
-            this.tm2_kills.Size = new System.Drawing.Size(57, 13);
+            this.tm2_kills.Size = new System.Drawing.Size(68, 12);
             this.tm2_kills.TabIndex = 8;
             this.tm2_kills.Text = "[unknown]";
             this.tm2_kills.Visible = false;
@@ -922,9 +1027,9 @@
             // tm2_headshots
             // 
             this.tm2_headshots.AutoSize = true;
-            this.tm2_headshots.Location = new System.Drawing.Point(64, 42);
+            this.tm2_headshots.Location = new System.Drawing.Point(70, 39);
             this.tm2_headshots.Name = "tm2_headshots";
-            this.tm2_headshots.Size = new System.Drawing.Size(57, 13);
+            this.tm2_headshots.Size = new System.Drawing.Size(68, 12);
             this.tm2_headshots.TabIndex = 7;
             this.tm2_headshots.Text = "[unknown]";
             this.tm2_headshots.Visible = false;
@@ -932,9 +1037,9 @@
             // tm2_pubgname
             // 
             this.tm2_pubgname.AutoSize = true;
-            this.tm2_pubgname.Location = new System.Drawing.Point(74, 16);
+            this.tm2_pubgname.Location = new System.Drawing.Point(52, 15);
             this.tm2_pubgname.Name = "tm2_pubgname";
-            this.tm2_pubgname.Size = new System.Drawing.Size(57, 13);
+            this.tm2_pubgname.Size = new System.Drawing.Size(68, 12);
             this.tm2_pubgname.TabIndex = 5;
             this.tm2_pubgname.Text = "[unknown]";
             this.tm2_pubgname.Visible = false;
@@ -942,29 +1047,29 @@
             // tm2_kills_l
             // 
             this.tm2_kills_l.AutoSize = true;
-            this.tm2_kills_l.Location = new System.Drawing.Point(8, 55);
+            this.tm2_kills_l.Location = new System.Drawing.Point(9, 51);
             this.tm2_kills_l.Name = "tm2_kills_l";
-            this.tm2_kills_l.Size = new System.Drawing.Size(28, 13);
+            this.tm2_kills_l.Size = new System.Drawing.Size(37, 12);
             this.tm2_kills_l.TabIndex = 3;
-            this.tm2_kills_l.Text = "Kills:";
+            this.tm2_kills_l.Text = "킬 수:";
             this.tm2_kills_l.Visible = false;
             // 
             // tm2_headshots_l
             // 
             this.tm2_headshots_l.AutoSize = true;
-            this.tm2_headshots_l.Location = new System.Drawing.Point(8, 42);
+            this.tm2_headshots_l.Location = new System.Drawing.Point(9, 39);
             this.tm2_headshots_l.Name = "tm2_headshots_l";
-            this.tm2_headshots_l.Size = new System.Drawing.Size(61, 13);
+            this.tm2_headshots_l.Size = new System.Drawing.Size(61, 12);
             this.tm2_headshots_l.TabIndex = 2;
-            this.tm2_headshots_l.Text = "Headshots:";
+            this.tm2_headshots_l.Text = "헤드샷 수:";
             this.tm2_headshots_l.Visible = false;
             // 
             // tm2_steamid_l
             // 
             this.tm2_steamid_l.AutoSize = true;
-            this.tm2_steamid_l.Location = new System.Drawing.Point(7, 29);
+            this.tm2_steamid_l.Location = new System.Drawing.Point(8, 27);
             this.tm2_steamid_l.Name = "tm2_steamid_l";
-            this.tm2_steamid_l.Size = new System.Drawing.Size(63, 13);
+            this.tm2_steamid_l.Size = new System.Drawing.Size(68, 12);
             this.tm2_steamid_l.TabIndex = 1;
             this.tm2_steamid_l.Text = "SteamID64:";
             this.tm2_steamid_l.Visible = false;
@@ -972,11 +1077,11 @@
             // tm2_pubgname_l
             // 
             this.tm2_pubgname_l.AutoSize = true;
-            this.tm2_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            this.tm2_pubgname_l.Location = new System.Drawing.Point(9, 15);
             this.tm2_pubgname_l.Name = "tm2_pubgname_l";
-            this.tm2_pubgname_l.Size = new System.Drawing.Size(71, 13);
+            this.tm2_pubgname_l.Size = new System.Drawing.Size(45, 12);
             this.tm2_pubgname_l.TabIndex = 0;
-            this.tm2_pubgname_l.Text = "PUBG Name:";
+            this.tm2_pubgname_l.Text = "유저명:";
             this.tm2_pubgname_l.Visible = false;
             // 
             // tm3
@@ -993,22 +1098,64 @@
             this.tm3.Controls.Add(this.tm3_headshots_l);
             this.tm3.Controls.Add(this.tm3_steamid_l);
             this.tm3.Controls.Add(this.tm3_pubgname_l);
-            this.tm3.Location = new System.Drawing.Point(6, 319);
+            this.tm3.Location = new System.Drawing.Point(7, 294);
             this.tm3.Name = "tm3";
-            this.tm3.Size = new System.Drawing.Size(225, 144);
+            this.tm3.Size = new System.Drawing.Size(262, 133);
             this.tm3.TabIndex = 10;
             this.tm3.TabStop = false;
-            this.tm3.Text = "Teammate 3";
+            this.tm3.Text = "팀원 3";
             this.tm3.Visible = false;
+            // 
+            // tm3_killer_steamid
+            // 
+            this.tm3_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tm3_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.tm3_killer_steamid.Location = new System.Drawing.Point(90, 75);
+            this.tm3_killer_steamid.Name = "tm3_killer_steamid";
+            this.tm3_killer_steamid.ReadOnly = true;
+            this.tm3_killer_steamid.Size = new System.Drawing.Size(140, 14);
+            this.tm3_killer_steamid.TabIndex = 17;
+            this.tm3_killer_steamid.TabStop = false;
+            this.tm3_killer_steamid.Text = "[unknown]";
+            // 
+            // tm3_killer_pubgname
+            // 
+            this.tm3_killer_pubgname.AutoSize = true;
+            this.tm3_killer_pubgname.Location = new System.Drawing.Point(124, 63);
+            this.tm3_killer_pubgname.Name = "tm3_killer_pubgname";
+            this.tm3_killer_pubgname.Size = new System.Drawing.Size(68, 12);
+            this.tm3_killer_pubgname.TabIndex = 16;
+            this.tm3_killer_pubgname.Text = "[unknown]";
+            this.tm3_killer_pubgname.Visible = false;
+            // 
+            // tm3_killer_steamid_l
+            // 
+            this.tm3_killer_steamid_l.AutoSize = true;
+            this.tm3_killer_steamid_l.Location = new System.Drawing.Point(9, 75);
+            this.tm3_killer_steamid_l.Name = "tm3_killer_steamid_l";
+            this.tm3_killer_steamid_l.Size = new System.Drawing.Size(84, 12);
+            this.tm3_killer_steamid_l.TabIndex = 15;
+            this.tm3_killer_steamid_l.Text = "└ SteamID64:";
+            this.tm3_killer_steamid_l.Visible = false;
+            // 
+            // tm3_killer_pubgname_l
+            // 
+            this.tm3_killer_pubgname_l.AutoSize = true;
+            this.tm3_killer_pubgname_l.Location = new System.Drawing.Point(9, 63);
+            this.tm3_killer_pubgname_l.Name = "tm3_killer_pubgname_l";
+            this.tm3_killer_pubgname_l.Size = new System.Drawing.Size(117, 12);
+            this.tm3_killer_pubgname_l.TabIndex = 14;
+            this.tm3_killer_pubgname_l.Text = "이 팀원을 죽인 유저:";
+            this.tm3_killer_pubgname_l.Visible = false;
             // 
             // tm3_steamid
             // 
             this.tm3_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tm3_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm3_steamid.Location = new System.Drawing.Point(69, 28);
+            this.tm3_steamid.Location = new System.Drawing.Point(77, 27);
             this.tm3_steamid.Name = "tm3_steamid";
             this.tm3_steamid.ReadOnly = true;
-            this.tm3_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm3_steamid.Size = new System.Drawing.Size(140, 14);
             this.tm3_steamid.TabIndex = 11;
             this.tm3_steamid.TabStop = false;
             this.tm3_steamid.Text = "[unknown]";
@@ -1016,9 +1163,9 @@
             // tm3_kills
             // 
             this.tm3_kills.AutoSize = true;
-            this.tm3_kills.Location = new System.Drawing.Point(31, 55);
+            this.tm3_kills.Location = new System.Drawing.Point(47, 51);
             this.tm3_kills.Name = "tm3_kills";
-            this.tm3_kills.Size = new System.Drawing.Size(57, 13);
+            this.tm3_kills.Size = new System.Drawing.Size(68, 12);
             this.tm3_kills.TabIndex = 8;
             this.tm3_kills.Text = "[unknown]";
             this.tm3_kills.Visible = false;
@@ -1026,9 +1173,9 @@
             // tm3_headshots
             // 
             this.tm3_headshots.AutoSize = true;
-            this.tm3_headshots.Location = new System.Drawing.Point(64, 42);
+            this.tm3_headshots.Location = new System.Drawing.Point(75, 39);
             this.tm3_headshots.Name = "tm3_headshots";
-            this.tm3_headshots.Size = new System.Drawing.Size(57, 13);
+            this.tm3_headshots.Size = new System.Drawing.Size(68, 12);
             this.tm3_headshots.TabIndex = 7;
             this.tm3_headshots.Text = "[unknown]";
             this.tm3_headshots.Visible = false;
@@ -1036,9 +1183,9 @@
             // tm3_pubgname
             // 
             this.tm3_pubgname.AutoSize = true;
-            this.tm3_pubgname.Location = new System.Drawing.Point(74, 16);
+            this.tm3_pubgname.Location = new System.Drawing.Point(52, 15);
             this.tm3_pubgname.Name = "tm3_pubgname";
-            this.tm3_pubgname.Size = new System.Drawing.Size(57, 13);
+            this.tm3_pubgname.Size = new System.Drawing.Size(68, 12);
             this.tm3_pubgname.TabIndex = 5;
             this.tm3_pubgname.Text = "[unknown]";
             this.tm3_pubgname.Visible = false;
@@ -1046,29 +1193,29 @@
             // tm3_kills_l
             // 
             this.tm3_kills_l.AutoSize = true;
-            this.tm3_kills_l.Location = new System.Drawing.Point(8, 55);
+            this.tm3_kills_l.Location = new System.Drawing.Point(9, 51);
             this.tm3_kills_l.Name = "tm3_kills_l";
-            this.tm3_kills_l.Size = new System.Drawing.Size(28, 13);
+            this.tm3_kills_l.Size = new System.Drawing.Size(37, 12);
             this.tm3_kills_l.TabIndex = 3;
-            this.tm3_kills_l.Text = "Kills:";
+            this.tm3_kills_l.Text = "킬 수:";
             this.tm3_kills_l.Visible = false;
             // 
             // tm3_headshots_l
             // 
             this.tm3_headshots_l.AutoSize = true;
-            this.tm3_headshots_l.Location = new System.Drawing.Point(8, 42);
+            this.tm3_headshots_l.Location = new System.Drawing.Point(9, 39);
             this.tm3_headshots_l.Name = "tm3_headshots_l";
-            this.tm3_headshots_l.Size = new System.Drawing.Size(61, 13);
+            this.tm3_headshots_l.Size = new System.Drawing.Size(61, 12);
             this.tm3_headshots_l.TabIndex = 2;
-            this.tm3_headshots_l.Text = "Headshots:";
+            this.tm3_headshots_l.Text = "헤드샷 수:";
             this.tm3_headshots_l.Visible = false;
             // 
             // tm3_steamid_l
             // 
             this.tm3_steamid_l.AutoSize = true;
-            this.tm3_steamid_l.Location = new System.Drawing.Point(8, 29);
+            this.tm3_steamid_l.Location = new System.Drawing.Point(9, 27);
             this.tm3_steamid_l.Name = "tm3_steamid_l";
-            this.tm3_steamid_l.Size = new System.Drawing.Size(63, 13);
+            this.tm3_steamid_l.Size = new System.Drawing.Size(68, 12);
             this.tm3_steamid_l.TabIndex = 1;
             this.tm3_steamid_l.Text = "SteamID64:";
             this.tm3_steamid_l.Visible = false;
@@ -1076,11 +1223,11 @@
             // tm3_pubgname_l
             // 
             this.tm3_pubgname_l.AutoSize = true;
-            this.tm3_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            this.tm3_pubgname_l.Location = new System.Drawing.Point(9, 15);
             this.tm3_pubgname_l.Name = "tm3_pubgname_l";
-            this.tm3_pubgname_l.Size = new System.Drawing.Size(71, 13);
+            this.tm3_pubgname_l.Size = new System.Drawing.Size(45, 12);
             this.tm3_pubgname_l.TabIndex = 0;
-            this.tm3_pubgname_l.Text = "PUBG Name:";
+            this.tm3_pubgname_l.Text = "유저명:";
             this.tm3_pubgname_l.Visible = false;
             // 
             // tm4
@@ -1097,279 +1244,22 @@
             this.tm4.Controls.Add(this.tm4_headshots_l);
             this.tm4.Controls.Add(this.tm4_steamid_l);
             this.tm4.Controls.Add(this.tm4_pubgname_l);
-            this.tm4.Location = new System.Drawing.Point(6, 471);
+            this.tm4.Location = new System.Drawing.Point(7, 435);
             this.tm4.Name = "tm4";
-            this.tm4.Size = new System.Drawing.Size(225, 132);
+            this.tm4.Size = new System.Drawing.Size(262, 122);
             this.tm4.TabIndex = 2;
             this.tm4.TabStop = false;
-            this.tm4.Text = "Teammate 4";
+            this.tm4.Text = "팀원 4";
             this.tm4.Visible = false;
-            // 
-            // tm4_steamid
-            // 
-            this.tm4_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm4_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm4_steamid.Location = new System.Drawing.Point(69, 28);
-            this.tm4_steamid.Name = "tm4_steamid";
-            this.tm4_steamid.ReadOnly = true;
-            this.tm4_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm4_steamid.TabIndex = 12;
-            this.tm4_steamid.TabStop = false;
-            this.tm4_steamid.Text = "[unknown]";
-            // 
-            // tm4_kills
-            // 
-            this.tm4_kills.AutoSize = true;
-            this.tm4_kills.Location = new System.Drawing.Point(31, 55);
-            this.tm4_kills.Name = "tm4_kills";
-            this.tm4_kills.Size = new System.Drawing.Size(57, 13);
-            this.tm4_kills.TabIndex = 8;
-            this.tm4_kills.Text = "[unknown]";
-            this.tm4_kills.Visible = false;
-            // 
-            // tm4_headshots
-            // 
-            this.tm4_headshots.AutoSize = true;
-            this.tm4_headshots.Location = new System.Drawing.Point(64, 42);
-            this.tm4_headshots.Name = "tm4_headshots";
-            this.tm4_headshots.Size = new System.Drawing.Size(57, 13);
-            this.tm4_headshots.TabIndex = 7;
-            this.tm4_headshots.Text = "[unknown]";
-            this.tm4_headshots.Visible = false;
-            // 
-            // tm4_pubgname
-            // 
-            this.tm4_pubgname.AutoSize = true;
-            this.tm4_pubgname.Location = new System.Drawing.Point(74, 16);
-            this.tm4_pubgname.Name = "tm4_pubgname";
-            this.tm4_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm4_pubgname.TabIndex = 5;
-            this.tm4_pubgname.Text = "[unknown]";
-            this.tm4_pubgname.Visible = false;
-            // 
-            // tm4_kills_l
-            // 
-            this.tm4_kills_l.AutoSize = true;
-            this.tm4_kills_l.Location = new System.Drawing.Point(8, 55);
-            this.tm4_kills_l.Name = "tm4_kills_l";
-            this.tm4_kills_l.Size = new System.Drawing.Size(28, 13);
-            this.tm4_kills_l.TabIndex = 3;
-            this.tm4_kills_l.Text = "Kills:";
-            this.tm4_kills_l.Visible = false;
-            // 
-            // tm4_headshots_l
-            // 
-            this.tm4_headshots_l.AutoSize = true;
-            this.tm4_headshots_l.Location = new System.Drawing.Point(8, 42);
-            this.tm4_headshots_l.Name = "tm4_headshots_l";
-            this.tm4_headshots_l.Size = new System.Drawing.Size(61, 13);
-            this.tm4_headshots_l.TabIndex = 2;
-            this.tm4_headshots_l.Text = "Headshots:";
-            this.tm4_headshots_l.Visible = false;
-            // 
-            // tm4_steamid_l
-            // 
-            this.tm4_steamid_l.AutoSize = true;
-            this.tm4_steamid_l.Location = new System.Drawing.Point(8, 29);
-            this.tm4_steamid_l.Name = "tm4_steamid_l";
-            this.tm4_steamid_l.Size = new System.Drawing.Size(63, 13);
-            this.tm4_steamid_l.TabIndex = 1;
-            this.tm4_steamid_l.Text = "SteamID64:";
-            this.tm4_steamid_l.Visible = false;
-            // 
-            // tm4_pubgname_l
-            // 
-            this.tm4_pubgname_l.AutoSize = true;
-            this.tm4_pubgname_l.Location = new System.Drawing.Point(8, 16);
-            this.tm4_pubgname_l.Name = "tm4_pubgname_l";
-            this.tm4_pubgname_l.Size = new System.Drawing.Size(71, 13);
-            this.tm4_pubgname_l.TabIndex = 0;
-            this.tm4_pubgname_l.Text = "PUBG Name:";
-            this.tm4_pubgname_l.Visible = false;
-            // 
-            // replayList
-            // 
-            this.replayList.FormattingEnabled = true;
-            this.replayList.Location = new System.Drawing.Point(12, 16);
-            this.replayList.Name = "replayList";
-            this.replayList.Size = new System.Drawing.Size(407, 498);
-            this.replayList.TabIndex = 0;
-            this.replayList.SelectedIndexChanged += new System.EventHandler(this.replayList_SelectedIndexChanged);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.AmountOfReplays_SB});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 686);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(945, 22);
-            this.statusStrip1.TabIndex = 13;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // AmountOfReplays_SB
-            // 
-            this.AmountOfReplays_SB.Name = "AmountOfReplays_SB";
-            this.AmountOfReplays_SB.Size = new System.Drawing.Size(70, 17);
-            this.AmountOfReplays_SB.Text = "Replays: 0/0";
-            // 
-            // replayTool
-            // 
-            this.replayTool.Controls.Add(this.clearallreplays);
-            this.replayTool.Controls.Add(this.openReplayFolder);
-            this.replayTool.Controls.Add(this.replayListRefresh);
-            this.replayTool.Controls.Add(this.importReplay);
-            this.replayTool.Location = new System.Drawing.Point(12, 519);
-            this.replayTool.Name = "replayTool";
-            this.replayTool.Size = new System.Drawing.Size(407, 163);
-            this.replayTool.TabIndex = 14;
-            this.replayTool.TabStop = false;
-            this.replayTool.Text = "Replay Tools";
-            // 
-            // clearallreplays
-            // 
-            this.clearallreplays.ForeColor = System.Drawing.Color.DarkRed;
-            this.clearallreplays.Location = new System.Drawing.Point(6, 48);
-            this.clearallreplays.Name = "clearallreplays";
-            this.clearallreplays.Size = new System.Drawing.Size(126, 23);
-            this.clearallreplays.TabIndex = 13;
-            this.clearallreplays.Text = "Clear ALL Replays";
-            this.clearallreplays.UseVisualStyleBackColor = true;
-            this.clearallreplays.Click += new System.EventHandler(this.clearallreplays_Click);
-            // 
-            // tm1_killer_steamid
-            // 
-            this.tm1_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm1_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm1_killer_steamid.Location = new System.Drawing.Point(93, 81);
-            this.tm1_killer_steamid.Name = "tm1_killer_steamid";
-            this.tm1_killer_steamid.ReadOnly = true;
-            this.tm1_killer_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm1_killer_steamid.TabIndex = 13;
-            this.tm1_killer_steamid.TabStop = false;
-            this.tm1_killer_steamid.Text = "[unknown]";
-            // 
-            // tm1_killer_pubgname
-            // 
-            this.tm1_killer_pubgname.AutoSize = true;
-            this.tm1_killer_pubgname.Location = new System.Drawing.Point(99, 68);
-            this.tm1_killer_pubgname.Name = "tm1_killer_pubgname";
-            this.tm1_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm1_killer_pubgname.TabIndex = 12;
-            this.tm1_killer_pubgname.Text = "[unknown]";
-            this.tm1_killer_pubgname.Visible = false;
-            // 
-            // tm1_killer_steamid_l
-            // 
-            this.tm1_killer_steamid_l.AutoSize = true;
-            this.tm1_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
-            this.tm1_killer_steamid_l.Name = "tm1_killer_steamid_l";
-            this.tm1_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm1_killer_steamid_l.TabIndex = 11;
-            this.tm1_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm1_killer_steamid_l.Visible = false;
-            // 
-            // tm1_killer_pubgname_l
-            // 
-            this.tm1_killer_pubgname_l.AutoSize = true;
-            this.tm1_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
-            this.tm1_killer_pubgname_l.Name = "tm1_killer_pubgname_l";
-            this.tm1_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm1_killer_pubgname_l.TabIndex = 10;
-            this.tm1_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm1_killer_pubgname_l.Visible = false;
-            // 
-            // tm2_killer_steamid
-            // 
-            this.tm2_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm2_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm2_killer_steamid.Location = new System.Drawing.Point(94, 81);
-            this.tm2_killer_steamid.Name = "tm2_killer_steamid";
-            this.tm2_killer_steamid.ReadOnly = true;
-            this.tm2_killer_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm2_killer_steamid.TabIndex = 17;
-            this.tm2_killer_steamid.TabStop = false;
-            this.tm2_killer_steamid.Text = "[unknown]";
-            // 
-            // tm2_killer_pubgname
-            // 
-            this.tm2_killer_pubgname.AutoSize = true;
-            this.tm2_killer_pubgname.Location = new System.Drawing.Point(99, 68);
-            this.tm2_killer_pubgname.Name = "tm2_killer_pubgname";
-            this.tm2_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm2_killer_pubgname.TabIndex = 16;
-            this.tm2_killer_pubgname.Text = "[unknown]";
-            this.tm2_killer_pubgname.Visible = false;
-            // 
-            // tm2_killer_steamid_l
-            // 
-            this.tm2_killer_steamid_l.AutoSize = true;
-            this.tm2_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
-            this.tm2_killer_steamid_l.Name = "tm2_killer_steamid_l";
-            this.tm2_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm2_killer_steamid_l.TabIndex = 15;
-            this.tm2_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm2_killer_steamid_l.Visible = false;
-            // 
-            // tm2_killer_pubgname_l
-            // 
-            this.tm2_killer_pubgname_l.AutoSize = true;
-            this.tm2_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
-            this.tm2_killer_pubgname_l.Name = "tm2_killer_pubgname_l";
-            this.tm2_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm2_killer_pubgname_l.TabIndex = 14;
-            this.tm2_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm2_killer_pubgname_l.Visible = false;
-            // 
-            // tm3_killer_steamid
-            // 
-            this.tm3_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm3_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm3_killer_steamid.Location = new System.Drawing.Point(94, 81);
-            this.tm3_killer_steamid.Name = "tm3_killer_steamid";
-            this.tm3_killer_steamid.ReadOnly = true;
-            this.tm3_killer_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm3_killer_steamid.TabIndex = 17;
-            this.tm3_killer_steamid.TabStop = false;
-            this.tm3_killer_steamid.Text = "[unknown]";
-            // 
-            // tm3_killer_pubgname
-            // 
-            this.tm3_killer_pubgname.AutoSize = true;
-            this.tm3_killer_pubgname.Location = new System.Drawing.Point(99, 68);
-            this.tm3_killer_pubgname.Name = "tm3_killer_pubgname";
-            this.tm3_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm3_killer_pubgname.TabIndex = 16;
-            this.tm3_killer_pubgname.Text = "[unknown]";
-            this.tm3_killer_pubgname.Visible = false;
-            // 
-            // tm3_killer_steamid_l
-            // 
-            this.tm3_killer_steamid_l.AutoSize = true;
-            this.tm3_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
-            this.tm3_killer_steamid_l.Name = "tm3_killer_steamid_l";
-            this.tm3_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm3_killer_steamid_l.TabIndex = 15;
-            this.tm3_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm3_killer_steamid_l.Visible = false;
-            // 
-            // tm3_killer_pubgname_l
-            // 
-            this.tm3_killer_pubgname_l.AutoSize = true;
-            this.tm3_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
-            this.tm3_killer_pubgname_l.Name = "tm3_killer_pubgname_l";
-            this.tm3_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm3_killer_pubgname_l.TabIndex = 14;
-            this.tm3_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm3_killer_pubgname_l.Visible = false;
             // 
             // tm4_killer_steamid
             // 
             this.tm4_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tm4_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm4_killer_steamid.Location = new System.Drawing.Point(94, 81);
+            this.tm4_killer_steamid.Location = new System.Drawing.Point(91, 75);
             this.tm4_killer_steamid.Name = "tm4_killer_steamid";
             this.tm4_killer_steamid.ReadOnly = true;
-            this.tm4_killer_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm4_killer_steamid.Size = new System.Drawing.Size(140, 14);
             this.tm4_killer_steamid.TabIndex = 17;
             this.tm4_killer_steamid.TabStop = false;
             this.tm4_killer_steamid.Text = "[unknown]";
@@ -1377,9 +1267,9 @@
             // tm4_killer_pubgname
             // 
             this.tm4_killer_pubgname.AutoSize = true;
-            this.tm4_killer_pubgname.Location = new System.Drawing.Point(99, 68);
+            this.tm4_killer_pubgname.Location = new System.Drawing.Point(124, 63);
             this.tm4_killer_pubgname.Name = "tm4_killer_pubgname";
-            this.tm4_killer_pubgname.Size = new System.Drawing.Size(57, 13);
+            this.tm4_killer_pubgname.Size = new System.Drawing.Size(68, 12);
             this.tm4_killer_pubgname.TabIndex = 16;
             this.tm4_killer_pubgname.Text = "[unknown]";
             this.tm4_killer_pubgname.Visible = false;
@@ -1387,48 +1277,172 @@
             // tm4_killer_steamid_l
             // 
             this.tm4_killer_steamid_l.AutoSize = true;
-            this.tm4_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
+            this.tm4_killer_steamid_l.Location = new System.Drawing.Point(9, 75);
             this.tm4_killer_steamid_l.Name = "tm4_killer_steamid_l";
-            this.tm4_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
+            this.tm4_killer_steamid_l.Size = new System.Drawing.Size(84, 12);
             this.tm4_killer_steamid_l.TabIndex = 15;
-            this.tm4_killer_steamid_l.Text = "Killer SteamID64:";
+            this.tm4_killer_steamid_l.Text = "└ SteamID64:";
             this.tm4_killer_steamid_l.Visible = false;
             // 
             // tm4_killer_pubgname_l
             // 
             this.tm4_killer_pubgname_l.AutoSize = true;
-            this.tm4_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
+            this.tm4_killer_pubgname_l.Location = new System.Drawing.Point(9, 63);
             this.tm4_killer_pubgname_l.Name = "tm4_killer_pubgname_l";
-            this.tm4_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
+            this.tm4_killer_pubgname_l.Size = new System.Drawing.Size(117, 12);
             this.tm4_killer_pubgname_l.TabIndex = 14;
-            this.tm4_killer_pubgname_l.Text = "Killer PUBG Name:";
+            this.tm4_killer_pubgname_l.Text = "이 팀원을 죽인 유저:";
             this.tm4_killer_pubgname_l.Visible = false;
             // 
-            // button1
+            // tm4_steamid
             // 
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(6, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(252, 22);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Every knock within 1km of you in the replay";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tm4_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tm4_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.tm4_steamid.Location = new System.Drawing.Point(77, 27);
+            this.tm4_steamid.Name = "tm4_steamid";
+            this.tm4_steamid.ReadOnly = true;
+            this.tm4_steamid.Size = new System.Drawing.Size(140, 14);
+            this.tm4_steamid.TabIndex = 12;
+            this.tm4_steamid.TabStop = false;
+            this.tm4_steamid.Text = "[unknown]";
             // 
-            // button2
+            // tm4_kills
             // 
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(6, 106);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(252, 22);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Every kill within 1km of you in the replay";
-            this.button2.UseVisualStyleBackColor = true;
+            this.tm4_kills.AutoSize = true;
+            this.tm4_kills.Location = new System.Drawing.Point(36, 51);
+            this.tm4_kills.Name = "tm4_kills";
+            this.tm4_kills.Size = new System.Drawing.Size(68, 12);
+            this.tm4_kills.TabIndex = 8;
+            this.tm4_kills.Text = "[unknown]";
+            this.tm4_kills.Visible = false;
+            // 
+            // tm4_headshots
+            // 
+            this.tm4_headshots.AutoSize = true;
+            this.tm4_headshots.Location = new System.Drawing.Point(67, 39);
+            this.tm4_headshots.Name = "tm4_headshots";
+            this.tm4_headshots.Size = new System.Drawing.Size(68, 12);
+            this.tm4_headshots.TabIndex = 7;
+            this.tm4_headshots.Text = "[unknown]";
+            this.tm4_headshots.Visible = false;
+            // 
+            // tm4_pubgname
+            // 
+            this.tm4_pubgname.AutoSize = true;
+            this.tm4_pubgname.Location = new System.Drawing.Point(52, 15);
+            this.tm4_pubgname.Name = "tm4_pubgname";
+            this.tm4_pubgname.Size = new System.Drawing.Size(68, 12);
+            this.tm4_pubgname.TabIndex = 5;
+            this.tm4_pubgname.Text = "[unknown]";
+            this.tm4_pubgname.Visible = false;
+            // 
+            // tm4_kills_l
+            // 
+            this.tm4_kills_l.AutoSize = true;
+            this.tm4_kills_l.Location = new System.Drawing.Point(9, 51);
+            this.tm4_kills_l.Name = "tm4_kills_l";
+            this.tm4_kills_l.Size = new System.Drawing.Size(37, 12);
+            this.tm4_kills_l.TabIndex = 3;
+            this.tm4_kills_l.Text = "킬 수:";
+            this.tm4_kills_l.Visible = false;
+            // 
+            // tm4_headshots_l
+            // 
+            this.tm4_headshots_l.AutoSize = true;
+            this.tm4_headshots_l.Location = new System.Drawing.Point(9, 39);
+            this.tm4_headshots_l.Name = "tm4_headshots_l";
+            this.tm4_headshots_l.Size = new System.Drawing.Size(61, 12);
+            this.tm4_headshots_l.TabIndex = 2;
+            this.tm4_headshots_l.Text = "헤드샷 수:";
+            this.tm4_headshots_l.Visible = false;
+            // 
+            // tm4_steamid_l
+            // 
+            this.tm4_steamid_l.AutoSize = true;
+            this.tm4_steamid_l.Location = new System.Drawing.Point(9, 27);
+            this.tm4_steamid_l.Name = "tm4_steamid_l";
+            this.tm4_steamid_l.Size = new System.Drawing.Size(68, 12);
+            this.tm4_steamid_l.TabIndex = 1;
+            this.tm4_steamid_l.Text = "SteamID64:";
+            this.tm4_steamid_l.Visible = false;
+            // 
+            // tm4_pubgname_l
+            // 
+            this.tm4_pubgname_l.AutoSize = true;
+            this.tm4_pubgname_l.Location = new System.Drawing.Point(9, 15);
+            this.tm4_pubgname_l.Name = "tm4_pubgname_l";
+            this.tm4_pubgname_l.Size = new System.Drawing.Size(45, 12);
+            this.tm4_pubgname_l.TabIndex = 0;
+            this.tm4_pubgname_l.Text = "유저명:";
+            this.tm4_pubgname_l.Visible = false;
+            // 
+            // replayList
+            // 
+            this.replayList.FormattingEnabled = true;
+            this.replayList.ItemHeight = 12;
+            this.replayList.Location = new System.Drawing.Point(14, 15);
+            this.replayList.Name = "replayList";
+            this.replayList.Size = new System.Drawing.Size(474, 460);
+            this.replayList.TabIndex = 0;
+            this.replayList.SelectedIndexChanged += new System.EventHandler(this.replayList_SelectedIndexChanged);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.AmountOfReplays_SB});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 632);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(1102, 22);
+            this.statusStrip1.TabIndex = 13;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // AmountOfReplays_SB
+            // 
+            this.AmountOfReplays_SB.Name = "AmountOfReplays_SB";
+            this.AmountOfReplays_SB.Size = new System.Drawing.Size(81, 17);
+            this.AmountOfReplays_SB.Text = "리플레이: 0/0";
+            // 
+            // replayTool
+            // 
+            this.replayTool.Controls.Add(this.clearallreplays);
+            this.replayTool.Controls.Add(this.openReplayFolder);
+            this.replayTool.Controls.Add(this.replayListRefresh);
+            this.replayTool.Controls.Add(this.importReplay);
+            this.replayTool.Location = new System.Drawing.Point(14, 479);
+            this.replayTool.Name = "replayTool";
+            this.replayTool.Size = new System.Drawing.Size(475, 78);
+            this.replayTool.TabIndex = 14;
+            this.replayTool.TabStop = false;
+            this.replayTool.Text = "리플레이 처리";
+            // 
+            // clearallreplays
+            // 
+            this.clearallreplays.ForeColor = System.Drawing.Color.DarkRed;
+            this.clearallreplays.Location = new System.Drawing.Point(7, 44);
+            this.clearallreplays.Name = "clearallreplays";
+            this.clearallreplays.Size = new System.Drawing.Size(147, 21);
+            this.clearallreplays.TabIndex = 13;
+            this.clearallreplays.Text = "리플레이 전부 삭제";
+            this.clearallreplays.UseVisualStyleBackColor = true;
+            this.clearallreplays.Click += new System.EventHandler(this.clearallreplays_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(398, 563);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(90, 56);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "프로그램 정보";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 708);
+            this.ClientSize = new System.Drawing.Size(1102, 654);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.replayTool);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox5);
@@ -1581,6 +1595,7 @@
         private System.Windows.Forms.Label tm4_killer_pubgname_l;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button3;
     }
 }
 

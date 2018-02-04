@@ -282,7 +282,7 @@ namespace PUBG_Replay_Manager
                 openSelectedReplay.Enabled = true;
                 zipReplay.Enabled = true;
                 steamidStrip.Enabled = true;
-                AmountOfReplays_SB.Text = "Replays: " + (replayList.SelectedIndex + 1) + "/" + replayList.Items.Count;
+                AmountOfReplays_SB.Text = "리플레이: " + (replayList.SelectedIndex + 1) + "/" + replayList.Items.Count;
             }
             else
             {
@@ -413,12 +413,12 @@ namespace PUBG_Replay_Manager
             if (temp0 < 60000)
             {
                 temp0 /= 1000; //milliseconds to seconds
-                ReplayInfo.Add(temp0.ToString() + " Sec.");
+                ReplayInfo.Add(temp0.ToString() + " 초");
             }
             else
             {
                 temp0 /= 60000; //milliseconds to minutes
-                ReplayInfo.Add(temp0.ToString() + " Min.");
+                ReplayInfo.Add(temp0.ToString() + " 분");
             }
             ReplayInfo.Add((int)NormalizedReplayInfoFile["NetworkVersion"]); //The verison of the netcode used by PUBG (It's been 720898 since Dec. 25 2017)
             ReplayInfo.Add((int)NormalizedReplayInfoFile["Changelist"]); //Unknown - Has never changed since Dec. 25 2017
@@ -616,8 +616,8 @@ namespace PUBG_Replay_Manager
             // Displays a SaveFileDialog so the user can save the Image  
             // assigned to Button2.  
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "ZIP File|*.zip";
-            saveFileDialog1.Title = "Save a PUBG Replay as a ZIP File...";
+            saveFileDialog1.Filter = "ZIP 파일|*.zip";
+            saveFileDialog1.Title = "PUBG 리플레이 폴더를 ZIP 파일로 저장";
             saveFileDialog1.ShowDialog();
 
             // If the file name is not an empty string open it for saving.  
@@ -654,15 +654,15 @@ namespace PUBG_Replay_Manager
         {
             if (replayList.Items.Count >= 20)
             {
-                DialogResult aus = MessageBox.Show("Maxmium number of replays in PUBG replay folder has been hit! (20)" + Environment.NewLine + "Adding another will cause PUBG to delete the oldest replay!" + Environment.NewLine + "Are you sure you want to add another?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult aus = MessageBox.Show("리플레이 개수가 최대입니다. (20개)" + Environment.NewLine + "리플레이를 더 추가하면 다른 리플레이가 삭제될 수 있습니다." + Environment.NewLine + "계속 진행하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (aus != DialogResult.Yes)
                 {
                     return;
                 }
             }
             OpenFileDialog importReplayDialog = new OpenFileDialog();
-            importReplayDialog.Filter = "ZIP Files|*.zip";
-            importReplayDialog.Title = "Select a PUBG Replay in a ZIP File...";
+            importReplayDialog.Filter = "ZIP 파일|*.zip";
+            importReplayDialog.Title = "PUBG 리플레이 폴더가 담긴 ZIP 파일을 선택하십시오";
 
             // Show the Dialog.  
             // If the user clicked OK in the dialog and  
@@ -683,7 +683,7 @@ namespace PUBG_Replay_Manager
 
         private void clearallreplays_Click(object sender, EventArgs e)
         {
-            DialogResult aus = MessageBox.Show("This will delete ALL replays in the Replays folder" + Environment.NewLine + "Are you sure you want to delete all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            DialogResult aus = MessageBox.Show("리플레이 폴더 내의 모든 리플레이가 삭제됩니다." + Environment.NewLine + "계속 진행하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (aus == DialogResult.Yes)
             {
                 if (Directory.Exists(replayloc))
@@ -696,8 +696,16 @@ namespace PUBG_Replay_Manager
                         }
                     }
                 }
-                MessageBox.Show("All replays deleted!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("모든 리플레이가 삭제되었습니다.", "삭제 완료", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 RefreshReplayList();
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("프로그램 제작: EpicKitten" + Environment.NewLine + "한글화 : Dr3adnought" + Environment.NewLine + "'예'를 누르면 제작자의 GitHub 에 접속합니다.", "정보", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("https://github.com/EpicKitten/PUBG-Replay-Manager");
             }
         }
     }
