@@ -9,6 +9,7 @@ using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Text.RegularExpressions;
 using System.Linq;
+using System.Drawing;
 
 namespace PUBG_Replay_Manager
 {
@@ -18,10 +19,17 @@ namespace PUBG_Replay_Manager
         public string prog_name = "PUBG Replay Manager";
         public string profile_link = "http://steamcommunity.com/profiles/";
         public string profile_id = "76561198050446061";
+        public Size orgWindowSize;
+        public Size orgGroupSize;
         public Main()
         {
             InitializeComponent();
-            RefreshReplayList();
+            RefreshReplayList();            
+        }
+        private void Main_Load(object sender, EventArgs e)
+        {
+            orgWindowSize = Size;
+            orgGroupSize = teamGroupBox.Size;
         }
         static public int get_char_unicode_code(char character)
         {
@@ -63,7 +71,10 @@ namespace PUBG_Replay_Manager
         }
         public void RefreshInfoGroups(ArrayList newInfo)
         {
-
+            Size orgWinSize = orgWindowSize;
+            Size orgTeamSize = orgGroupSize;
+            
+            
             lengthInMins.Text = (string)newInfo[1];
             networkVerison.Text = newInfo[2].ToString();
             matchType.Text = (string)newInfo[6];
@@ -283,8 +294,12 @@ namespace PUBG_Replay_Manager
                     }
                     if (z == 5)
                     {
-                        Size = new System.Drawing.Size(1187, 756); //Pops the right side out to show more teammates (up to 8)
-                        teamGroupBox.Size = new System.Drawing.Size(469, 674); //Pops the team group box out to show more teammates (up to 8)
+                        //Size = orgWindowSize;
+                        //teamGroupBox.Size = orgGroupSize;
+                        //orgWindowSize = Size;
+                        //orgGroupSize = teamGroupBox.Size;
+                        //Size = new Size(1187, 756); //Pops the right side out to show more teammates (up to 8)
+                        //teamGroupBox.Size = new Size(469, 674); //Pops the team group box out to show more teammates (up to 8)
                         tm5.Visible = true;
                         tm5_pubgname.Visible = true;
                         tm5_steamid.Visible = true;
@@ -305,8 +320,10 @@ namespace PUBG_Replay_Manager
                     }
                     else if (z < 5)
                     {
-                        Size = new System.Drawing.Size(961, 756); //returns it to normal
-                        teamGroupBox.Size = new System.Drawing.Size(237, 674); //returns it to normal
+                        //Size = new Size(orgWindowSize.Height, orgWindowSize.Width + 226);
+                        //teamGroupBox.Size = new Size(orgGroupSize.Height + 232, orgGroupSize.Width);
+                        //Size = new Size(961, 756); //returns it to normal
+                        //teamGroupBox.Size = new Size(237, 674); //returns it to normal
                         tm5.Visible = false;
                         tm5_pubgname.Visible = false;
                         tm5_steamid.Visible = false;
@@ -916,5 +933,6 @@ namespace PUBG_Replay_Manager
                 RefreshReplayList();
             }
         }
+
     }
 }
