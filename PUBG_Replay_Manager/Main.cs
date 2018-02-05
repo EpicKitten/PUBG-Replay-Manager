@@ -8,6 +8,7 @@ using System.Text;
 using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Text.RegularExpressions;
+using System.Linq;
 
 namespace PUBG_Replay_Manager
 {
@@ -66,7 +67,20 @@ namespace PUBG_Replay_Manager
             lengthInMins.Text = (string)newInfo[1];
             networkVerison.Text = newInfo[2].ToString();
             matchType.Text = (string)newInfo[6];
-            gameVerison.Text = (string)newInfo[7];
+            if (!newInfo[7].ToString().Contains("-") && newInfo[7].ToString().Length != 7)
+            {
+                gameverisonLabel.Text = "Host:";
+                gameVerison.Visible = false;
+                host.Visible = true;
+                host.Text = (string)newInfo[7];
+            }
+            else
+            {
+                gameVerison.Text = (string)newInfo[7];
+                gameverisonLabel.Text = "Game Verison:";
+                gameVerison.Visible = true;
+                host.Visible = false;
+            }
             serverRegion.Text = (string)newInfo[9];
             serverId.Text = (string)newInfo[13];
             recordingSize.Text = (string)newInfo[15];
@@ -267,6 +281,160 @@ namespace PUBG_Replay_Manager
                         tm4_killer_steamid.Visible = false;
                         tm4_killer_steamid_l.Visible = false;
                     }
+                    if (z == 5)
+                    {
+                        Size = new System.Drawing.Size(1187, 756); //Pops the right side out to show more teammates (up to 8)
+                        teamGroupBox.Size = new System.Drawing.Size(469, 674); //Pops the team group box out to show more teammates (up to 8)
+                        tm5.Visible = true;
+                        tm5_pubgname.Visible = true;
+                        tm5_steamid.Visible = true;
+                        tm5_headshots.Visible = true;
+                        tm5_kills.Visible = true;
+                        tm5_pubgname_l.Visible = true;
+                        tm5_steamid_l.Visible = true;
+                        tm5_headshots_l.Visible = true;
+                        tm5_kills_l.Visible = true;
+                        tm5_killer_pubgname.Visible = true;
+                        tm5_killer_pubgname_l.Visible = true;
+                        tm5_killer_steamid.Visible = true;
+                        tm5_killer_steamid_l.Visible = true;
+                        tm5_pubgname.Text = newInfo[i + 1].ToString();
+                        tm5_steamid.Text = newInfo[i].ToString();
+                        tm5_headshots.Text = newInfo[i + 4].ToString();
+                        tm5_kills.Text = newInfo[i + 5].ToString();
+                    }
+                    else if (z < 5)
+                    {
+                        Size = new System.Drawing.Size(961, 756); //returns it to normal
+                        teamGroupBox.Size = new System.Drawing.Size(237, 674); //returns it to normal
+                        tm5.Visible = false;
+                        tm5_pubgname.Visible = false;
+                        tm5_steamid.Visible = false;
+                        tm5_headshots.Visible = false;
+                        tm5_kills.Visible = false;
+                        tm5_pubgname_l.Visible = false;
+                        tm5_steamid_l.Visible = false;
+                        tm5_headshots_l.Visible = false;
+                        tm5_kills_l.Visible = false;
+                        tm5_killer_steamid.Visible = false;
+                        tm5_killer_pubgname_l.Visible = false;
+                        tm5_killer_steamid.Visible = false;
+                        tm5_killer_steamid_l.Visible = false;
+                    }
+                    if (z == 6)
+                    {
+                        tm6.Visible = true;
+                        tm6_pubgname.Visible = true;
+                        tm6_steamid.Visible = true;
+                        tm6_headshots.Visible = true;
+                        tm6_kills.Visible = true;
+                        tm6_pubgname_l.Visible = true;
+                        tm6_steamid_l.Visible = true;
+                        tm6_headshots_l.Visible = true;
+                        tm6_kills_l.Visible = true;
+                        tm6_killer_pubgname.Visible = true;
+                        tm6_killer_pubgname_l.Visible = true;
+                        tm6_killer_steamid.Visible = true;
+                        tm6_killer_steamid_l.Visible = true;
+                        tm6_pubgname.Text = newInfo[i + 1].ToString();
+                        tm6_steamid.Text = newInfo[i].ToString();
+                        tm6_headshots.Text = newInfo[i + 4].ToString();
+                        tm6_kills.Text = newInfo[i + 5].ToString();
+                        //tm6_killer_pubgname.Text = newInfo[i + 12].ToString();
+                        //tm6_killer_steamid.Text = newInfo[i + 13].ToString();
+                    }
+                    else if (z < 6)
+                    {
+                        tm6.Visible = false;
+                        tm6_pubgname.Visible = false;
+                        tm6_steamid.Visible = false;
+                        tm6_headshots.Visible = false;
+                        tm6_kills.Visible = false;
+                        tm6_pubgname_l.Visible = false;
+                        tm6_steamid_l.Visible = false;
+                        tm6_headshots_l.Visible = false;
+                        tm6_kills_l.Visible = false;
+                        tm6_killer_pubgname.Visible = false;
+                        tm6_killer_pubgname_l.Visible = false;
+                        tm6_killer_steamid.Visible = false;
+                        tm6_killer_steamid_l.Visible = false;
+                    }
+                    if (z == 7)
+                    {
+                        tm7.Visible = true;
+                        tm7_pubgname.Visible = true;
+                        tm7_steamid.Visible = true;
+                        tm7_headshots.Visible = true;
+                        tm7_kills.Visible = true;
+                        tm7_pubgname_l.Visible = true;
+                        tm7_steamid_l.Visible = true;
+                        tm7_headshots_l.Visible = true;
+                        tm7_kills_l.Visible = true;
+                        tm7_killer_pubgname.Visible = true;
+                        tm7_killer_pubgname_l.Visible = true;
+                        tm7_killer_steamid.Visible = true;
+                        tm7_killer_steamid_l.Visible = true;
+                        tm7_pubgname.Text = newInfo[i + 1].ToString();
+                        tm7_steamid.Text = newInfo[i].ToString();
+                        tm7_headshots.Text = newInfo[i + 4].ToString();
+                        tm7_kills.Text = newInfo[i + 5].ToString();
+                        //tm7_killer_pubgname.Text = newInfo[i + 12].ToString();
+                        //tm7_killer_steamid.Text = newInfo[i + 13].ToString();
+                    }
+                    else if (z < 7)
+                    {
+                        tm7.Visible = false;
+                        tm7_pubgname.Visible = false;
+                        tm7_steamid.Visible = false;
+                        tm7_headshots.Visible = false;
+                        tm7_kills.Visible = false;
+                        tm7_pubgname_l.Visible = false;
+                        tm7_steamid_l.Visible = false;
+                        tm7_headshots_l.Visible = false;
+                        tm7_kills_l.Visible = false;
+                        tm7_killer_pubgname.Visible = false;
+                        tm7_killer_pubgname_l.Visible = false;
+                        tm7_killer_steamid.Visible = false;
+                        tm7_killer_steamid_l.Visible = false;
+                    }
+                    if (z == 8)
+                    {
+                        tm8.Visible = true;
+                        tm8_pubgname.Visible = true;
+                        tm8_steamid.Visible = true;
+                        tm8_headshots.Visible = true;
+                        tm8_kills.Visible = true;
+                        tm8_pubgname_l.Visible = true;
+                        tm8_steamid_l.Visible = true;
+                        tm8_headshots_l.Visible = true;
+                        tm8_kills_l.Visible = true;
+                        tm8_killer_pubgname.Visible = true;
+                        tm8_killer_pubgname_l.Visible = true;
+                        tm8_killer_steamid.Visible = true;
+                        tm8_killer_steamid_l.Visible = true;
+                        tm8_pubgname.Text = newInfo[i + 1].ToString();
+                        tm8_steamid.Text = newInfo[i].ToString();
+                        tm8_headshots.Text = newInfo[i + 4].ToString();
+                        tm8_kills.Text = newInfo[i + 5].ToString();
+                        //tm8_killer_pubgname.Text = newInfo[i + 12].ToString();
+                        //tm8_killer_steamid.Text = newInfo[i + 13].ToString();
+                    }
+                    else if (z < 8)
+                    {
+                        tm8.Visible = false;
+                        tm8_pubgname.Visible = false;
+                        tm8_steamid.Visible = false;
+                        tm8_headshots.Visible = false;
+                        tm8_kills.Visible = false;
+                        tm8_pubgname_l.Visible = false;
+                        tm8_steamid_l.Visible = false;
+                        tm8_headshots_l.Visible = false;
+                        tm8_kills_l.Visible = false;
+                        tm8_killer_pubgname.Visible = false;
+                        tm8_killer_pubgname_l.Visible = false;
+                        tm8_killer_steamid.Visible = false;
+                        tm8_killer_steamid_l.Visible = false;
+                    }
                 }
             }
             Console.WriteLine(z + " Players");
@@ -282,6 +450,7 @@ namespace PUBG_Replay_Manager
                 openSelectedReplay.Enabled = true;
                 zipReplay.Enabled = true;
                 steamidStrip.Enabled = true;
+                deletereplay.Enabled = true;
                 AmountOfReplays_SB.Text = "Replays: " + (replayList.SelectedIndex + 1) + "/" + replayList.Items.Count;
             }
             else
@@ -290,6 +459,7 @@ namespace PUBG_Replay_Manager
                 openSelectedReplay.Enabled = false;
                 zipReplay.Enabled = false;
                 steamidStrip.Enabled = false;
+                deletereplay.Enabled = false;
             }
         }
 
@@ -310,6 +480,7 @@ namespace PUBG_Replay_Manager
                 openSelectedReplay.Enabled = false;
                 zipReplay.Enabled = false;
                 steamidStrip.Enabled = false;
+                deletereplay.Enabled = false;
             }
         }
 
@@ -432,10 +603,14 @@ namespace PUBG_Replay_Manager
             {
                 ReplayInfo.Add("Official");//official
             }
-            ReplayInfo.Add(temp1[3]); //Marks the update - 2018-01
+            if (temp1[2] == "custom")
+            {
+                ReplayInfo.Add("Custom");//custom
+            }
+            ReplayInfo.Add(temp1[3]); //(Offical)Marks the update - 2018-01 | (Custom) Marks the Hosting user - 1cePrime
             ReplayInfo.Add(temp1[4]); //Marks the region - na
             ReplayInfo.Add(temp1[4].ToUpper());
-            ReplayInfo.Add(temp1[5]); //Marks the gamemode - solo
+            ReplayInfo.Add(temp1[5]); //(Offical)Marks the gamemode - solo | (Custom) Marks the gamemode - normal (and zombies?)
             ReplayInfo.Add(temp1[6] + "-" + temp1[7] + "-" + temp1[8]); //Marks the date - 4018.01.31 (Guess we're 2000 years in the future
             ReplayInfo.Add(temp1[9]); //added the raw UUID for fun - 470ec7f1-c342-46ad-81c9-e9117f27b44a
             ReplayInfo.Add(temp1[9].Remove(0, temp1[9].Length - 6)); //27b44a
@@ -491,10 +666,10 @@ namespace PUBG_Replay_Manager
                 ReplayInfo.Add("Unknown");
             }
             ReplayInfo.Add((string)NormalizedReplayInfoFile["RecordUserId"]);//Past replays have the Steam64 ID but newer replays have a UUID of some kind
-            if (NormalizedReplayInfoFile["RecordUserId"].ToString().Contains("765611"))
-            {
-                ReplayInfo.Add((ulong)NormalizedReplayInfoFile["RecordUserId"]);
-            }
+            //if (NormalizedReplayInfoFile["RecordUserId"].ToString().Contains("765611"))
+            //{
+            //    ReplayInfo.Add((ulong)NormalizedReplayInfoFile["RecordUserId"]);
+            //}
             ReplayInfo.Add((string)NormalizedReplayInfoFile["RecordUserNickName"]);//Solo, Duo, Squad (and ffp)
             ReplayInfo.Add((string)NormalizedReplayInfoFile["MapName"]);//Desert_Main (Miramar) or Erangel_Main (Erangel)
             if ((string)NormalizedReplayInfoFile["MapName"] == "Erangel_Main")
@@ -553,8 +728,8 @@ namespace PUBG_Replay_Manager
             }
             ReplayInfo.Add((int)DecryptedReplaySummaryFile["numPlayers"]);
             ReplayInfo.Add((int)DecryptedReplaySummaryFile["numTeams"]);
-            string[] killfiles = DecryptKillFiles(directory_of_recording);
-            for (int i = 0; i < 4; i++)
+            //string[] killfiles = DecryptKillFiles(directory_of_recording);
+            for (int i = 0; i < 8; i++)
             {
                 try
                 {
@@ -607,6 +782,12 @@ namespace PUBG_Replay_Manager
                     ReplayInfo.Add("[unknown]");
                     ReplayInfo.Add("[unknown]");
                 }
+            }
+            int replayinfoline = 0;
+            foreach (var item in ReplayInfo.ToArray())
+            {
+                Console.WriteLine(replayinfoline + " | " + item.ToString());
+                replayinfoline++;
             }
             return ReplayInfo;
         }
@@ -674,6 +855,7 @@ namespace PUBG_Replay_Manager
                 // Assign the cursor in the Stream to the Form's Cursor property.  
                 //this.Cursor = new Cursor(openFileDialog1.OpenFile());
             }
+            RefreshReplayList();
         }
 
         private void replayListRefresh_Click(object sender, EventArgs e)
@@ -684,6 +866,40 @@ namespace PUBG_Replay_Manager
         private void clearallreplays_Click(object sender, EventArgs e)
         {
             DialogResult aus = MessageBox.Show("This will delete ALL replays in the Replays folder" + Environment.NewLine + "Are you sure you want to delete all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            if (aus == DialogResult.Yes)
+            {
+                if (Directory.Exists(replayloc))
+                {
+                    foreach (string replay in Directory.GetDirectories(replayloc))
+                    {
+                        if (replay.Contains("match."))
+                        {
+                            Directory.Delete(replay, true);
+                        }
+                    }
+                }
+                MessageBox.Show("All replays deleted!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                RefreshReplayList();
+            }
+        }
+
+        private void deletereplay_Click(object sender, EventArgs e)
+        {
+            DialogResult aus = MessageBox.Show("This will delete the selected replay" + Environment.NewLine + "Are you sure you want to delete the selected replay?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            if (aus == DialogResult.Yes)
+            {
+                if (Directory.Exists(replayloc + "\\" + replayList.SelectedItem + "\\"))
+                {
+                    Directory.Delete(replayloc + "\\" + replayList.SelectedItem + "\\", true);
+                }
+                MessageBox.Show("Selected replay deleted!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                RefreshReplayList();
+            }
+        }
+
+        private void exportallreplays_Click(object sender, EventArgs e)
+        {
+            DialogResult aus = MessageBox.Show("This will export ALL replays in the Replays folder to a zip file" + Environment.NewLine + "Are you sure you want to delete all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (aus == DialogResult.Yes)
             {
                 if (Directory.Exists(replayloc))
