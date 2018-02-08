@@ -31,28 +31,6 @@ namespace PUBG_Replay_Manager
             orgWindowSize = Size;
             orgGroupSize = teamGroupBox.Size;
         }
-        static public int get_char_unicode_code(char character)
-        {
-            UTF32Encoding encoding = new UTF32Encoding();
-            byte[] bytes = encoding.GetBytes(character.ToString().ToCharArray());
-            return BitConverter.ToInt32(bytes, 0);
-        }
-        static string CaesarCipher(string value, int shift)
-        {
-            char[] encodedCharArray = value.ToCharArray();
-            string decodedString = "";
-            int decode = 0;
-            foreach (char item in encodedCharArray)
-            {
-                if (get_char_unicode_code(item) > 0)
-                {
-                    decode = get_char_unicode_code(item) + shift;
-                    decodedString = decodedString + Convert.ToChar(decode);
-                    //Console.WriteLine("Orginal: " + item + " New: " + Convert.ToChar(decode));
-                }
-            }
-            return decodedString;
-        }
         public void RefreshReplayList()
         {
             replayList.Items.Clear();
@@ -500,39 +478,39 @@ namespace PUBG_Replay_Manager
                 deletereplay.Enabled = false;
             }
         }
-
-        private JObject NormalizeReplayInfoFile(string directory_of_recording)
+        static string UE4StringSerializer(string file_path, bool encoded = false, int encoded_offset = 0)
         {
-            List<string> ReplayFile= new List<string>(File.ReadAllLines(directory_of_recording + "\\PUBG.replayinfo"));
-            if (ReplayFile.ToArray()[0] == "")//Make the list a array and check the first line to see if it's blank
+            byte[] little_endian_length = new byte[4];//a 4 length byte array used later
+            byte[] file = File.ReadAllBytes(file_path);//The file into a byte array
+            for (int i = 0; i < 4; i++)//For the next 4 bytes...
             {
-                ReplayFile.RemoveAt(0);//Remove it so it's proper JSON
+                little_endian_length[i] = file[i];//...Add them to the little_endian_length
             }
-            if (ReplayFile.ToArray()[0].Contains("{"))
+            int bytestoread = BitConverter.ToInt32(little_endian_length, 0);//Convert this into a int to tell the program how many bytes to read
+            byte[] readspace = new byte[bytestoread];//use bytestoread to expand the array to what we're about to read
+            using (BinaryReader reader = new BinaryReader(new FileStream(file_path, FileMode.Open)))
             {
-                ReplayFile.RemoveAt(0);//Remove it so it's proper JSON
-                ReplayFile.Insert(0, "{");
+                reader.BaseStream.Seek(4, SeekOrigin.Begin);//Set the base of where to start reading 4 bytes ahead of the file (essenially skipping the little-endian unsigned 32-bit integer)
+                reader.Read(readspace, 0, bytestoread);//Read the space that the little_endian_length told us to read
             }
-            if (ReplayFile.ToArray()[ReplayFile.Count-1].Contains("}"))
+            List<byte> unencodedbytes = new List<byte>();//Make a list so we can dynamically add things to it 
+            foreach (byte encodedbyte in readspace)//For each byte in the readspace of what we just read from the file
             {
-                ReplayFile.RemoveAt(ReplayFile.Count-1);//Remove it so it's proper JSON
-                ReplayFile.Insert(ReplayFile.Count, "}");
+                if (!encodedbyte.Equals(0))//if the byte is zero (techinally should only be handled at the end per numinit (https://github.com/numinit)'s specifications but I'm lazy
+                {
+                    if (encoded)//Did the user specificity that its encoded?
+                    {
+                        unencodedbytes.Add((byte)(encodedbyte + encoded_offset));// Yes! Add the encoded offset to the byte, cast it to a byte and add it to the list
+                    }
+                    else
+                    {
+                        unencodedbytes.Add(encodedbyte);//No! Just add the byte to the array
+                    }
+                }
             }
-            foreach (var item in ReplayFile)
-            {
-                Console.WriteLine(item);
-            }
-            JObject NRIF;
-            string nrif = string.Join("\r\n", ReplayFile.ToArray());
-            try
-            {
-                NRIF = JObject.Parse(nrif);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-            return NRIF;
+            Console.WriteLine(Encoding.UTF8.GetString(readspace));
+            Console.WriteLine(Encoding.UTF8.GetString(unencodedbytes.ToArray()));
+            return Encoding.UTF8.GetString(unencodedbytes.ToArray());//take all the bytes, make the list a array, put the array into UTF8 encoding and return it
         }
         private JObject DecryptReplaySummaryFile(string directory_of_recording)
         {
@@ -545,56 +523,56 @@ namespace PUBG_Replay_Manager
                 }
             }
             replaySummaryList.Reverse();
-            return JObject.Parse(CaesarCipher(File.ReadAllLines(replaySummaryList.ToArray()[0])[0], +1).Remove(0, 2));
+            return JObject.Parse(UE4StringSerializer(replaySummaryList.ToArray()[0], true, 1));
         }
-        private JObject DecryptDBNOorKillFile(string path_to_file)
-        {
-            return JObject.Parse(CaesarCipher(File.ReadAllText(path_to_file), +1).Remove(0, 1));
-        }
-        private string[] DecryptGroggyFiles(string directory_of_recording)
-        {
-            List<string> dbnoList = new List<string>();
-            foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
-            {
-                if (file.Contains("groggy"))
-                {
-                     JObject groggyfile = DecryptDBNOorKillFile(file);
-                     dbnoList.Add((string)groggyfile["instigatorNetId"]);
-                     dbnoList.Add((string)groggyfile["instigatorName"]);
-                     dbnoList.Add((string)groggyfile["victimNetId"]);
-                     dbnoList.Add((string)groggyfile["victimName"]);
-                }
-            }
-            foreach (var item in dbnoList.ToArray())
-            {
-                Console.WriteLine(item);
-            }
-            return dbnoList.ToArray();
-        }
-        private string[] DecryptKillFiles(string directory_of_recording)
-        {
-            List<string> killList = new List<string>();
-            foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
-            {
-                if (file.Contains("kill"))
-                {
-                    JObject groggyfile = DecryptDBNOorKillFile(file);
-                    killList.Add((string)groggyfile["killerNetId"]);
-                    killList.Add((string)groggyfile["killerName"]);
-                    killList.Add((string)groggyfile["victimNetId"]);
-                    killList.Add((string)groggyfile["victimName"]);
-                }
-            }
-            foreach (var item in killList.ToArray())
-            {
-                Console.WriteLine(item);
-            }
-            return killList.ToArray();
-        }
+        //private JObject DecryptDBNOorKillFile(string path_to_file)
+        //{
+        //    return JObject.Parse(CaesarCipher(File.ReadAllText(path_to_file), +1).Remove(0, 1));
+        //}
+        //private string[] DecryptGroggyFiles(string directory_of_recording)
+        //{
+        //    List<string> dbnoList = new List<string>();
+        //    foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
+        //    {
+        //        if (file.Contains("groggy"))
+        //        {
+        //             JObject groggyfile = DecryptDBNOorKillFile(file);
+        //             dbnoList.Add((string)groggyfile["instigatorNetId"]);
+        //             dbnoList.Add((string)groggyfile["instigatorName"]);
+        //             dbnoList.Add((string)groggyfile["victimNetId"]);
+        //             dbnoList.Add((string)groggyfile["victimName"]);
+        //        }
+        //    }
+        //    foreach (var item in dbnoList.ToArray())
+        //    {
+        //        Console.WriteLine(item);
+        //    }
+        //    return dbnoList.ToArray();
+        //}
+        //private string[] DecryptKillFiles(string directory_of_recording)
+        //{
+        //    List<string> killList = new List<string>();
+        //    foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
+        //    {
+        //        if (file.Contains("kill"))
+        //        {
+        //            JObject groggyfile = DecryptDBNOorKillFile(file);
+        //            killList.Add((string)groggyfile["killerNetId"]);
+        //            killList.Add((string)groggyfile["killerName"]);
+        //            killList.Add((string)groggyfile["victimNetId"]);
+        //            killList.Add((string)groggyfile["victimName"]);
+        //        }
+        //    }
+        //    foreach (var item in killList.ToArray())
+        //    {
+        //        Console.WriteLine(item);
+        //    }
+        //    return killList.ToArray();
+        //}
         private ArrayList ReadReplayInfo(string directory_of_recording)
         {
             ArrayList ReplayInfo = new ArrayList();
-            JObject NormalizedReplayInfoFile = NormalizeReplayInfoFile(directory_of_recording);
+            JObject NormalizedReplayInfoFile = JObject.Parse(UE4StringSerializer(directory_of_recording + "\\PUBG.replayinfo"));
             JObject DecryptedReplaySummaryFile = DecryptReplaySummaryFile(directory_of_recording);
             ReplayInfo.Add((int)NormalizedReplayInfoFile["LengthInMS"]); //Length of the recording in miliseconds
             int temp0 = (int)NormalizedReplayInfoFile["LengthInMS"];
