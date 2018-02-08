@@ -6,4 +6,4 @@ Shows undocumented information from PUBG replays, and has the ability to import 
 
 An explanation of how the replay files work
 
-![](https://i.imgur.com/jdy691I.jpg)
+![](https://i.imgur.com/acGmGMf.jpg)
