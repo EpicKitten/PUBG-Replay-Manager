@@ -7,8 +7,6 @@ using System.IO.Compression;
 using System.Text;
 using Newtonsoft.Json.Linq;
 using System.Collections;
-using System.Text.RegularExpressions;
-using System.Linq;
 using System.Drawing;
 
 namespace PUBG_Replay_Manager
@@ -446,6 +444,7 @@ namespace PUBG_Replay_Manager
                 zipReplay.Enabled = true;
                 steamidStrip.Enabled = true;
                 deletereplay.Enabled = true;
+                downkillTimeline.Enabled = true;
                 AmountOfReplays_SB.Text = "Replays: " + (replayList.SelectedIndex + 1) + "/" + replayList.Items.Count;
             }
             else
@@ -455,6 +454,7 @@ namespace PUBG_Replay_Manager
                 zipReplay.Enabled = false;
                 steamidStrip.Enabled = false;
                 deletereplay.Enabled = false;
+                downkillTimeline.Enabled = false;
             }
         }
 
@@ -476,6 +476,7 @@ namespace PUBG_Replay_Manager
                 zipReplay.Enabled = false;
                 steamidStrip.Enabled = false;
                 deletereplay.Enabled = false;
+                downkillTimeline.Enabled = false;
             }
         }
         static string UE4StringSerializer(string file_path, bool encoded = false, int encoded_offset = 0)
@@ -894,23 +895,36 @@ namespace PUBG_Replay_Manager
 
         private void exportallreplays_Click(object sender, EventArgs e)
         {
-            DialogResult aus = MessageBox.Show("This will export ALL replays in the Replays folder to a zip file" + Environment.NewLine + "Are you sure you want to delete all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            DialogResult aus = MessageBox.Show("This will export ALL replays in the Replays folder to a zip file" + Environment.NewLine + "Are you sure you want to export all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (aus == DialogResult.Yes)
             {
-                if (Directory.Exists(replayloc))
+                // Displays a SaveFileDialog so the user can save the Image  
+                // assigned to Button2.  
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "ZIP File|*.zip";
+                saveFileDialog1.Title = "Save a PUBG Replays as a ZIP File...";
+                saveFileDialog1.ShowDialog();
+
+                // If the file name is not an empty string open it for saving.  
+                if (saveFileDialog1.FileName != "")
                 {
-                    foreach (string replay in Directory.GetDirectories(replayloc))
+                    string zipPath = saveFileDialog1.FileName;//URL for your ZIP file
+                    if (Directory.Exists(replayloc))
                     {
-                        if (replay.Contains("match."))
-                        {
-                            Directory.Delete(replay, true);
-                        }
+                        ZipFile.CreateFromDirectory(replayloc, zipPath, CompressionLevel.Fastest, true);
                     }
                 }
-                MessageBox.Show("All replays deleted!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("All replays saved!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 RefreshReplayList();
             }
         }
 
+        private void downkillTimeline_Click(object sender, EventArgs e)
+        {
+            Timeline timeline = new Timeline(replayloc + "\\" + replayList.SelectedItem + "\\");
+            timeline.ShowDialog();
+            //SteamID steamid = new SteamID(replayloc + "\\" + replayList.SelectedItem + "\\");
+            //steamid.ShowDialog();
+        }
     }
 }

@@ -33,8 +33,12 @@
             // 
             // SteamIDRich
             // 
+            this.SteamIDRich.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.SteamIDRich.Location = new System.Drawing.Point(13, 13);
             this.SteamIDRich.Name = "SteamIDRich";
+            this.SteamIDRich.ReadOnly = true;
             this.SteamIDRich.Size = new System.Drawing.Size(259, 443);
             this.SteamIDRich.TabIndex = 0;
             this.SteamIDRich.Text = "";

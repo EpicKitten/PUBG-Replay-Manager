@@ -30,9 +30,8 @@
         {
             this.openReplayFolder = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.downkillTimeline = new System.Windows.Forms.Button();
             this.deletereplay = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.steamidStrip = new System.Windows.Forms.Button();
             this.zipReplay = new System.Windows.Forms.Button();
             this.openSelectedReplay = new System.Windows.Forms.Button();
@@ -231,9 +230,8 @@
             // 
             this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.groupBox4.Controls.Add(this.downkillTimeline);
             this.groupBox4.Controls.Add(this.deletereplay);
-            this.groupBox4.Controls.Add(this.button2);
-            this.groupBox4.Controls.Add(this.button1);
             this.groupBox4.Controls.Add(this.steamidStrip);
             this.groupBox4.Controls.Add(this.zipReplay);
             this.groupBox4.Controls.Add(this.openSelectedReplay);
@@ -244,43 +242,30 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Replay Actions";
             // 
+            // downkillTimeline
+            // 
+            this.downkillTimeline.Enabled = false;
+            this.downkillTimeline.Location = new System.Drawing.Point(140, 77);
+            this.downkillTimeline.Name = "downkillTimeline";
+            this.downkillTimeline.Size = new System.Drawing.Size(118, 52);
+            this.downkillTimeline.TabIndex = 6;
+            this.downkillTimeline.Text = "View timeline of downs and kills";
+            this.downkillTimeline.UseVisualStyleBackColor = true;
+            this.downkillTimeline.Click += new System.EventHandler(this.downkillTimeline_Click);
+            // 
             // deletereplay
             // 
             this.deletereplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.deletereplay.Enabled = false;
             this.deletereplay.ForeColor = System.Drawing.Color.DarkRed;
-            this.deletereplay.Location = new System.Drawing.Point(7, 163);
+            this.deletereplay.Location = new System.Drawing.Point(6, 106);
             this.deletereplay.Name = "deletereplay";
-            this.deletereplay.Size = new System.Drawing.Size(136, 23);
+            this.deletereplay.Size = new System.Drawing.Size(128, 23);
             this.deletereplay.TabIndex = 5;
             this.deletereplay.Text = "Delete Selected Replay";
             this.deletereplay.UseVisualStyleBackColor = true;
             this.deletereplay.Click += new System.EventHandler(this.deletereplay_Click);
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(6, 106);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(252, 22);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Every kill within 1km of you in the replay";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(6, 78);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(252, 22);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Every knock within 1km of you in the replay";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // steamidStrip
             // 
@@ -300,9 +285,9 @@
             this.zipReplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.zipReplay.Enabled = false;
-            this.zipReplay.Location = new System.Drawing.Point(7, 134);
+            this.zipReplay.Location = new System.Drawing.Point(6, 77);
             this.zipReplay.Name = "zipReplay";
-            this.zipReplay.Size = new System.Drawing.Size(136, 23);
+            this.zipReplay.Size = new System.Drawing.Size(128, 23);
             this.zipReplay.TabIndex = 1;
             this.zipReplay.Text = "Export Selected Replay";
             this.zipReplay.UseVisualStyleBackColor = true;
@@ -2731,8 +2716,6 @@
         private System.Windows.Forms.Label tm4_killer_pubgname;
         private System.Windows.Forms.Label tm4_killer_steamid_l;
         private System.Windows.Forms.Label tm4_killer_pubgname_l;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button deletereplay;
         private System.Windows.Forms.Button exportallreplays;
         private System.Windows.Forms.GroupBox tm5;
@@ -2788,6 +2771,7 @@
         private System.Windows.Forms.Label tm8_steamid_l;
         private System.Windows.Forms.Label tm8_pubgname_l;
         private System.Windows.Forms.Label host;
+        private System.Windows.Forms.Button downkillTimeline;
     }
 }
 

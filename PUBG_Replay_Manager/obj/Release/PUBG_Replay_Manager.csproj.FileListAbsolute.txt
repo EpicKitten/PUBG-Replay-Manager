@@ -22,4 +22,5 @@ I:\Master\Projects\Git Repo\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\
 I:\Master\Projects\Git Repo\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.csproj.CoreCompileInputs.cache
 I:\Master\Projects\Git Repo\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.exe
 I:\Master\Projects\Git Repo\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.pdb
+I:\Master\Projects\Git Repo\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.Timeline.resources
 I:\Master\Projects\Git Repo\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Release\PUBG_Replay_Manager.csprojResolveAssemblyReference.cache

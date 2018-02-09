@@ -81,6 +81,12 @@
     <Compile Include="SteamID.Designer.cs">
       <DependentUpon>SteamID.cs</DependentUpon>
     </Compile>
+    <Compile Include="Timeline.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Timeline.Designer.cs">
+      <DependentUpon>Timeline.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +102,9 @@
     </Compile>
     <EmbeddedResource Include="SteamID.resx">
       <DependentUpon>SteamID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Timeline.resx">
+      <DependentUpon>Timeline.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="packages.config" />
