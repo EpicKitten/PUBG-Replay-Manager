@@ -17,6 +17,7 @@ namespace PUBG_Replay_Manager
         public string prog_name = "PUBG Replay Manager";
         public string profile_link = "http://steamcommunity.com/profiles/";
         public string profile_id = "76561198050446061";
+        public string currentlyselectedreplaypath = string.Empty;
         public Size orgWindowSize;
         public Size orgGroupSize;
         public Main()
@@ -31,22 +32,40 @@ namespace PUBG_Replay_Manager
         }
         public void RefreshReplayList()
         {
-            replayList.Items.Clear();
+            replayGrid.Rows.Clear();
+            foreach (DataGridViewRow item in replayGrid.Rows)
+            {
+                replayGrid.Rows.Remove(item);
+            }
             if (Directory.Exists(replayloc))
             {
                 foreach (string replay in Directory.GetDirectories(replayloc))
                 {
                     if(replay.Contains("match."))
                     {
-                        replayList.Items.Add(replay.Replace(replayloc + "\\", ""));
+                        ArrayList ReplayInfo = ReadReplayInfo(replay);
+                        
+                        if (File.Exists(replay + "\\customInfo.json"))
+                        {
+                            JObject custom_file = JObject.Parse(File.ReadAllText(replay + "\\customInfo.json"));
+                            replayGrid.Rows.Add(custom_file["customName"], ReplayInfo.ToArray()[38], ReplayInfo.ToArray()[10], ReplayInfo.ToArray()[1], replay.Replace(replayloc + "\\", ""));
+                        }
+                        else
+                        {
+                            replayGrid.Rows.Add("[null]", ReplayInfo.ToArray()[38], ReplayInfo.ToArray()[10], ReplayInfo.ToArray()[1], replay.Replace(replayloc + "\\", ""));
+                        }
                     }
                 }
             }
-            AmountOfReplays_SB.Text = "Replays: 0/" + replayList.Items.Count;
-            replayList.Refresh();
+            AmountOfReplays_SB.Text = "Replays: 0/" + replayGrid.Rows.Count;
+            replayGrid.Refresh();
         }
         public void RefreshInfoGroups(ArrayList newInfo)
         {
+            for (int i = 0; i < newInfo.ToArray().Length; i++)
+            {
+                Console.WriteLine(i + " | " + newInfo.ToArray()[i]);
+            }
             Size orgWinSize = orgWindowSize;
             Size orgTeamSize = orgGroupSize;
             
@@ -434,28 +453,13 @@ namespace PUBG_Replay_Manager
             z = 0;
             
         }
-
-        private void replayList_SelectedIndexChanged(object sender, EventArgs e)
+        private void ReplayActionsToggle(bool toggle)
         {
-            if (Directory.Exists(replayloc+ "\\" + replayList.SelectedItem) && replayList.SelectedIndex > -1)
-            {
-                RefreshInfoGroups(ReadReplayInfo(replayloc + "\\" + replayList.SelectedItem));
-                openSelectedReplay.Enabled = true;
-                zipReplay.Enabled = true;
-                steamidStrip.Enabled = true;
-                deletereplay.Enabled = true;
-                downkillTimeline.Enabled = true;
-                AmountOfReplays_SB.Text = "Replays: " + (replayList.SelectedIndex + 1) + "/" + replayList.Items.Count;
-            }
-            else
-            {
-                RefreshReplayList();
-                openSelectedReplay.Enabled = false;
-                zipReplay.Enabled = false;
-                steamidStrip.Enabled = false;
-                deletereplay.Enabled = false;
-                downkillTimeline.Enabled = false;
-            }
+            openSelectedReplay.Enabled = toggle;
+            zipReplay.Enabled = toggle;
+            steamidStrip.Enabled = toggle;
+            deletereplay.Enabled = toggle;
+            downkillTimeline.Enabled = toggle;
         }
 
         private void openReplayFolder_Click(object sender, EventArgs e)
@@ -465,9 +469,9 @@ namespace PUBG_Replay_Manager
 
         private void openSelectedReplay_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists(replayloc + "\\" + replayList.SelectedItem))
+            if (Directory.Exists(replayloc + "\\" + currentlyselectedreplaypath))
             {
-                Process.Start(replayloc + "\\" + replayList.SelectedItem);
+                Process.Start(replayloc + "\\" + currentlyselectedreplaypath);
             }
             else
             {
@@ -509,8 +513,8 @@ namespace PUBG_Replay_Manager
                     }
                 }
             }
-            Console.WriteLine(Encoding.UTF8.GetString(readspace));
-            Console.WriteLine(Encoding.UTF8.GetString(unencodedbytes.ToArray()));
+            //Console.WriteLine(Encoding.UTF8.GetString(readspace));
+            //Console.WriteLine(Encoding.UTF8.GetString(unencodedbytes.ToArray()));
             return Encoding.UTF8.GetString(unencodedbytes.ToArray());//take all the bytes, make the list a array, put the array into UTF8 encoding and return it
         }
         private JObject DecryptReplaySummaryFile(string directory_of_recording)
@@ -526,50 +530,6 @@ namespace PUBG_Replay_Manager
             replaySummaryList.Reverse();
             return JObject.Parse(UE4StringSerializer(replaySummaryList.ToArray()[0], true, 1));
         }
-        //private JObject DecryptDBNOorKillFile(string path_to_file)
-        //{
-        //    return JObject.Parse(CaesarCipher(File.ReadAllText(path_to_file), +1).Remove(0, 1));
-        //}
-        //private string[] DecryptGroggyFiles(string directory_of_recording)
-        //{
-        //    List<string> dbnoList = new List<string>();
-        //    foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
-        //    {
-        //        if (file.Contains("groggy"))
-        //        {
-        //             JObject groggyfile = DecryptDBNOorKillFile(file);
-        //             dbnoList.Add((string)groggyfile["instigatorNetId"]);
-        //             dbnoList.Add((string)groggyfile["instigatorName"]);
-        //             dbnoList.Add((string)groggyfile["victimNetId"]);
-        //             dbnoList.Add((string)groggyfile["victimName"]);
-        //        }
-        //    }
-        //    foreach (var item in dbnoList.ToArray())
-        //    {
-        //        Console.WriteLine(item);
-        //    }
-        //    return dbnoList.ToArray();
-        //}
-        //private string[] DecryptKillFiles(string directory_of_recording)
-        //{
-        //    List<string> killList = new List<string>();
-        //    foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
-        //    {
-        //        if (file.Contains("kill"))
-        //        {
-        //            JObject groggyfile = DecryptDBNOorKillFile(file);
-        //            killList.Add((string)groggyfile["killerNetId"]);
-        //            killList.Add((string)groggyfile["killerName"]);
-        //            killList.Add((string)groggyfile["victimNetId"]);
-        //            killList.Add((string)groggyfile["victimName"]);
-        //        }
-        //    }
-        //    foreach (var item in killList.ToArray())
-        //    {
-        //        Console.WriteLine(item);
-        //    }
-        //    return killList.ToArray();
-        //}
         private ArrayList ReadReplayInfo(string directory_of_recording)
         {
             ArrayList ReplayInfo = new ArrayList();
@@ -662,10 +622,6 @@ namespace PUBG_Replay_Manager
                 ReplayInfo.Add("Unknown");
             }
             ReplayInfo.Add((string)NormalizedReplayInfoFile["RecordUserId"]);//Past replays have the Steam64 ID but newer replays have a UUID of some kind
-            //if (NormalizedReplayInfoFile["RecordUserId"].ToString().Contains("765611"))
-            //{
-            //    ReplayInfo.Add((ulong)NormalizedReplayInfoFile["RecordUserId"]);
-            //}
             ReplayInfo.Add((string)NormalizedReplayInfoFile["RecordUserNickName"]);//Solo, Duo, Squad (and ffp)
             ReplayInfo.Add((string)NormalizedReplayInfoFile["MapName"]);//Desert_Main (Miramar) or Erangel_Main (Erangel)
             if ((string)NormalizedReplayInfoFile["MapName"] == "Erangel_Main")
@@ -688,7 +644,7 @@ namespace PUBG_Replay_Manager
             {
                 ReplayInfo.Add(true);
             }
-            double dirsize = GetDirectorySize(replayloc + "\\" + replayList.SelectedItem + "\\");
+            double dirsize = GetDirectorySize(replayloc + "\\" + currentlyselectedreplaypath + "\\");
             if (dirsize < 1048576)
             {
                 ReplayInfo.Add(Math.Truncate(dirsize).ToString() + " Bytes");
@@ -780,11 +736,11 @@ namespace PUBG_Replay_Manager
                 }
             }
             int replayinfoline = 0;
-            foreach (var item in ReplayInfo.ToArray())
-            {
-                Console.WriteLine(replayinfoline + " | " + item.ToString());
-                replayinfoline++;
-            }
+            //foreach (var item in ReplayInfo.ToArray())
+            //{
+              //Console.WriteLine(replayinfoline + " | " + item.ToString());
+            //    replayinfoline++;
+            //}
             return ReplayInfo;
         }
 
@@ -800,7 +756,7 @@ namespace PUBG_Replay_Manager
             // If the file name is not an empty string open it for saving.  
             if (saveFileDialog1.FileName != "")
             {
-                string startPath = replayloc + "\\" + replayList.SelectedItem + "\\";//folder to add
+                string startPath = replayloc + "\\" + currentlyselectedreplaypath + "\\";//folder to add
                 string zipPath = saveFileDialog1.FileName;//URL for your ZIP file
                 ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Fastest, true);
             }
@@ -823,13 +779,13 @@ namespace PUBG_Replay_Manager
 
         private void steamidStrip_Click(object sender, EventArgs e)
         {
-            SteamID steamid = new SteamID(replayloc + "\\" + replayList.SelectedItem + "\\");
+            SteamID steamid = new SteamID(replayloc + "\\" + currentlyselectedreplaypath + "\\");
             steamid.ShowDialog();
         }
 
         private void importReplay_Click(object sender, EventArgs e)
         {
-            if (replayList.Items.Count >= 20)
+            if (replayGrid.Rows.Count >= 20)
             {
                 DialogResult aus = MessageBox.Show("Maxmium number of replays in PUBG replay folder has been hit! (20)" + Environment.NewLine + "Adding another will cause PUBG to delete the oldest replay!" + Environment.NewLine + "Are you sure you want to add another?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (aus != DialogResult.Yes)
@@ -851,11 +807,6 @@ namespace PUBG_Replay_Manager
                 // Assign the cursor in the Stream to the Form's Cursor property.  
                 //this.Cursor = new Cursor(openFileDialog1.OpenFile());
             }
-            RefreshReplayList();
-        }
-
-        private void replayListRefresh_Click(object sender, EventArgs e)
-        {
             RefreshReplayList();
         }
 
@@ -884,9 +835,9 @@ namespace PUBG_Replay_Manager
             DialogResult aus = MessageBox.Show("This will delete the selected replay" + Environment.NewLine + "Are you sure you want to delete the selected replay?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (aus == DialogResult.Yes)
             {
-                if (Directory.Exists(replayloc + "\\" + replayList.SelectedItem + "\\"))
+                if (Directory.Exists(replayloc + "\\" + currentlyselectedreplaypath + "\\"))
                 {
-                    Directory.Delete(replayloc + "\\" + replayList.SelectedItem + "\\", true);
+                    Directory.Delete(replayloc + "\\" + currentlyselectedreplaypath + "\\", true);
                 }
                 MessageBox.Show("Selected replay deleted!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 RefreshReplayList();
@@ -921,10 +872,91 @@ namespace PUBG_Replay_Manager
 
         private void downkillTimeline_Click(object sender, EventArgs e)
         {
-            Timeline timeline = new Timeline(replayloc + "\\" + replayList.SelectedItem + "\\");
+            Timeline timeline = new Timeline(replayloc + "\\" + currentlyselectedreplaypath + "\\");
             timeline.ShowDialog();
-            //SteamID steamid = new SteamID(replayloc + "\\" + replayList.SelectedItem + "\\");
-            //steamid.ShowDialog();
+        }
+        private void replayGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1)
+            {
+                //for (int i = 0; i < 5; i++)
+                //{
+                //    replayGrid[i, e.RowIndex].Selected = true;
+                //}
+                string selectedreplaydir = (string)replayGrid[4, e.RowIndex].Value;
+                if (Directory.Exists(replayloc + "\\" + selectedreplaydir) && e.RowIndex > -1)
+                {
+                    RefreshInfoGroups(ReadReplayInfo(replayloc + "\\" + selectedreplaydir));
+                    ReplayActionsToggle(true);
+                    currentlyselectedreplaypath = selectedreplaydir;
+                    AmountOfReplays_SB.Text = "Replays: " + (e.RowIndex + 1) + "/" + replayGrid.Rows.Count;
+                }
+                else
+                {
+                    RefreshReplayList();
+                    ReplayActionsToggle(false);
+                }
+            }
+
+        }
+
+        private void replayListRefresh_Click(object sender, EventArgs e)
+        {
+            RefreshReplayList();
+        }
+
+        private void replayGrid_CurrentCellChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("CurrentCellChanged fired");
+            Console.WriteLine(e.ToString());
+            Console.WriteLine(e);
+        }
+
+        private void replayGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //if (e.RowIndex > -1)
+            //{
+            //    //for (int i = 0; i < 5; i++)
+            //    //{
+            //    //    replayGrid[i, e.RowIndex].Selected = true;
+            //    //}
+            //    string selectedreplaydir = (string)replayGrid[4, e.RowIndex].Value;
+            //    if (Directory.Exists(replayloc + "\\" + selectedreplaydir) && e.RowIndex > -1)
+            //    {
+            //        RefreshInfoGroups(ReadReplayInfo(replayloc + "\\" + selectedreplaydir));
+            //        ReplayActionsToggle(true);
+            //        currentlyselectedreplaypath = selectedreplaydir;
+            //        AmountOfReplays_SB.Text = "Replays: " + (e.RowIndex + 1) + "/" + replayGrid.Rows.Count;
+            //    }
+            //    else
+            //    {
+            //        RefreshReplayList();
+            //        ReplayActionsToggle(false);
+            //    }
+            //}
+        }
+
+        private void replayGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            Console.WriteLine("celledit finished");
+            Console.WriteLine(replayGrid[e.ColumnIndex,e.RowIndex].Value);
+            JObject custom_file;
+            if (e.RowIndex > -1)
+            {
+                string selectedreplaydir = (string)replayGrid[4, e.RowIndex].Value;
+                if (File.Exists(replayloc + "\\" + selectedreplaydir + "\\customInfo.json") && e.RowIndex > -1)
+                {
+                    custom_file = JObject.Parse(File.ReadAllText(replayloc + "\\" + selectedreplaydir + "\\customInfo.json"));
+                    custom_file["customName"] = replayGrid[e.ColumnIndex, e.RowIndex].Value.ToString();
+                }
+                else
+                {
+                    custom_file = new JObject(
+                                                new JProperty("customName", replayGrid[e.ColumnIndex, e.RowIndex].Value)
+                                                );
+                }
+                File.WriteAllText(replayloc + "\\" + selectedreplaydir + "\\customInfo.json", custom_file.ToString());
+            }
         }
     }
 }

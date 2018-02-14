@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SteamID));
             this.SteamIDRich = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
@@ -50,7 +51,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 468);
             this.Controls.Add(this.SteamIDRich);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "SteamID";
             this.Text = "List of all SteamID64";
             this.Load += new System.EventHandler(this.SteamID_Load);

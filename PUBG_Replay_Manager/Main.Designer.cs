@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.openReplayFolder = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.downkillTimeline = new System.Windows.Forms.Button();
@@ -193,12 +194,17 @@
             this.tm4_headshots_l = new System.Windows.Forms.Label();
             this.tm4_steamid_l = new System.Windows.Forms.Label();
             this.tm4_pubgname_l = new System.Windows.Forms.Label();
-            this.replayList = new System.Windows.Forms.ListBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.AmountOfReplays_SB = new System.Windows.Forms.ToolStripStatusLabel();
             this.replayTool = new System.Windows.Forms.GroupBox();
             this.exportallreplays = new System.Windows.Forms.Button();
             this.clearallreplays = new System.Windows.Forms.Button();
+            this.replayGrid = new System.Windows.Forms.DataGridView();
+            this.customName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.rank = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gameMode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.gameLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dirName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox4.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -214,6 +220,7 @@
             this.tm4.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.replayTool.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.replayGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // openReplayFolder
@@ -235,9 +242,9 @@
             this.groupBox4.Controls.Add(this.steamidStrip);
             this.groupBox4.Controls.Add(this.zipReplay);
             this.groupBox4.Controls.Add(this.openSelectedReplay);
-            this.groupBox4.Location = new System.Drawing.Point(425, 489);
+            this.groupBox4.Location = new System.Drawing.Point(522, 495);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(264, 195);
+            this.groupBox4.Size = new System.Drawing.Size(264, 139);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Replay Actions";
@@ -421,7 +428,7 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(424, 6);
+            this.groupBox1.Location = new System.Drawing.Point(521, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(265, 121);
             this.groupBox1.TabIndex = 5;
@@ -592,7 +599,7 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(425, 133);
+            this.groupBox2.Location = new System.Drawing.Point(522, 139);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(264, 102);
             this.groupBox2.TabIndex = 6;
@@ -902,7 +909,7 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.fileLocked);
-            this.groupBox3.Location = new System.Drawing.Point(425, 241);
+            this.groupBox3.Location = new System.Drawing.Point(522, 247);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(264, 246);
             this.groupBox3.TabIndex = 7;
@@ -995,12 +1002,11 @@
             // 
             // replayListRefresh
             // 
-            this.replayListRefresh.Location = new System.Drawing.Point(138, 19);
+            this.replayListRefresh.Location = new System.Drawing.Point(138, 18);
             this.replayListRefresh.Name = "replayListRefresh";
             this.replayListRefresh.Size = new System.Drawing.Size(136, 23);
-            this.replayListRefresh.TabIndex = 11;
+            this.replayListRefresh.TabIndex = 15;
             this.replayListRefresh.Text = "Refresh Replay List";
-            this.replayListRefresh.UseVisualStyleBackColor = true;
             this.replayListRefresh.Click += new System.EventHandler(this.replayListRefresh_Click);
             // 
             // teamGroupBox
@@ -1016,9 +1022,9 @@
             this.teamGroupBox.Controls.Add(this.tm2);
             this.teamGroupBox.Controls.Add(this.tm3);
             this.teamGroupBox.Controls.Add(this.tm4);
-            this.teamGroupBox.Location = new System.Drawing.Point(695, 10);
+            this.teamGroupBox.Location = new System.Drawing.Point(792, 12);
             this.teamGroupBox.Name = "teamGroupBox";
-            this.teamGroupBox.Size = new System.Drawing.Size(469, 674);
+            this.teamGroupBox.Size = new System.Drawing.Size(510, 622);
             this.teamGroupBox.TabIndex = 12;
             this.teamGroupBox.TabStop = false;
             this.teamGroupBox.Text = "Team";
@@ -1041,7 +1047,7 @@
             this.tm6.Controls.Add(this.tm6_pubgname_l);
             this.tm6.Location = new System.Drawing.Point(237, 168);
             this.tm6.Name = "tm6";
-            this.tm6.Size = new System.Drawing.Size(225, 144);
+            this.tm6.Size = new System.Drawing.Size(266, 144);
             this.tm6.TabIndex = 20;
             this.tm6.TabStop = false;
             this.tm6.Text = "Teammate 6";
@@ -1057,7 +1063,7 @@
             this.tm6_killer_steamid.Location = new System.Drawing.Point(94, 81);
             this.tm6_killer_steamid.Name = "tm6_killer_steamid";
             this.tm6_killer_steamid.ReadOnly = true;
-            this.tm6_killer_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm6_killer_steamid.Size = new System.Drawing.Size(161, 13);
             this.tm6_killer_steamid.TabIndex = 17;
             this.tm6_killer_steamid.TabStop = false;
             this.tm6_killer_steamid.Text = "[unknown]";
@@ -1111,7 +1117,7 @@
             this.tm6_steamid.Location = new System.Drawing.Point(67, 29);
             this.tm6_steamid.Name = "tm6_steamid";
             this.tm6_steamid.ReadOnly = true;
-            this.tm6_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm6_steamid.Size = new System.Drawing.Size(161, 13);
             this.tm6_steamid.TabIndex = 10;
             this.tm6_steamid.TabStop = false;
             this.tm6_steamid.Text = "[unknown]";
@@ -1225,7 +1231,7 @@
             this.tm5.Controls.Add(this.tm5_pubgname_l);
             this.tm5.Location = new System.Drawing.Point(237, 19);
             this.tm5.Name = "tm5";
-            this.tm5.Size = new System.Drawing.Size(225, 144);
+            this.tm5.Size = new System.Drawing.Size(266, 144);
             this.tm5.TabIndex = 14;
             this.tm5.TabStop = false;
             this.tm5.Text = "Teammate 5";
@@ -1241,7 +1247,7 @@
             this.tm5_killer_steamid.Location = new System.Drawing.Point(93, 81);
             this.tm5_killer_steamid.Name = "tm5_killer_steamid";
             this.tm5_killer_steamid.ReadOnly = true;
-            this.tm5_killer_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm5_killer_steamid.Size = new System.Drawing.Size(161, 13);
             this.tm5_killer_steamid.TabIndex = 13;
             this.tm5_killer_steamid.TabStop = false;
             this.tm5_killer_steamid.Text = "[unknown]";
@@ -1295,7 +1301,7 @@
             this.tm5_steamid.Location = new System.Drawing.Point(69, 27);
             this.tm5_steamid.Name = "tm5_steamid";
             this.tm5_steamid.ReadOnly = true;
-            this.tm5_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm5_steamid.Size = new System.Drawing.Size(161, 13);
             this.tm5_steamid.TabIndex = 9;
             this.tm5_steamid.TabStop = false;
             this.tm5_steamid.Text = "[unknown]";
@@ -1409,7 +1415,7 @@
             this.tm7.Controls.Add(this.tm7_pubgname_l);
             this.tm7.Location = new System.Drawing.Point(237, 318);
             this.tm7.Name = "tm7";
-            this.tm7.Size = new System.Drawing.Size(225, 144);
+            this.tm7.Size = new System.Drawing.Size(266, 144);
             this.tm7.TabIndex = 19;
             this.tm7.TabStop = false;
             this.tm7.Text = "Teammate 7";
@@ -1425,7 +1431,7 @@
             this.tm7_killer_steamid.Location = new System.Drawing.Point(94, 81);
             this.tm7_killer_steamid.Name = "tm7_killer_steamid";
             this.tm7_killer_steamid.ReadOnly = true;
-            this.tm7_killer_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm7_killer_steamid.Size = new System.Drawing.Size(161, 13);
             this.tm7_killer_steamid.TabIndex = 17;
             this.tm7_killer_steamid.TabStop = false;
             this.tm7_killer_steamid.Text = "[unknown]";
@@ -1479,7 +1485,7 @@
             this.tm7_steamid.Location = new System.Drawing.Point(69, 28);
             this.tm7_steamid.Name = "tm7_steamid";
             this.tm7_steamid.ReadOnly = true;
-            this.tm7_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm7_steamid.Size = new System.Drawing.Size(161, 13);
             this.tm7_steamid.TabIndex = 11;
             this.tm7_steamid.TabStop = false;
             this.tm7_steamid.Text = "[unknown]";
@@ -1594,7 +1600,7 @@
             this.tm8.Controls.Add(this.tm8_pubgname_l);
             this.tm8.Location = new System.Drawing.Point(237, 470);
             this.tm8.Name = "tm8";
-            this.tm8.Size = new System.Drawing.Size(225, 132);
+            this.tm8.Size = new System.Drawing.Size(266, 140);
             this.tm8.TabIndex = 18;
             this.tm8.TabStop = false;
             this.tm8.Text = "Teammate 8";
@@ -1610,7 +1616,7 @@
             this.tm8_killer_steamid.Location = new System.Drawing.Point(94, 81);
             this.tm8_killer_steamid.Name = "tm8_killer_steamid";
             this.tm8_killer_steamid.ReadOnly = true;
-            this.tm8_killer_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm8_killer_steamid.Size = new System.Drawing.Size(161, 13);
             this.tm8_killer_steamid.TabIndex = 17;
             this.tm8_killer_steamid.TabStop = false;
             this.tm8_killer_steamid.Text = "[unknown]";
@@ -1664,7 +1670,7 @@
             this.tm8_steamid.Location = new System.Drawing.Point(69, 28);
             this.tm8_steamid.Name = "tm8_steamid";
             this.tm8_steamid.ReadOnly = true;
-            this.tm8_steamid.Size = new System.Drawing.Size(120, 13);
+            this.tm8_steamid.Size = new System.Drawing.Size(161, 13);
             this.tm8_steamid.TabIndex = 12;
             this.tm8_steamid.TabStop = false;
             this.tm8_steamid.Text = "[unknown]";
@@ -2324,7 +2330,7 @@
             this.tm4.Controls.Add(this.tm4_pubgname_l);
             this.tm4.Location = new System.Drawing.Point(6, 471);
             this.tm4.Name = "tm4";
-            this.tm4.Size = new System.Drawing.Size(225, 132);
+            this.tm4.Size = new System.Drawing.Size(225, 139);
             this.tm4.TabIndex = 2;
             this.tm4.TabStop = false;
             this.tm4.Text = "Teammate 4";
@@ -2490,22 +2496,13 @@
             this.tm4_pubgname_l.Text = "PUBG Name:";
             this.tm4_pubgname_l.Visible = false;
             // 
-            // replayList
-            // 
-            this.replayList.FormattingEnabled = true;
-            this.replayList.Location = new System.Drawing.Point(12, 12);
-            this.replayList.Name = "replayList";
-            this.replayList.Size = new System.Drawing.Size(407, 498);
-            this.replayList.TabIndex = 0;
-            this.replayList.SelectedIndexChanged += new System.EventHandler(this.replayList_SelectedIndexChanged);
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AmountOfReplays_SB});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 695);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 637);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1171, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1314, 22);
             this.statusStrip1.TabIndex = 13;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -2526,7 +2523,7 @@
             this.replayTool.Controls.Add(this.importReplay);
             this.replayTool.Location = new System.Drawing.Point(11, 513);
             this.replayTool.Name = "replayTool";
-            this.replayTool.Size = new System.Drawing.Size(407, 171);
+            this.replayTool.Size = new System.Drawing.Size(504, 121);
             this.replayTool.TabIndex = 14;
             this.replayTool.TabStop = false;
             this.replayTool.Text = "Replay Tools";
@@ -2535,7 +2532,7 @@
             // 
             this.exportallreplays.Location = new System.Drawing.Point(281, 43);
             this.exportallreplays.Name = "exportallreplays";
-            this.exportallreplays.Size = new System.Drawing.Size(120, 23);
+            this.exportallreplays.Size = new System.Drawing.Size(217, 23);
             this.exportallreplays.TabIndex = 14;
             this.exportallreplays.Text = "Export ALL Replays";
             this.exportallreplays.UseVisualStyleBackColor = true;
@@ -2546,17 +2543,75 @@
             this.clearallreplays.ForeColor = System.Drawing.Color.DarkRed;
             this.clearallreplays.Location = new System.Drawing.Point(280, 18);
             this.clearallreplays.Name = "clearallreplays";
-            this.clearallreplays.Size = new System.Drawing.Size(121, 23);
+            this.clearallreplays.Size = new System.Drawing.Size(218, 23);
             this.clearallreplays.TabIndex = 13;
             this.clearallreplays.Text = "Delete ALL Replays";
             this.clearallreplays.UseVisualStyleBackColor = true;
             this.clearallreplays.Click += new System.EventHandler(this.clearallreplays_Click);
             // 
+            // replayGrid
+            // 
+            this.replayGrid.AllowUserToAddRows = false;
+            this.replayGrid.AllowUserToDeleteRows = false;
+            this.replayGrid.AllowUserToResizeRows = false;
+            this.replayGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.replayGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.customName,
+            this.rank,
+            this.gameMode,
+            this.gameLength,
+            this.dirName});
+            this.replayGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
+            this.replayGrid.Location = new System.Drawing.Point(12, 10);
+            this.replayGrid.Name = "replayGrid";
+            this.replayGrid.RowHeadersVisible = false;
+            this.replayGrid.ShowEditingIcon = false;
+            this.replayGrid.Size = new System.Drawing.Size(503, 497);
+            this.replayGrid.TabIndex = 15;
+            this.replayGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.replayGrid_CellClick);
+            this.replayGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.replayGrid_CellContentClick);
+            this.replayGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.replayGrid_CellEndEdit);
+            this.replayGrid.CurrentCellChanged += new System.EventHandler(this.replayGrid_CurrentCellChanged);
+            // 
+            // customName
+            // 
+            this.customName.HeaderText = "Custom Name";
+            this.customName.Name = "customName";
+            // 
+            // rank
+            // 
+            this.rank.HeaderText = "Rank";
+            this.rank.Name = "rank";
+            this.rank.ReadOnly = true;
+            this.rank.Width = 50;
+            // 
+            // gameMode
+            // 
+            this.gameMode.HeaderText = "Mode";
+            this.gameMode.Name = "gameMode";
+            this.gameMode.ReadOnly = true;
+            this.gameMode.Width = 50;
+            // 
+            // gameLength
+            // 
+            this.gameLength.HeaderText = "Length";
+            this.gameLength.Name = "gameLength";
+            this.gameLength.ReadOnly = true;
+            this.gameLength.Width = 50;
+            // 
+            // dirName
+            // 
+            this.dirName.HeaderText = "Directory";
+            this.dirName.Name = "dirName";
+            this.dirName.ReadOnly = true;
+            this.dirName.Width = 250;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1171, 717);
+            this.ClientSize = new System.Drawing.Size(1314, 659);
+            this.Controls.Add(this.replayGrid);
             this.Controls.Add(this.replayTool);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.teamGroupBox);
@@ -2564,7 +2619,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.replayList);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "PUBG Replay Manager";
             this.Load += new System.EventHandler(this.Main_Load);
@@ -2595,6 +2650,7 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.replayTool.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.replayGrid)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2691,7 +2747,6 @@
         private System.Windows.Forms.Label tm4_kills_l;
         private System.Windows.Forms.Label tm4_headshots_l;
         private System.Windows.Forms.Label tm4_steamid_l;
-        private System.Windows.Forms.ListBox replayList;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel AmountOfReplays_SB;
         private System.Windows.Forms.TextBox tm1_steamid;
@@ -2772,6 +2827,12 @@
         private System.Windows.Forms.Label tm8_pubgname_l;
         private System.Windows.Forms.Label host;
         private System.Windows.Forms.Button downkillTimeline;
+        private System.Windows.Forms.DataGridView replayGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn customName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn rank;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gameMode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn gameLength;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dirName;
     }
 }
 
