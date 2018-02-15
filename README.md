@@ -6,6 +6,8 @@ Shows undocumented information from PUBG replays, and has the ability to import 
 ![](https://i.imgur.com/8OU9NVj.jpg)
 
 
+To add a custom name, Double click the custom name box (the default name is "[null]") of the row of the replay that you want to change and type in a new name, then click anywhere else to have the name automatically saved 
+
 An explanation of how the replay files work
 
 ![](https://i.imgur.com/acGmGMf.jpg)
