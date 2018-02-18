@@ -39,22 +39,22 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.timelineRTB.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.timelineRTB.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.timelineRTB.Location = new System.Drawing.Point(12, 12);
+            this.timelineRTB.Location = new System.Drawing.Point(14, 11);
             this.timelineRTB.Name = "timelineRTB";
             this.timelineRTB.ReadOnly = true;
-            this.timelineRTB.Size = new System.Drawing.Size(850, 550);
+            this.timelineRTB.Size = new System.Drawing.Size(991, 508);
             this.timelineRTB.TabIndex = 0;
             this.timelineRTB.Text = "";
             // 
             // Timeline
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(874, 574);
+            this.ClientSize = new System.Drawing.Size(1020, 530);
             this.Controls.Add(this.timelineRTB);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Timeline";
-            this.Text = "Timeline";
+            this.Text = "킬, 기절 타임라인";
             this.ResumeLayout(false);
 
         }

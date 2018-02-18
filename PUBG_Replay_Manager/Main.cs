@@ -57,7 +57,7 @@ namespace PUBG_Replay_Manager
                     }
                 }
             }
-            AmountOfReplays_SB.Text = "Replays: 0/" + replayGrid.Rows.Count;
+            AmountOfReplays_SB.Text = "리플레이: 0/" + replayGrid.Rows.Count;
             replayGrid.Refresh();
         }
         public void RefreshInfoGroups(ArrayList newInfo)
@@ -83,7 +83,7 @@ namespace PUBG_Replay_Manager
             else
             {
                 gameVerison.Text = (string)newInfo[7];
-                gameverisonLabel.Text = "Game Verison:";
+                gameverisonLabel.Text = "게임 버전:";
                 gameVerison.Visible = true;
                 host.Visible = false;
             }
@@ -749,8 +749,8 @@ namespace PUBG_Replay_Manager
             // Displays a SaveFileDialog so the user can save the Image  
             // assigned to Button2.  
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "ZIP File|*.zip";
-            saveFileDialog1.Title = "Save a PUBG Replay as a ZIP File...";
+            saveFileDialog1.Filter = "ZIP 파일|*.zip";
+            saveFileDialog1.Title = "PUBG 리플레이 폴더를 zip 파일로 저장";
             saveFileDialog1.ShowDialog();
 
             // If the file name is not an empty string open it for saving.  
@@ -787,15 +787,15 @@ namespace PUBG_Replay_Manager
         {
             if (replayGrid.Rows.Count >= 20)
             {
-                DialogResult aus = MessageBox.Show("Maxmium number of replays in PUBG replay folder has been hit! (20)" + Environment.NewLine + "Adding another will cause PUBG to delete the oldest replay!" + Environment.NewLine + "Are you sure you want to add another?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult aus = MessageBox.Show("리플레이 갯수 최대치에 도달했습니다. (20)" + Environment.NewLine + "이 이상의 리플레이를 더 추가할 시 게임에 의해 리플레이가 자동으로 삭제될 수 있습니다." + Environment.NewLine + "계속 진행하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (aus != DialogResult.Yes)
                 {
                     return;
                 }
             }
             OpenFileDialog importReplayDialog = new OpenFileDialog();
-            importReplayDialog.Filter = "ZIP Files|*.zip";
-            importReplayDialog.Title = "Select a PUBG Replay in a ZIP File...";
+            importReplayDialog.Filter = "ZIP 파일|*.zip";
+            importReplayDialog.Title = "추출했던 PUBG 리플레이 zip 파일을 고르세요";
 
             // Show the Dialog.  
             // If the user clicked OK in the dialog and  
@@ -803,7 +803,7 @@ namespace PUBG_Replay_Manager
             if (importReplayDialog.ShowDialog() == DialogResult.OK)
             {
                 ZipFile.ExtractToDirectory(importReplayDialog.FileName, replayloc);
-                MessageBox.Show("Success!", "Imported Replay!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("리플레이를 추출했습니다.", "추출 완료됨", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 // Assign the cursor in the Stream to the Form's Cursor property.  
                 //this.Cursor = new Cursor(openFileDialog1.OpenFile());
             }
@@ -812,7 +812,7 @@ namespace PUBG_Replay_Manager
 
         private void clearallreplays_Click(object sender, EventArgs e)
         {
-            DialogResult aus = MessageBox.Show("This will delete ALL replays in the Replays folder" + Environment.NewLine + "Are you sure you want to delete all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            DialogResult aus = MessageBox.Show("리플레이 폴더에 있는 모든 리플레이가 삭제됩니다!" + Environment.NewLine + "계속 진행하시겠습니까?", "경고!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (aus == DialogResult.Yes)
             {
                 if (Directory.Exists(replayloc))
@@ -825,35 +825,35 @@ namespace PUBG_Replay_Manager
                         }
                     }
                 }
-                MessageBox.Show("All replays deleted!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("모든 리플레이가 삭제되었습니다.", "삭제 완료됨", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 RefreshReplayList();
             }
         }
 
         private void deletereplay_Click(object sender, EventArgs e)
         {
-            DialogResult aus = MessageBox.Show("This will delete the selected replay" + Environment.NewLine + "Are you sure you want to delete the selected replay?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            DialogResult aus = MessageBox.Show("선택한 리플레이를 지웁니다." + Environment.NewLine + "계속 진행하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (aus == DialogResult.Yes)
             {
                 if (Directory.Exists(replayloc + "\\" + currentlyselectedreplaypath + "\\"))
                 {
                     Directory.Delete(replayloc + "\\" + currentlyselectedreplaypath + "\\", true);
                 }
-                MessageBox.Show("Selected replay deleted!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("리플레이 삭제 완료.", "삭제 완료됨", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 RefreshReplayList();
             }
         }
 
         private void exportallreplays_Click(object sender, EventArgs e)
         {
-            DialogResult aus = MessageBox.Show("This will export ALL replays in the Replays folder to a zip file" + Environment.NewLine + "Are you sure you want to export all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            DialogResult aus = MessageBox.Show("리플레이 폴더에 있는 모든 리플레이를 추출합니다." + Environment.NewLine + "계속 진행하시겠습니까?", "정보", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (aus == DialogResult.Yes)
             {
                 // Displays a SaveFileDialog so the user can save the Image  
                 // assigned to Button2.  
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "ZIP File|*.zip";
-                saveFileDialog1.Title = "Save a PUBG Replays as a ZIP File...";
+                saveFileDialog1.Filter = "ZIP 파일|*.zip";
+                saveFileDialog1.Title = "리플레이를 ZIP 파일로 저장";
                 saveFileDialog1.ShowDialog();
 
                 // If the file name is not an empty string open it for saving.  
@@ -865,7 +865,7 @@ namespace PUBG_Replay_Manager
                         ZipFile.CreateFromDirectory(replayloc, zipPath, CompressionLevel.Fastest, true);
                     }
                 }
-                MessageBox.Show("All replays saved!", "Done!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("모든 리플레이가 추출되었습니다.", "추출 완료됨", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 RefreshReplayList();
             }
         }
@@ -889,7 +889,7 @@ namespace PUBG_Replay_Manager
                     RefreshInfoGroups(ReadReplayInfo(replayloc + "\\" + selectedreplaydir));
                     ReplayActionsToggle(true);
                     currentlyselectedreplaypath = selectedreplaydir;
-                    AmountOfReplays_SB.Text = "Replays: " + (e.RowIndex + 1) + "/" + replayGrid.Rows.Count;
+                    AmountOfReplays_SB.Text = "리플레이: " + (e.RowIndex + 1) + "/" + replayGrid.Rows.Count;
                 }
                 else
                 {

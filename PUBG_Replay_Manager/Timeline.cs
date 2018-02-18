@@ -17,11 +17,11 @@ namespace PUBG_Replay_Manager
             Font old_font = timelineRTB.Font;
             timelineRTB.AppendText("|----------------------------------------------------------------------------------------------------------------------|", Color.White);
             timelineRTB.AppendText(Environment.NewLine);
-            timelineRTB.AppendText("| These kills and downs are from the groggy and kill files and isn't complete! |", Color.White);
+            timelineRTB.AppendText("| 이 킬,기절 목록은 미완성 기능입니다. 몇몇 빠진 정보가 있을 수 있습니다.", Color.White);
             timelineRTB.AppendText(Environment.NewLine);
-            timelineRTB.AppendText("| These kills and downs all happened within 1km of the recording player.      |", Color.White);
+            timelineRTB.AppendText("| 리플레이 기록자의 1km 이내의 모든 킬, 기절에 대한 정보입니다.", Color.White);
             timelineRTB.AppendText(Environment.NewLine);
-            timelineRTB.AppendText("|                                   YOU HAVE BEEN WARNED                                     |", Color.Red);
+            timelineRTB.AppendText("| 빨간 색이 킬, 주황색이 기절입니다.", Color.Red);
             timelineRTB.AppendText(Environment.NewLine);
             timelineRTB.AppendText("|----------------------------------------------------------------------------------------------------------------------|", Color.White);
             timelineRTB.AppendText(Environment.NewLine);

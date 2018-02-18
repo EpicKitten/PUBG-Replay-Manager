@@ -37,25 +37,25 @@
             this.SteamIDRich.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.SteamIDRich.Location = new System.Drawing.Point(13, 13);
+            this.SteamIDRich.Location = new System.Drawing.Point(15, 12);
             this.SteamIDRich.Name = "SteamIDRich";
             this.SteamIDRich.ReadOnly = true;
-            this.SteamIDRich.Size = new System.Drawing.Size(259, 443);
+            this.SteamIDRich.Size = new System.Drawing.Size(301, 409);
             this.SteamIDRich.TabIndex = 0;
             this.SteamIDRich.Text = "";
             this.SteamIDRich.TextChanged += new System.EventHandler(this.SteamIDRich_TextChanged);
             // 
             // SteamID
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 468);
+            this.ClientSize = new System.Drawing.Size(331, 432);
             this.Controls.Add(this.SteamIDRich);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SteamID";
-            this.Text = "List of all SteamID64";
+            this.Text = "SteamID64 목록";
             this.Load += new System.EventHandler(this.SteamID_Load);
             this.ResumeLayout(false);
 
