@@ -57,3 +57,15 @@ C:\Users\s7s71\Downloads\PUBG-Replay-Manager-master\PUBG_Replay_Manager\obj\Debu
 C:\Users\s7s71\Downloads\PUBG-Replay-Manager-master\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csproj.CoreCompileInputs.cache
 C:\Users\s7s71\Downloads\PUBG-Replay-Manager-master\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.exe
 C:\Users\s7s71\Downloads\PUBG-Replay-Manager-master\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.pdb
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csprojResolveAssemblyReference.cache
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.Main.resources
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.Properties.Resources.resources
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.SteamID.resources
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.Timeline.resources
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csproj.GenerateResource.Cache
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.csproj.CoreCompileInputs.cache
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.exe
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\obj\Debug\PUBG_Replay_Manager.pdb
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\bin\Debug\PUBG_Replay_Manager.exe.config
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\bin\Debug\PUBG_Replay_Manager.exe
+C:\Users\s7s71\Source\Repos\PUBG-Replay-Manager\PUBG_Replay_Manager\bin\Debug\PUBG_Replay_Manager.pdb
