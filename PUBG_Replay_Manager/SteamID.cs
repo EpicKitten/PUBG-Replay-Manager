@@ -63,8 +63,8 @@ namespace PUBG_Replay_Manager
             if (summery)
             {
                 fulllist.Add("==================================");
-                fulllist.Add(i + " SteamID(s) recorded from replay files");
-                fulllist.Add(p + " SteamID(s) recorded from replay files (duplicates removed)");
+                fulllist.Add(i + " 개의 SteamID 가 기록되어 있음");
+                fulllist.Add(p + " 개의 SteamID 가 기록되어 있음 (중복 제외)");
                 fulllist.Add("==================================");
             }
             return fulllist.ToArray();
