@@ -8,6 +8,9 @@ using System.Text;
 using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Drawing;
+using System.Globalization;
+using System.Threading;
+using System.ComponentModel;
 
 namespace PUBG_Replay_Manager
 {
@@ -29,6 +32,11 @@ namespace PUBG_Replay_Manager
         {
             orgWindowSize = Size;
             orgGroupSize = teamGroupBox.Size;
+            foreach (Control c in Controls)
+            {
+                ComponentResourceManager resources = new ComponentResourceManager(typeof(Main));
+                resources.ApplyResources(c, c.Name, CultureInfo.InstalledUICulture);
+            }
         }
         public void RefreshReplayList()
         {
@@ -846,7 +854,7 @@ namespace PUBG_Replay_Manager
 
         private void exportallreplays_Click(object sender, EventArgs e)
         {
-            DialogResult aus = MessageBox.Show("This will export ALL replays in the Replays folder to a zip file" + Environment.NewLine + "Are you sure you want to export all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            DialogResult aus = MessageBox.Show("This will export ALL replays in the Replays folder to a zip file" + Environment.NewLine + "Are you sure you want to export all replays?", "Warning!", MessageBoxButtons.YesNo, MessageBoxIcon.Asterisk);
             if (aus == DialogResult.Yes)
             {
                 // Displays a SaveFileDialog so the user can save the Image  

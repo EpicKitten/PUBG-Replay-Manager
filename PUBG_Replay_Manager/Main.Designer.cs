@@ -225,195 +225,102 @@
             // 
             // openReplayFolder
             // 
-            this.openReplayFolder.Location = new System.Drawing.Point(6, 19);
+            resources.ApplyResources(this.openReplayFolder, "openReplayFolder");
             this.openReplayFolder.Name = "openReplayFolder";
-            this.openReplayFolder.Size = new System.Drawing.Size(126, 23);
-            this.openReplayFolder.TabIndex = 8;
-            this.openReplayFolder.Text = "Open Replays Folder";
             this.openReplayFolder.UseVisualStyleBackColor = true;
             this.openReplayFolder.Click += new System.EventHandler(this.openReplayFolder_Click);
             // 
             // groupBox4
             // 
-            this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.downkillTimeline);
             this.groupBox4.Controls.Add(this.deletereplay);
             this.groupBox4.Controls.Add(this.steamidStrip);
             this.groupBox4.Controls.Add(this.zipReplay);
             this.groupBox4.Controls.Add(this.openSelectedReplay);
-            this.groupBox4.Location = new System.Drawing.Point(522, 495);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(264, 139);
-            this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Replay Actions";
             // 
             // downkillTimeline
             // 
-            this.downkillTimeline.Enabled = false;
-            this.downkillTimeline.Location = new System.Drawing.Point(140, 77);
+            resources.ApplyResources(this.downkillTimeline, "downkillTimeline");
             this.downkillTimeline.Name = "downkillTimeline";
-            this.downkillTimeline.Size = new System.Drawing.Size(118, 52);
-            this.downkillTimeline.TabIndex = 6;
-            this.downkillTimeline.Text = "View timeline of downs and kills";
             this.downkillTimeline.UseVisualStyleBackColor = true;
             this.downkillTimeline.Click += new System.EventHandler(this.downkillTimeline_Click);
             // 
             // deletereplay
             // 
-            this.deletereplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.deletereplay.Enabled = false;
+            resources.ApplyResources(this.deletereplay, "deletereplay");
             this.deletereplay.ForeColor = System.Drawing.Color.DarkRed;
-            this.deletereplay.Location = new System.Drawing.Point(6, 106);
             this.deletereplay.Name = "deletereplay";
-            this.deletereplay.Size = new System.Drawing.Size(128, 23);
-            this.deletereplay.TabIndex = 5;
-            this.deletereplay.Text = "Delete Selected Replay";
             this.deletereplay.UseVisualStyleBackColor = true;
             this.deletereplay.Click += new System.EventHandler(this.deletereplay_Click);
             // 
             // steamidStrip
             // 
-            this.steamidStrip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.steamidStrip.Enabled = false;
-            this.steamidStrip.Location = new System.Drawing.Point(6, 48);
+            resources.ApplyResources(this.steamidStrip, "steamidStrip");
             this.steamidStrip.Name = "steamidStrip";
-            this.steamidStrip.Size = new System.Drawing.Size(252, 23);
-            this.steamidStrip.TabIndex = 2;
-            this.steamidStrip.Text = "Every SteamID64 in the replay";
             this.steamidStrip.UseVisualStyleBackColor = true;
             this.steamidStrip.Click += new System.EventHandler(this.steamidStrip_Click);
             // 
             // zipReplay
             // 
-            this.zipReplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.zipReplay.Enabled = false;
-            this.zipReplay.Location = new System.Drawing.Point(6, 77);
+            resources.ApplyResources(this.zipReplay, "zipReplay");
             this.zipReplay.Name = "zipReplay";
-            this.zipReplay.Size = new System.Drawing.Size(128, 23);
-            this.zipReplay.TabIndex = 1;
-            this.zipReplay.Text = "Export Selected Replay";
             this.zipReplay.UseVisualStyleBackColor = true;
             this.zipReplay.Click += new System.EventHandler(this.zipReplay_Click);
             // 
             // openSelectedReplay
             // 
-            this.openSelectedReplay.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.openSelectedReplay.Enabled = false;
-            this.openSelectedReplay.Location = new System.Drawing.Point(6, 19);
+            resources.ApplyResources(this.openSelectedReplay, "openSelectedReplay");
             this.openSelectedReplay.Name = "openSelectedReplay";
-            this.openSelectedReplay.Size = new System.Drawing.Size(252, 23);
-            this.openSelectedReplay.TabIndex = 0;
-            this.openSelectedReplay.Text = "Open Selected Replay\'s Folder";
             this.openSelectedReplay.UseVisualStyleBackColor = true;
             this.openSelectedReplay.Click += new System.EventHandler(this.openSelectedReplay_Click);
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 20);
+            resources.ApplyResources(this.label1, "label1");
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(31, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Map:";
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label2.AutoSize = true;
+            resources.ApplyResources(this.label2, "label2");
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(12, 33);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Weather:";
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 46);
+            resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Server:";
             // 
             // label4
             // 
-            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 59);
+            resources.ApplyResources(this.label4, "label4");
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(37, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Team:";
             // 
             // teamInfo
             // 
-            this.teamInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.teamInfo.AutoSize = true;
-            this.teamInfo.Location = new System.Drawing.Point(44, 59);
+            resources.ApplyResources(this.teamInfo, "teamInfo");
             this.teamInfo.Name = "teamInfo";
-            this.teamInfo.Size = new System.Drawing.Size(57, 13);
-            this.teamInfo.TabIndex = 6;
-            this.teamInfo.Text = "[unknown]";
             // 
             // serverRegion
             // 
-            this.serverRegion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.serverRegion.AutoSize = true;
-            this.serverRegion.Location = new System.Drawing.Point(49, 46);
+            resources.ApplyResources(this.serverRegion, "serverRegion");
             this.serverRegion.Name = "serverRegion";
-            this.serverRegion.Size = new System.Drawing.Size(57, 13);
-            this.serverRegion.TabIndex = 7;
-            this.serverRegion.Text = "[unknown]";
             // 
             // label16
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 72);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.label16, "label16");
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(67, 13);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "Match Type:";
             // 
             // matchType
             // 
-            this.matchType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.matchType.AutoSize = true;
-            this.matchType.Location = new System.Drawing.Point(76, 72);
-            this.matchType.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.matchType, "matchType");
             this.matchType.Name = "matchType";
-            this.matchType.Size = new System.Drawing.Size(57, 13);
-            this.matchType.TabIndex = 9;
-            this.matchType.Text = "[unknown]";
             // 
             // groupBox1
             // 
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.totalTeams);
             this.groupBox1.Controls.Add(this.label23);
             this.groupBox1.Controls.Add(this.totalPlayers);
@@ -428,165 +335,78 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(521, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(265, 121);
-            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Match Information";
             // 
             // totalTeams
             // 
-            this.totalTeams.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalTeams.AutoSize = true;
-            this.totalTeams.Location = new System.Drawing.Point(76, 98);
+            resources.ApplyResources(this.totalTeams, "totalTeams");
             this.totalTeams.Name = "totalTeams";
-            this.totalTeams.Size = new System.Drawing.Size(57, 13);
-            this.totalTeams.TabIndex = 15;
-            this.totalTeams.Text = "[unknown]";
             // 
             // label23
             // 
-            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(12, 98);
+            resources.ApplyResources(this.label23, "label23");
             this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(69, 13);
-            this.label23.TabIndex = 14;
-            this.label23.Text = "Total Teams:";
             // 
             // totalPlayers
             // 
-            this.totalPlayers.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalPlayers.AutoSize = true;
-            this.totalPlayers.Location = new System.Drawing.Point(78, 85);
+            resources.ApplyResources(this.totalPlayers, "totalPlayers");
             this.totalPlayers.Name = "totalPlayers";
-            this.totalPlayers.Size = new System.Drawing.Size(57, 13);
-            this.totalPlayers.TabIndex = 13;
-            this.totalPlayers.Text = "[unknown]";
             // 
             // label21
             // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(12, 85);
+            resources.ApplyResources(this.label21, "label21");
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(71, 13);
-            this.label21.TabIndex = 12;
-            this.label21.Text = "Total Players:";
             // 
             // weatherType
             // 
-            this.weatherType.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.weatherType.AutoSize = true;
-            this.weatherType.Location = new System.Drawing.Point(58, 33);
+            resources.ApplyResources(this.weatherType, "weatherType");
             this.weatherType.Name = "weatherType";
-            this.weatherType.Size = new System.Drawing.Size(57, 13);
-            this.weatherType.TabIndex = 11;
-            this.weatherType.Text = "[unknown]";
             // 
             // mapName
             // 
-            this.mapName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.mapName.AutoSize = true;
-            this.mapName.Location = new System.Drawing.Point(39, 20);
+            resources.ApplyResources(this.mapName, "mapName");
             this.mapName.Name = "mapName";
-            this.mapName.Size = new System.Drawing.Size(57, 13);
-            this.mapName.TabIndex = 10;
-            this.mapName.Text = "[unknown]";
             // 
             // label5
             // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
+            resources.ApplyResources(this.label5, "label5");
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(12, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(36, 13);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "Rank:";
             // 
             // label6
             // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
+            resources.ApplyResources(this.label6, "label6");
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(12, 29);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Headshots:";
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.AutoSize = true;
+            resources.ApplyResources(this.label7, "label7");
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(12, 42);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Kills:";
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label8.AutoSize = true;
+            resources.ApplyResources(this.label8, "label8");
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(12, 68);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(64, 13);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Longest Kill:";
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label9.AutoSize = true;
+            resources.ApplyResources(this.label9, "label9");
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(12, 81);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(52, 13);
-            this.label9.TabIndex = 4;
-            this.label9.Text = "Distance:";
             // 
             // label10
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.AutoSize = true;
+            resources.ApplyResources(this.label10, "label10");
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(12, 55);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(78, 13);
-            this.label10.TabIndex = 5;
-            this.label10.Text = "Damage Dealt:";
             // 
             // groupBox2
             // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.distanceWalked);
             this.groupBox2.Controls.Add(this.longestKill);
             this.groupBox2.Controls.Add(this.dmgHandedOut);
@@ -599,294 +419,126 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(522, 139);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(264, 102);
-            this.groupBox2.TabIndex = 6;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Your Statistics";
             // 
             // distanceWalked
             // 
-            this.distanceWalked.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.distanceWalked.AutoSize = true;
-            this.distanceWalked.Location = new System.Drawing.Point(59, 81);
+            resources.ApplyResources(this.distanceWalked, "distanceWalked");
             this.distanceWalked.Name = "distanceWalked";
-            this.distanceWalked.Size = new System.Drawing.Size(57, 13);
-            this.distanceWalked.TabIndex = 28;
-            this.distanceWalked.Text = "[unknown]";
             // 
             // longestKill
             // 
-            this.longestKill.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.longestKill.AutoSize = true;
-            this.longestKill.Location = new System.Drawing.Point(71, 68);
+            resources.ApplyResources(this.longestKill, "longestKill");
             this.longestKill.Name = "longestKill";
-            this.longestKill.Size = new System.Drawing.Size(57, 13);
-            this.longestKill.TabIndex = 27;
-            this.longestKill.Text = "[unknown]";
             // 
             // dmgHandedOut
             // 
-            this.dmgHandedOut.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dmgHandedOut.AutoSize = true;
-            this.dmgHandedOut.Location = new System.Drawing.Point(85, 55);
+            resources.ApplyResources(this.dmgHandedOut, "dmgHandedOut");
             this.dmgHandedOut.Name = "dmgHandedOut";
-            this.dmgHandedOut.Size = new System.Drawing.Size(57, 13);
-            this.dmgHandedOut.TabIndex = 26;
-            this.dmgHandedOut.Text = "[unknown]";
             // 
             // kills
             // 
-            this.kills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.kills.AutoSize = true;
-            this.kills.Location = new System.Drawing.Point(35, 42);
+            resources.ApplyResources(this.kills, "kills");
             this.kills.Name = "kills";
-            this.kills.Size = new System.Drawing.Size(57, 13);
-            this.kills.TabIndex = 25;
-            this.kills.Text = "[unknown]";
             // 
             // headShots
             // 
-            this.headShots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.headShots.AutoSize = true;
-            this.headShots.Location = new System.Drawing.Point(68, 30);
+            resources.ApplyResources(this.headShots, "headShots");
             this.headShots.Name = "headShots";
-            this.headShots.Size = new System.Drawing.Size(57, 13);
-            this.headShots.TabIndex = 24;
-            this.headShots.Text = "[unknown]";
             // 
             // rankNum
             // 
-            this.rankNum.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rankNum.AutoSize = true;
-            this.rankNum.Location = new System.Drawing.Point(43, 16);
+            resources.ApplyResources(this.rankNum, "rankNum");
             this.rankNum.Name = "rankNum";
-            this.rankNum.Size = new System.Drawing.Size(57, 13);
-            this.rankNum.TabIndex = 23;
-            this.rankNum.Text = "[unknown]";
             // 
             // fileLocked
             // 
-            this.fileLocked.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileLocked.AutoSize = true;
-            this.fileLocked.Enabled = false;
-            this.fileLocked.Location = new System.Drawing.Point(14, 139);
-            this.fileLocked.Margin = new System.Windows.Forms.Padding(2);
+            resources.ApplyResources(this.fileLocked, "fileLocked");
             this.fileLocked.Name = "fileLocked";
-            this.fileLocked.Size = new System.Drawing.Size(81, 17);
-            this.fileLocked.TabIndex = 0;
-            this.fileLocked.Text = "File Locked";
             this.fileLocked.UseVisualStyleBackColor = true;
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(11, 19);
+            resources.ApplyResources(this.label11, "label11");
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(83, 13);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Time Recorded:";
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(11, 32);
+            resources.ApplyResources(this.label12, "label12");
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(82, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Recording Size:";
             // 
             // timeRecorded
             // 
-            this.timeRecorded.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.timeRecorded.AutoSize = true;
-            this.timeRecorded.Location = new System.Drawing.Point(92, 19);
+            resources.ApplyResources(this.timeRecorded, "timeRecorded");
             this.timeRecorded.Name = "timeRecorded";
-            this.timeRecorded.Size = new System.Drawing.Size(57, 13);
-            this.timeRecorded.TabIndex = 3;
-            this.timeRecorded.Text = "[unknown]";
             // 
             // recordingSize
             // 
-            this.recordingSize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingSize.AutoSize = true;
-            this.recordingSize.Location = new System.Drawing.Point(91, 32);
+            resources.ApplyResources(this.recordingSize, "recordingSize");
             this.recordingSize.Name = "recordingSize";
-            this.recordingSize.Size = new System.Drawing.Size(57, 13);
-            this.recordingSize.TabIndex = 4;
-            this.recordingSize.Text = "[unknown]";
             // 
             // label13
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 46);
+            resources.ApplyResources(this.label13, "label13");
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(95, 13);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Recording Length:";
             // 
             // lengthInMins
             // 
-            this.lengthInMins.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lengthInMins.AutoSize = true;
-            this.lengthInMins.Location = new System.Drawing.Point(104, 46);
+            resources.ApplyResources(this.lengthInMins, "lengthInMins");
             this.lengthInMins.Name = "lengthInMins";
-            this.lengthInMins.Size = new System.Drawing.Size(57, 13);
-            this.lengthInMins.TabIndex = 6;
-            this.lengthInMins.Text = "[unknown]";
             // 
             // label14
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(11, 62);
+            resources.ApplyResources(this.label14, "label14");
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(98, 13);
-            this.label14.TabIndex = 7;
-            this.label14.Text = "Replay Folder Size:";
             // 
             // fileSize
             // 
-            this.fileSize.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.fileSize.AutoSize = true;
-            this.fileSize.Location = new System.Drawing.Point(104, 62);
+            resources.ApplyResources(this.fileSize, "fileSize");
             this.fileSize.Name = "fileSize";
-            this.fileSize.Size = new System.Drawing.Size(57, 13);
-            this.fileSize.TabIndex = 8;
-            this.fileSize.Text = "[unknown]";
             // 
             // label15
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(11, 92);
+            resources.ApplyResources(this.label15, "label15");
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(88, 13);
-            this.label15.TabIndex = 9;
-            this.label15.Text = "Network Verison:";
             // 
             // isLive
             // 
-            this.isLive.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.isLive.AutoSize = true;
-            this.isLive.Enabled = false;
-            this.isLive.Location = new System.Drawing.Point(14, 160);
-            this.isLive.Margin = new System.Windows.Forms.Padding(2);
+            resources.ApplyResources(this.isLive, "isLive");
             this.isLive.Name = "isLive";
-            this.isLive.Size = new System.Drawing.Size(46, 17);
-            this.isLive.TabIndex = 10;
-            this.isLive.Text = "Live";
             this.isLive.UseVisualStyleBackColor = true;
             // 
             // isIncomplete
             // 
-            this.isIncomplete.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.isIncomplete.AutoSize = true;
-            this.isIncomplete.Enabled = false;
-            this.isIncomplete.Location = new System.Drawing.Point(14, 181);
-            this.isIncomplete.Margin = new System.Windows.Forms.Padding(2);
+            resources.ApplyResources(this.isIncomplete, "isIncomplete");
             this.isIncomplete.Name = "isIncomplete";
-            this.isIncomplete.Size = new System.Drawing.Size(78, 17);
-            this.isIncomplete.TabIndex = 11;
-            this.isIncomplete.Text = "Incomplete";
             this.isIncomplete.UseVisualStyleBackColor = true;
             // 
             // IsServerRecording
             // 
-            this.IsServerRecording.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.IsServerRecording.AutoSize = true;
-            this.IsServerRecording.Enabled = false;
-            this.IsServerRecording.Location = new System.Drawing.Point(14, 202);
-            this.IsServerRecording.Margin = new System.Windows.Forms.Padding(2);
+            resources.ApplyResources(this.IsServerRecording, "IsServerRecording");
             this.IsServerRecording.Name = "IsServerRecording";
-            this.IsServerRecording.Size = new System.Drawing.Size(129, 17);
-            this.IsServerRecording.TabIndex = 12;
-            this.IsServerRecording.Text = "Is a Server Recording";
             this.IsServerRecording.UseVisualStyleBackColor = true;
             // 
             // networkVerison
             // 
-            this.networkVerison.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.networkVerison.AutoSize = true;
-            this.networkVerison.Location = new System.Drawing.Point(92, 92);
-            this.networkVerison.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.networkVerison, "networkVerison");
             this.networkVerison.Name = "networkVerison";
-            this.networkVerison.Size = new System.Drawing.Size(57, 13);
-            this.networkVerison.TabIndex = 13;
-            this.networkVerison.Text = "[unknown]";
             // 
             // gameverisonLabel
             // 
-            this.gameverisonLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gameverisonLabel.AutoSize = true;
-            this.gameverisonLabel.Location = new System.Drawing.Point(11, 77);
-            this.gameverisonLabel.Margin = new System.Windows.Forms.Padding(2);
+            resources.ApplyResources(this.gameverisonLabel, "gameverisonLabel");
             this.gameverisonLabel.Name = "gameverisonLabel";
-            this.gameverisonLabel.Size = new System.Drawing.Size(76, 13);
-            this.gameverisonLabel.TabIndex = 14;
-            this.gameverisonLabel.Text = "Game Version:";
             // 
             // gameVerison
             // 
-            this.gameVerison.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gameVerison.AutoSize = true;
-            this.gameVerison.Location = new System.Drawing.Point(85, 77);
-            this.gameVerison.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            resources.ApplyResources(this.gameVerison, "gameVerison");
             this.gameVerison.Name = "gameVerison";
-            this.gameVerison.Size = new System.Drawing.Size(57, 13);
-            this.gameVerison.TabIndex = 15;
-            this.gameVerison.Text = "[unknown]";
             // 
             // groupBox3
             // 
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.host);
             this.groupBox3.Controls.Add(this.diedorwon);
             this.groupBox3.Controls.Add(this.recordingUser);
@@ -909,111 +561,56 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.label11);
             this.groupBox3.Controls.Add(this.fileLocked);
-            this.groupBox3.Location = new System.Drawing.Point(522, 247);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(264, 246);
-            this.groupBox3.TabIndex = 7;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "File Information";
             // 
             // host
             // 
-            this.host.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.host.AutoSize = true;
-            this.host.Location = new System.Drawing.Point(38, 77);
+            resources.ApplyResources(this.host, "host");
             this.host.Name = "host";
-            this.host.Size = new System.Drawing.Size(0, 13);
-            this.host.TabIndex = 23;
-            this.host.Visible = false;
             // 
             // diedorwon
             // 
-            this.diedorwon.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.diedorwon.AutoSize = true;
-            this.diedorwon.Enabled = false;
-            this.diedorwon.Location = new System.Drawing.Point(13, 225);
+            resources.ApplyResources(this.diedorwon, "diedorwon");
             this.diedorwon.Name = "diedorwon";
-            this.diedorwon.Size = new System.Drawing.Size(92, 17);
-            this.diedorwon.TabIndex = 22;
-            this.diedorwon.Text = "Died or Won?";
             this.diedorwon.UseVisualStyleBackColor = true;
             // 
             // recordingUser
             // 
-            this.recordingUser.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.recordingUser.AutoSize = true;
-            this.recordingUser.Location = new System.Drawing.Point(92, 118);
+            resources.ApplyResources(this.recordingUser, "recordingUser");
             this.recordingUser.Name = "recordingUser";
-            this.recordingUser.Size = new System.Drawing.Size(57, 13);
-            this.recordingUser.TabIndex = 20;
-            this.recordingUser.Text = "[unknown]";
             // 
             // label19
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(11, 118);
+            resources.ApplyResources(this.label19, "label19");
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(84, 13);
-            this.label19.TabIndex = 18;
-            this.label19.Text = "Recording User:";
             // 
             // serverId
             // 
-            this.serverId.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.serverId.AutoSize = true;
-            this.serverId.Location = new System.Drawing.Point(63, 105);
+            resources.ApplyResources(this.serverId, "serverId");
             this.serverId.Name = "serverId";
-            this.serverId.Size = new System.Drawing.Size(57, 13);
-            this.serverId.TabIndex = 17;
-            this.serverId.Text = "[unknown]";
             // 
             // label18
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(11, 105);
+            resources.ApplyResources(this.label18, "label18");
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(55, 13);
-            this.label18.TabIndex = 16;
-            this.label18.Text = "Server ID:";
             // 
             // importReplay
             // 
-            this.importReplay.Location = new System.Drawing.Point(6, 44);
+            resources.ApplyResources(this.importReplay, "importReplay");
             this.importReplay.Name = "importReplay";
-            this.importReplay.Size = new System.Drawing.Size(268, 23);
-            this.importReplay.TabIndex = 10;
-            this.importReplay.Text = "Import a Replay to the PUBG Replay folder";
             this.importReplay.UseVisualStyleBackColor = true;
             this.importReplay.Click += new System.EventHandler(this.importReplay_Click);
             // 
             // replayListRefresh
             // 
-            this.replayListRefresh.Location = new System.Drawing.Point(138, 18);
+            resources.ApplyResources(this.replayListRefresh, "replayListRefresh");
             this.replayListRefresh.Name = "replayListRefresh";
-            this.replayListRefresh.Size = new System.Drawing.Size(136, 23);
-            this.replayListRefresh.TabIndex = 15;
-            this.replayListRefresh.Text = "Refresh Replay List";
             this.replayListRefresh.Click += new System.EventHandler(this.replayListRefresh_Click);
             // 
             // teamGroupBox
             // 
-            this.teamGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.teamGroupBox, "teamGroupBox");
             this.teamGroupBox.Controls.Add(this.tm6);
             this.teamGroupBox.Controls.Add(this.tm5);
             this.teamGroupBox.Controls.Add(this.tm7);
@@ -1022,17 +619,12 @@
             this.teamGroupBox.Controls.Add(this.tm2);
             this.teamGroupBox.Controls.Add(this.tm3);
             this.teamGroupBox.Controls.Add(this.tm4);
-            this.teamGroupBox.Location = new System.Drawing.Point(792, 12);
             this.teamGroupBox.Name = "teamGroupBox";
-            this.teamGroupBox.Size = new System.Drawing.Size(510, 622);
-            this.teamGroupBox.TabIndex = 12;
             this.teamGroupBox.TabStop = false;
-            this.teamGroupBox.Text = "Team";
             // 
             // tm6
             // 
-            this.tm6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm6, "tm6");
             this.tm6.Controls.Add(this.tm6_killer_steamid);
             this.tm6.Controls.Add(this.tm6_killer_pubgname);
             this.tm6.Controls.Add(this.tm6_killer_steamid_l);
@@ -1045,178 +637,78 @@
             this.tm6.Controls.Add(this.tm6_headshots_l);
             this.tm6.Controls.Add(this.tm6_steamid_l);
             this.tm6.Controls.Add(this.tm6_pubgname_l);
-            this.tm6.Location = new System.Drawing.Point(237, 168);
             this.tm6.Name = "tm6";
-            this.tm6.Size = new System.Drawing.Size(266, 144);
-            this.tm6.TabIndex = 20;
             this.tm6.TabStop = false;
-            this.tm6.Text = "Teammate 6";
-            this.tm6.Visible = false;
             // 
             // tm6_killer_steamid
             // 
-            this.tm6_killer_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm6_killer_steamid, "tm6_killer_steamid");
             this.tm6_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm6_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm6_killer_steamid.Location = new System.Drawing.Point(94, 81);
             this.tm6_killer_steamid.Name = "tm6_killer_steamid";
             this.tm6_killer_steamid.ReadOnly = true;
-            this.tm6_killer_steamid.Size = new System.Drawing.Size(161, 13);
-            this.tm6_killer_steamid.TabIndex = 17;
             this.tm6_killer_steamid.TabStop = false;
-            this.tm6_killer_steamid.Text = "[unknown]";
             // 
             // tm6_killer_pubgname
             // 
-            this.tm6_killer_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_killer_pubgname.AutoSize = true;
-            this.tm6_killer_pubgname.Location = new System.Drawing.Point(99, 68);
+            resources.ApplyResources(this.tm6_killer_pubgname, "tm6_killer_pubgname");
             this.tm6_killer_pubgname.Name = "tm6_killer_pubgname";
-            this.tm6_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm6_killer_pubgname.TabIndex = 16;
-            this.tm6_killer_pubgname.Text = "[unknown]";
-            this.tm6_killer_pubgname.Visible = false;
             // 
             // tm6_killer_steamid_l
             // 
-            this.tm6_killer_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_killer_steamid_l.AutoSize = true;
-            this.tm6_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
+            resources.ApplyResources(this.tm6_killer_steamid_l, "tm6_killer_steamid_l");
             this.tm6_killer_steamid_l.Name = "tm6_killer_steamid_l";
-            this.tm6_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm6_killer_steamid_l.TabIndex = 15;
-            this.tm6_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm6_killer_steamid_l.Visible = false;
             // 
             // tm6_killer_pubgname_l
             // 
-            this.tm6_killer_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_killer_pubgname_l.AutoSize = true;
-            this.tm6_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
+            resources.ApplyResources(this.tm6_killer_pubgname_l, "tm6_killer_pubgname_l");
             this.tm6_killer_pubgname_l.Name = "tm6_killer_pubgname_l";
-            this.tm6_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm6_killer_pubgname_l.TabIndex = 14;
-            this.tm6_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm6_killer_pubgname_l.Visible = false;
             // 
             // tm6_steamid
             // 
-            this.tm6_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm6_steamid, "tm6_steamid");
             this.tm6_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm6_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm6_steamid.Location = new System.Drawing.Point(67, 29);
             this.tm6_steamid.Name = "tm6_steamid";
             this.tm6_steamid.ReadOnly = true;
-            this.tm6_steamid.Size = new System.Drawing.Size(161, 13);
-            this.tm6_steamid.TabIndex = 10;
             this.tm6_steamid.TabStop = false;
-            this.tm6_steamid.Text = "[unknown]";
             // 
             // tm6_kills
             // 
-            this.tm6_kills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_kills.AutoSize = true;
-            this.tm6_kills.Location = new System.Drawing.Point(31, 55);
+            resources.ApplyResources(this.tm6_kills, "tm6_kills");
             this.tm6_kills.Name = "tm6_kills";
-            this.tm6_kills.Size = new System.Drawing.Size(57, 13);
-            this.tm6_kills.TabIndex = 8;
-            this.tm6_kills.Text = "[unknown]";
-            this.tm6_kills.Visible = false;
             // 
             // tm6_headshots
             // 
-            this.tm6_headshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_headshots.AutoSize = true;
-            this.tm6_headshots.Location = new System.Drawing.Point(64, 42);
+            resources.ApplyResources(this.tm6_headshots, "tm6_headshots");
             this.tm6_headshots.Name = "tm6_headshots";
-            this.tm6_headshots.Size = new System.Drawing.Size(57, 13);
-            this.tm6_headshots.TabIndex = 7;
-            this.tm6_headshots.Text = "[unknown]";
-            this.tm6_headshots.Visible = false;
             // 
             // tm6_pubgname
             // 
-            this.tm6_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_pubgname.AutoSize = true;
-            this.tm6_pubgname.Location = new System.Drawing.Point(74, 16);
+            resources.ApplyResources(this.tm6_pubgname, "tm6_pubgname");
             this.tm6_pubgname.Name = "tm6_pubgname";
-            this.tm6_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm6_pubgname.TabIndex = 5;
-            this.tm6_pubgname.Text = "[unknown]";
-            this.tm6_pubgname.Visible = false;
             // 
             // tm6_kills_l
             // 
-            this.tm6_kills_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_kills_l.AutoSize = true;
-            this.tm6_kills_l.Location = new System.Drawing.Point(8, 55);
+            resources.ApplyResources(this.tm6_kills_l, "tm6_kills_l");
             this.tm6_kills_l.Name = "tm6_kills_l";
-            this.tm6_kills_l.Size = new System.Drawing.Size(28, 13);
-            this.tm6_kills_l.TabIndex = 3;
-            this.tm6_kills_l.Text = "Kills:";
-            this.tm6_kills_l.Visible = false;
             // 
             // tm6_headshots_l
             // 
-            this.tm6_headshots_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_headshots_l.AutoSize = true;
-            this.tm6_headshots_l.Location = new System.Drawing.Point(8, 42);
+            resources.ApplyResources(this.tm6_headshots_l, "tm6_headshots_l");
             this.tm6_headshots_l.Name = "tm6_headshots_l";
-            this.tm6_headshots_l.Size = new System.Drawing.Size(61, 13);
-            this.tm6_headshots_l.TabIndex = 2;
-            this.tm6_headshots_l.Text = "Headshots:";
-            this.tm6_headshots_l.Visible = false;
             // 
             // tm6_steamid_l
             // 
-            this.tm6_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_steamid_l.AutoSize = true;
-            this.tm6_steamid_l.Location = new System.Drawing.Point(7, 29);
+            resources.ApplyResources(this.tm6_steamid_l, "tm6_steamid_l");
             this.tm6_steamid_l.Name = "tm6_steamid_l";
-            this.tm6_steamid_l.Size = new System.Drawing.Size(63, 13);
-            this.tm6_steamid_l.TabIndex = 1;
-            this.tm6_steamid_l.Text = "SteamID64:";
-            this.tm6_steamid_l.Visible = false;
             // 
             // tm6_pubgname_l
             // 
-            this.tm6_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm6_pubgname_l.AutoSize = true;
-            this.tm6_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.tm6_pubgname_l, "tm6_pubgname_l");
             this.tm6_pubgname_l.Name = "tm6_pubgname_l";
-            this.tm6_pubgname_l.Size = new System.Drawing.Size(71, 13);
-            this.tm6_pubgname_l.TabIndex = 0;
-            this.tm6_pubgname_l.Text = "PUBG Name:";
-            this.tm6_pubgname_l.Visible = false;
             // 
             // tm5
             // 
-            this.tm5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm5, "tm5");
             this.tm5.Controls.Add(this.tm5_killer_steamid);
             this.tm5.Controls.Add(this.tm5_killer_pubgname);
             this.tm5.Controls.Add(this.tm5_killer_steamid_l);
@@ -1229,178 +721,78 @@
             this.tm5.Controls.Add(this.tm5_headshots_l);
             this.tm5.Controls.Add(this.tm5_steamid_l);
             this.tm5.Controls.Add(this.tm5_pubgname_l);
-            this.tm5.Location = new System.Drawing.Point(237, 19);
             this.tm5.Name = "tm5";
-            this.tm5.Size = new System.Drawing.Size(266, 144);
-            this.tm5.TabIndex = 14;
             this.tm5.TabStop = false;
-            this.tm5.Text = "Teammate 5";
-            this.tm5.Visible = false;
             // 
             // tm5_killer_steamid
             // 
-            this.tm5_killer_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm5_killer_steamid, "tm5_killer_steamid");
             this.tm5_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm5_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm5_killer_steamid.Location = new System.Drawing.Point(93, 81);
             this.tm5_killer_steamid.Name = "tm5_killer_steamid";
             this.tm5_killer_steamid.ReadOnly = true;
-            this.tm5_killer_steamid.Size = new System.Drawing.Size(161, 13);
-            this.tm5_killer_steamid.TabIndex = 13;
             this.tm5_killer_steamid.TabStop = false;
-            this.tm5_killer_steamid.Text = "[unknown]";
             // 
             // tm5_killer_pubgname
             // 
-            this.tm5_killer_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_killer_pubgname.AutoSize = true;
-            this.tm5_killer_pubgname.Location = new System.Drawing.Point(99, 68);
+            resources.ApplyResources(this.tm5_killer_pubgname, "tm5_killer_pubgname");
             this.tm5_killer_pubgname.Name = "tm5_killer_pubgname";
-            this.tm5_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm5_killer_pubgname.TabIndex = 12;
-            this.tm5_killer_pubgname.Text = "[unknown]";
-            this.tm5_killer_pubgname.Visible = false;
             // 
             // tm5_killer_steamid_l
             // 
-            this.tm5_killer_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_killer_steamid_l.AutoSize = true;
-            this.tm5_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
+            resources.ApplyResources(this.tm5_killer_steamid_l, "tm5_killer_steamid_l");
             this.tm5_killer_steamid_l.Name = "tm5_killer_steamid_l";
-            this.tm5_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm5_killer_steamid_l.TabIndex = 11;
-            this.tm5_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm5_killer_steamid_l.Visible = false;
             // 
             // tm5_killer_pubgname_l
             // 
-            this.tm5_killer_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_killer_pubgname_l.AutoSize = true;
-            this.tm5_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
+            resources.ApplyResources(this.tm5_killer_pubgname_l, "tm5_killer_pubgname_l");
             this.tm5_killer_pubgname_l.Name = "tm5_killer_pubgname_l";
-            this.tm5_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm5_killer_pubgname_l.TabIndex = 10;
-            this.tm5_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm5_killer_pubgname_l.Visible = false;
             // 
             // tm5_steamid
             // 
-            this.tm5_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm5_steamid, "tm5_steamid");
             this.tm5_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm5_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm5_steamid.Location = new System.Drawing.Point(69, 27);
             this.tm5_steamid.Name = "tm5_steamid";
             this.tm5_steamid.ReadOnly = true;
-            this.tm5_steamid.Size = new System.Drawing.Size(161, 13);
-            this.tm5_steamid.TabIndex = 9;
             this.tm5_steamid.TabStop = false;
-            this.tm5_steamid.Text = "[unknown]";
             // 
             // tm5_kills
             // 
-            this.tm5_kills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_kills.AutoSize = true;
-            this.tm5_kills.Location = new System.Drawing.Point(31, 55);
+            resources.ApplyResources(this.tm5_kills, "tm5_kills");
             this.tm5_kills.Name = "tm5_kills";
-            this.tm5_kills.Size = new System.Drawing.Size(57, 13);
-            this.tm5_kills.TabIndex = 8;
-            this.tm5_kills.Text = "[unknown]";
-            this.tm5_kills.Visible = false;
             // 
             // tm5_headshots
             // 
-            this.tm5_headshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_headshots.AutoSize = true;
-            this.tm5_headshots.Location = new System.Drawing.Point(64, 42);
+            resources.ApplyResources(this.tm5_headshots, "tm5_headshots");
             this.tm5_headshots.Name = "tm5_headshots";
-            this.tm5_headshots.Size = new System.Drawing.Size(57, 13);
-            this.tm5_headshots.TabIndex = 7;
-            this.tm5_headshots.Text = "[unknown]";
-            this.tm5_headshots.Visible = false;
             // 
             // tm5_pubgname
             // 
-            this.tm5_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_pubgname.AutoSize = true;
-            this.tm5_pubgname.Location = new System.Drawing.Point(74, 16);
+            resources.ApplyResources(this.tm5_pubgname, "tm5_pubgname");
             this.tm5_pubgname.Name = "tm5_pubgname";
-            this.tm5_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm5_pubgname.TabIndex = 5;
-            this.tm5_pubgname.Text = "[unknown]";
-            this.tm5_pubgname.Visible = false;
             // 
             // tm5_kills_l
             // 
-            this.tm5_kills_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_kills_l.AutoSize = true;
-            this.tm5_kills_l.Location = new System.Drawing.Point(8, 55);
+            resources.ApplyResources(this.tm5_kills_l, "tm5_kills_l");
             this.tm5_kills_l.Name = "tm5_kills_l";
-            this.tm5_kills_l.Size = new System.Drawing.Size(28, 13);
-            this.tm5_kills_l.TabIndex = 3;
-            this.tm5_kills_l.Text = "Kills:";
-            this.tm5_kills_l.Visible = false;
             // 
             // tm5_headshots_l
             // 
-            this.tm5_headshots_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_headshots_l.AutoSize = true;
-            this.tm5_headshots_l.Location = new System.Drawing.Point(8, 42);
+            resources.ApplyResources(this.tm5_headshots_l, "tm5_headshots_l");
             this.tm5_headshots_l.Name = "tm5_headshots_l";
-            this.tm5_headshots_l.Size = new System.Drawing.Size(61, 13);
-            this.tm5_headshots_l.TabIndex = 2;
-            this.tm5_headshots_l.Text = "Headshots:";
-            this.tm5_headshots_l.Visible = false;
             // 
             // tm5_steamid_l
             // 
-            this.tm5_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_steamid_l.AutoSize = true;
-            this.tm5_steamid_l.Location = new System.Drawing.Point(8, 29);
+            resources.ApplyResources(this.tm5_steamid_l, "tm5_steamid_l");
             this.tm5_steamid_l.Name = "tm5_steamid_l";
-            this.tm5_steamid_l.Size = new System.Drawing.Size(63, 13);
-            this.tm5_steamid_l.TabIndex = 1;
-            this.tm5_steamid_l.Text = "SteamID64:";
-            this.tm5_steamid_l.Visible = false;
             // 
             // tm5_pubgname_l
             // 
-            this.tm5_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm5_pubgname_l.AutoSize = true;
-            this.tm5_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.tm5_pubgname_l, "tm5_pubgname_l");
             this.tm5_pubgname_l.Name = "tm5_pubgname_l";
-            this.tm5_pubgname_l.Size = new System.Drawing.Size(71, 13);
-            this.tm5_pubgname_l.TabIndex = 0;
-            this.tm5_pubgname_l.Text = "PUBG Name:";
-            this.tm5_pubgname_l.Visible = false;
             // 
             // tm7
             // 
-            this.tm7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm7, "tm7");
             this.tm7.Controls.Add(this.tm7_killer_steamid);
             this.tm7.Controls.Add(this.tm7_killer_pubgname);
             this.tm7.Controls.Add(this.tm7_killer_steamid_l);
@@ -1413,179 +805,78 @@
             this.tm7.Controls.Add(this.tm7_headshots_l);
             this.tm7.Controls.Add(this.tm7_steamid_l);
             this.tm7.Controls.Add(this.tm7_pubgname_l);
-            this.tm7.Location = new System.Drawing.Point(237, 318);
             this.tm7.Name = "tm7";
-            this.tm7.Size = new System.Drawing.Size(266, 144);
-            this.tm7.TabIndex = 19;
             this.tm7.TabStop = false;
-            this.tm7.Text = "Teammate 7";
-            this.tm7.Visible = false;
             // 
             // tm7_killer_steamid
             // 
-            this.tm7_killer_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm7_killer_steamid, "tm7_killer_steamid");
             this.tm7_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm7_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm7_killer_steamid.Location = new System.Drawing.Point(94, 81);
             this.tm7_killer_steamid.Name = "tm7_killer_steamid";
             this.tm7_killer_steamid.ReadOnly = true;
-            this.tm7_killer_steamid.Size = new System.Drawing.Size(161, 13);
-            this.tm7_killer_steamid.TabIndex = 17;
             this.tm7_killer_steamid.TabStop = false;
-            this.tm7_killer_steamid.Text = "[unknown]";
             // 
             // tm7_killer_pubgname
             // 
-            this.tm7_killer_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_killer_pubgname.AutoSize = true;
-            this.tm7_killer_pubgname.Location = new System.Drawing.Point(99, 68);
+            resources.ApplyResources(this.tm7_killer_pubgname, "tm7_killer_pubgname");
             this.tm7_killer_pubgname.Name = "tm7_killer_pubgname";
-            this.tm7_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm7_killer_pubgname.TabIndex = 16;
-            this.tm7_killer_pubgname.Text = "[unknown]";
-            this.tm7_killer_pubgname.Visible = false;
             // 
             // tm7_killer_steamid_l
             // 
-            this.tm7_killer_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_killer_steamid_l.AutoSize = true;
-            this.tm7_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
+            resources.ApplyResources(this.tm7_killer_steamid_l, "tm7_killer_steamid_l");
             this.tm7_killer_steamid_l.Name = "tm7_killer_steamid_l";
-            this.tm7_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm7_killer_steamid_l.TabIndex = 15;
-            this.tm7_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm7_killer_steamid_l.Visible = false;
             // 
             // tm7_killer_pubgname_l
             // 
-            this.tm7_killer_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_killer_pubgname_l.AutoSize = true;
-            this.tm7_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
+            resources.ApplyResources(this.tm7_killer_pubgname_l, "tm7_killer_pubgname_l");
             this.tm7_killer_pubgname_l.Name = "tm7_killer_pubgname_l";
-            this.tm7_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm7_killer_pubgname_l.TabIndex = 14;
-            this.tm7_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm7_killer_pubgname_l.Visible = false;
             // 
             // tm7_steamid
             // 
-            this.tm7_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm7_steamid, "tm7_steamid");
             this.tm7_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm7_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm7_steamid.Location = new System.Drawing.Point(69, 28);
             this.tm7_steamid.Name = "tm7_steamid";
             this.tm7_steamid.ReadOnly = true;
-            this.tm7_steamid.Size = new System.Drawing.Size(161, 13);
-            this.tm7_steamid.TabIndex = 11;
             this.tm7_steamid.TabStop = false;
-            this.tm7_steamid.Text = "[unknown]";
             // 
             // tm7_kills
             // 
-            this.tm7_kills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_kills.AutoSize = true;
-            this.tm7_kills.Location = new System.Drawing.Point(31, 55);
+            resources.ApplyResources(this.tm7_kills, "tm7_kills");
             this.tm7_kills.Name = "tm7_kills";
-            this.tm7_kills.Size = new System.Drawing.Size(57, 13);
-            this.tm7_kills.TabIndex = 8;
-            this.tm7_kills.Text = "[unknown]";
-            this.tm7_kills.Visible = false;
             // 
             // tm7_headshots
             // 
-            this.tm7_headshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_headshots.AutoSize = true;
-            this.tm7_headshots.Location = new System.Drawing.Point(64, 42);
+            resources.ApplyResources(this.tm7_headshots, "tm7_headshots");
             this.tm7_headshots.Name = "tm7_headshots";
-            this.tm7_headshots.Size = new System.Drawing.Size(57, 13);
-            this.tm7_headshots.TabIndex = 7;
-            this.tm7_headshots.Text = "[unknown]";
-            this.tm7_headshots.Visible = false;
             // 
             // tm7_pubgname
             // 
-            this.tm7_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_pubgname.AutoSize = true;
-            this.tm7_pubgname.Location = new System.Drawing.Point(74, 16);
+            resources.ApplyResources(this.tm7_pubgname, "tm7_pubgname");
             this.tm7_pubgname.Name = "tm7_pubgname";
-            this.tm7_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm7_pubgname.TabIndex = 5;
-            this.tm7_pubgname.Text = "[unknown]";
-            this.tm7_pubgname.Visible = false;
             // 
             // tm7_kills_l
             // 
-            this.tm7_kills_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_kills_l.AutoSize = true;
-            this.tm7_kills_l.Location = new System.Drawing.Point(8, 55);
+            resources.ApplyResources(this.tm7_kills_l, "tm7_kills_l");
             this.tm7_kills_l.Name = "tm7_kills_l";
-            this.tm7_kills_l.Size = new System.Drawing.Size(28, 13);
-            this.tm7_kills_l.TabIndex = 3;
-            this.tm7_kills_l.Text = "Kills:";
-            this.tm7_kills_l.Visible = false;
             // 
             // tm7_headshots_l
             // 
-            this.tm7_headshots_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_headshots_l.AutoSize = true;
-            this.tm7_headshots_l.Location = new System.Drawing.Point(8, 42);
+            resources.ApplyResources(this.tm7_headshots_l, "tm7_headshots_l");
             this.tm7_headshots_l.Name = "tm7_headshots_l";
-            this.tm7_headshots_l.Size = new System.Drawing.Size(61, 13);
-            this.tm7_headshots_l.TabIndex = 2;
-            this.tm7_headshots_l.Text = "Headshots:";
-            this.tm7_headshots_l.Visible = false;
             // 
             // tm7_steamid_l
             // 
-            this.tm7_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_steamid_l.AutoSize = true;
-            this.tm7_steamid_l.Location = new System.Drawing.Point(8, 29);
+            resources.ApplyResources(this.tm7_steamid_l, "tm7_steamid_l");
             this.tm7_steamid_l.Name = "tm7_steamid_l";
-            this.tm7_steamid_l.Size = new System.Drawing.Size(63, 13);
-            this.tm7_steamid_l.TabIndex = 1;
-            this.tm7_steamid_l.Text = "SteamID64:";
-            this.tm7_steamid_l.Visible = false;
             // 
             // tm7_pubgname_l
             // 
-            this.tm7_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm7_pubgname_l.AutoSize = true;
-            this.tm7_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.tm7_pubgname_l, "tm7_pubgname_l");
             this.tm7_pubgname_l.Name = "tm7_pubgname_l";
-            this.tm7_pubgname_l.Size = new System.Drawing.Size(71, 13);
-            this.tm7_pubgname_l.TabIndex = 0;
-            this.tm7_pubgname_l.Text = "PUBG Name:";
-            this.tm7_pubgname_l.Visible = false;
             // 
             // tm8
             // 
-            this.tm8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm8, "tm8");
             this.tm8.Controls.Add(this.tm8_killer_steamid);
             this.tm8.Controls.Add(this.tm8_killer_pubgname);
             this.tm8.Controls.Add(this.tm8_killer_steamid_l);
@@ -1598,176 +889,78 @@
             this.tm8.Controls.Add(this.tm8_headshots_l);
             this.tm8.Controls.Add(this.tm8_steamid_l);
             this.tm8.Controls.Add(this.tm8_pubgname_l);
-            this.tm8.Location = new System.Drawing.Point(237, 470);
             this.tm8.Name = "tm8";
-            this.tm8.Size = new System.Drawing.Size(266, 140);
-            this.tm8.TabIndex = 18;
             this.tm8.TabStop = false;
-            this.tm8.Text = "Teammate 8";
-            this.tm8.Visible = false;
             // 
             // tm8_killer_steamid
             // 
-            this.tm8_killer_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm8_killer_steamid, "tm8_killer_steamid");
             this.tm8_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm8_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm8_killer_steamid.Location = new System.Drawing.Point(94, 81);
             this.tm8_killer_steamid.Name = "tm8_killer_steamid";
             this.tm8_killer_steamid.ReadOnly = true;
-            this.tm8_killer_steamid.Size = new System.Drawing.Size(161, 13);
-            this.tm8_killer_steamid.TabIndex = 17;
             this.tm8_killer_steamid.TabStop = false;
-            this.tm8_killer_steamid.Text = "[unknown]";
             // 
             // tm8_killer_pubgname
             // 
-            this.tm8_killer_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_killer_pubgname.AutoSize = true;
-            this.tm8_killer_pubgname.Location = new System.Drawing.Point(99, 68);
+            resources.ApplyResources(this.tm8_killer_pubgname, "tm8_killer_pubgname");
             this.tm8_killer_pubgname.Name = "tm8_killer_pubgname";
-            this.tm8_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm8_killer_pubgname.TabIndex = 16;
-            this.tm8_killer_pubgname.Text = "[unknown]";
-            this.tm8_killer_pubgname.Visible = false;
             // 
             // tm8_killer_steamid_l
             // 
-            this.tm8_killer_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_killer_steamid_l.AutoSize = true;
-            this.tm8_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
+            resources.ApplyResources(this.tm8_killer_steamid_l, "tm8_killer_steamid_l");
             this.tm8_killer_steamid_l.Name = "tm8_killer_steamid_l";
-            this.tm8_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm8_killer_steamid_l.TabIndex = 15;
-            this.tm8_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm8_killer_steamid_l.Visible = false;
             // 
             // tm8_killer_pubgname_l
             // 
-            this.tm8_killer_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_killer_pubgname_l.AutoSize = true;
-            this.tm8_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
+            resources.ApplyResources(this.tm8_killer_pubgname_l, "tm8_killer_pubgname_l");
             this.tm8_killer_pubgname_l.Name = "tm8_killer_pubgname_l";
-            this.tm8_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm8_killer_pubgname_l.TabIndex = 14;
-            this.tm8_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm8_killer_pubgname_l.Visible = false;
             // 
             // tm8_steamid
             // 
-            this.tm8_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm8_steamid, "tm8_steamid");
             this.tm8_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm8_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm8_steamid.Location = new System.Drawing.Point(69, 28);
             this.tm8_steamid.Name = "tm8_steamid";
             this.tm8_steamid.ReadOnly = true;
-            this.tm8_steamid.Size = new System.Drawing.Size(161, 13);
-            this.tm8_steamid.TabIndex = 12;
             this.tm8_steamid.TabStop = false;
-            this.tm8_steamid.Text = "[unknown]";
             // 
             // tm8_kills
             // 
-            this.tm8_kills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_kills.AutoSize = true;
-            this.tm8_kills.Location = new System.Drawing.Point(31, 55);
+            resources.ApplyResources(this.tm8_kills, "tm8_kills");
             this.tm8_kills.Name = "tm8_kills";
-            this.tm8_kills.Size = new System.Drawing.Size(57, 13);
-            this.tm8_kills.TabIndex = 8;
-            this.tm8_kills.Text = "[unknown]";
-            this.tm8_kills.Visible = false;
             // 
             // tm8_headshots
             // 
-            this.tm8_headshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_headshots.AutoSize = true;
-            this.tm8_headshots.Location = new System.Drawing.Point(64, 42);
+            resources.ApplyResources(this.tm8_headshots, "tm8_headshots");
             this.tm8_headshots.Name = "tm8_headshots";
-            this.tm8_headshots.Size = new System.Drawing.Size(57, 13);
-            this.tm8_headshots.TabIndex = 7;
-            this.tm8_headshots.Text = "[unknown]";
-            this.tm8_headshots.Visible = false;
             // 
             // tm8_pubgname
             // 
-            this.tm8_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_pubgname.AutoSize = true;
-            this.tm8_pubgname.Location = new System.Drawing.Point(74, 16);
+            resources.ApplyResources(this.tm8_pubgname, "tm8_pubgname");
             this.tm8_pubgname.Name = "tm8_pubgname";
-            this.tm8_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm8_pubgname.TabIndex = 5;
-            this.tm8_pubgname.Text = "[unknown]";
-            this.tm8_pubgname.Visible = false;
             // 
             // tm8_kills_l
             // 
-            this.tm8_kills_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_kills_l.AutoSize = true;
-            this.tm8_kills_l.Location = new System.Drawing.Point(8, 55);
+            resources.ApplyResources(this.tm8_kills_l, "tm8_kills_l");
             this.tm8_kills_l.Name = "tm8_kills_l";
-            this.tm8_kills_l.Size = new System.Drawing.Size(28, 13);
-            this.tm8_kills_l.TabIndex = 3;
-            this.tm8_kills_l.Text = "Kills:";
-            this.tm8_kills_l.Visible = false;
             // 
             // tm8_headshots_l
             // 
-            this.tm8_headshots_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_headshots_l.AutoSize = true;
-            this.tm8_headshots_l.Location = new System.Drawing.Point(8, 42);
+            resources.ApplyResources(this.tm8_headshots_l, "tm8_headshots_l");
             this.tm8_headshots_l.Name = "tm8_headshots_l";
-            this.tm8_headshots_l.Size = new System.Drawing.Size(61, 13);
-            this.tm8_headshots_l.TabIndex = 2;
-            this.tm8_headshots_l.Text = "Headshots:";
-            this.tm8_headshots_l.Visible = false;
             // 
             // tm8_steamid_l
             // 
-            this.tm8_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_steamid_l.AutoSize = true;
-            this.tm8_steamid_l.Location = new System.Drawing.Point(8, 29);
+            resources.ApplyResources(this.tm8_steamid_l, "tm8_steamid_l");
             this.tm8_steamid_l.Name = "tm8_steamid_l";
-            this.tm8_steamid_l.Size = new System.Drawing.Size(63, 13);
-            this.tm8_steamid_l.TabIndex = 1;
-            this.tm8_steamid_l.Text = "SteamID64:";
-            this.tm8_steamid_l.Visible = false;
             // 
             // tm8_pubgname_l
             // 
-            this.tm8_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm8_pubgname_l.AutoSize = true;
-            this.tm8_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.tm8_pubgname_l, "tm8_pubgname_l");
             this.tm8_pubgname_l.Name = "tm8_pubgname_l";
-            this.tm8_pubgname_l.Size = new System.Drawing.Size(71, 13);
-            this.tm8_pubgname_l.TabIndex = 0;
-            this.tm8_pubgname_l.Text = "PUBG Name:";
-            this.tm8_pubgname_l.Visible = false;
             // 
             // tm1
             // 
+            resources.ApplyResources(this.tm1, "tm1");
             this.tm1.Controls.Add(this.tm1_killer_steamid);
             this.tm1.Controls.Add(this.tm1_killer_pubgname);
             this.tm1.Controls.Add(this.tm1_killer_steamid_l);
@@ -1780,176 +973,78 @@
             this.tm1.Controls.Add(this.tm1_headshots_l);
             this.tm1.Controls.Add(this.tm1_steamid_l);
             this.tm1.Controls.Add(this.tm1_pubgname_l);
-            this.tm1.Location = new System.Drawing.Point(6, 19);
             this.tm1.Name = "tm1";
-            this.tm1.Size = new System.Drawing.Size(225, 144);
-            this.tm1.TabIndex = 12;
             this.tm1.TabStop = false;
-            this.tm1.Text = "Teammate 1";
-            this.tm1.Visible = false;
             // 
             // tm1_killer_steamid
             // 
-            this.tm1_killer_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm1_killer_steamid, "tm1_killer_steamid");
             this.tm1_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm1_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm1_killer_steamid.Location = new System.Drawing.Point(93, 81);
             this.tm1_killer_steamid.Name = "tm1_killer_steamid";
             this.tm1_killer_steamid.ReadOnly = true;
-            this.tm1_killer_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm1_killer_steamid.TabIndex = 13;
             this.tm1_killer_steamid.TabStop = false;
-            this.tm1_killer_steamid.Text = "[unknown]";
             // 
             // tm1_killer_pubgname
             // 
-            this.tm1_killer_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_killer_pubgname.AutoSize = true;
-            this.tm1_killer_pubgname.Location = new System.Drawing.Point(99, 68);
+            resources.ApplyResources(this.tm1_killer_pubgname, "tm1_killer_pubgname");
             this.tm1_killer_pubgname.Name = "tm1_killer_pubgname";
-            this.tm1_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm1_killer_pubgname.TabIndex = 12;
-            this.tm1_killer_pubgname.Text = "[unknown]";
-            this.tm1_killer_pubgname.Visible = false;
             // 
             // tm1_killer_steamid_l
             // 
-            this.tm1_killer_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_killer_steamid_l.AutoSize = true;
-            this.tm1_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
+            resources.ApplyResources(this.tm1_killer_steamid_l, "tm1_killer_steamid_l");
             this.tm1_killer_steamid_l.Name = "tm1_killer_steamid_l";
-            this.tm1_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm1_killer_steamid_l.TabIndex = 11;
-            this.tm1_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm1_killer_steamid_l.Visible = false;
             // 
             // tm1_killer_pubgname_l
             // 
-            this.tm1_killer_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_killer_pubgname_l.AutoSize = true;
-            this.tm1_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
+            resources.ApplyResources(this.tm1_killer_pubgname_l, "tm1_killer_pubgname_l");
             this.tm1_killer_pubgname_l.Name = "tm1_killer_pubgname_l";
-            this.tm1_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm1_killer_pubgname_l.TabIndex = 10;
-            this.tm1_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm1_killer_pubgname_l.Visible = false;
             // 
             // tm1_steamid
             // 
-            this.tm1_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm1_steamid, "tm1_steamid");
             this.tm1_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm1_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm1_steamid.Location = new System.Drawing.Point(69, 27);
             this.tm1_steamid.Name = "tm1_steamid";
             this.tm1_steamid.ReadOnly = true;
-            this.tm1_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm1_steamid.TabIndex = 9;
             this.tm1_steamid.TabStop = false;
-            this.tm1_steamid.Text = "[unknown]";
             // 
             // tm1_kills
             // 
-            this.tm1_kills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_kills.AutoSize = true;
-            this.tm1_kills.Location = new System.Drawing.Point(31, 55);
+            resources.ApplyResources(this.tm1_kills, "tm1_kills");
             this.tm1_kills.Name = "tm1_kills";
-            this.tm1_kills.Size = new System.Drawing.Size(57, 13);
-            this.tm1_kills.TabIndex = 8;
-            this.tm1_kills.Text = "[unknown]";
-            this.tm1_kills.Visible = false;
             // 
             // tm1_headshots
             // 
-            this.tm1_headshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_headshots.AutoSize = true;
-            this.tm1_headshots.Location = new System.Drawing.Point(64, 42);
+            resources.ApplyResources(this.tm1_headshots, "tm1_headshots");
             this.tm1_headshots.Name = "tm1_headshots";
-            this.tm1_headshots.Size = new System.Drawing.Size(57, 13);
-            this.tm1_headshots.TabIndex = 7;
-            this.tm1_headshots.Text = "[unknown]";
-            this.tm1_headshots.Visible = false;
             // 
             // tm1_pubgname
             // 
-            this.tm1_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_pubgname.AutoSize = true;
-            this.tm1_pubgname.Location = new System.Drawing.Point(74, 16);
+            resources.ApplyResources(this.tm1_pubgname, "tm1_pubgname");
             this.tm1_pubgname.Name = "tm1_pubgname";
-            this.tm1_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm1_pubgname.TabIndex = 5;
-            this.tm1_pubgname.Text = "[unknown]";
-            this.tm1_pubgname.Visible = false;
             // 
             // tm1_kills_l
             // 
-            this.tm1_kills_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_kills_l.AutoSize = true;
-            this.tm1_kills_l.Location = new System.Drawing.Point(8, 55);
+            resources.ApplyResources(this.tm1_kills_l, "tm1_kills_l");
             this.tm1_kills_l.Name = "tm1_kills_l";
-            this.tm1_kills_l.Size = new System.Drawing.Size(28, 13);
-            this.tm1_kills_l.TabIndex = 3;
-            this.tm1_kills_l.Text = "Kills:";
-            this.tm1_kills_l.Visible = false;
             // 
             // tm1_headshots_l
             // 
-            this.tm1_headshots_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_headshots_l.AutoSize = true;
-            this.tm1_headshots_l.Location = new System.Drawing.Point(8, 42);
+            resources.ApplyResources(this.tm1_headshots_l, "tm1_headshots_l");
             this.tm1_headshots_l.Name = "tm1_headshots_l";
-            this.tm1_headshots_l.Size = new System.Drawing.Size(61, 13);
-            this.tm1_headshots_l.TabIndex = 2;
-            this.tm1_headshots_l.Text = "Headshots:";
-            this.tm1_headshots_l.Visible = false;
             // 
             // tm1_steamid_l
             // 
-            this.tm1_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_steamid_l.AutoSize = true;
-            this.tm1_steamid_l.Location = new System.Drawing.Point(8, 29);
+            resources.ApplyResources(this.tm1_steamid_l, "tm1_steamid_l");
             this.tm1_steamid_l.Name = "tm1_steamid_l";
-            this.tm1_steamid_l.Size = new System.Drawing.Size(63, 13);
-            this.tm1_steamid_l.TabIndex = 1;
-            this.tm1_steamid_l.Text = "SteamID64:";
-            this.tm1_steamid_l.Visible = false;
             // 
             // tm1_pubgname_l
             // 
-            this.tm1_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm1_pubgname_l.AutoSize = true;
-            this.tm1_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.tm1_pubgname_l, "tm1_pubgname_l");
             this.tm1_pubgname_l.Name = "tm1_pubgname_l";
-            this.tm1_pubgname_l.Size = new System.Drawing.Size(71, 13);
-            this.tm1_pubgname_l.TabIndex = 0;
-            this.tm1_pubgname_l.Text = "PUBG Name:";
-            this.tm1_pubgname_l.Visible = false;
             // 
             // tm2
             // 
+            resources.ApplyResources(this.tm2, "tm2");
             this.tm2.Controls.Add(this.tm2_killer_steamid);
             this.tm2.Controls.Add(this.tm2_killer_pubgname);
             this.tm2.Controls.Add(this.tm2_killer_steamid_l);
@@ -1962,176 +1057,78 @@
             this.tm2.Controls.Add(this.tm2_headshots_l);
             this.tm2.Controls.Add(this.tm2_steamid_l);
             this.tm2.Controls.Add(this.tm2_pubgname_l);
-            this.tm2.Location = new System.Drawing.Point(6, 169);
             this.tm2.Name = "tm2";
-            this.tm2.Size = new System.Drawing.Size(225, 144);
-            this.tm2.TabIndex = 11;
             this.tm2.TabStop = false;
-            this.tm2.Text = "Teammate 2";
-            this.tm2.Visible = false;
             // 
             // tm2_killer_steamid
             // 
-            this.tm2_killer_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm2_killer_steamid, "tm2_killer_steamid");
             this.tm2_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm2_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm2_killer_steamid.Location = new System.Drawing.Point(94, 81);
             this.tm2_killer_steamid.Name = "tm2_killer_steamid";
             this.tm2_killer_steamid.ReadOnly = true;
-            this.tm2_killer_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm2_killer_steamid.TabIndex = 17;
             this.tm2_killer_steamid.TabStop = false;
-            this.tm2_killer_steamid.Text = "[unknown]";
             // 
             // tm2_killer_pubgname
             // 
-            this.tm2_killer_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_killer_pubgname.AutoSize = true;
-            this.tm2_killer_pubgname.Location = new System.Drawing.Point(99, 68);
+            resources.ApplyResources(this.tm2_killer_pubgname, "tm2_killer_pubgname");
             this.tm2_killer_pubgname.Name = "tm2_killer_pubgname";
-            this.tm2_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm2_killer_pubgname.TabIndex = 16;
-            this.tm2_killer_pubgname.Text = "[unknown]";
-            this.tm2_killer_pubgname.Visible = false;
             // 
             // tm2_killer_steamid_l
             // 
-            this.tm2_killer_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_killer_steamid_l.AutoSize = true;
-            this.tm2_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
+            resources.ApplyResources(this.tm2_killer_steamid_l, "tm2_killer_steamid_l");
             this.tm2_killer_steamid_l.Name = "tm2_killer_steamid_l";
-            this.tm2_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm2_killer_steamid_l.TabIndex = 15;
-            this.tm2_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm2_killer_steamid_l.Visible = false;
             // 
             // tm2_killer_pubgname_l
             // 
-            this.tm2_killer_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_killer_pubgname_l.AutoSize = true;
-            this.tm2_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
+            resources.ApplyResources(this.tm2_killer_pubgname_l, "tm2_killer_pubgname_l");
             this.tm2_killer_pubgname_l.Name = "tm2_killer_pubgname_l";
-            this.tm2_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm2_killer_pubgname_l.TabIndex = 14;
-            this.tm2_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm2_killer_pubgname_l.Visible = false;
             // 
             // tm2_steamid
             // 
-            this.tm2_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm2_steamid, "tm2_steamid");
             this.tm2_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm2_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm2_steamid.Location = new System.Drawing.Point(67, 29);
             this.tm2_steamid.Name = "tm2_steamid";
             this.tm2_steamid.ReadOnly = true;
-            this.tm2_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm2_steamid.TabIndex = 10;
             this.tm2_steamid.TabStop = false;
-            this.tm2_steamid.Text = "[unknown]";
             // 
             // tm2_kills
             // 
-            this.tm2_kills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_kills.AutoSize = true;
-            this.tm2_kills.Location = new System.Drawing.Point(31, 55);
+            resources.ApplyResources(this.tm2_kills, "tm2_kills");
             this.tm2_kills.Name = "tm2_kills";
-            this.tm2_kills.Size = new System.Drawing.Size(57, 13);
-            this.tm2_kills.TabIndex = 8;
-            this.tm2_kills.Text = "[unknown]";
-            this.tm2_kills.Visible = false;
             // 
             // tm2_headshots
             // 
-            this.tm2_headshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_headshots.AutoSize = true;
-            this.tm2_headshots.Location = new System.Drawing.Point(64, 42);
+            resources.ApplyResources(this.tm2_headshots, "tm2_headshots");
             this.tm2_headshots.Name = "tm2_headshots";
-            this.tm2_headshots.Size = new System.Drawing.Size(57, 13);
-            this.tm2_headshots.TabIndex = 7;
-            this.tm2_headshots.Text = "[unknown]";
-            this.tm2_headshots.Visible = false;
             // 
             // tm2_pubgname
             // 
-            this.tm2_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_pubgname.AutoSize = true;
-            this.tm2_pubgname.Location = new System.Drawing.Point(74, 16);
+            resources.ApplyResources(this.tm2_pubgname, "tm2_pubgname");
             this.tm2_pubgname.Name = "tm2_pubgname";
-            this.tm2_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm2_pubgname.TabIndex = 5;
-            this.tm2_pubgname.Text = "[unknown]";
-            this.tm2_pubgname.Visible = false;
             // 
             // tm2_kills_l
             // 
-            this.tm2_kills_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_kills_l.AutoSize = true;
-            this.tm2_kills_l.Location = new System.Drawing.Point(8, 55);
+            resources.ApplyResources(this.tm2_kills_l, "tm2_kills_l");
             this.tm2_kills_l.Name = "tm2_kills_l";
-            this.tm2_kills_l.Size = new System.Drawing.Size(28, 13);
-            this.tm2_kills_l.TabIndex = 3;
-            this.tm2_kills_l.Text = "Kills:";
-            this.tm2_kills_l.Visible = false;
             // 
             // tm2_headshots_l
             // 
-            this.tm2_headshots_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_headshots_l.AutoSize = true;
-            this.tm2_headshots_l.Location = new System.Drawing.Point(8, 42);
+            resources.ApplyResources(this.tm2_headshots_l, "tm2_headshots_l");
             this.tm2_headshots_l.Name = "tm2_headshots_l";
-            this.tm2_headshots_l.Size = new System.Drawing.Size(61, 13);
-            this.tm2_headshots_l.TabIndex = 2;
-            this.tm2_headshots_l.Text = "Headshots:";
-            this.tm2_headshots_l.Visible = false;
             // 
             // tm2_steamid_l
             // 
-            this.tm2_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_steamid_l.AutoSize = true;
-            this.tm2_steamid_l.Location = new System.Drawing.Point(7, 29);
+            resources.ApplyResources(this.tm2_steamid_l, "tm2_steamid_l");
             this.tm2_steamid_l.Name = "tm2_steamid_l";
-            this.tm2_steamid_l.Size = new System.Drawing.Size(63, 13);
-            this.tm2_steamid_l.TabIndex = 1;
-            this.tm2_steamid_l.Text = "SteamID64:";
-            this.tm2_steamid_l.Visible = false;
             // 
             // tm2_pubgname_l
             // 
-            this.tm2_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm2_pubgname_l.AutoSize = true;
-            this.tm2_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.tm2_pubgname_l, "tm2_pubgname_l");
             this.tm2_pubgname_l.Name = "tm2_pubgname_l";
-            this.tm2_pubgname_l.Size = new System.Drawing.Size(71, 13);
-            this.tm2_pubgname_l.TabIndex = 0;
-            this.tm2_pubgname_l.Text = "PUBG Name:";
-            this.tm2_pubgname_l.Visible = false;
             // 
             // tm3
             // 
+            resources.ApplyResources(this.tm3, "tm3");
             this.tm3.Controls.Add(this.tm3_killer_steamid);
             this.tm3.Controls.Add(this.tm3_killer_pubgname);
             this.tm3.Controls.Add(this.tm3_killer_steamid_l);
@@ -2144,178 +1141,78 @@
             this.tm3.Controls.Add(this.tm3_headshots_l);
             this.tm3.Controls.Add(this.tm3_steamid_l);
             this.tm3.Controls.Add(this.tm3_pubgname_l);
-            this.tm3.Location = new System.Drawing.Point(6, 319);
             this.tm3.Name = "tm3";
-            this.tm3.Size = new System.Drawing.Size(225, 144);
-            this.tm3.TabIndex = 10;
             this.tm3.TabStop = false;
-            this.tm3.Text = "Teammate 3";
-            this.tm3.Visible = false;
             // 
             // tm3_killer_steamid
             // 
-            this.tm3_killer_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm3_killer_steamid, "tm3_killer_steamid");
             this.tm3_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm3_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm3_killer_steamid.Location = new System.Drawing.Point(94, 81);
             this.tm3_killer_steamid.Name = "tm3_killer_steamid";
             this.tm3_killer_steamid.ReadOnly = true;
-            this.tm3_killer_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm3_killer_steamid.TabIndex = 17;
             this.tm3_killer_steamid.TabStop = false;
-            this.tm3_killer_steamid.Text = "[unknown]";
             // 
             // tm3_killer_pubgname
             // 
-            this.tm3_killer_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_killer_pubgname.AutoSize = true;
-            this.tm3_killer_pubgname.Location = new System.Drawing.Point(99, 68);
+            resources.ApplyResources(this.tm3_killer_pubgname, "tm3_killer_pubgname");
             this.tm3_killer_pubgname.Name = "tm3_killer_pubgname";
-            this.tm3_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm3_killer_pubgname.TabIndex = 16;
-            this.tm3_killer_pubgname.Text = "[unknown]";
-            this.tm3_killer_pubgname.Visible = false;
             // 
             // tm3_killer_steamid_l
             // 
-            this.tm3_killer_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_killer_steamid_l.AutoSize = true;
-            this.tm3_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
+            resources.ApplyResources(this.tm3_killer_steamid_l, "tm3_killer_steamid_l");
             this.tm3_killer_steamid_l.Name = "tm3_killer_steamid_l";
-            this.tm3_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm3_killer_steamid_l.TabIndex = 15;
-            this.tm3_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm3_killer_steamid_l.Visible = false;
             // 
             // tm3_killer_pubgname_l
             // 
-            this.tm3_killer_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_killer_pubgname_l.AutoSize = true;
-            this.tm3_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
+            resources.ApplyResources(this.tm3_killer_pubgname_l, "tm3_killer_pubgname_l");
             this.tm3_killer_pubgname_l.Name = "tm3_killer_pubgname_l";
-            this.tm3_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm3_killer_pubgname_l.TabIndex = 14;
-            this.tm3_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm3_killer_pubgname_l.Visible = false;
             // 
             // tm3_steamid
             // 
-            this.tm3_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm3_steamid, "tm3_steamid");
             this.tm3_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm3_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm3_steamid.Location = new System.Drawing.Point(69, 28);
             this.tm3_steamid.Name = "tm3_steamid";
             this.tm3_steamid.ReadOnly = true;
-            this.tm3_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm3_steamid.TabIndex = 11;
             this.tm3_steamid.TabStop = false;
-            this.tm3_steamid.Text = "[unknown]";
             // 
             // tm3_kills
             // 
-            this.tm3_kills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_kills.AutoSize = true;
-            this.tm3_kills.Location = new System.Drawing.Point(31, 55);
+            resources.ApplyResources(this.tm3_kills, "tm3_kills");
             this.tm3_kills.Name = "tm3_kills";
-            this.tm3_kills.Size = new System.Drawing.Size(57, 13);
-            this.tm3_kills.TabIndex = 8;
-            this.tm3_kills.Text = "[unknown]";
-            this.tm3_kills.Visible = false;
             // 
             // tm3_headshots
             // 
-            this.tm3_headshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_headshots.AutoSize = true;
-            this.tm3_headshots.Location = new System.Drawing.Point(64, 42);
+            resources.ApplyResources(this.tm3_headshots, "tm3_headshots");
             this.tm3_headshots.Name = "tm3_headshots";
-            this.tm3_headshots.Size = new System.Drawing.Size(57, 13);
-            this.tm3_headshots.TabIndex = 7;
-            this.tm3_headshots.Text = "[unknown]";
-            this.tm3_headshots.Visible = false;
             // 
             // tm3_pubgname
             // 
-            this.tm3_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_pubgname.AutoSize = true;
-            this.tm3_pubgname.Location = new System.Drawing.Point(74, 16);
+            resources.ApplyResources(this.tm3_pubgname, "tm3_pubgname");
             this.tm3_pubgname.Name = "tm3_pubgname";
-            this.tm3_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm3_pubgname.TabIndex = 5;
-            this.tm3_pubgname.Text = "[unknown]";
-            this.tm3_pubgname.Visible = false;
             // 
             // tm3_kills_l
             // 
-            this.tm3_kills_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_kills_l.AutoSize = true;
-            this.tm3_kills_l.Location = new System.Drawing.Point(8, 55);
+            resources.ApplyResources(this.tm3_kills_l, "tm3_kills_l");
             this.tm3_kills_l.Name = "tm3_kills_l";
-            this.tm3_kills_l.Size = new System.Drawing.Size(28, 13);
-            this.tm3_kills_l.TabIndex = 3;
-            this.tm3_kills_l.Text = "Kills:";
-            this.tm3_kills_l.Visible = false;
             // 
             // tm3_headshots_l
             // 
-            this.tm3_headshots_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_headshots_l.AutoSize = true;
-            this.tm3_headshots_l.Location = new System.Drawing.Point(8, 42);
+            resources.ApplyResources(this.tm3_headshots_l, "tm3_headshots_l");
             this.tm3_headshots_l.Name = "tm3_headshots_l";
-            this.tm3_headshots_l.Size = new System.Drawing.Size(61, 13);
-            this.tm3_headshots_l.TabIndex = 2;
-            this.tm3_headshots_l.Text = "Headshots:";
-            this.tm3_headshots_l.Visible = false;
             // 
             // tm3_steamid_l
             // 
-            this.tm3_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_steamid_l.AutoSize = true;
-            this.tm3_steamid_l.Location = new System.Drawing.Point(8, 29);
+            resources.ApplyResources(this.tm3_steamid_l, "tm3_steamid_l");
             this.tm3_steamid_l.Name = "tm3_steamid_l";
-            this.tm3_steamid_l.Size = new System.Drawing.Size(63, 13);
-            this.tm3_steamid_l.TabIndex = 1;
-            this.tm3_steamid_l.Text = "SteamID64:";
-            this.tm3_steamid_l.Visible = false;
             // 
             // tm3_pubgname_l
             // 
-            this.tm3_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm3_pubgname_l.AutoSize = true;
-            this.tm3_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.tm3_pubgname_l, "tm3_pubgname_l");
             this.tm3_pubgname_l.Name = "tm3_pubgname_l";
-            this.tm3_pubgname_l.Size = new System.Drawing.Size(71, 13);
-            this.tm3_pubgname_l.TabIndex = 0;
-            this.tm3_pubgname_l.Text = "PUBG Name:";
-            this.tm3_pubgname_l.Visible = false;
             // 
             // tm4
             // 
-            this.tm4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            resources.ApplyResources(this.tm4, "tm4");
             this.tm4.Controls.Add(this.tm4_killer_steamid);
             this.tm4.Controls.Add(this.tm4_killer_pubgname);
             this.tm4.Controls.Add(this.tm4_killer_steamid_l);
@@ -2328,229 +1225,116 @@
             this.tm4.Controls.Add(this.tm4_headshots_l);
             this.tm4.Controls.Add(this.tm4_steamid_l);
             this.tm4.Controls.Add(this.tm4_pubgname_l);
-            this.tm4.Location = new System.Drawing.Point(6, 471);
             this.tm4.Name = "tm4";
-            this.tm4.Size = new System.Drawing.Size(225, 139);
-            this.tm4.TabIndex = 2;
             this.tm4.TabStop = false;
-            this.tm4.Text = "Teammate 4";
-            this.tm4.Visible = false;
             // 
             // tm4_killer_steamid
             // 
-            this.tm4_killer_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm4_killer_steamid, "tm4_killer_steamid");
             this.tm4_killer_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm4_killer_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm4_killer_steamid.Location = new System.Drawing.Point(94, 81);
             this.tm4_killer_steamid.Name = "tm4_killer_steamid";
             this.tm4_killer_steamid.ReadOnly = true;
-            this.tm4_killer_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm4_killer_steamid.TabIndex = 17;
             this.tm4_killer_steamid.TabStop = false;
-            this.tm4_killer_steamid.Text = "[unknown]";
             // 
             // tm4_killer_pubgname
             // 
-            this.tm4_killer_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_killer_pubgname.AutoSize = true;
-            this.tm4_killer_pubgname.Location = new System.Drawing.Point(99, 68);
+            resources.ApplyResources(this.tm4_killer_pubgname, "tm4_killer_pubgname");
             this.tm4_killer_pubgname.Name = "tm4_killer_pubgname";
-            this.tm4_killer_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm4_killer_pubgname.TabIndex = 16;
-            this.tm4_killer_pubgname.Text = "[unknown]";
-            this.tm4_killer_pubgname.Visible = false;
             // 
             // tm4_killer_steamid_l
             // 
-            this.tm4_killer_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_killer_steamid_l.AutoSize = true;
-            this.tm4_killer_steamid_l.Location = new System.Drawing.Point(8, 81);
+            resources.ApplyResources(this.tm4_killer_steamid_l, "tm4_killer_steamid_l");
             this.tm4_killer_steamid_l.Name = "tm4_killer_steamid_l";
-            this.tm4_killer_steamid_l.Size = new System.Drawing.Size(88, 13);
-            this.tm4_killer_steamid_l.TabIndex = 15;
-            this.tm4_killer_steamid_l.Text = "Killer SteamID64:";
-            this.tm4_killer_steamid_l.Visible = false;
             // 
             // tm4_killer_pubgname_l
             // 
-            this.tm4_killer_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_killer_pubgname_l.AutoSize = true;
-            this.tm4_killer_pubgname_l.Location = new System.Drawing.Point(8, 68);
+            resources.ApplyResources(this.tm4_killer_pubgname_l, "tm4_killer_pubgname_l");
             this.tm4_killer_pubgname_l.Name = "tm4_killer_pubgname_l";
-            this.tm4_killer_pubgname_l.Size = new System.Drawing.Size(96, 13);
-            this.tm4_killer_pubgname_l.TabIndex = 14;
-            this.tm4_killer_pubgname_l.Text = "Killer PUBG Name:";
-            this.tm4_killer_pubgname_l.Visible = false;
             // 
             // tm4_steamid
             // 
-            this.tm4_steamid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            resources.ApplyResources(this.tm4_steamid, "tm4_steamid");
             this.tm4_steamid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tm4_steamid.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.tm4_steamid.Location = new System.Drawing.Point(69, 28);
             this.tm4_steamid.Name = "tm4_steamid";
             this.tm4_steamid.ReadOnly = true;
-            this.tm4_steamid.Size = new System.Drawing.Size(120, 13);
-            this.tm4_steamid.TabIndex = 12;
             this.tm4_steamid.TabStop = false;
-            this.tm4_steamid.Text = "[unknown]";
             // 
             // tm4_kills
             // 
-            this.tm4_kills.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_kills.AutoSize = true;
-            this.tm4_kills.Location = new System.Drawing.Point(31, 55);
+            resources.ApplyResources(this.tm4_kills, "tm4_kills");
             this.tm4_kills.Name = "tm4_kills";
-            this.tm4_kills.Size = new System.Drawing.Size(57, 13);
-            this.tm4_kills.TabIndex = 8;
-            this.tm4_kills.Text = "[unknown]";
-            this.tm4_kills.Visible = false;
             // 
             // tm4_headshots
             // 
-            this.tm4_headshots.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_headshots.AutoSize = true;
-            this.tm4_headshots.Location = new System.Drawing.Point(64, 42);
+            resources.ApplyResources(this.tm4_headshots, "tm4_headshots");
             this.tm4_headshots.Name = "tm4_headshots";
-            this.tm4_headshots.Size = new System.Drawing.Size(57, 13);
-            this.tm4_headshots.TabIndex = 7;
-            this.tm4_headshots.Text = "[unknown]";
-            this.tm4_headshots.Visible = false;
             // 
             // tm4_pubgname
             // 
-            this.tm4_pubgname.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_pubgname.AutoSize = true;
-            this.tm4_pubgname.Location = new System.Drawing.Point(74, 16);
+            resources.ApplyResources(this.tm4_pubgname, "tm4_pubgname");
             this.tm4_pubgname.Name = "tm4_pubgname";
-            this.tm4_pubgname.Size = new System.Drawing.Size(57, 13);
-            this.tm4_pubgname.TabIndex = 5;
-            this.tm4_pubgname.Text = "[unknown]";
-            this.tm4_pubgname.Visible = false;
             // 
             // tm4_kills_l
             // 
-            this.tm4_kills_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_kills_l.AutoSize = true;
-            this.tm4_kills_l.Location = new System.Drawing.Point(8, 55);
+            resources.ApplyResources(this.tm4_kills_l, "tm4_kills_l");
             this.tm4_kills_l.Name = "tm4_kills_l";
-            this.tm4_kills_l.Size = new System.Drawing.Size(28, 13);
-            this.tm4_kills_l.TabIndex = 3;
-            this.tm4_kills_l.Text = "Kills:";
-            this.tm4_kills_l.Visible = false;
             // 
             // tm4_headshots_l
             // 
-            this.tm4_headshots_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_headshots_l.AutoSize = true;
-            this.tm4_headshots_l.Location = new System.Drawing.Point(8, 42);
+            resources.ApplyResources(this.tm4_headshots_l, "tm4_headshots_l");
             this.tm4_headshots_l.Name = "tm4_headshots_l";
-            this.tm4_headshots_l.Size = new System.Drawing.Size(61, 13);
-            this.tm4_headshots_l.TabIndex = 2;
-            this.tm4_headshots_l.Text = "Headshots:";
-            this.tm4_headshots_l.Visible = false;
             // 
             // tm4_steamid_l
             // 
-            this.tm4_steamid_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_steamid_l.AutoSize = true;
-            this.tm4_steamid_l.Location = new System.Drawing.Point(8, 29);
+            resources.ApplyResources(this.tm4_steamid_l, "tm4_steamid_l");
             this.tm4_steamid_l.Name = "tm4_steamid_l";
-            this.tm4_steamid_l.Size = new System.Drawing.Size(63, 13);
-            this.tm4_steamid_l.TabIndex = 1;
-            this.tm4_steamid_l.Text = "SteamID64:";
-            this.tm4_steamid_l.Visible = false;
             // 
             // tm4_pubgname_l
             // 
-            this.tm4_pubgname_l.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tm4_pubgname_l.AutoSize = true;
-            this.tm4_pubgname_l.Location = new System.Drawing.Point(8, 16);
+            resources.ApplyResources(this.tm4_pubgname_l, "tm4_pubgname_l");
             this.tm4_pubgname_l.Name = "tm4_pubgname_l";
-            this.tm4_pubgname_l.Size = new System.Drawing.Size(71, 13);
-            this.tm4_pubgname_l.TabIndex = 0;
-            this.tm4_pubgname_l.Text = "PUBG Name:";
-            this.tm4_pubgname_l.Visible = false;
             // 
             // statusStrip1
             // 
+            resources.ApplyResources(this.statusStrip1, "statusStrip1");
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AmountOfReplays_SB});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 637);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1314, 22);
-            this.statusStrip1.TabIndex = 13;
-            this.statusStrip1.Text = "statusStrip1";
             // 
             // AmountOfReplays_SB
             // 
+            resources.ApplyResources(this.AmountOfReplays_SB, "AmountOfReplays_SB");
             this.AmountOfReplays_SB.Name = "AmountOfReplays_SB";
-            this.AmountOfReplays_SB.Size = new System.Drawing.Size(70, 17);
-            this.AmountOfReplays_SB.Text = "Replays: 0/0";
             // 
             // replayTool
             // 
-            this.replayTool.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
+            resources.ApplyResources(this.replayTool, "replayTool");
             this.replayTool.Controls.Add(this.exportallreplays);
             this.replayTool.Controls.Add(this.clearallreplays);
             this.replayTool.Controls.Add(this.openReplayFolder);
             this.replayTool.Controls.Add(this.replayListRefresh);
             this.replayTool.Controls.Add(this.importReplay);
-            this.replayTool.Location = new System.Drawing.Point(11, 513);
             this.replayTool.Name = "replayTool";
-            this.replayTool.Size = new System.Drawing.Size(504, 121);
-            this.replayTool.TabIndex = 14;
             this.replayTool.TabStop = false;
-            this.replayTool.Text = "Replay Tools";
             // 
             // exportallreplays
             // 
-            this.exportallreplays.Location = new System.Drawing.Point(281, 43);
+            resources.ApplyResources(this.exportallreplays, "exportallreplays");
             this.exportallreplays.Name = "exportallreplays";
-            this.exportallreplays.Size = new System.Drawing.Size(217, 23);
-            this.exportallreplays.TabIndex = 14;
-            this.exportallreplays.Text = "Export ALL Replays";
             this.exportallreplays.UseVisualStyleBackColor = true;
             this.exportallreplays.Click += new System.EventHandler(this.exportallreplays_Click);
             // 
             // clearallreplays
             // 
+            resources.ApplyResources(this.clearallreplays, "clearallreplays");
             this.clearallreplays.ForeColor = System.Drawing.Color.DarkRed;
-            this.clearallreplays.Location = new System.Drawing.Point(280, 18);
             this.clearallreplays.Name = "clearallreplays";
-            this.clearallreplays.Size = new System.Drawing.Size(218, 23);
-            this.clearallreplays.TabIndex = 13;
-            this.clearallreplays.Text = "Delete ALL Replays";
             this.clearallreplays.UseVisualStyleBackColor = true;
             this.clearallreplays.Click += new System.EventHandler(this.clearallreplays_Click);
             // 
             // replayGrid
             // 
+            resources.ApplyResources(this.replayGrid, "replayGrid");
             this.replayGrid.AllowUserToAddRows = false;
             this.replayGrid.AllowUserToDeleteRows = false;
             this.replayGrid.AllowUserToResizeRows = false;
@@ -2562,12 +1346,9 @@
             this.gameLength,
             this.dirName});
             this.replayGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditOnEnter;
-            this.replayGrid.Location = new System.Drawing.Point(12, 10);
             this.replayGrid.Name = "replayGrid";
             this.replayGrid.RowHeadersVisible = false;
             this.replayGrid.ShowEditingIcon = false;
-            this.replayGrid.Size = new System.Drawing.Size(503, 497);
-            this.replayGrid.TabIndex = 15;
             this.replayGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.replayGrid_CellClick);
             this.replayGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.replayGrid_CellContentClick);
             this.replayGrid.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.replayGrid_CellEndEdit);
@@ -2575,42 +1356,37 @@
             // 
             // customName
             // 
-            this.customName.HeaderText = "Custom Name";
+            resources.ApplyResources(this.customName, "customName");
             this.customName.Name = "customName";
             // 
             // rank
             // 
-            this.rank.HeaderText = "Rank";
+            resources.ApplyResources(this.rank, "rank");
             this.rank.Name = "rank";
             this.rank.ReadOnly = true;
-            this.rank.Width = 50;
             // 
             // gameMode
             // 
-            this.gameMode.HeaderText = "Mode";
+            resources.ApplyResources(this.gameMode, "gameMode");
             this.gameMode.Name = "gameMode";
             this.gameMode.ReadOnly = true;
-            this.gameMode.Width = 50;
             // 
             // gameLength
             // 
-            this.gameLength.HeaderText = "Length";
+            resources.ApplyResources(this.gameLength, "gameLength");
             this.gameLength.Name = "gameLength";
             this.gameLength.ReadOnly = true;
-            this.gameLength.Width = 50;
             // 
             // dirName
             // 
-            this.dirName.HeaderText = "Directory";
+            resources.ApplyResources(this.dirName, "dirName");
             this.dirName.Name = "dirName";
             this.dirName.ReadOnly = true;
-            this.dirName.Width = 250;
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1314, 659);
             this.Controls.Add(this.replayGrid);
             this.Controls.Add(this.replayTool);
             this.Controls.Add(this.statusStrip1);
@@ -2619,9 +1395,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "PUBG Replay Manager";
             this.Load += new System.EventHandler(this.Main_Load);
             this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
