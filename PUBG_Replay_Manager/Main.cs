@@ -7,7 +7,7 @@ using System.IO.Compression;
 using System.Text;
 using Newtonsoft.Json.Linq;
 using System.Collections;
-using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace PUBG_Replay_Manager
 {
@@ -17,76 +17,56 @@ namespace PUBG_Replay_Manager
         public string prog_name = "PUBG Replay Manager";
         public string profile_link = "http://steamcommunity.com/profiles/";
         public string profile_id = "76561198050446061";
-        public string currentlyselectedreplaypath = string.Empty;
-        public Size orgWindowSize;
-        public Size orgGroupSize;
         public Main()
         {
             InitializeComponent();
-            RefreshReplayList();            
+            RefreshReplayList();
         }
-        private void Main_Load(object sender, EventArgs e)
+        static public int get_char_unicode_code(char character)
         {
-            orgWindowSize = Size;
-            orgGroupSize = teamGroupBox.Size;
+            UTF32Encoding encoding = new UTF32Encoding();
+            byte[] bytes = encoding.GetBytes(character.ToString().ToCharArray());
+            return BitConverter.ToInt32(bytes, 0);
+        }
+        static string CaesarCipher(string value, int shift)
+        {
+            char[] encodedCharArray = value.ToCharArray();
+            string decodedString = "";
+            int decode = 0;
+            foreach (char item in encodedCharArray)
+            {
+                if (get_char_unicode_code(item) > 0)
+                {
+                    decode = get_char_unicode_code(item) + shift;
+                    decodedString = decodedString + Convert.ToChar(decode);
+                    //Console.WriteLine("Orginal: " + item + " New: " + Convert.ToChar(decode));
+                }
+            }
+            return decodedString;
         }
         public void RefreshReplayList()
         {
-            replayGrid.Rows.Clear();
-            foreach (DataGridViewRow item in replayGrid.Rows)
-            {
-                replayGrid.Rows.Remove(item);
-            }
+            replayList.Items.Clear();
             if (Directory.Exists(replayloc))
             {
                 foreach (string replay in Directory.GetDirectories(replayloc))
                 {
                     if(replay.Contains("match."))
                     {
-                        ArrayList ReplayInfo = ReadReplayInfo(replay);
-                        
-                        if (File.Exists(replay + "\\customInfo.json"))
-                        {
-                            JObject custom_file = JObject.Parse(File.ReadAllText(replay + "\\customInfo.json"));
-                            replayGrid.Rows.Add(custom_file["customName"], ReplayInfo.ToArray()[38], ReplayInfo.ToArray()[10], ReplayInfo.ToArray()[1], replay.Replace(replayloc + "\\", ""));
-                        }
-                        else
-                        {
-                            replayGrid.Rows.Add("[null]", ReplayInfo.ToArray()[38], ReplayInfo.ToArray()[10], ReplayInfo.ToArray()[1], replay.Replace(replayloc + "\\", ""));
-                        }
+                        replayList.Items.Add(replay.Replace(replayloc + "\\", ""));
                     }
                 }
             }
-            AmountOfReplays_SB.Text = "리플레이: 0/" + replayGrid.Rows.Count;
-            replayGrid.Refresh();
+            AmountOfReplays_SB.Text = "Replays: 0/" + replayList.Items.Count;
+            replayList.Refresh();
         }
         public void RefreshInfoGroups(ArrayList newInfo)
         {
-            for (int i = 0; i < newInfo.ToArray().Length; i++)
-            {
-                Console.WriteLine(i + " | " + newInfo.ToArray()[i]);
-            }
-            Size orgWinSize = orgWindowSize;
-            Size orgTeamSize = orgGroupSize;
-            
-            
+
             lengthInMins.Text = (string)newInfo[1];
             networkVerison.Text = newInfo[2].ToString();
             matchType.Text = (string)newInfo[6];
-            if (!newInfo[7].ToString().Contains("-") && newInfo[7].ToString().Length != 7)
-            {
-                gameverisonLabel.Text = "Host:";
-                gameVerison.Visible = false;
-                host.Visible = true;
-                host.Text = (string)newInfo[7];
-            }
-            else
-            {
-                gameVerison.Text = (string)newInfo[7];
-                gameverisonLabel.Text = "게임 버전:";
-                gameVerison.Visible = true;
-                host.Visible = false;
-            }
+            gameVerison.Text = (string)newInfo[7];
             serverRegion.Text = (string)newInfo[9];
             serverId.Text = (string)newInfo[13];
             recordingSize.Text = (string)newInfo[15];
@@ -287,179 +267,30 @@ namespace PUBG_Replay_Manager
                         tm4_killer_steamid.Visible = false;
                         tm4_killer_steamid_l.Visible = false;
                     }
-                    if (z == 5)
-                    {
-                        //Size = orgWindowSize;
-                        //teamGroupBox.Size = orgGroupSize;
-                        //orgWindowSize = Size;
-                        //orgGroupSize = teamGroupBox.Size;
-                        //Size = new Size(1187, 756); //Pops the right side out to show more teammates (up to 8)
-                        //teamGroupBox.Size = new Size(469, 674); //Pops the team group box out to show more teammates (up to 8)
-                        tm5.Visible = true;
-                        tm5_pubgname.Visible = true;
-                        tm5_steamid.Visible = true;
-                        tm5_headshots.Visible = true;
-                        tm5_kills.Visible = true;
-                        tm5_pubgname_l.Visible = true;
-                        tm5_steamid_l.Visible = true;
-                        tm5_headshots_l.Visible = true;
-                        tm5_kills_l.Visible = true;
-                        tm5_killer_pubgname.Visible = true;
-                        tm5_killer_pubgname_l.Visible = true;
-                        tm5_killer_steamid.Visible = true;
-                        tm5_killer_steamid_l.Visible = true;
-                        tm5_pubgname.Text = newInfo[i + 1].ToString();
-                        tm5_steamid.Text = newInfo[i].ToString();
-                        tm5_headshots.Text = newInfo[i + 4].ToString();
-                        tm5_kills.Text = newInfo[i + 5].ToString();
-                    }
-                    else if (z < 5)
-                    {
-                        //Size = new Size(orgWindowSize.Height, orgWindowSize.Width + 226);
-                        //teamGroupBox.Size = new Size(orgGroupSize.Height + 232, orgGroupSize.Width);
-                        //Size = new Size(961, 756); //returns it to normal
-                        //teamGroupBox.Size = new Size(237, 674); //returns it to normal
-                        tm5.Visible = false;
-                        tm5_pubgname.Visible = false;
-                        tm5_steamid.Visible = false;
-                        tm5_headshots.Visible = false;
-                        tm5_kills.Visible = false;
-                        tm5_pubgname_l.Visible = false;
-                        tm5_steamid_l.Visible = false;
-                        tm5_headshots_l.Visible = false;
-                        tm5_kills_l.Visible = false;
-                        tm5_killer_steamid.Visible = false;
-                        tm5_killer_pubgname_l.Visible = false;
-                        tm5_killer_steamid.Visible = false;
-                        tm5_killer_steamid_l.Visible = false;
-                    }
-                    if (z == 6)
-                    {
-                        tm6.Visible = true;
-                        tm6_pubgname.Visible = true;
-                        tm6_steamid.Visible = true;
-                        tm6_headshots.Visible = true;
-                        tm6_kills.Visible = true;
-                        tm6_pubgname_l.Visible = true;
-                        tm6_steamid_l.Visible = true;
-                        tm6_headshots_l.Visible = true;
-                        tm6_kills_l.Visible = true;
-                        tm6_killer_pubgname.Visible = true;
-                        tm6_killer_pubgname_l.Visible = true;
-                        tm6_killer_steamid.Visible = true;
-                        tm6_killer_steamid_l.Visible = true;
-                        tm6_pubgname.Text = newInfo[i + 1].ToString();
-                        tm6_steamid.Text = newInfo[i].ToString();
-                        tm6_headshots.Text = newInfo[i + 4].ToString();
-                        tm6_kills.Text = newInfo[i + 5].ToString();
-                        //tm6_killer_pubgname.Text = newInfo[i + 12].ToString();
-                        //tm6_killer_steamid.Text = newInfo[i + 13].ToString();
-                    }
-                    else if (z < 6)
-                    {
-                        tm6.Visible = false;
-                        tm6_pubgname.Visible = false;
-                        tm6_steamid.Visible = false;
-                        tm6_headshots.Visible = false;
-                        tm6_kills.Visible = false;
-                        tm6_pubgname_l.Visible = false;
-                        tm6_steamid_l.Visible = false;
-                        tm6_headshots_l.Visible = false;
-                        tm6_kills_l.Visible = false;
-                        tm6_killer_pubgname.Visible = false;
-                        tm6_killer_pubgname_l.Visible = false;
-                        tm6_killer_steamid.Visible = false;
-                        tm6_killer_steamid_l.Visible = false;
-                    }
-                    if (z == 7)
-                    {
-                        tm7.Visible = true;
-                        tm7_pubgname.Visible = true;
-                        tm7_steamid.Visible = true;
-                        tm7_headshots.Visible = true;
-                        tm7_kills.Visible = true;
-                        tm7_pubgname_l.Visible = true;
-                        tm7_steamid_l.Visible = true;
-                        tm7_headshots_l.Visible = true;
-                        tm7_kills_l.Visible = true;
-                        tm7_killer_pubgname.Visible = true;
-                        tm7_killer_pubgname_l.Visible = true;
-                        tm7_killer_steamid.Visible = true;
-                        tm7_killer_steamid_l.Visible = true;
-                        tm7_pubgname.Text = newInfo[i + 1].ToString();
-                        tm7_steamid.Text = newInfo[i].ToString();
-                        tm7_headshots.Text = newInfo[i + 4].ToString();
-                        tm7_kills.Text = newInfo[i + 5].ToString();
-                        //tm7_killer_pubgname.Text = newInfo[i + 12].ToString();
-                        //tm7_killer_steamid.Text = newInfo[i + 13].ToString();
-                    }
-                    else if (z < 7)
-                    {
-                        tm7.Visible = false;
-                        tm7_pubgname.Visible = false;
-                        tm7_steamid.Visible = false;
-                        tm7_headshots.Visible = false;
-                        tm7_kills.Visible = false;
-                        tm7_pubgname_l.Visible = false;
-                        tm7_steamid_l.Visible = false;
-                        tm7_headshots_l.Visible = false;
-                        tm7_kills_l.Visible = false;
-                        tm7_killer_pubgname.Visible = false;
-                        tm7_killer_pubgname_l.Visible = false;
-                        tm7_killer_steamid.Visible = false;
-                        tm7_killer_steamid_l.Visible = false;
-                    }
-                    if (z == 8)
-                    {
-                        tm8.Visible = true;
-                        tm8_pubgname.Visible = true;
-                        tm8_steamid.Visible = true;
-                        tm8_headshots.Visible = true;
-                        tm8_kills.Visible = true;
-                        tm8_pubgname_l.Visible = true;
-                        tm8_steamid_l.Visible = true;
-                        tm8_headshots_l.Visible = true;
-                        tm8_kills_l.Visible = true;
-                        tm8_killer_pubgname.Visible = true;
-                        tm8_killer_pubgname_l.Visible = true;
-                        tm8_killer_steamid.Visible = true;
-                        tm8_killer_steamid_l.Visible = true;
-                        tm8_pubgname.Text = newInfo[i + 1].ToString();
-                        tm8_steamid.Text = newInfo[i].ToString();
-                        tm8_headshots.Text = newInfo[i + 4].ToString();
-                        tm8_kills.Text = newInfo[i + 5].ToString();
-                        //tm8_killer_pubgname.Text = newInfo[i + 12].ToString();
-                        //tm8_killer_steamid.Text = newInfo[i + 13].ToString();
-                    }
-                    else if (z < 8)
-                    {
-                        tm8.Visible = false;
-                        tm8_pubgname.Visible = false;
-                        tm8_steamid.Visible = false;
-                        tm8_headshots.Visible = false;
-                        tm8_kills.Visible = false;
-                        tm8_pubgname_l.Visible = false;
-                        tm8_steamid_l.Visible = false;
-                        tm8_headshots_l.Visible = false;
-                        tm8_kills_l.Visible = false;
-                        tm8_killer_pubgname.Visible = false;
-                        tm8_killer_pubgname_l.Visible = false;
-                        tm8_killer_steamid.Visible = false;
-                        tm8_killer_steamid_l.Visible = false;
-                    }
                 }
             }
             Console.WriteLine(z + " Players");
             z = 0;
             
         }
-        private void ReplayActionsToggle(bool toggle)
+
+        private void replayList_SelectedIndexChanged(object sender, EventArgs e)
         {
-            openSelectedReplay.Enabled = toggle;
-            zipReplay.Enabled = toggle;
-            steamidStrip.Enabled = toggle;
-            deletereplay.Enabled = toggle;
-            downkillTimeline.Enabled = toggle;
+            if (Directory.Exists(replayloc+ "\\" + replayList.SelectedItem) && replayList.SelectedIndex > -1)
+            {
+                RefreshInfoGroups(ReadReplayInfo(replayloc + "\\" + replayList.SelectedItem));
+                openSelectedReplay.Enabled = true;
+                zipReplay.Enabled = true;
+                steamidStrip.Enabled = true;
+                AmountOfReplays_SB.Text = "리플레이: " + (replayList.SelectedIndex + 1) + "/" + replayList.Items.Count;
+            }
+            else
+            {
+                RefreshReplayList();
+                openSelectedReplay.Enabled = false;
+                zipReplay.Enabled = false;
+                steamidStrip.Enabled = false;
+            }
         }
 
         private void openReplayFolder_Click(object sender, EventArgs e)
@@ -469,9 +300,9 @@ namespace PUBG_Replay_Manager
 
         private void openSelectedReplay_Click(object sender, EventArgs e)
         {
-            if (Directory.Exists(replayloc + "\\" + currentlyselectedreplaypath))
+            if (Directory.Exists(replayloc + "\\" + replayList.SelectedItem))
             {
-                Process.Start(replayloc + "\\" + currentlyselectedreplaypath);
+                Process.Start(replayloc + "\\" + replayList.SelectedItem);
             }
             else
             {
@@ -479,43 +310,41 @@ namespace PUBG_Replay_Manager
                 openSelectedReplay.Enabled = false;
                 zipReplay.Enabled = false;
                 steamidStrip.Enabled = false;
-                deletereplay.Enabled = false;
-                downkillTimeline.Enabled = false;
             }
         }
-        static string UE4StringSerializer(string file_path, bool encoded = false, int encoded_offset = 0)
+
+        private JObject NormalizeReplayInfoFile(string directory_of_recording)
         {
-            byte[] little_endian_length = new byte[4];//a 4 length byte array used later
-            byte[] file = File.ReadAllBytes(file_path);//The file into a byte array
-            for (int i = 0; i < 4; i++)//For the next 4 bytes...
+            List<string> ReplayFile= new List<string>(File.ReadAllLines(directory_of_recording + "\\PUBG.replayinfo"));
+            if (ReplayFile.ToArray()[0] == "")//Make the list a array and check the first line to see if it's blank
             {
-                little_endian_length[i] = file[i];//...Add them to the little_endian_length
+                ReplayFile.RemoveAt(0);//Remove it so it's proper JSON
             }
-            int bytestoread = BitConverter.ToInt32(little_endian_length, 0);//Convert this into a int to tell the program how many bytes to read
-            byte[] readspace = new byte[bytestoread];//use bytestoread to expand the array to what we're about to read
-            using (BinaryReader reader = new BinaryReader(new FileStream(file_path, FileMode.Open)))
+            if (ReplayFile.ToArray()[0].Contains("{"))
             {
-                reader.BaseStream.Seek(4, SeekOrigin.Begin);//Set the base of where to start reading 4 bytes ahead of the file (essenially skipping the little-endian unsigned 32-bit integer)
-                reader.Read(readspace, 0, bytestoread);//Read the space that the little_endian_length told us to read
+                ReplayFile.RemoveAt(0);//Remove it so it's proper JSON
+                ReplayFile.Insert(0, "{");
             }
-            List<byte> unencodedbytes = new List<byte>();//Make a list so we can dynamically add things to it 
-            foreach (byte encodedbyte in readspace)//For each byte in the readspace of what we just read from the file
+            if (ReplayFile.ToArray()[ReplayFile.Count-1].Contains("}"))
             {
-                if (!encodedbyte.Equals(0))//if the byte is zero (techinally should only be handled at the end per numinit (https://github.com/numinit)'s specifications but I'm lazy
-                {
-                    if (encoded)//Did the user specificity that its encoded?
-                    {
-                        unencodedbytes.Add((byte)(encodedbyte + encoded_offset));// Yes! Add the encoded offset to the byte, cast it to a byte and add it to the list
-                    }
-                    else
-                    {
-                        unencodedbytes.Add(encodedbyte);//No! Just add the byte to the array
-                    }
-                }
+                ReplayFile.RemoveAt(ReplayFile.Count-1);//Remove it so it's proper JSON
+                ReplayFile.Insert(ReplayFile.Count, "}");
             }
-            //Console.WriteLine(Encoding.UTF8.GetString(readspace));
-            //Console.WriteLine(Encoding.UTF8.GetString(unencodedbytes.ToArray()));
-            return Encoding.UTF8.GetString(unencodedbytes.ToArray());//take all the bytes, make the list a array, put the array into UTF8 encoding and return it
+            foreach (var item in ReplayFile)
+            {
+                Console.WriteLine(item);
+            }
+            JObject NRIF;
+            string nrif = string.Join("\r\n", ReplayFile.ToArray());
+            try
+            {
+                NRIF = JObject.Parse(nrif);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return NRIF;
         }
         private JObject DecryptReplaySummaryFile(string directory_of_recording)
         {
@@ -528,24 +357,68 @@ namespace PUBG_Replay_Manager
                 }
             }
             replaySummaryList.Reverse();
-            return JObject.Parse(UE4StringSerializer(replaySummaryList.ToArray()[0], true, 1));
+            return JObject.Parse(CaesarCipher(File.ReadAllLines(replaySummaryList.ToArray()[0])[0], +1).Remove(0, 2));
+        }
+        private JObject DecryptDBNOorKillFile(string path_to_file)
+        {
+            return JObject.Parse(CaesarCipher(File.ReadAllText(path_to_file), +1).Remove(0, 1));
+        }
+        private string[] DecryptGroggyFiles(string directory_of_recording)
+        {
+            List<string> dbnoList = new List<string>();
+            foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
+            {
+                if (file.Contains("groggy"))
+                {
+                     JObject groggyfile = DecryptDBNOorKillFile(file);
+                     dbnoList.Add((string)groggyfile["instigatorNetId"]);
+                     dbnoList.Add((string)groggyfile["instigatorName"]);
+                     dbnoList.Add((string)groggyfile["victimNetId"]);
+                     dbnoList.Add((string)groggyfile["victimName"]);
+                }
+            }
+            foreach (var item in dbnoList.ToArray())
+            {
+                Console.WriteLine(item);
+            }
+            return dbnoList.ToArray();
+        }
+        private string[] DecryptKillFiles(string directory_of_recording)
+        {
+            List<string> killList = new List<string>();
+            foreach (string file in Directory.GetFiles(directory_of_recording + "\\data"))
+            {
+                if (file.Contains("kill"))
+                {
+                    JObject groggyfile = DecryptDBNOorKillFile(file);
+                    killList.Add((string)groggyfile["killerNetId"]);
+                    killList.Add((string)groggyfile["killerName"]);
+                    killList.Add((string)groggyfile["victimNetId"]);
+                    killList.Add((string)groggyfile["victimName"]);
+                }
+            }
+            foreach (var item in killList.ToArray())
+            {
+                Console.WriteLine(item);
+            }
+            return killList.ToArray();
         }
         private ArrayList ReadReplayInfo(string directory_of_recording)
         {
             ArrayList ReplayInfo = new ArrayList();
-            JObject NormalizedReplayInfoFile = JObject.Parse(UE4StringSerializer(directory_of_recording + "\\PUBG.replayinfo"));
+            JObject NormalizedReplayInfoFile = NormalizeReplayInfoFile(directory_of_recording);
             JObject DecryptedReplaySummaryFile = DecryptReplaySummaryFile(directory_of_recording);
             ReplayInfo.Add((int)NormalizedReplayInfoFile["LengthInMS"]); //Length of the recording in miliseconds
             int temp0 = (int)NormalizedReplayInfoFile["LengthInMS"];
             if (temp0 < 60000)
             {
                 temp0 /= 1000; //milliseconds to seconds
-                ReplayInfo.Add(temp0.ToString() + " Sec.");
+                ReplayInfo.Add(temp0.ToString() + " 초");
             }
             else
             {
                 temp0 /= 60000; //milliseconds to minutes
-                ReplayInfo.Add(temp0.ToString() + " Min.");
+                ReplayInfo.Add(temp0.ToString() + " 분");
             }
             ReplayInfo.Add((int)NormalizedReplayInfoFile["NetworkVersion"]); //The verison of the netcode used by PUBG (It's been 720898 since Dec. 25 2017)
             ReplayInfo.Add((int)NormalizedReplayInfoFile["Changelist"]); //Unknown - Has never changed since Dec. 25 2017
@@ -559,14 +432,10 @@ namespace PUBG_Replay_Manager
             {
                 ReplayInfo.Add("Official");//official
             }
-            if (temp1[2] == "custom")
-            {
-                ReplayInfo.Add("Custom");//custom
-            }
-            ReplayInfo.Add(temp1[3]); //(Offical)Marks the update - 2018-01 | (Custom) Marks the Hosting user - 1cePrime
+            ReplayInfo.Add(temp1[3]); //Marks the update - 2018-01
             ReplayInfo.Add(temp1[4]); //Marks the region - na
             ReplayInfo.Add(temp1[4].ToUpper());
-            ReplayInfo.Add(temp1[5]); //(Offical)Marks the gamemode - solo | (Custom) Marks the gamemode - normal (and zombies?)
+            ReplayInfo.Add(temp1[5]); //Marks the gamemode - solo
             ReplayInfo.Add(temp1[6] + "-" + temp1[7] + "-" + temp1[8]); //Marks the date - 4018.01.31 (Guess we're 2000 years in the future
             ReplayInfo.Add(temp1[9]); //added the raw UUID for fun - 470ec7f1-c342-46ad-81c9-e9117f27b44a
             ReplayInfo.Add(temp1[9].Remove(0, temp1[9].Length - 6)); //27b44a
@@ -622,6 +491,10 @@ namespace PUBG_Replay_Manager
                 ReplayInfo.Add("Unknown");
             }
             ReplayInfo.Add((string)NormalizedReplayInfoFile["RecordUserId"]);//Past replays have the Steam64 ID but newer replays have a UUID of some kind
+            if (NormalizedReplayInfoFile["RecordUserId"].ToString().Contains("765611"))
+            {
+                ReplayInfo.Add((ulong)NormalizedReplayInfoFile["RecordUserId"]);
+            }
             ReplayInfo.Add((string)NormalizedReplayInfoFile["RecordUserNickName"]);//Solo, Duo, Squad (and ffp)
             ReplayInfo.Add((string)NormalizedReplayInfoFile["MapName"]);//Desert_Main (Miramar) or Erangel_Main (Erangel)
             if ((string)NormalizedReplayInfoFile["MapName"] == "Erangel_Main")
@@ -644,7 +517,7 @@ namespace PUBG_Replay_Manager
             {
                 ReplayInfo.Add(true);
             }
-            double dirsize = GetDirectorySize(replayloc + "\\" + currentlyselectedreplaypath + "\\");
+            double dirsize = GetDirectorySize(replayloc + "\\" + replayList.SelectedItem + "\\");
             if (dirsize < 1048576)
             {
                 ReplayInfo.Add(Math.Truncate(dirsize).ToString() + " Bytes");
@@ -680,8 +553,8 @@ namespace PUBG_Replay_Manager
             }
             ReplayInfo.Add((int)DecryptedReplaySummaryFile["numPlayers"]);
             ReplayInfo.Add((int)DecryptedReplaySummaryFile["numTeams"]);
-            //string[] killfiles = DecryptKillFiles(directory_of_recording);
-            for (int i = 0; i < 8; i++)
+            string[] killfiles = DecryptKillFiles(directory_of_recording);
+            for (int i = 0; i < 4; i++)
             {
                 try
                 {
@@ -735,12 +608,6 @@ namespace PUBG_Replay_Manager
                     ReplayInfo.Add("[unknown]");
                 }
             }
-            int replayinfoline = 0;
-            //foreach (var item in ReplayInfo.ToArray())
-            //{
-              //Console.WriteLine(replayinfoline + " | " + item.ToString());
-            //    replayinfoline++;
-            //}
             return ReplayInfo;
         }
 
@@ -750,13 +617,13 @@ namespace PUBG_Replay_Manager
             // assigned to Button2.  
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "ZIP 파일|*.zip";
-            saveFileDialog1.Title = "PUBG 리플레이 폴더를 zip 파일로 저장";
+            saveFileDialog1.Title = "PUBG 리플레이 폴더를 ZIP 파일로 저장";
             saveFileDialog1.ShowDialog();
 
             // If the file name is not an empty string open it for saving.  
             if (saveFileDialog1.FileName != "")
             {
-                string startPath = replayloc + "\\" + currentlyselectedreplaypath + "\\";//folder to add
+                string startPath = replayloc + "\\" + replayList.SelectedItem + "\\";//folder to add
                 string zipPath = saveFileDialog1.FileName;//URL for your ZIP file
                 ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Fastest, true);
             }
@@ -779,15 +646,15 @@ namespace PUBG_Replay_Manager
 
         private void steamidStrip_Click(object sender, EventArgs e)
         {
-            SteamID steamid = new SteamID(replayloc + "\\" + currentlyselectedreplaypath + "\\");
+            SteamID steamid = new SteamID(replayloc + "\\" + replayList.SelectedItem + "\\");
             steamid.ShowDialog();
         }
 
         private void importReplay_Click(object sender, EventArgs e)
         {
-            if (replayGrid.Rows.Count >= 20)
+            if (replayList.Items.Count >= 20)
             {
-                DialogResult aus = MessageBox.Show("리플레이 갯수 최대치에 도달했습니다. (20)" + Environment.NewLine + "이 이상의 리플레이를 더 추가할 시 게임에 의해 리플레이가 자동으로 삭제될 수 있습니다." + Environment.NewLine + "계속 진행하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                DialogResult aus = MessageBox.Show("리플레이 개수가 최대입니다. (20개)" + Environment.NewLine + "리플레이를 더 추가하면 다른 리플레이가 삭제될 수 있습니다." + Environment.NewLine + "계속 진행하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
                 if (aus != DialogResult.Yes)
                 {
                     return;
@@ -795,7 +662,7 @@ namespace PUBG_Replay_Manager
             }
             OpenFileDialog importReplayDialog = new OpenFileDialog();
             importReplayDialog.Filter = "ZIP 파일|*.zip";
-            importReplayDialog.Title = "추출했던 PUBG 리플레이 zip 파일을 고르세요";
+            importReplayDialog.Title = "PUBG 리플레이 폴더가 담긴 ZIP 파일을 선택하십시오";
 
             // Show the Dialog.  
             // If the user clicked OK in the dialog and  
@@ -803,16 +670,20 @@ namespace PUBG_Replay_Manager
             if (importReplayDialog.ShowDialog() == DialogResult.OK)
             {
                 ZipFile.ExtractToDirectory(importReplayDialog.FileName, replayloc);
-                MessageBox.Show("리플레이를 추출했습니다.", "추출 완료됨", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("Success!", "Imported Replay!", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 // Assign the cursor in the Stream to the Form's Cursor property.  
                 //this.Cursor = new Cursor(openFileDialog1.OpenFile());
             }
+        }
+
+        private void replayListRefresh_Click(object sender, EventArgs e)
+        {
             RefreshReplayList();
         }
 
         private void clearallreplays_Click(object sender, EventArgs e)
         {
-            DialogResult aus = MessageBox.Show("리플레이 폴더에 있는 모든 리플레이가 삭제됩니다!" + Environment.NewLine + "계속 진행하시겠습니까?", "경고!", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
+            DialogResult aus = MessageBox.Show("리플레이 폴더 내의 모든 리플레이가 삭제됩니다." + Environment.NewLine + "계속 진행하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
             if (aus == DialogResult.Yes)
             {
                 if (Directory.Exists(replayloc))
@@ -825,137 +696,16 @@ namespace PUBG_Replay_Manager
                         }
                     }
                 }
-                MessageBox.Show("모든 리플레이가 삭제되었습니다.", "삭제 완료됨", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                MessageBox.Show("모든 리플레이가 삭제되었습니다.", "삭제 완료", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 RefreshReplayList();
             }
         }
 
-        private void deletereplay_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
-            DialogResult aus = MessageBox.Show("선택한 리플레이를 지웁니다." + Environment.NewLine + "계속 진행하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Stop);
-            if (aus == DialogResult.Yes)
+            if (MessageBox.Show("프로그램 제작: EpicKitten" + Environment.NewLine + "한글화 : Dr3adnought" + Environment.NewLine + "'예'를 누르면 제작자의 GitHub 에 접속합니다.", "정보", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
             {
-                if (Directory.Exists(replayloc + "\\" + currentlyselectedreplaypath + "\\"))
-                {
-                    Directory.Delete(replayloc + "\\" + currentlyselectedreplaypath + "\\", true);
-                }
-                MessageBox.Show("리플레이 삭제 완료.", "삭제 완료됨", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                RefreshReplayList();
-            }
-        }
-
-        private void exportallreplays_Click(object sender, EventArgs e)
-        {
-            DialogResult aus = MessageBox.Show("리플레이 폴더에 있는 모든 리플레이를 추출합니다." + Environment.NewLine + "계속 진행하시겠습니까?", "정보", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
-            if (aus == DialogResult.Yes)
-            {
-                // Displays a SaveFileDialog so the user can save the Image  
-                // assigned to Button2.  
-                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                saveFileDialog1.Filter = "ZIP 파일|*.zip";
-                saveFileDialog1.Title = "리플레이를 ZIP 파일로 저장";
-                saveFileDialog1.ShowDialog();
-
-                // If the file name is not an empty string open it for saving.  
-                if (saveFileDialog1.FileName != "")
-                {
-                    string zipPath = saveFileDialog1.FileName;//URL for your ZIP file
-                    if (Directory.Exists(replayloc))
-                    {
-                        ZipFile.CreateFromDirectory(replayloc, zipPath, CompressionLevel.Fastest, true);
-                    }
-                }
-                MessageBox.Show("모든 리플레이가 추출되었습니다.", "추출 완료됨", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                RefreshReplayList();
-            }
-        }
-
-        private void downkillTimeline_Click(object sender, EventArgs e)
-        {
-            Timeline timeline = new Timeline(replayloc + "\\" + currentlyselectedreplaypath + "\\");
-            timeline.ShowDialog();
-        }
-        private void replayGrid_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > -1)
-            {
-                //for (int i = 0; i < 5; i++)
-                //{
-                //    replayGrid[i, e.RowIndex].Selected = true;
-                //}
-                string selectedreplaydir = (string)replayGrid[4, e.RowIndex].Value;
-                if (Directory.Exists(replayloc + "\\" + selectedreplaydir) && e.RowIndex > -1)
-                {
-                    RefreshInfoGroups(ReadReplayInfo(replayloc + "\\" + selectedreplaydir));
-                    ReplayActionsToggle(true);
-                    currentlyselectedreplaypath = selectedreplaydir;
-                    AmountOfReplays_SB.Text = "리플레이: " + (e.RowIndex + 1) + "/" + replayGrid.Rows.Count;
-                }
-                else
-                {
-                    RefreshReplayList();
-                    ReplayActionsToggle(false);
-                }
-            }
-
-        }
-
-        private void replayListRefresh_Click(object sender, EventArgs e)
-        {
-            RefreshReplayList();
-        }
-
-        private void replayGrid_CurrentCellChanged(object sender, EventArgs e)
-        {
-            Console.WriteLine("CurrentCellChanged fired");
-            Console.WriteLine(e.ToString());
-            Console.WriteLine(e);
-        }
-
-        private void replayGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            //if (e.RowIndex > -1)
-            //{
-            //    //for (int i = 0; i < 5; i++)
-            //    //{
-            //    //    replayGrid[i, e.RowIndex].Selected = true;
-            //    //}
-            //    string selectedreplaydir = (string)replayGrid[4, e.RowIndex].Value;
-            //    if (Directory.Exists(replayloc + "\\" + selectedreplaydir) && e.RowIndex > -1)
-            //    {
-            //        RefreshInfoGroups(ReadReplayInfo(replayloc + "\\" + selectedreplaydir));
-            //        ReplayActionsToggle(true);
-            //        currentlyselectedreplaypath = selectedreplaydir;
-            //        AmountOfReplays_SB.Text = "Replays: " + (e.RowIndex + 1) + "/" + replayGrid.Rows.Count;
-            //    }
-            //    else
-            //    {
-            //        RefreshReplayList();
-            //        ReplayActionsToggle(false);
-            //    }
-            //}
-        }
-
-        private void replayGrid_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-        {
-            Console.WriteLine("celledit finished");
-            Console.WriteLine(replayGrid[e.ColumnIndex,e.RowIndex].Value);
-            JObject custom_file;
-            if (e.RowIndex > -1)
-            {
-                string selectedreplaydir = (string)replayGrid[4, e.RowIndex].Value;
-                if (File.Exists(replayloc + "\\" + selectedreplaydir + "\\customInfo.json") && e.RowIndex > -1)
-                {
-                    custom_file = JObject.Parse(File.ReadAllText(replayloc + "\\" + selectedreplaydir + "\\customInfo.json"));
-                    custom_file["customName"] = replayGrid[e.ColumnIndex, e.RowIndex].Value.ToString();
-                }
-                else
-                {
-                    custom_file = new JObject(
-                                                new JProperty("customName", replayGrid[e.ColumnIndex, e.RowIndex].Value)
-                                                );
-                }
-                File.WriteAllText(replayloc + "\\" + selectedreplaydir + "\\customInfo.json", custom_file.ToString());
+                System.Diagnostics.Process.Start("https://github.com/EpicKitten/PUBG-Replay-Manager");
             }
         }
     }
