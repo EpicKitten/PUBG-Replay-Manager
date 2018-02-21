@@ -772,16 +772,18 @@ namespace PUBG_Replay_Manager
         private double GetDirectorySize(string directory)
         {
             double foldersize = 0;
-            foreach (string dir in Directory.GetDirectories(directory))
-            {
-                GetDirectorySize(dir);
-            }
+			if (Directory.Exists(directory))
+			{
+				foreach (string dir in Directory.GetDirectories(directory))
+				{
+					GetDirectorySize(dir);
+				}
 
-            foreach (FileInfo file in new DirectoryInfo(directory).GetFiles())
-            {
-                foldersize += file.Length;
-            }
-
+				foreach (FileInfo file in new DirectoryInfo(directory).GetFiles())
+				{
+					foldersize += file.Length;
+				}
+			}
             return foldersize;
         }
 
