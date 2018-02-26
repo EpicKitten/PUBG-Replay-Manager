@@ -17,8 +17,6 @@ namespace PUBG_Replay_Manager
             Path = path;
             Info = DecryptReplayInfoFile();
             Summary = DecryptReplaySummaryFile();
-            
-            Console.Write("");
         }
 
         private ReplaySummary DecryptReplaySummaryFile()
