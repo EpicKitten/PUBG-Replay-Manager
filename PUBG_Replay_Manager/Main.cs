@@ -12,6 +12,7 @@ using System.Globalization;
 using System.Threading;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows.Forms.VisualStyles;
 
 namespace PUBG_Replay_Manager
 {
@@ -24,11 +25,154 @@ namespace PUBG_Replay_Manager
         public string currentlyselectedreplaypath = string.Empty;
         public Size orgWindowSize;
         public Size orgGroupSize;
+        private TeamMateBlock[] tmBlocks = new TeamMateBlock[8];
+        
         public Main()
         {
             InitializeComponent();
-            RefreshReplayList();            
+            RefreshReplayList();
+            InitTeamMatesBlocks();
         }
+
+        private void InitTeamMatesBlocks()
+        {
+            tmBlocks[0] = new TeamMateBlock
+            {
+                Group = tm1,
+                Headshots = tm1_headshots,
+                Headshotslabel = tm1_headshots_l,
+                KillerPubgName = tm1_killer_pubgname,
+                KillerPubgNameLabel = tm1_killer_pubgname_l,
+                KillerSteamId = tm1_killer_steamid,
+                KillerSteamIdLabel = tm1_killer_steamid_l,
+                Kills = tm1_kills,
+                KillsLabel = tm1_kills_l,
+                PubgName = tm1_pubgname,
+                PubgNameLabel = tm1_pubgname_l,
+                SteamId = tm1_steamid,
+                SteamIdLabel = tm1_steamid_l,
+            };
+            
+            tmBlocks[1] = new TeamMateBlock
+            {
+                Group = tm2,
+                Headshots = tm2_headshots,
+                Headshotslabel = tm2_headshots_l,
+                KillerPubgName = tm2_killer_pubgname,
+                KillerPubgNameLabel = tm2_killer_pubgname_l,
+                KillerSteamId = tm2_killer_steamid,
+                KillerSteamIdLabel = tm2_killer_steamid_l,
+                Kills = tm2_kills,
+                KillsLabel = tm2_kills_l,
+                PubgName = tm2_pubgname,
+                PubgNameLabel = tm2_pubgname_l,
+                SteamId = tm2_steamid,
+                SteamIdLabel = tm2_steamid_l,
+            };
+            
+            tmBlocks[2] = new TeamMateBlock
+            {
+                Group = tm3,
+                Headshots = tm3_headshots,
+                Headshotslabel = tm3_headshots_l,
+                KillerPubgName = tm3_killer_pubgname,
+                KillerPubgNameLabel = tm3_killer_pubgname_l,
+                KillerSteamId = tm3_killer_steamid,
+                KillerSteamIdLabel = tm3_killer_steamid_l,
+                Kills = tm3_kills,
+                KillsLabel = tm3_kills_l,
+                PubgName = tm3_pubgname,
+                PubgNameLabel = tm3_pubgname_l,
+                SteamId = tm3_steamid,
+                SteamIdLabel = tm3_steamid_l,
+            };
+            
+            tmBlocks[3] = new TeamMateBlock
+            {
+                Group = tm4,
+                Headshots = tm4_headshots,
+                Headshotslabel = tm4_headshots_l,
+                KillerPubgName = tm4_killer_pubgname,
+                KillerPubgNameLabel = tm4_killer_pubgname_l,
+                KillerSteamId = tm4_killer_steamid,
+                KillerSteamIdLabel = tm4_killer_steamid_l,
+                Kills = tm4_kills,
+                KillsLabel = tm4_kills_l,
+                PubgName = tm4_pubgname,
+                PubgNameLabel = tm4_pubgname_l,
+                SteamId = tm4_steamid,
+                SteamIdLabel = tm4_steamid_l,
+            };
+            
+            tmBlocks[4] = new TeamMateBlock
+            {
+                Group = tm5,
+                Headshots = tm5_headshots,
+                Headshotslabel = tm5_headshots_l,
+                KillerPubgName = tm5_killer_pubgname,
+                KillerPubgNameLabel = tm5_killer_pubgname_l,
+                KillerSteamId = tm5_killer_steamid,
+                KillerSteamIdLabel = tm5_killer_steamid_l,
+                Kills = tm5_kills,
+                KillsLabel = tm5_kills_l,
+                PubgName = tm5_pubgname,
+                PubgNameLabel = tm5_pubgname_l,
+                SteamId = tm5_steamid,
+                SteamIdLabel = tm5_steamid_l,
+            };
+            
+            tmBlocks[5] = new TeamMateBlock
+            {
+                Group = tm6,
+                Headshots = tm6_headshots,
+                Headshotslabel = tm6_headshots_l,
+                KillerPubgName = tm6_killer_pubgname,
+                KillerPubgNameLabel = tm6_killer_pubgname_l,
+                KillerSteamId = tm6_killer_steamid,
+                KillerSteamIdLabel = tm6_killer_steamid_l,
+                Kills = tm6_kills,
+                KillsLabel = tm6_kills_l,
+                PubgName = tm6_pubgname,
+                PubgNameLabel = tm6_pubgname_l,
+                SteamId = tm6_steamid,
+                SteamIdLabel = tm6_steamid_l,
+            };
+            
+            tmBlocks[6] = new TeamMateBlock
+            {
+                Group = tm7,
+                Headshots = tm7_headshots,
+                Headshotslabel = tm7_headshots_l,
+                KillerPubgName = tm7_killer_pubgname,
+                KillerPubgNameLabel = tm7_killer_pubgname_l,
+                KillerSteamId = tm7_killer_steamid,
+                KillerSteamIdLabel = tm7_killer_steamid_l,
+                Kills = tm7_kills,
+                KillsLabel = tm7_kills_l,
+                PubgName = tm7_pubgname,
+                PubgNameLabel = tm7_pubgname_l,
+                SteamId = tm7_steamid,
+                SteamIdLabel = tm7_steamid_l,
+            };
+            
+            tmBlocks[7] = new TeamMateBlock
+            {
+                Group = tm8,
+                Headshots = tm8_headshots,
+                Headshotslabel = tm8_headshots_l,
+                KillerPubgName = tm8_killer_pubgname,
+                KillerPubgNameLabel = tm8_killer_pubgname_l,
+                KillerSteamId = tm8_killer_steamid,
+                KillerSteamIdLabel = tm8_killer_steamid_l,
+                Kills = tm8_kills,
+                KillsLabel = tm8_kills_l,
+                PubgName = tm8_pubgname,
+                PubgNameLabel = tm8_pubgname_l,
+                SteamId = tm8_steamid,
+                SteamIdLabel = tm8_steamid_l,
+            };
+        }
+        
         private void Main_Load(object sender, EventArgs e)
         {
             orgWindowSize = Size;
@@ -526,7 +670,7 @@ namespace PUBG_Replay_Manager
 
             if (replay.Info.ServerType == ServerType.Official)
             {
-                // TODO
+                // TODO Fix game version detection
                 gameVerison.Visible = false;
                 host.Visible = false;
             }
@@ -561,6 +705,33 @@ namespace PUBG_Replay_Manager
             dmgHandedOut.Text = FormatFloat(replay.Recorder.TotalGivenDamages);
             longestKill.Text = FormatFloat(replay.Recorder.LongestDistanceKill);
             distanceWalked.Text = FormatFloat(replay.Recorder.TotalMovedDistance);
+
+            for (int i = 0; i < 8; i++)
+            {
+                bool playerHasData = replay.Summary.Players.Length > i;
+                
+                tmBlocks[i].Group.Visible = playerHasData;
+                tmBlocks[i].Headshots.Visible = playerHasData;
+                tmBlocks[i].Headshotslabel.Visible = playerHasData;
+                tmBlocks[i].KillerPubgName.Visible = playerHasData;
+                tmBlocks[i].KillerPubgNameLabel.Visible = playerHasData;
+                tmBlocks[i].KillerSteamId.Visible = playerHasData;
+                tmBlocks[i].KillerSteamIdLabel.Visible = playerHasData;
+                tmBlocks[i].Kills.Visible = playerHasData;
+                tmBlocks[i].KillsLabel.Visible = playerHasData;
+                tmBlocks[i].PubgName.Visible = playerHasData;
+                tmBlocks[i].PubgNameLabel.Visible = playerHasData;
+                tmBlocks[i].SteamId.Visible = playerHasData;
+                tmBlocks[i].SteamIdLabel.Visible = playerHasData;
+                
+                if (playerHasData)
+                {
+                    tmBlocks[i].PubgName.Text = replay.Summary.Players[i].PlayerName;
+                    tmBlocks[i].SteamId.Text = replay.Summary.Players[i].PlayerId.ToString();
+                    tmBlocks[i].Headshots.Text = replay.Summary.Players[i].HeadShots.ToString();
+                    tmBlocks[i].Kills.Text = replay.Summary.Players[i].Kills.ToString();
+                }
+            }
         }
         
         private void ReplayActionsToggle(bool toggle)
@@ -1020,5 +1191,28 @@ namespace PUBG_Replay_Manager
                 File.WriteAllText(replayloc + "\\" + selectedreplaydir + "\\customInfo.json", custom_file.ToString());
             }
         }
+    }
+
+    class TeamMateBlock
+    {
+        public GroupBox Group;
+        
+        public Label SteamIdLabel;
+        public TextBox SteamId;
+        
+        public Label PubgNameLabel;
+        public Label PubgName;
+        
+        public Label KillerSteamIdLabel;
+        public TextBox KillerSteamId;
+
+        public Label KillerPubgNameLabel;
+        public Label KillerPubgName;
+
+        public Label KillsLabel;
+        public Label Kills;
+        
+        public Label Headshotslabel;
+        public Label Headshots;   
     }
 }
