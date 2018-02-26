@@ -90,6 +90,7 @@
     <Compile Include="Timeline.Designer.cs">
       <DependentUpon>Timeline.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils.cs" />
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
