@@ -1,5 +1,4 @@
-﻿using System.Data.Common;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace PUBG_Replay_Manager
 {

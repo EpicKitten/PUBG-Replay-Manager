@@ -11,8 +11,6 @@ using System.Drawing;
 using System.Globalization;
 using System.Threading;
 using System.ComponentModel;
-using System.Linq;
-using System.Windows.Forms.VisualStyles;
 
 namespace PUBG_Replay_Manager
 {
