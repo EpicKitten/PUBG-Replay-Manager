@@ -249,6 +249,18 @@ namespace PUBG_Replay_Manager
         {
             return Decimal.Round(((decimal) value / 100), 2)+" m";
         }
+        
+        private string FormatMovedDistance(float value)
+        {
+            if (value > 1000)
+            {
+                return Decimal.Round(((decimal) value / 1000), 2) + " km";
+            }
+            else
+            {
+                return Decimal.Round((decimal) value, 2) + " m";
+            }
+        }
 
         private string FormatWeather(string weather)
         {
@@ -314,7 +326,7 @@ namespace PUBG_Replay_Manager
             kills.Text = replay.Recorder.Kills.ToString();
             dmgHandedOut.Text = FormatFloat(replay.Recorder.TotalGivenDamages);
             longestKill.Text = FormatKillDistance(replay.Recorder.LongestDistanceKill);
-            distanceWalked.Text = FormatFloat(replay.Recorder.TotalMovedDistance);
+            distanceWalked.Text = FormatMovedDistance(replay.Recorder.TotalMovedDistance);
 
             for (int i = 0; i < 8; i++)
             {
