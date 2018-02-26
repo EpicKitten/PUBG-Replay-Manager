@@ -245,6 +245,11 @@ namespace PUBG_Replay_Manager
             return Decimal.Round((decimal) value, 2).ToString();
         }
 
+        private string FormatKillDistance(float value)
+        {
+            return Decimal.Round(((decimal) value / 100), 2)+" m";
+        }
+
         private string FormatWeather(string weather)
         {
             switch (weather)
@@ -308,7 +313,7 @@ namespace PUBG_Replay_Manager
             headShots.Text = replay.Recorder.HeadShots.ToString();
             kills.Text = replay.Recorder.Kills.ToString();
             dmgHandedOut.Text = FormatFloat(replay.Recorder.TotalGivenDamages);
-            longestKill.Text = FormatFloat(replay.Recorder.LongestDistanceKill);
+            longestKill.Text = FormatKillDistance(replay.Recorder.LongestDistanceKill);
             distanceWalked.Text = FormatFloat(replay.Recorder.TotalMovedDistance);
 
             for (int i = 0; i < 8; i++)
