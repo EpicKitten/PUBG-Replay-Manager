@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
@@ -58,5 +59,60 @@ namespace PUBG_Replay_Manager
         {
             return Utils.GetDirectorySize(Path);
         }
+
+        public List<ReplayEvent> Events()
+        {
+            List<ReplayEvent> events = new List<ReplayEvent>();
+            
+            foreach (string file in Directory.GetFiles(Path + "\\data"))
+            {
+                string eventpath = Path + "\\events" + file.Substring(file.LastIndexOf('\\'));
+                
+                string dataJson = Utils.UE4StringSerializer(file, 1);
+                string eventJson = Utils.UE4StringSerializer(eventpath);
+                
+                ReplayEventMeta meta = JsonConvert.DeserializeObject<ReplayEventMeta>(eventJson);
+
+                switch (meta.Group)
+                {
+                    case "groggy":
+                        ReplayKnockEvent knockEvent = JsonConvert.DeserializeObject<ReplayKnockEvent>(dataJson);
+                        knockEvent.Time = meta.Time;
+                        
+                        events.Add(knockEvent);
+                        break;
+                    
+                    case "kill":
+                        ReplayKillEvent killEvent = JsonConvert.DeserializeObject<ReplayKillEvent>(dataJson);
+                        killEvent.Time = meta.Time;
+                        
+                        events.Add(killEvent);
+                        break;
+                    
+                    case "ReplaySummary":
+                    case "level":
+                        break;
+                    
+                    default:
+                        Console.WriteLine($"Unknown event type: {meta.Group} for event {meta.Id}");
+                        break;
+                }
+            }
+
+            events.Sort((x,y) => x.Time.CompareTo(y.Time));
+            return events;
+        }
+    }
+
+    class ReplayEventMeta
+    {
+        [JsonProperty("id")]
+        public string Id;
+
+        [JsonProperty("group")]
+        public string Group;
+
+        [JsonProperty("time1")]
+        public int Time;
     }
 }

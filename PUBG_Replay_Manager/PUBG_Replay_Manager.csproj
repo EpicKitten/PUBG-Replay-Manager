@@ -71,6 +71,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IReplayEvent.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,7 +81,10 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Replay.cs" />
+    <Compile Include="ReplayEvent.cs" />
     <Compile Include="ReplayInfo.cs" />
+    <Compile Include="ReplayKillEvent.cs" />
+    <Compile Include="ReplayKnockEvent.cs" />
     <Compile Include="ReplaySummary.cs" />
     <Compile Include="SteamID.cs">
       <SubType>Form</SubType>
