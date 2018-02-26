@@ -80,12 +80,16 @@ namespace PUBG_Replay_Manager
                         ServerType = ServerType.Unknown;
                         break;
                 }
+
+                ServerId = parts[9].Remove(0, parts[9].Length - 6);
             }
 
             get { return friendlyName; }
         }
 
         public ServerType ServerType = ServerType.Unknown;
+
+        public string ServerId;
 
         public string CustomHost = null;
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 
 namespace PUBG_Replay_Manager
@@ -45,6 +46,19 @@ namespace PUBG_Replay_Manager
         {
             string infoJson = Utils.UE4StringSerializer(Path + "\\PUBG.replayinfo");
             return JsonConvert.DeserializeObject<ReplayInfo>(infoJson);
+        }
+
+        public ReplaySummaryPlayer Recorder
+        {
+            get
+            {
+                return Summary.Players.First(player => player.PlayerName == Info.RecordUserNickName);
+            }
+        }
+
+        public double Size()
+        {
+            return Utils.GetDirectorySize(Path);
         }
     }
 }

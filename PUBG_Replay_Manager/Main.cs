@@ -53,7 +53,6 @@ namespace PUBG_Replay_Manager
                     if(directory.Contains("match."))
                     {
                         var replay = new Replay(directory);
-                        var recorder = replay.Summary.Players.First(player => player.PlayerName == replay.Info.RecordUserNickName);
                         var customName = "[null]";
                         
                         if (File.Exists(directory + "\\customInfo.json"))
@@ -62,7 +61,7 @@ namespace PUBG_Replay_Manager
                             customName = (string)custom_file["customName"];   
                         }
                         
-                        replayGrid.Rows.Add(customName, FormatRecorderRank(recorder), FormatGameMode(replay.Info.Mode), FormatGameLength(replay.Info.LengthInMs), directory.Replace(replayloc + "\\", ""));
+                        replayGrid.Rows.Add(customName, FormatRecorderRank(replay.Recorder), FormatGameMode(replay.Info.Mode), FormatGameLength(replay.Info.LengthInMs), directory.Replace(replayloc + "\\", ""));
                     }
                 }
             }
@@ -83,6 +82,46 @@ namespace PUBG_Replay_Manager
         private string FormatGameLength(int length)
         {
             return TimeSpan.FromSeconds(length / 1000).ToString(@"mm\:ss");
+        }
+
+        private string FormatReplaySize(double size)
+        {
+            if (size < 1048576)
+            {
+                return Math.Truncate(size) + " Bytes";
+            }
+            else
+            {
+               size /= 1048576;
+               return Math.Truncate(size) + " MB";
+            }
+        }
+
+        private string FormatFloat(float value)
+        {
+            return Decimal.Round((decimal) value, 2).ToString();
+        }
+
+        private string FormatWeather(string weather)
+        {
+            switch (weather)
+            {
+                case "Weather_Clear_02":
+                    return "Sunny Clear";
+                
+                case "Weather_Desert_Sunrise":
+                    return "Sunrise";
+                
+                case "Weather_Desert_Clear":
+                case "Weather_Clear":
+                    return "Sunny";
+                
+                case "Weather_Dark":
+                    return "Sunset";
+                
+                default:
+                    return weather;
+            }
         }
         
         public void RefreshInfoGroups(ArrayList newInfo)
@@ -481,7 +520,47 @@ namespace PUBG_Replay_Manager
 
         public void RefreshInfoGroups(Replay replay)
         {
-            
+            lengthInMins.Text = FormatGameLength(replay.Info.LengthInMs);
+            networkVerison.Text = replay.Info.NetworkVersion.ToString();
+            matchType.Text = replay.Info.ServerType.ToString();
+
+            if (replay.Info.ServerType == ServerType.Official)
+            {
+                // TODO
+                gameVerison.Visible = false;
+                host.Visible = false;
+            }
+            else
+            {
+                gameverisonLabel.Text = "Host:";
+                gameVerison.Visible = false;
+                host.Visible = true;
+                host.Text = replay.Info.CustomHost;
+            }
+
+            serverRegion.Text = replay.Summary.Region.ToUpper();
+            serverId.Text = replay.Info.ServerId;
+            recordingSize.Text = FormatReplaySize(replay.Info.DemoFileLastOffset);
+            timeRecorded.Text = replay.Info.CreatedAt.ToString();
+            isLive.Checked = replay.Info.IsLive;
+            isIncomplete.Checked = replay.Info.IsIncomplete;
+            IsServerRecording.Checked = replay.Info.IsServerRecording;
+            fileLocked.Checked = replay.Info.ShouldKeep;
+            teamInfo.Text = replay.Info.Mode.ToString();
+            profile_id = replay.Info.RecordUserId;
+            recordingUser.Text = replay.Info.RecordUserNickName;
+            mapName.Text = replay.Info.MapName.ToString();
+            diedorwon.Checked = replay.Info.AllDeadOrWin;
+            fileSize.Text = FormatReplaySize(replay.Size());
+            weatherType.Text = FormatWeather(replay.Summary.Weather);
+            totalPlayers.Text = replay.Summary.PlayersCount.ToString();
+            totalTeams.Text = replay.Summary.TeamsCount.ToString();
+            rankNum.Text = replay.Recorder.Ranking.ToString();
+            headShots.Text = replay.Recorder.HeadShots.ToString();
+            kills.Text = replay.Recorder.Kills.ToString();
+            dmgHandedOut.Text = FormatFloat(replay.Recorder.TotalGivenDamages);
+            longestKill.Text = FormatFloat(replay.Recorder.LongestDistanceKill);
+            distanceWalked.Text = FormatFloat(replay.Recorder.TotalMovedDistance);
         }
         
         private void ReplayActionsToggle(bool toggle)
@@ -642,7 +721,7 @@ namespace PUBG_Replay_Manager
             {
                 ReplayInfo.Add(true);
             }
-            double dirsize = GetDirectorySize(replayloc + "\\" + currentlyselectedreplaypath + "\\");
+            double dirsize = Utils.GetDirectorySize(replayloc + "\\" + currentlyselectedreplaypath + "\\");
             if (dirsize < 1048576)
             {
                 ReplayInfo.Add(Math.Truncate(dirsize).ToString() + " Bytes");
@@ -759,23 +838,6 @@ namespace PUBG_Replay_Manager
                 ZipFile.CreateFromDirectory(startPath, zipPath, CompressionLevel.Fastest, true);
             }
         }
-        private double GetDirectorySize(string directory)
-        {
-            double foldersize = 0;
-            if (Directory.Exists(directory))
-            {
-                foreach (string dir in Directory.GetDirectories(directory))
-                {
-                    GetDirectorySize(dir);
-                }
-
-                foreach (FileInfo file in new DirectoryInfo(directory).GetFiles())
-                {
-                    foldersize += file.Length;
-                }
-            }
-            return foldersize;
-        }
 
         private void steamidStrip_Click(object sender, EventArgs e)
         {
@@ -886,7 +948,7 @@ namespace PUBG_Replay_Manager
                 string selectedreplaydir = (string)replayGrid[4, e.RowIndex].Value;
                 if (Directory.Exists(replayloc + "\\" + selectedreplaydir) && e.RowIndex > -1)
                 {
-                    RefreshInfoGroups(ReadReplayInfo(replayloc + "\\" + selectedreplaydir));
+                    RefreshInfoGroups(new Replay(replayloc + "\\" + selectedreplaydir));
                     ReplayActionsToggle(true);
                     currentlyselectedreplaypath = selectedreplaydir;
                     AmountOfReplays_SB.Text = "Replays: " + (e.RowIndex + 1) + "/" + replayGrid.Rows.Count;
