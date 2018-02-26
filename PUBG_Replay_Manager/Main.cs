@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Threading;
 using System.ComponentModel;
+using System.Linq;
 
 namespace PUBG_Replay_Manager
 {
@@ -47,27 +48,43 @@ namespace PUBG_Replay_Manager
             }
             if (Directory.Exists(replayloc))
             {
-                foreach (string replay in Directory.GetDirectories(replayloc))
+                foreach (string directory in Directory.GetDirectories(replayloc))
                 {
-                    if(replay.Contains("match."))
+                    if(directory.Contains("match."))
                     {
-                        ArrayList ReplayInfo = ReadReplayInfo(replay);
+                        var replay = new Replay(directory);
+                        var recorder = replay.Summary.Players.First(player => player.PlayerName == replay.Info.RecordUserNickName);
+                        var customName = "[null]";
                         
-                        if (File.Exists(replay + "\\customInfo.json"))
+                        if (File.Exists(directory + "\\customInfo.json"))
                         {
-                            JObject custom_file = JObject.Parse(File.ReadAllText(replay + "\\customInfo.json"));
-                            replayGrid.Rows.Add(custom_file["customName"], ReplayInfo.ToArray()[38], ReplayInfo.ToArray()[10], ReplayInfo.ToArray()[1], replay.Replace(replayloc + "\\", ""));
+                            JObject custom_file = JObject.Parse(File.ReadAllText(directory + "\\customInfo.json"));
+                            customName = (string)custom_file["customName"];   
                         }
-                        else
-                        {
-                            replayGrid.Rows.Add("[null]", ReplayInfo.ToArray()[38], ReplayInfo.ToArray()[10], ReplayInfo.ToArray()[1], replay.Replace(replayloc + "\\", ""));
-                        }
+                        
+                        replayGrid.Rows.Add(customName, FormatRecorderRank(recorder), FormatGameMode(replay.Info.Mode), FormatGameLength(replay.Info.LengthInMs), directory.Replace(replayloc + "\\", ""));
                     }
                 }
             }
             AmountOfReplays_SB.Text = "Replays: 0/" + replayGrid.Rows.Count;
             replayGrid.Refresh();
         }
+
+        private string FormatRecorderRank(ReplaySummaryPlayer player)
+        {
+            return player?.Ranking.ToString() ?? "-";
+        }
+
+        private string FormatGameMode(GameMode mode)
+        {
+            return mode.ToString();
+        }
+
+        private string FormatGameLength(int length)
+        {
+            return TimeSpan.FromSeconds(length / 1000).ToString(@"mm\:ss");
+        }
+        
         public void RefreshInfoGroups(ArrayList newInfo)
         {
             for (int i = 0; i < newInfo.ToArray().Length; i++)
@@ -461,6 +478,12 @@ namespace PUBG_Replay_Manager
             z = 0;
             
         }
+
+        public void RefreshInfoGroups(Replay replay)
+        {
+            
+        }
+        
         private void ReplayActionsToggle(bool toggle)
         {
             openSelectedReplay.Enabled = toggle;
