@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace PUBG_Replay_Manager
 {
@@ -31,6 +28,25 @@ namespace PUBG_Replay_Manager
 
             int stringBytesLength = unencodedbytes[unencodedbytes.Length - 1] == 0 ? unencodedbytes.Length - 1 : unencodedbytes.Length; // Skip last byte if its zero
             return Encoding.UTF8.GetString(unencodedbytes, 0, stringBytesLength); // take all the bytes, put the array into UTF8 encoding and return it
+        }
+        
+        public static double GetDirectorySize(string directory)
+        {
+            double foldersize = 0;
+            if (Directory.Exists(directory))
+            {
+                foreach (string dir in Directory.GetDirectories(directory))
+                {
+                    GetDirectorySize(dir);
+                }
+
+                foreach (FileInfo file in new DirectoryInfo(directory).GetFiles())
+                {
+                    foldersize += file.Length;
+                }
+            }
+            
+            return foldersize;
         }
     }
 }
