@@ -191,21 +191,22 @@ namespace PUBG_Replay_Manager
             }
             if (Directory.Exists(replayloc))
             {
+                List<Replay> replays = new List<Replay>();
+                
                 foreach (string directory in Directory.GetDirectories(replayloc))
                 {
                     if(directory.Contains("match."))
                     {
-                        var replay = new Replay(directory);
-                        var customName = "[null]";
-                        
-                        if (File.Exists(directory + "\\customInfo.json"))
-                        {
-                            JObject custom_file = JObject.Parse(File.ReadAllText(directory + "\\customInfo.json"));
-                            customName = (string)custom_file["customName"];   
-                        }
-                        
-                        replayGrid.Rows.Add(customName, FormatRecorderRank(replay.Recorder), FormatGameMode(replay.Info.Mode), FormatGameLength(replay.Info.LengthInMs), directory.Replace(replayloc + "\\", ""));
+                        replays.Add(new Replay(directory));
                     }
+                }
+                
+                replays.Sort((x, y) => x.Info.Unixtime.CompareTo(y.Info.Unixtime));
+                replays.Reverse();
+                
+                foreach (Replay replay in replays)
+                {
+                    replayGrid.Rows.Add(replay.CustomName, FormatRecorderRank(replay.Recorder), FormatGameMode(replay.Info.Mode), FormatGameLength(replay.Info.LengthInMs), replay.Path.Replace(replayloc + "\\", ""));                    
                 }
             }
             AmountOfReplays_SB.Text = "Replays: 0/" + replayGrid.Rows.Count;
@@ -307,7 +308,7 @@ namespace PUBG_Replay_Manager
             serverRegion.Text = replay.Summary.Region.ToUpper();
             serverId.Text = replay.Info.ServerId;
             recordingSize.Text = FormatReplaySize(replay.Info.DemoFileLastOffset);
-            timeRecorded.Text = replay.Info.CreatedAt.ToString();
+            timeRecorded.Text = replay.Info.CreatedAt.ToLocalTime().ToString();
             isLive.Checked = replay.Info.IsLive;
             isIncomplete.Checked = replay.Info.IsIncomplete;
             IsServerRecording.Checked = replay.Info.IsServerRecording;
@@ -569,22 +570,12 @@ namespace PUBG_Replay_Manager
         {
             Console.WriteLine("celledit finished");
             Console.WriteLine(replayGrid[e.ColumnIndex,e.RowIndex].Value);
-            JObject custom_file;
+            
             if (e.RowIndex > -1)
             {
                 string selectedreplaydir = (string)replayGrid[4, e.RowIndex].Value;
-                if (File.Exists(replayloc + "\\" + selectedreplaydir + "\\customInfo.json") && e.RowIndex > -1)
-                {
-                    custom_file = JObject.Parse(File.ReadAllText(replayloc + "\\" + selectedreplaydir + "\\customInfo.json"));
-                    custom_file["customName"] = replayGrid[e.ColumnIndex, e.RowIndex].Value.ToString();
-                }
-                else
-                {
-                    custom_file = new JObject(
-                                                new JProperty("customName", replayGrid[e.ColumnIndex, e.RowIndex].Value)
-                                                );
-                }
-                File.WriteAllText(replayloc + "\\" + selectedreplaydir + "\\customInfo.json", custom_file.ToString());
+                Replay replay = new Replay(replayloc + "\\" + selectedreplaydir);
+                replay.CustomName = replayGrid[e.ColumnIndex, e.RowIndex].Value.ToString();
             }
         }
     }

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace PUBG_Replay_Manager
 {
     public class Replay
     {
-        private string Path;
+        public string Path;
 
         public ReplayInfo Info;
         public ReplaySummary Summary;
@@ -58,6 +59,45 @@ namespace PUBG_Replay_Manager
         public double Size()
         {
             return Utils.GetDirectorySize(Path);
+        }
+
+        private string customName = null;
+        
+        public string CustomName
+        {
+            get
+            {
+                if (customName == null)
+                {
+                    customName = "[null]";
+
+                    if (File.Exists(Path + "\\customInfo.json"))
+                    {
+                        JObject custom_file = JObject.Parse(File.ReadAllText(Path + "\\customInfo.json"));
+                        customName = (string) custom_file["customName"];
+                    }
+                }
+
+                return customName;
+            }
+
+            set
+            {
+                customName = value;
+
+                JObject custom_file;
+                if (File.Exists(Path + "\\customInfo.json"))
+                {
+                    custom_file = JObject.Parse(File.ReadAllText(Path + "\\customInfo.json"));
+                    custom_file["customName"] = value;
+                }
+                else
+                {
+                    custom_file = new JObject(new JProperty("customName", value));
+                }
+                
+                File.WriteAllText(Path + "\\customInfo.json", custom_file.ToString());
+            }
         }
 
         public List<ReplayEvent> Events()
