@@ -11,6 +11,7 @@ using System.Drawing;
 using System.Globalization;
 using System.Threading;
 using System.ComponentModel;
+using System.Linq;
 
 namespace PUBG_Replay_Manager
 {
@@ -287,6 +288,7 @@ namespace PUBG_Replay_Manager
 
         public void RefreshInfoGroups(Replay replay)
         {
+            var killEvents = replay.Events().FindAll(re => re.GetType().Name == "ReplayKillEvent");
             lengthInMins.Text = FormatGameLength(replay.Info.LengthInMs);
             networkVerison.Text = replay.Info.NetworkVersion.ToString();
             matchType.Text = replay.Info.ServerType.ToString();
@@ -353,6 +355,19 @@ namespace PUBG_Replay_Manager
                     tmBlocks[i].SteamId.Text = replay.Summary.Players[i].PlayerId.ToString();
                     tmBlocks[i].Headshots.Text = replay.Summary.Players[i].HeadShots.ToString();
                     tmBlocks[i].Kills.Text = replay.Summary.Players[i].Kills.ToString();
+
+                    try
+                    {
+                        ReplayKillEvent killEvent = (ReplayKillEvent) killEvents.First(kill =>
+                            ((ReplayKillEvent) kill).VictimId == replay.Summary.Players[i].PlayerId.ToString());
+                        tmBlocks[i].KillerPubgName.Text = killEvent.KillerName;
+                        tmBlocks[i].KillerSteamId.Text = killEvent.KillerId;
+                    }
+                    catch (InvalidOperationException e)
+                    {
+                        tmBlocks[i].KillerPubgName.Text = "[unknown]";
+                        tmBlocks[i].KillerSteamId.Text = "[unknown]";
+                    }
                 }
             }
         }
